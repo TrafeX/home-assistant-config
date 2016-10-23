@@ -1,0 +1,69 @@
+- alias: 'Turn on Gang1ste light when motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gang_1ste_sensor
+      state: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: sun
+      after: 'sunset'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.overloop_licht_1ste
+        brightness: >
+          {% if is_state('input_boolean.night_mode', 'true') %}
+            20
+          {% else %}
+            40
+          {% endif %}
+
+- alias: 'Turn on Gang2de light when motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gang_2de_sensor
+      state: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: sun
+      after: 'sunset'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.overloop_licht_2de
+        brightness: >
+          {% if is_state('input_boolean.night_mode', 'true') %}
+            20
+          {% else %}
+            40
+          {% endif %}
+
+- alias: 'Turn off Gang1ste light'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gang_1ste_sensor
+      state: 'off'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: light.overloop_licht_1ste
+
+- alias: 'Turn off Gang2de light'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.gang_2de_sensor
+      state: 'off'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: light.turn_off
+      entity_id: light.overloop_licht_2de

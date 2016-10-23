@@ -1,0 +1,118 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  # Impacts weather/sunrise data
+  elevation: 0
+  # Unit system
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Amsterdam
+
+  customize: !include configuration/customize.yaml
+
+# Enables the frontend
+frontend:
+
+http:
+  api_password: !secret api_password
+
+# Checks for available updates
+updater:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time.
+history:
+
+# View all events in a logbook
+logbook:
+
+recorder:
+  purge_days: 8
+
+# Track the sun
+sun:
+
+#influxdb:
+#  host: influxdb
+#  database: homeassistant
+#  tags:
+#    source: hass
+
+sensor:
+  - platform: yr
+
+vera:
+  vera_controller_url: http://192.168.150.10:3480/
+  lights: [5, 7, 31, 6, 44, 132, 148, 32, 152]
+
+shell_command:
+  vera_home_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"'
+  vera_away_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"'
+
+binary_sensor:
+  - platform: template
+    sensors:
+      wasmachine_state:
+        friendly_name: 'Wasmachine'
+        value_template: >
+          {% if states.switch.wasmachine %}
+            {{ states.switch.wasmachine.attributes.current_power_mwh > 500 }}
+          {% endif %}
+        entity_id: switch.wasmachine
+
+input_boolean:
+  night_mode:
+    name: Slaapstand
+    initial: off
+    icon: mdi:sleep
+
+media_player:
+  - platform: sonos
+    hosts: 192.168.150.141
+  - platform: cast
+    host: 192.168.150.124
+  - platform: braviatv
+    host: 192.168.150.192
+
+notify:
+  - name: all
+    platform: group
+    services:
+      - service: telegram_notify
+#  - name: push
+#    platform: html5
+#    gcm_api_key: !secret gcm_sender_key
+#    gcm_sender_id: !secret gcm_sender_id
+#  - name: pushbullet
+#    platform: pushbullet
+#    api_key: !secret pushbullet_api_secret
+  - name: telegram_notify
+    platform: telegram
+    api_key: !secret telegram_api_key
+    chat_id: !secret telegram_chat_id
+
+automation: !include_dir_merge_list configuration/automation/
+script: !include_dir_named configuration/script/
+
+device_tracker:
+   - platform: asuswrt
+     host: 192.168.150.1
+     username: !secret router_user
+     password: !secret router_password
+     consider_home: 0:15
+     track_new_devices: no
+
+group: !include configuration/group.yaml
+scene: !include configuration/scene.yaml
+camera: !include configuration/camera.yaml
+
+alarm_control_panel:
+  platform: manual
+  name: Home Alarm
+  pending_time: 0
+  trigger_time: 1 # Workaround to prevent being in the triggered state

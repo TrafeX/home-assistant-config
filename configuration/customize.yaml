@@ -1,0 +1,26 @@
+binary_sensor.rookmelder_bg:
+  sensor_class: smoke
+binary_sensor.rookmelder_1ste:
+  sensor_class: smoke
+binary_sensor.rookmelder_2de:
+  sensor_class: smoke
+binary_sensor.living_sensor:
+  sensor_class: motion
+binary_sensor.achtertuin_sensor:
+  sensor_class: motion
+binary_sensor.gang_1ste_sensor:
+  sensor_class: motion
+binary_sensor.gang_2de_sensor:
+  sensor_class: motion
+sensor.6_in_1_multisensor_light:
+  sensor_class: light
+sensor.light_sensor_2:
+  sensor_class: light
+sensor.6_in_1_multisensor_light_1:
+  sensor_class: light
+sensor.6_in_1_multisensor_light_2:
+  sensor_class: light
+sensor.yr_symbol:
+  friendly_name: Weer
+binary_sensor.voordeur:
+  sensor_class: opening

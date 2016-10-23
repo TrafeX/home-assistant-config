@@ -1,0 +1,104 @@
+home:
+  view: yes
+  icon: mdi:home-outline
+  entities:
+    - group.house
+    - group.living
+    - group.backyard
+    - group.frontyard
+    - group.gangbg
+    - group.gang1ste
+    - group.gang2de
+    - group.werkkamer
+    - group.waskamer
+    - sun.sun
+    - sensor.yr_symbol
+    - device_tracker.tim_mobile
+    - device_tracker.chantal_mobile
+    - binary_sensor.wasmachine_state
+mediaplayers:
+  name: Media
+  view: yes
+  entities:
+    - media_player.chromekamer
+    - media_player.woonkamer
+    - media_player.sony_bravia_tv
+cameras:
+  name: Cameras
+  view: yes
+  entities:
+    - camera.frontyard
+    - camera.backyard
+    - camera.street
+    - camera.living
+    - switch.camera_privacy
+house:
+  name: Huis
+  entities:
+    - switch.ventilatie
+    - alarm_control_panel.home_alarm
+    - input_boolean.night_mode
+living:
+  name: Woonkamer & keuken
+  entities:
+    - scene.living_normal
+    - scene.living_movie
+    - script.turn_lights_off
+    - light.woonkamer_spots
+    - light.keuken_spots
+    - binary_sensor.living_sensor
+    - sensor.temperatuur_binnen
+    - sensor.vochtigheid_binnen
+    - sensor.6_in_1_multisensor_temperature
+    - sensor.6_in_1_multisensor_humidity
+    - sensor.6_in_1_multisensor_light
+backyard:
+  name: Achtertuin
+  entities:
+    - binary_sensor.achtertuin_sensor
+    - light.buitenlicht_achter
+    - light.licht_tuindeur
+    - sensor.temperatuur_buiten
+    - sensor.vochtigheid_buiten
+    - sensor.temperature_sensor_2
+    - sensor.humidity_sensor_2
+    - sensor.light_sensor_2
+frontyard:
+  name: Voortuin
+  entities:
+    - light.buitenlicht_voorkant
+gangbg:
+  name: Gang BG
+  entities:
+    - binary_sensor.voordeur
+    - binary_sensor.rookmelder_bg
+    - light.gang_licht
+    - sensor.temperatuur_bg
+gang1ste:
+  name: Gang 1ste
+  entities:
+    - binary_sensor.gang_1ste_sensor
+    - binary_sensor.rookmelder_1ste
+    - light.overloop_licht_1ste
+    - sensor.6_in_1_multisensor_temperature_1
+    - sensor.6_in_1_multisensor_humidity_1
+    - sensor.6_in_1_multisensor_light_1
+    - sensor.temperatuur_1ste
+gang2de:
+  name: Gang 2de
+  entities:
+    - binary_sensor.gang_2de_sensor
+    - binary_sensor.rookmelder_2de
+    - light.overloop_licht_2de
+    - sensor.6_in_1_multisensor_temperature_2
+    - sensor.6_in_1_multisensor_humidity_2
+    - sensor.6_in_1_multisensor_light_2
+    - sensor.temperatuur_2de
+werkkamer:
+  name: Werkkamer
+  entities:
+    - light.werkkamer_licht
+waskamer:
+  name: Waskamer
+  entities:
+    - switch.tv_waskamer

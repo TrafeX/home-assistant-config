@@ -1,0 +1,34 @@
+- alias: 'Backyard light on'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      state: 'home'
+    - platform: state
+      entity_id: binary_sensor.living_sensor
+      state: 'on'
+    - platform: sun
+      event: 'sunset'
+      offset: '+00:30:00'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: sun
+      after: 'sunset'
+      after_offset: '+00:30:00'
+  action:
+    - service: lights.turn_on
+      entity_id: light.buitenlicht_achter
+
+- alias: 'Backyard light off'
+  trigger:
+    - platform: sun
+      event: 'sunrise'
+      offset: '-00:30:00'
+  action:
+    - service: lights.turn_off
+      entity_id: light.buitenlicht_achter
+

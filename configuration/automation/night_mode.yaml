@@ -1,0 +1,7 @@
+- alias: 'Activate night mode'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+  action:
+    - service: script.turn_lights_off

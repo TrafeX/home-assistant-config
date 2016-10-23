@@ -1,0 +1,21 @@
+- alias: 'Home coming'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: notify.all
+      data:
+        message: Welkom thuis!
+    - service: shell_command.vera_home_mode
+
+- alias: 'Leaving'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: notify.all
+      data:
+        message: Afwezigheid gedetecteerd
+    - service: shell_command.vera_away_mode

@@ -1,0 +1,22 @@
+  - platform: foscam
+    ip: 192.168.150.16
+    name: Frontyard
+    port: 88
+    username: !secret camera_frontyard_user
+    password: !secret camera_frontyard_password
+  - platform: foscam
+    ip: 192.168.150.15
+    name: Backyard
+    port: 88
+    username: !secret camera_backyard_user
+    password: !secret camera_backyard_password
+  - platform: mjpeg
+    name: Street
+    mjpeg_url: http://192.168.150.14/axis-cgi/jpg/image.cgi
+    username: !secret camera_street_user
+    password: !secret camera_street_password
+  - platform: mjpeg
+    name: Living
+    mjpeg_url: http://192.168.150.13/image/jpeg.cgi
+    username: !secret camera_living_user
+    password: !secret camera_living_password

@@ -1,0 +1,31 @@
+- alias: 'Deactivate night mode in weekend'
+  trigger:
+    - platform: time
+      after: '8:00:00'
+  condition:
+    - condition: time
+      after: '8:00:00'
+      weekday:
+        - sat
+        - sun
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.night_mode
+
+- alias: 'Deactivate night mode on workday'
+  trigger:
+    - platform: time
+      after: '6:30:00'
+  condition:
+    - condition: time
+      after: '6:30:00'
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.night_mode
+

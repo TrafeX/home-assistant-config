@@ -1,0 +1,40 @@
+- alias: 'Living lights on'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      state: 'home'
+    - platform: state
+      entity_id: binary_sensor.living_sensor
+      state: 'on'
+    - platform: numeric_state
+      entity_id: sensor.6_in_1_multisensor_light
+      below: 7
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.6_in_1_multisensor_light
+      below: 7
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_normal
+
+- alias: 'Living lights off'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.6_in_1_multisensor_light
+      above: 12
+  condition:
+    - condition: state
+      entity_id: light.woonkamer_spots
+      state: 'on'
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.manual_lights_off

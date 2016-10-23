@@ -1,0 +1,28 @@
+- alias: 'Media player paused/stopped'
+  trigger:
+    - platform: state
+      entity_id: media_player.chromekamer
+      from: 'playing'
+  condition:
+    - condition: state
+      entity_id: light.woonkamer_spots
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_normal
+
+- alias: 'Media player playing'
+  trigger:
+    - platform: state
+      entity_id: media_player.chromekamer
+      to: 'playing'
+    - platform: state
+      entity_id: media_player.sony_bravia_tv
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.woonkamer_spots
+      state: 'on'
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_tv
