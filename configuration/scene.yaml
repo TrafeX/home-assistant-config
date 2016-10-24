@@ -10,15 +10,15 @@
   entities:
     light.woonkamer_spots:
       state: on
-      brightness: 40
+      brightness: 45
     light.keuken_spots:
       state: on
-      brightness: 55
+      brightness: 65
 - name: Living Normal
   entities:
     light.woonkamer_spots:
       state: on
-      brightness: 55
+      brightness: 65
     light.keuken_spots:
       state: on
-      brightness: 55
+      brightness: 65

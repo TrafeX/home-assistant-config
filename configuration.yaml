@@ -61,7 +61,7 @@ binary_sensor:
         friendly_name: 'Wasmachine'
         value_template: >
           {% if states.switch.wasmachine %}
-            {{ states.switch.wasmachine.attributes.current_power_mwh > 500 }}
+            {{ states.switch.wasmachine.attributes.current_power_mwh > 1000 }}
           {% endif %}
         entity_id: switch.wasmachine
 

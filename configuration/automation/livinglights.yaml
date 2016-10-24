@@ -16,6 +16,9 @@
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
+    - condition: state
+      entity_id: light.woonkamer_spots
+      state: 'off'
     - condition: numeric_state
       entity_id: sensor.6_in_1_multisensor_light
       below: 7

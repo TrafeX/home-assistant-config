@@ -14,10 +14,10 @@
       data_template:
         entity_id: light.overloop_licht_1ste
         brightness: >
-          {% if is_state('input_boolean.night_mode', 'true') %}
-            20
-          {% else %}
+          {% if is_state('input_boolean.night_mode', 'on') %}
             40
+          {% else %}
+            100
           {% endif %}
 
 - alias: 'Turn on Gang2de light when motion'
@@ -36,10 +36,10 @@
       data_template:
         entity_id: light.overloop_licht_2de
         brightness: >
-          {% if is_state('input_boolean.night_mode', 'true') %}
-            20
-          {% else %}
+          {% if is_state('input_boolean.night_mode', 'on') %}
             40
+          {% else %}
+            100
           {% endif %}
 
 - alias: 'Turn off Gang1ste light'

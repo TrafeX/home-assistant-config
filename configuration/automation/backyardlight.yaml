@@ -16,12 +16,17 @@
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
+    - condition: state
+      entity_id: light.buitenlicht_achter
+      state: 'off'
     - condition: sun
       after: 'sunset'
       after_offset: '+00:30:00'
   action:
-    - service: lights.turn_on
-      entity_id: light.buitenlicht_achter
+    - service: light.turn_on
+      data:
+        entity_id: light.buitenlicht_achter
+        brightness: 70
 
 - alias: 'Backyard light off'
   trigger:
@@ -29,6 +34,7 @@
       event: 'sunrise'
       offset: '-00:30:00'
   action:
-    - service: lights.turn_off
-      entity_id: light.buitenlicht_achter
+    - service: light.turn_off
+      data:
+        entity_id: light.buitenlicht_achter
 
