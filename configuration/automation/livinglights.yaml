@@ -31,13 +31,12 @@
     - platform: numeric_state
       entity_id: sensor.6_in_1_multisensor_light
       above: 12
+    - platform: state
+      entity_id: group.all_devices
+      state: 'not_home'
   condition:
     - condition: state
       entity_id: light.woonkamer_spots
       state: 'on'
-    - condition: state
-      entity_id: group.all_devices
-      state: 'home'
   action:
-    - service: scene.turn_on
-      entity_id: scene.manual_lights_off
+    - service: script.turn_lights_off

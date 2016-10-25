@@ -49,10 +49,10 @@
     - platform: state
       entity_id: binary_sensor.gang_1ste_sensor
       state: 'off'
-  condition:
-    - condition: state
+    - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      state: 'not_home'
+  condition:
     - condition: state
       entity_id: light.overloop_licht_1ste
       state: 'on'
@@ -65,10 +65,10 @@
     - platform: state
       entity_id: binary_sensor.gang_2de_sensor
       state: 'off'
-  condition:
-    - condition: state
+    - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      state: 'not_home'
+  condition:
     - condition: state
       entity_id: light.overloop_licht_2de
       state: 'on'

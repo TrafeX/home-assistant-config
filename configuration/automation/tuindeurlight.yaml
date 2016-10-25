@@ -1,0 +1,27 @@
+- alias: 'Turn on Tuindeur light when motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.achtertuin_sensor
+      state: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.licht_tuindeur
+
+
+- alias: 'Turn off Tuindeur light'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.achtertuin_sensor
+      state: 'off'
+  condition:
+    - condition: state
+      entity_id: light.licht_tuindeur
+      state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.licht_tuindeur

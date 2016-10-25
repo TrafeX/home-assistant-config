@@ -53,6 +53,8 @@ vera:
 shell_command:
   vera_home_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"'
   vera_away_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"'
+  privacy_mode_enable: !secret cmd_privacy_mode_enable
+  privacy_mode_disable: !secret cmd_privacy_mode_disable
 
 binary_sensor:
   - platform: template
@@ -70,6 +72,10 @@ input_boolean:
     name: Slaapstand
     initial: off
     icon: mdi:sleep
+  camera_privacy:
+    name: Camera privacy
+    initial: off
+    icon: mdi:camera-off
 
 media_player:
   - platform: sonos
@@ -84,13 +90,6 @@ notify:
     platform: group
     services:
       - service: telegram_notify
-#  - name: push
-#    platform: html5
-#    gcm_api_key: !secret gcm_sender_key
-#    gcm_sender_id: !secret gcm_sender_id
-#  - name: pushbullet
-#    platform: pushbullet
-#    api_key: !secret pushbullet_api_secret
   - name: telegram_notify
     platform: telegram
     api_key: !secret telegram_api_key
@@ -106,6 +105,13 @@ device_tracker:
      password: !secret router_password
      consider_home: 0:15
      track_new_devices: no
+   - platform: nmap_tracker
+     home_interval: 15
+     consider_home: 0:15
+     track_new_devices: no
+     hosts:
+      - 192.168.150.190
+      - 192.168.150.191
 
 group: !include configuration/group.yaml
 scene: !include configuration/scene.yaml

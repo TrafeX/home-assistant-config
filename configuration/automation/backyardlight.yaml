@@ -33,6 +33,9 @@
     - platform: sun
       event: 'sunrise'
       offset: '-00:30:00'
+    - platform: state
+      entity_id: group.all_devices
+      state: 'not_home'
   action:
     - service: light.turn_off
       data:

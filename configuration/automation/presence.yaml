@@ -7,6 +7,8 @@
     - service: notify.all
       data:
         message: Welkom thuis!
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.camera_privacy
     - service: shell_command.vera_home_mode
 
 - alias: 'Leaving'
@@ -18,4 +20,6 @@
     - service: notify.all
       data:
         message: Afwezigheid gedetecteerd
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.camera_privacy
     - service: shell_command.vera_away_mode

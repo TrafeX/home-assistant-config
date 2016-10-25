@@ -1,0 +1,22 @@
+- alias: 'Enable camera privacy'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.camera_privacy
+      state: 'on'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+  action:
+    - service: shell_command.privacy_mode_enable
+
+- alias: 'Disable camera privacy'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.camera_privacy
+      state: 'off'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+  action:
+    - service: shell_command.privacy_mode_disable
+
