@@ -23,6 +23,9 @@
     - condition: state
       entity_id: light.woonkamer_spots
       state: 'on'
+    - condition: numeric_state
+      entity_id: light.woonkamer_spots
+      above: 45
   action:
     - service: scene.turn_on
       entity_id: scene.living_tv
