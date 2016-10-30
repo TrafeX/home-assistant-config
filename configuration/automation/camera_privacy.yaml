@@ -1,22 +1,19 @@
-- alias: 'Enable camera privacy'
+- alias: 'Disable camera privacy when alarm is armed'
   trigger:
     - platform: state
-      entity_id: input_boolean.camera_privacy
-      state: 'on'
+      entity_id: alarm_control_panel.home_alarm
+      state: 'armed_home'
     - platform: state
-      entity_id: input_boolean.night_mode
-      state: 'off'
-  action:
-    - service: shell_command.privacy_mode_enable
-
-- alias: 'Disable camera privacy'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.camera_privacy
-      state: 'off'
-    - platform: state
-      entity_id: input_boolean.night_mode
-      state: 'on'
+      entity_id: alarm_control_panel.home_alarm
+      state: 'armed_away'
   action:
     - service: shell_command.privacy_mode_disable
+
+- alias: 'Enable camera privacy when alarm is disarmed'
+  trigger:
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      state: 'disarmed'
+  action:
+    - service: shell_command.privacy_mode_enable
 

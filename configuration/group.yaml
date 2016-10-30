@@ -31,7 +31,6 @@ cameras:
     - camera.backyard
     - camera.street
     - camera.living
-    - input_boolean.camera_privacy
 house:
   name: Huis
   entities:

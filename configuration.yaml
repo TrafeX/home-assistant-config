@@ -72,10 +72,6 @@ input_boolean:
     name: Slaapstand
     initial: off
     icon: mdi:sleep
-  camera_privacy:
-    name: Camera privacy
-    initial: off
-    icon: mdi:camera-off
 
 media_player:
   - platform: sonos
