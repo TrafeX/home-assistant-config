@@ -46,19 +46,21 @@ living:
     - light.woonkamer_spots
     - light.keuken_spots
     - binary_sensor.living_sensor
-    - sensor.temperatuur_binnen
-    - sensor.vochtigheid_binnen
+    - sensor.netatmo_indoor_temperature
+    - sensor.netatmo_indoor_humidity
+    - sensor.netatmo_indoor_co2
     - sensor.6_in_1_multisensor_temperature
     - sensor.6_in_1_multisensor_humidity
     - sensor.6_in_1_multisensor_light
+
 backyard:
   name: Achtertuin
   entities:
     - binary_sensor.achtertuin_sensor
     - light.buitenlicht_achter
     - light.licht_tuindeur
-    - sensor.temperatuur_buiten
-    - sensor.vochtigheid_buiten
+    - sensor.netatmo_outdoor_temperature
+    - sensor.netatmo_outdoor_humidity
     - sensor.temperature_sensor_2
     - sensor.humidity_sensor_2
     - sensor.light_sensor_2

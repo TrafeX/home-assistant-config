@@ -24,3 +24,5 @@ sensor.yr_symbol:
   friendly_name: Weer
 binary_sensor.voordeur:
   sensor_class: opening
+switch.ventilatie:
+  icon: mdi:fan
