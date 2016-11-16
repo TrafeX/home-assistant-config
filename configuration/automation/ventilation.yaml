@@ -13,6 +13,6 @@
       entity_id: switch.ventilatie
       state: 'on'
   action:
-    - delay: 2:00
+    - delay: 2:00:00
     - service: switch.turn_off
       entity_id: switch.ventilatie
