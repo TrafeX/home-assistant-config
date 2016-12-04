@@ -11,7 +11,6 @@ home:
     - group.gang1ste
     - group.gang2de
     - group.werkkamer
-    - group.waskamer
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
@@ -105,7 +104,3 @@ werkkamer:
   name: Werkkamer
   entities:
     - light.werkkamer_licht
-waskamer:
-  name: Waskamer
-  entities:
-    - switch.tv_waskamer
