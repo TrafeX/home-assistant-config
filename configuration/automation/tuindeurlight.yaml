@@ -12,7 +12,6 @@
       data:
         entity_id: light.licht_tuindeur
 
-
 - alias: 'Turn off Tuindeur light'
   trigger:
     - platform: state

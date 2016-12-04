@@ -1,8 +1,25 @@
 - alias: 'Turn on ventilation when CO2 level high'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.6_in_1_multisensor_light
+      entity_id: sensor.netatmo_indoor_co2
       above: 1200
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.ventilatie
+
+- alias: 'Turn on ventilation when waking up'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
   action:
     - service: switch.turn_on
       entity_id: switch.ventilatie

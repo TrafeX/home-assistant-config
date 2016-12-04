@@ -13,6 +13,8 @@ Some of the things I've implemented:
 * Presence detection with home coming and leaving automation
 * Night mode
 * Integration with Vera
+* Enable ventilation when CO2 level reaches a certain level
+* Automated Christmas lights
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2016/10/Selection_525.png "Home Assistant dashboard")

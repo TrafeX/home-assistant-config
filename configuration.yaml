@@ -81,11 +81,14 @@ input_boolean:
 
 media_player:
   - platform: sonos
-    hosts: 192.168.150.141
+    hosts:
+      - 192.168.150.141
   - platform: cast
-    host: 192.168.150.124
+    host:
+      - 192.168.150.124
   - platform: braviatv
-    host: 192.168.150.192
+    host:
+      -192.168.150.192
 
 notify:
   - name: all
