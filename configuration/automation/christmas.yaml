@@ -3,6 +3,9 @@
     - platform: state
       entity_id: binary_sensor.living_sensor
       state: 'on'
+    - platform: state
+      entity_id: group.all_devices
+      state: 'home'
   condition:
     - condition: state
       entity_id: group.all_devices
