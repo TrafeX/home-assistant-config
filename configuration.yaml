@@ -72,6 +72,12 @@ binary_sensor:
             {{ states.switch.wasmachine.attributes.current_power_mwh > 1000 }}
           {% endif %}
         entity_id: switch.wasmachine
+  - platform: rest
+    resource: http://192.168.150.19/a?f=j
+    value_template: '{{ value_json.pwr }}'
+    method: GET
+    name: Totaal verbruik
+    unit_of_measurement: "W"
 
 input_boolean:
   night_mode:
@@ -81,14 +87,11 @@ input_boolean:
 
 media_player:
   - platform: sonos
-    hosts:
-      - 192.168.150.141
+    hosts: 192.168.150.141
   - platform: cast
-    host:
-      - 192.168.150.124
+    host: 192.168.150.124
   - platform: braviatv
-    host:
-      -192.168.150.192
+    host: 192.168.150.192
 
 notify:
   - name: all
