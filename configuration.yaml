@@ -45,6 +45,12 @@ sun:
 
 sensor:
   - platform: yr
+  - platform: rest
+    resource: http://192.168.150.19/a?f=j
+    value_template: '{{ value_json.pwr }}'
+    method: GET
+    name: Power usage
+    unit_of_measurement: "W"
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/
@@ -72,12 +78,6 @@ binary_sensor:
             {{ states.switch.wasmachine.attributes.current_power_mwh > 1000 }}
           {% endif %}
         entity_id: switch.wasmachine
-  - platform: rest
-    resource: http://192.168.150.19/a?f=j
-    value_template: '{{ value_json.pwr }}'
-    method: GET
-    name: Totaal verbruik
-    unit_of_measurement: "W"
 
 input_boolean:
   night_mode:

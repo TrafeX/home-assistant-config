@@ -16,6 +16,7 @@ home:
     - device_tracker.tim_mobile
     - device_tracker.chantal_mobile
     - binary_sensor.wasmachine_state
+    - sensor.power_usage
 mediaplayers:
   name: Media
   view: yes

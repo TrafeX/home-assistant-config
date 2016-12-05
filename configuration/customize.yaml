@@ -22,6 +22,9 @@ sensor.6_in_1_multisensor_light_2:
   sensor_class: light
 sensor.yr_symbol:
   friendly_name: Weer
+sensor.power_usage:
+  sensor_class: power
+  friendly_name: Verbruik
 binary_sensor.voordeur:
   sensor_class: opening
 switch.ventilatie:
