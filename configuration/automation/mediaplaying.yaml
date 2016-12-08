@@ -2,7 +2,11 @@
   trigger:
     - platform: state
       entity_id: media_player.chromekamer
-      from: 'playing'
+      to: 'off'
+      for:
+        hours: 0
+        minutes: 2
+        seconds: 0
   condition:
     - condition: state
       entity_id: light.woonkamer_spots
