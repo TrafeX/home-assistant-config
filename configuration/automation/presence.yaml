@@ -8,6 +8,22 @@
       data:
         message: Welkom thuis!
     - service: shell_command.vera_home_mode
+    - service: media_player.sonos_snapshot
+      entity_id: media_player.woonkamer
+    - service: media_player.media_pause
+      entity_id: media_player.woonkamer
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.woonkamer
+        volume_level: 0.30
+    - service: media_player.play_media
+      data:
+        entity_id: media_player.woonkamer
+        media_content_type: 'MUSIC'
+        media_content_id: https://s3-eu-west-1.amazonaws.com/tx-homeassistant/homecoming.mp3
+    - delay: 0:00:5
+    - service: media_player.sonos_restore
+      entity_id: media_player.woonkamer
 
 - alias: 'Leaving'
   trigger:
