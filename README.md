@@ -10,6 +10,7 @@ Some of the things I've implemented:
 * Fully automated living lights
 * Automated hallway lights which dim at night
 * Notify when washing machine is finished
+* Play a speech message on Sonos as notification
 * Presence detection with home coming and leaving automation
 * Night mode
 * Integration with Vera
