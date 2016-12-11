@@ -1,7 +1,7 @@
-- alias: 'Media player paused/stopped'
+- alias: 'Media player off'
   trigger:
     - platform: state
-      entity_id: media_player.chromekamer
+      entity_id: media_player.sony_bravia_tv
       to: 'off'
       for:
         hours: 0

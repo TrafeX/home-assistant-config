@@ -13,6 +13,12 @@
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
+    - condition: state
+      entity_id: switch.kerstboom
+      state: 'off'
+    - condition: state
+      entity_id: switch.kerstdorp
+      state: 'off'
   action:
     - service: switch.turn_on
       entity_id: switch.kerstboom
