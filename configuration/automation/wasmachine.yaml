@@ -18,7 +18,7 @@
     - service: media_player.volume_set
       data:
         entity_id: media_player.woonkamer
-        volume_level: 0.30
+        volume_level: 0.40
     - service: media_player.play_media
       data:
         entity_id: media_player.woonkamer
