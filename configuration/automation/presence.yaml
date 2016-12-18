@@ -16,11 +16,10 @@
       data:
         entity_id: media_player.woonkamer
         volume_level: 0.40
-    - service: media_player.play_media
+    - service: tts.google_say
+      entity_id: media_player.woonkamer
       data:
-        entity_id: media_player.woonkamer
-        media_content_type: 'MUSIC'
-        media_content_id: https://s3-eu-west-1.amazonaws.com/tx-homeassistant/homecoming.mp3
+        message: 'Welkom thuis en fijne dagen!'
     - delay: 0:00:5
     - service: media_player.sonos_restore
       entity_id: media_player.woonkamer

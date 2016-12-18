@@ -93,6 +93,13 @@ media_player:
   - platform: braviatv
     host: 192.168.150.192
 
+tts:
+  - platform: google
+    language: nl
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+
 notify:
   - name: all
     platform: group
