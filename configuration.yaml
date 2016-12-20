@@ -18,6 +18,7 @@ frontend:
 
 http:
   api_password: !secret api_password
+  base_url: !secret base_url
 
 # Checks for available updates
 updater:
