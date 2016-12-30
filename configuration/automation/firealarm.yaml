@@ -1,0 +1,33 @@
+- alias: 'Trigger fire alarm when smoke detected'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.rookmelder_1ste
+      state: 'on'
+    - platform: state
+      entity_id: binary_sensor.rookmelder_2de
+      state: 'on'
+    - platform: state
+      entity_id: binary_sensor.rookmelder_bg
+      state: 'on'
+  action:
+    - service: notify.all
+      data_template:
+        title: "*BRAND alarm!*"
+        message: >
+
+          Brandmelding op:
+          {% for state in states.binary_sensor -%}
+            {% if state.state == 'on' and state.name != 'Wasmachine' %}
+              {{ state.name }}
+            {%- endif -%}
+          {% endfor %}
+    - service: media_player.media_pause
+      entity_id: media_player.woonkamer
+    - service: media_player.volume_set
+      data:
+        entity_id: media_player.woonkamer
+        volume_level: 0.60
+    - service: tts.google_say
+      entity_id: media_player.woonkamer
+      data:
+        message: 'Er is brand gedetecteerd! Verlaat de woning!'
