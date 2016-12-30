@@ -43,6 +43,7 @@ house:
     - switch.ventilatie
     - alarm_control_panel.home_alarm
     - input_boolean.night_mode
+    - input_boolean.ghost_mode
 living:
   name: Woonkamer & keuken
   entities:

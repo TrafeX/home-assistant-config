@@ -17,7 +17,8 @@ Some of the things I've implemented:
 * Enable ventilation when CO2 level reaches a certain level
 * Automated Christmas lights
 * Youless integration
-* Fire alarm
+* Notify when one of the smoke sensors detects smoke
+* Ghost mode; turn on lights for a short period when away to pretend someone is home
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2016/10/Selection_525.png "Home Assistant dashboard")

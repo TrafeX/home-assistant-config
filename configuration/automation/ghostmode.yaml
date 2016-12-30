@@ -1,0 +1,80 @@
+- alias: 'Turn on ghost mode when away at night'
+  trigger:
+    - platform: time
+      after: '22:30:00'
+  condition:
+    - condition: time
+      after: '22:30:00'
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.ghost_mode
+
+- alias: 'Turn off ghost mode'
+  trigger:
+    - platform: time
+      after: '01:00:00'
+  condition:
+    - condition: state
+      entity_id: input_boolean.ghost_mode
+      state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.ghost_mode
+
+- alias: 'Turn on kitchen lights when ghost mode enabled'
+  trigger:
+    - platform: time
+      minutes: '/30'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.ghost_mode
+      state: 'on'
+  action:
+    - delay: 0:15:00
+    - service: light.turn_on
+      data:
+        entity_id: light.keuken_spots
+        brightness: 30
+    - service: light.turn_off
+      entity_id: light.keuken_spots
+
+- alias: 'Turn on gang1ste when ghost mode enabled'
+  trigger:
+    - platform: time
+      minutes: '/45'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.ghost_mode
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.overloop_licht_1ste
+        brightness: 40
+    - delay: 0:20:00
+    - service: light.turn_off
+      entity_id: light.overloop_licht_1ste
+
+- alias: 'Turn on gangBG when ghost mode enabled'
+  trigger:
+    - platform: time
+      minutes: '/20'
+      seconds: 0
+  condition:
+    - condition: state
+      entity_id: input_boolean.ghost_mode
+      state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.gang_licht
+    - delay: 0:05:00
+    - service: light.turn_off
+      entity_id: light.gang_licht

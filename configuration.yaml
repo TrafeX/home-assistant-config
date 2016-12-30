@@ -85,6 +85,10 @@ input_boolean:
     name: Slaapstand
     initial: off
     icon: mdi:sleep
+  ghost_mode:
+    name: Ghostmode
+    initial: off
+    icon: mdi:ghost
 
 media_player:
   - platform: sonos
