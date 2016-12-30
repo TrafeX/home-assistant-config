@@ -2,10 +2,10 @@
   entities:
     light.woonkamer_spots:
       state: on
-      brightness: 35
+      brightness: 30
     light.keuken_spots:
       state: on
-      brightness: 35
+      brightness: 30
 - name: Living TV
   entities:
     light.woonkamer_spots:

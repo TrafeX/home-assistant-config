@@ -17,8 +17,8 @@
         entity_id: media_player.woonkamer
         volume_level: 0.40
     - service: tts.google_say
-      entity_id: media_player.woonkamer
       data:
+        entity_id: media_player.woonkamer
         message: 'Welkom thuis en fijne dagen!'
     - delay: 0:00:5
     - service: media_player.sonos_restore
