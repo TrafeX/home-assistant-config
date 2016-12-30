@@ -12,6 +12,21 @@
     - platform: state
       entity_id: binary_sensor.voordeur
       state: 'on'
+    - platform: state
+      entity_id: light.woonkamer_spots
+      state: 'on'
+    - platform: state
+      entity_id: light.keuken_spots
+      state: 'on'
+    - platform: state
+      entity_id: light.gang_licht
+      state: 'on'
+    - platform: state
+      entity_id: light.overloop_licht_1ste
+      state: 'on'
+    - platform: state
+      entity_id: light.overloop_licht_2de
+      state: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
@@ -91,9 +106,17 @@
       data_template:
         title: "*Inbraak alarm!*"
         message: >
+
           Activiteit op:
           {% for state in states.binary_sensor -%}
             {% if state.state == 'on' and state.name != 'Wasmachine' %}
+              {{ state.name }}
+            {%- endif -%}
+          {% endfor %}
+
+          Ingeschakelde verlichting:
+          {%- for state in states.light -%}
+            {% if state.state == 'on' %}
               {{ state.name }}
             {%- endif -%}
           {%- endfor -%}
