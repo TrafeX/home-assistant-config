@@ -34,6 +34,7 @@ logbook:
 
 recorder:
   purge_days: 8
+  db_url: !secret db_url
 
 # Track the sun
 sun:

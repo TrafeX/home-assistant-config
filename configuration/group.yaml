@@ -3,7 +3,6 @@ home:
   icon: mdi:home-outline
   entities:
     - group.house
-    - group.christmas
     - group.living
     - group.backyard
     - group.frontyard
@@ -32,11 +31,6 @@ cameras:
     - camera.backyard
     - camera.street
     - camera.living
-christmas:
-  name: Kerst
-  entities:
-    - switch.kerstboom
-    - switch.kerstdorp
 house:
   name: Huis
   entities:
