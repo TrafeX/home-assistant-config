@@ -40,11 +40,28 @@ recorder:
 sun:
 
 # InfluxDB
-#influxdb:
-#  host: influxdb
-#  database: homeassistant
-#  tags:
-#    source: hass
+influxdb:
+  host: influxdb
+  database: homeassistant
+  default_measurement: state
+  blacklist:
+    - sensor.power_usage
+    - switch.achtertuin_sensor
+    - switch.gang_1ste_sensor
+    - switch.gang_2de_sensor
+    - switch.gang_licht_master
+    - switch.licht_tuindeur_1
+    - switch.licht_tuindeur_2
+    - switch.living_sensor
+    - switch.rookmelder_1ste
+    - switch.rookmelder_2de
+    - switch.rookmelder_bg
+    - switch.ventilatie_1
+    - switch.ventilatie_2
+    - switch.voordeur
+    - switch.wasmachine
+  tags:
+    source: hass
 
 # MQTT
 mqtt:
