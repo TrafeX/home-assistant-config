@@ -29,7 +29,3 @@ binary_sensor.voordeur:
   sensor_class: opening
 switch.ventilatie:
   icon: mdi:fan
-switch.kerstboom:
-  icon: mdi:pine-tree
-switch.kerstdorp:
-  icon: mdi:city

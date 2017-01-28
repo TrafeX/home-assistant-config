@@ -1,4 +1,4 @@
-- alias: 'Turn on Tuindeur light when motion'
+- alias: 'Turn on backyard door light when motion'
   trigger:
     - platform: state
       entity_id: binary_sensor.achtertuin_sensor
@@ -12,7 +12,7 @@
       data:
         entity_id: light.licht_tuindeur
 
-- alias: 'Turn off Tuindeur light'
+- alias: 'Turn off backyard door light'
   trigger:
     - platform: state
       entity_id: binary_sensor.achtertuin_sensor

@@ -6,10 +6,10 @@ home:
     - group.living
     - group.backyard
     - group.frontyard
-    - group.gangbg
-    - group.gang1ste
-    - group.gang2de
-    - group.werkkamer
+    - group.hallwaygf
+    - group.hallway1st
+    - group.hallway2nd
+    - group.office
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
@@ -69,14 +69,14 @@ frontyard:
   name: Voortuin
   entities:
     - light.buitenlicht_voorkant
-gangbg:
+hallwaygf:
   name: Gang BG
   entities:
     - binary_sensor.voordeur
     - binary_sensor.rookmelder_bg
     - light.gang_licht
     - sensor.temperatuur_bg
-gang1ste:
+hallway1st:
   name: Gang 1ste
   entities:
     - binary_sensor.gang_1ste_sensor
@@ -86,7 +86,7 @@ gang1ste:
     - sensor.6_in_1_multisensor_humidity_1
     - sensor.6_in_1_multisensor_light_1
     - sensor.temperatuur_1ste
-gang2de:
+hallway2nd:
   name: Gang 2de
   entities:
     - binary_sensor.gang_2de_sensor
@@ -96,7 +96,7 @@ gang2de:
     - sensor.6_in_1_multisensor_humidity_2
     - sensor.6_in_1_multisensor_light_2
     - sensor.temperatuur_2de
-werkkamer:
+office:
   name: Werkkamer
   entities:
     - light.werkkamer_licht

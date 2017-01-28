@@ -1,4 +1,4 @@
-- alias: Wasmachine notify
+- alias: 'Notify when washing machine is finished'
   trigger:
     - platform: state
       entity_id: binary_sensor.wasmachine_state
