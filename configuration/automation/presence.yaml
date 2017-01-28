@@ -8,21 +8,9 @@
       data:
         message: Welkom thuis!
     - service: shell_command.vera_home_mode
-    - service: media_player.sonos_snapshot
-      entity_id: media_player.woonkamer
-    - service: media_player.media_pause
-      entity_id: media_player.woonkamer
-    - service: media_player.volume_set
+    - service: script.sonos_speak
       data:
-        entity_id: media_player.woonkamer
-        volume_level: 0.40
-    - service: tts.google_say
-      data:
-        entity_id: media_player.woonkamer
         message: 'Welkom thuis!'
-    - delay: 0:00:5
-    - service: media_player.sonos_restore
-      entity_id: media_player.woonkamer
 
 - alias: 'Leaving'
   trigger:

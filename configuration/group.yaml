@@ -22,6 +22,7 @@ mediaplayers:
   entities:
     - media_player.chromekamer
     - media_player.woonkamer
+    - media_player.keuken
     - media_player.sony_bravia_tv
 cameras:
   name: Cameras
