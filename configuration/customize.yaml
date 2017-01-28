@@ -12,7 +12,7 @@ binary_sensor.gang_1ste_sensor:
   sensor_class: motion
 binary_sensor.gang_2de_sensor:
   sensor_class: motion
-sensor.6_in_1_multisensor_light:
+sensor.living_lux:
   sensor_class: light
 sensor.light_sensor_2:
   sensor_class: light

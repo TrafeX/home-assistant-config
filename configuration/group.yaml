@@ -50,9 +50,9 @@ living:
     - sensor.netatmo_indoor_temperature
     - sensor.netatmo_indoor_humidity
     - sensor.netatmo_indoor_co2
-    - sensor.6_in_1_multisensor_temperature
-    - sensor.6_in_1_multisensor_humidity
-    - sensor.6_in_1_multisensor_light
+    - sensor.living_temperature
+    - sensor.living_humidity
+    - sensor.living_lux
 
 backyard:
   name: Achtertuin
