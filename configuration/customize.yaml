@@ -14,11 +14,11 @@ binary_sensor.gang_2de_sensor:
   sensor_class: motion
 sensor.living_lux:
   sensor_class: light
-sensor.light_sensor_2:
+sensor.backyard_lux:
   sensor_class: light
-sensor.6_in_1_multisensor_light_1:
+sensor.hallway1st_lux:
   sensor_class: light
-sensor.6_in_1_multisensor_light_2:
+sensor.hallway2nd_lux:
   sensor_class: light
 sensor.yr_symbol:
   friendly_name: Weer

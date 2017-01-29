@@ -54,7 +54,6 @@ living:
     - sensor.living_temperature
     - sensor.living_humidity
     - sensor.living_lux
-
 backyard:
   name: Achtertuin
   entities:
@@ -63,9 +62,9 @@ backyard:
     - light.licht_tuindeur
     - sensor.netatmo_outdoor_temperature
     - sensor.netatmo_outdoor_humidity
-    - sensor.temperature_sensor_2
-    - sensor.humidity_sensor_2
-    - sensor.light_sensor_2
+    - sensor.backyard_temp
+    - sensor.backyard_humidity
+    - sensor.backyard_lux
 frontyard:
   name: Voortuin
   entities:
@@ -83,9 +82,9 @@ hallway1st:
     - binary_sensor.gang_1ste_sensor
     - binary_sensor.rookmelder_1ste
     - light.overloop_licht_1ste
-    - sensor.6_in_1_multisensor_temperature_1
-    - sensor.6_in_1_multisensor_humidity_1
-    - sensor.6_in_1_multisensor_light_1
+    - sensor.hallway1st_temp
+    - sensor.hallway1st_humidity
+    - sensor.hallway1st_lux
     - sensor.temperatuur_1ste
 hallway2nd:
   name: Gang 2de
@@ -93,9 +92,9 @@ hallway2nd:
     - binary_sensor.gang_2de_sensor
     - binary_sensor.rookmelder_2de
     - light.overloop_licht_2de
-    - sensor.6_in_1_multisensor_temperature_2
-    - sensor.6_in_1_multisensor_humidity_2
-    - sensor.6_in_1_multisensor_light_2
+    - sensor.hallway2nd_temp
+    - sensor.hallway2nd_humidity
+    - sensor.hallway2nd_lux
     - sensor.temperatuur_2de
 office:
   name: Werkkamer
