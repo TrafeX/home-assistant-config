@@ -16,7 +16,7 @@ sensor.*_lux:
   sensor_class: light
 sensor.*_humidity:
   sensor_class: moisture
-  icon: mdi:humidity
+  icon: mdi:water-percent
 sensor.yr_symbol:
   friendly_name: Weer
 sensor.power_usage:
