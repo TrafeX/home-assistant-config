@@ -12,14 +12,11 @@ binary_sensor.gang_1ste_sensor:
   sensor_class: motion
 binary_sensor.gang_2de_sensor:
   sensor_class: motion
-sensor.living_lux:
+sensor.*_lux:
   sensor_class: light
-sensor.backyard_lux:
-  sensor_class: light
-sensor.hallway1st_lux:
-  sensor_class: light
-sensor.hallway2nd_lux:
-  sensor_class: light
+sensor.*_humidity:
+  sensor_class: moisture
+  icon: mdi:humidity
 sensor.yr_symbol:
   friendly_name: Weer
 sensor.power_usage:
