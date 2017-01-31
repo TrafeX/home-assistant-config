@@ -1,27 +1,20 @@
 alias: 'Let the Sonos speak a message'
 sequence:
   - service: media_player.sonos_snapshot
-    entity_id:
-      - media_player.woonkamer
-      - media_player.keuken
-  - service: media_player.media_pause
-    entity_id:
-      - media_player.woonkamer
-      - media_player.keuken
+    data_template:
+      entity_id: media_player.woonkamer
+  - service: media_player.sonos_unjoin
+    data_template:
+      entity_id: media_player.woonkamer
   - service: media_player.volume_set
-    data:
-      entity_id:
-        - media_player.woonkamer
-        - media_player.keuken
-      volume_level: 0.20 # was: 0.40
+    data_template:
+      entity_id: media_player.woonkamer
+      volume_level: 0.20 # was 0.40
   - service: tts.google_say
     data_template:
-      entity_id:
-        - media_player.woonkamer
-        - media_player.keuken
+      entity_id: media_player.woonkamer
       message: "{{ message }}"
-  - delay: 0:00:5
+  - delay: '00:00:05'
   - service: media_player.sonos_restore
-    entity_id:
-      - media_player.woonkamer
-      - media_player.keuken
+    data_template:
+      entity_id: media_player.woonkamer
