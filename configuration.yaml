@@ -125,6 +125,10 @@ input_boolean:
     name: Ghostmode
     initial: off
     icon: mdi:ghost
+  notify_backyard_motion:
+    name: Notify on backyard motion
+    initial: off
+    icon: mdi:access-point
 
 media_player:
   - platform: sonos

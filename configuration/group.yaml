@@ -39,6 +39,7 @@ house:
     - alarm_control_panel.home_alarm
     - input_boolean.night_mode
     - input_boolean.ghost_mode
+    - input_boolean.notify_backyard_motion
 living:
   name: Woonkamer & keuken
   entities:
