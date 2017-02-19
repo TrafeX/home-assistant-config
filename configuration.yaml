@@ -88,6 +88,10 @@ sensor:
     method: GET
     name: Power usage
     unit_of_measurement: "W"
+  - platform: command_line
+    name: Ping to Vera
+    command: "ping -c 2 192.168.150.10 | tail -1| awk '{print $4}' | cut -d '/' -f 2"
+    unit_of_measurement: "ms"
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/
