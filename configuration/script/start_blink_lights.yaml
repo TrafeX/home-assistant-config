@@ -1,0 +1,7 @@
+alias: 'Start blink lights'
+sequence:
+  - delay:
+      seconds: 2
+  - service: script.turn_on
+    data:
+      entity_id: script.blink_lights

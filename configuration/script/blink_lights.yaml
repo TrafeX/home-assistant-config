@@ -1,0 +1,18 @@
+alias: 'Blink lights'
+sequence:
+  - service: light.turn_on
+    entity_id: group.all_lights
+  - delay:
+      seconds: 2
+  - service: light.turn_off
+    entity_id: group.all_lights
+  - service: script.turn_on
+    entity_id: script.start_blink_lights
+#  - service: light.turn_off
+#    entity_id: light.woonkamer_spots
+#  - service: light.turn_off
+#    entity_id: light.keuken_spots
+#  - service: light.turn_off
+#    entity_id: light.buitenlicht_achter
+#  - service: light.turn_off
+#    entity_id: light.licht_tuindeur
