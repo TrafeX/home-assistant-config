@@ -11,6 +11,12 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Amsterdam
 
+  customize_glob:
+    "sensor.*_lux":
+      device_class: light
+    "sensor.*_humidity":
+      device_class: moisture
+      icon: mdi:water-percent
   customize: !include configuration/customize.yaml
 
 # Enables the frontend
@@ -90,7 +96,7 @@ sensor:
     unit_of_measurement: "W"
   - platform: command_line
     name: Ping to Vera
-    command: "ping -c 2 192.168.150.10 | tail -1| awk '{print $4}' | cut -d '/' -f 2"
+    command: "ping -c 1 192.168.150.10 | tail -1| awk '{print $4}' | cut -d '/' -f 2"
     unit_of_measurement: "ms"
 
 vera:

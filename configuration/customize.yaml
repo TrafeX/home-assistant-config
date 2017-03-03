@@ -1,28 +1,23 @@
 binary_sensor.rookmelder_bg:
-  sensor_class: smoke
+  device_class: smoke
 binary_sensor.rookmelder_1ste:
-  sensor_class: smoke
+  device_class: smoke
 binary_sensor.rookmelder_2de:
-  sensor_class: smoke
+  device_class: smoke
 binary_sensor.living_sensor:
-  sensor_class: motion
+  device_class: motion
 binary_sensor.achtertuin_sensor:
-  sensor_class: motion
+  device_class: motion
 binary_sensor.gang_1ste_sensor:
-  sensor_class: motion
+  device_class: motion
 binary_sensor.gang_2de_sensor:
-  sensor_class: motion
-sensor.*_lux:
-  sensor_class: light
-sensor.*_humidity:
-  sensor_class: moisture
-  icon: mdi:water-percent
+  device_class: motion
 sensor.yr_symbol:
   friendly_name: Weer
 sensor.power_usage:
-  sensor_class: power
+  device_class: power
   friendly_name: Verbruik
 binary_sensor.voordeur:
-  sensor_class: opening
+  device_class: opening
 switch.ventilatie:
   icon: mdi:fan
