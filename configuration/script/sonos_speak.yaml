@@ -9,7 +9,7 @@ sequence:
   - service: media_player.volume_set
     data_template:
       entity_id: media_player.woonkamer
-      volume_level: 0.20 # was 0.40
+      volume_level: 0.40
   - service: tts.google_say
     data_template:
       entity_id: media_player.woonkamer
