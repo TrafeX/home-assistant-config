@@ -98,6 +98,14 @@ sensor:
     name: Ping to Vera
     command: "ping -c 1 192.168.150.10 | tail -1| awk '{print $4}' | cut -d '/' -f 2"
     unit_of_measurement: "ms"
+  - platform: mqtt
+    name: "Shed Temperature"
+    state_topic: "homeassistant/sensor/shed_temperature/state"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Shed Humidity"
+    state_topic: "homeassistant/sensor/shed_humidity/state"
+    unit_of_measurement: "%"
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/

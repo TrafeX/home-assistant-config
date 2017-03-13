@@ -67,6 +67,8 @@ backyard:
     - sensor.backyard_temp
     - sensor.backyard_humidity
     - sensor.backyard_lux
+    - sensor.shed_humidity
+    - sensor.shed_temperature
 frontyard:
   name: Voortuin
   entities:
