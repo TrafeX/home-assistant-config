@@ -67,6 +67,7 @@ backyard:
     - sensor.backyard_temp
     - sensor.backyard_humidity
     - sensor.backyard_lux
+    - binary_sensor.shed_sensor
     - sensor.shed_humidity
     - sensor.shed_temperature
 frontyard:

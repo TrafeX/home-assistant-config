@@ -133,6 +133,10 @@ binary_sensor:
             {{ states.switch.wasmachine.attributes.current_power_mwh > 2000 }}
           {% endif %}
         entity_id: switch.wasmachine
+  - platform: mqtt
+    name: "Shed sensor"
+    state_topic: "homeassistant/binary_sensor/shed_motion/state"
+    device_class: motion
 
 input_boolean:
   night_mode:
