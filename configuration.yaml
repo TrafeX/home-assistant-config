@@ -52,20 +52,15 @@ influxdb:
   default_measurement: state
   blacklist:
     - sensor.power_usage
-    - switch.achtertuin_sensor
-    - switch.gang_1ste_sensor
-    - switch.gang_2de_sensor
-    - switch.gang_licht_master
-    - switch.licht_tuindeur_1
-    - switch.licht_tuindeur_2
-    - switch.living_sensor
-    - switch.rookmelder_1ste
-    - switch.rookmelder_2de
-    - switch.rookmelder_bg
-    - switch.ventilatie_1
-    - switch.ventilatie_2
-    - switch.voordeur
-    - switch.wasmachine
+    - switch.achtertuin_sensor_141
+    - switch.gang_1ste_sensor_170
+    - switch.gang_2de_sensor_159
+    - switch.living_sensor_119
+    - switch.rookmelder_1ste_22
+    - switch.rookmelder_2de_133
+    - switch.rookmelder_bg_3
+    - switch.voordeur_200
+    - switch.wasmachine_37
   tags:
     source: hass
 
@@ -110,7 +105,7 @@ sensor:
 vera:
   vera_controller_url: http://192.168.150.10:3480/
   lights: [5, 7, 31, 6, 44, 132, 148, 32, 152]
-  exclude: [197, 198, 199]
+  exclude: [197, 198, 199, 149, 150, 30, 146, 147]
 
 netatmo:
   api_key: !secret netatmo_api_key
@@ -130,10 +125,10 @@ binary_sensor:
       wasmachine_state:
         friendly_name: 'Wasmachine'
         value_template: >
-          {% if states.switch.wasmachine %}
-            {{ states.switch.wasmachine.attributes.current_power_mwh > 2000 }}
+          {% if states.switch.wasmachine_37 %}
+            {{ states.switch.wasmachine_37.attributes.current_power_w > 20 }}
           {% endif %}
-        entity_id: switch.wasmachine
+        entity_id: switch.wasmachine_37
   - platform: mqtt
     name: "Shed sensor"
     state_topic: "homeassistant/binary_sensor/shed_motion/state"

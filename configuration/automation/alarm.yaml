@@ -1,16 +1,16 @@
 - alias: 'Trigger alarm while armed away'
   trigger:
     - platform: state
-      entity_id: binary_sensor.living_sensor
+      entity_id: binary_sensor.living_sensor_119
       state: 'on'
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor
+      entity_id: binary_sensor.gang_1ste_sensor_170
       state: 'on'
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor
+      entity_id: binary_sensor.gang_2de_sensor_159
       state: 'on'
     - platform: state
-      entity_id: binary_sensor.voordeur
+      entity_id: binary_sensor.voordeur_200
       state: 'on'
   condition:
     - condition: state
@@ -23,7 +23,7 @@
 - alias: 'Trigger alarm while armed home'
   trigger:
     - platform: state
-      entity_id: binary_sensor.voordeur
+      entity_id: binary_sensor.voordeur_200
       state: 'on'
   condition:
     - condition: state

@@ -1,10 +1,10 @@
 alias: 'Turn downstairs lights off'
 sequence:
   - service: light.turn_off
-    entity_id: light.woonkamer_spots
+    entity_id: light.woonkamer_spots_5
   - service: light.turn_off
-    entity_id: light.keuken_spots
+    entity_id: light.keuken_spots_7
   - service: light.turn_off
-    entity_id: light.buitenlicht_achter
+    entity_id: light.buitenlicht_achter_6
   - service: light.turn_off
-    entity_id: light.licht_tuindeur
+    entity_id: light.licht_tuindeur_148

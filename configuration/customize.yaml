@@ -1,23 +1,23 @@
-binary_sensor.rookmelder_bg:
+binary_sensor.rookmelder_bg_3:
   device_class: smoke
-binary_sensor.rookmelder_1ste:
+binary_sensor.rookmelder_1ste_22:
   device_class: smoke
-binary_sensor.rookmelder_2de:
+binary_sensor.rookmelder_2de_133:
   device_class: smoke
-binary_sensor.living_sensor:
+binary_sensor.living_sensor_119:
   device_class: motion
-binary_sensor.achtertuin_sensor:
+binary_sensor.achtertuin_sensor_141:
   device_class: motion
-binary_sensor.gang_1ste_sensor:
+binary_sensor.gang_1ste_sensor_170:
   device_class: motion
-binary_sensor.gang_2de_sensor:
+binary_sensor.gang_2de_sensor_159:
   device_class: motion
 sensor.yr_symbol:
   friendly_name: Weer
 sensor.power_usage:
   device_class: power
   friendly_name: Verbruik
-binary_sensor.voordeur:
+binary_sensor.voordeur_200:
   device_class: opening
-switch.ventilatie:
+switch.ventilatie_145:
   icon: mdi:fan

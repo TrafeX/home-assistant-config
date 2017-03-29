@@ -9,7 +9,7 @@
       state: 'home'
   action:
     - service: switch.turn_on
-      entity_id: switch.ventilatie
+      entity_id: switch.ventilatie_145
 
 - alias: 'Turn on ventilation when waking up'
   trigger:
@@ -22,14 +22,14 @@
       state: 'home'
   action:
     - service: switch.turn_on
-      entity_id: switch.ventilatie
+      entity_id: switch.ventilatie_145
 
 - alias: 'Turn off ventilation after 2 hours'
   trigger:
     - platform: state
-      entity_id: switch.ventilatie
+      entity_id: switch.ventilatie_145
       state: 'on'
   action:
     - delay: 2:00:00
     - service: switch.turn_off
-      entity_id: switch.ventilatie
+      entity_id: switch.ventilatie_145

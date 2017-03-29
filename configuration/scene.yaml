@@ -1,24 +1,24 @@
 - name: Living Movie
   entities:
-    light.woonkamer_spots:
+    light.woonkamer_spots_5:
       state: on
       brightness: 30
-    light.keuken_spots:
+    light.keuken_spots_7:
       state: on
       brightness: 30
 - name: Living TV
   entities:
-    light.woonkamer_spots:
+    light.woonkamer_spots_5:
       state: on
       brightness: 45
-    light.keuken_spots:
+    light.keuken_spots_7:
       state: on
       brightness: 65
 - name: Living Normal
   entities:
-    light.woonkamer_spots:
+    light.woonkamer_spots_5:
       state: on
       brightness: 65
-    light.keuken_spots:
+    light.keuken_spots_7:
       state: on
       brightness: 65

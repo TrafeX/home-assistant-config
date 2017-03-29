@@ -4,7 +4,7 @@
       entity_id: group.all_devices
       state: 'home'
     - platform: state
-      entity_id: binary_sensor.living_sensor
+      entity_id: binary_sensor.living_sensor_119
       state: 'on'
     - platform: sun
       event: 'sunset'
@@ -17,7 +17,7 @@
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: light.buitenlicht_achter
+      entity_id: light.buitenlicht_achter_6
       state: 'off'
     - condition: sun
       after: 'sunset'
@@ -25,7 +25,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.buitenlicht_achter
+        entity_id: light.buitenlicht_achter_6
         brightness: 70
 
 - alias: 'Backyard light off'
@@ -39,5 +39,5 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.buitenlicht_achter
+        entity_id: light.buitenlicht_achter_6
 

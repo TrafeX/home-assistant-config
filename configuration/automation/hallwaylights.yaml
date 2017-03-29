@@ -1,7 +1,7 @@
 - alias: 'Turn on Gang1ste light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor
+      entity_id: binary_sensor.gang_1ste_sensor_170
       state: 'on'
   condition:
     - condition: state
@@ -13,7 +13,7 @@
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.overloop_licht_1ste
+        entity_id: light.overloop_licht_1ste_44
         brightness: >
           {% if is_state('input_boolean.night_mode', 'on') %}
             40
@@ -24,7 +24,7 @@
 - alias: 'Turn on Gang2de light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor
+      entity_id: binary_sensor.gang_2de_sensor_159
       state: 'on'
   condition:
     - condition: state
@@ -36,7 +36,7 @@
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.overloop_licht_2de
+        entity_id: light.overloop_licht_2de_132
         brightness: >
           {% if is_state('input_boolean.night_mode', 'on') %}
             40
@@ -47,31 +47,31 @@
 - alias: 'Turn off Gang1ste light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor
+      entity_id: binary_sensor.gang_1ste_sensor_170
       state: 'off'
     - platform: state
       entity_id: group.all_devices
       state: 'not_home'
   condition:
     - condition: state
-      entity_id: light.overloop_licht_1ste
+      entity_id: light.overloop_licht_1ste_44
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.overloop_licht_1ste
+      entity_id: light.overloop_licht_1ste_44
 
 - alias: 'Turn off Gang2de light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor
+      entity_id: binary_sensor.gang_2de_sensor_159
       state: 'off'
     - platform: state
       entity_id: group.all_devices
       state: 'not_home'
   condition:
     - condition: state
-      entity_id: light.overloop_licht_2de
+      entity_id: light.overloop_licht_2de_132
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.overloop_licht_2de
+      entity_id: light.overloop_licht_2de_132

@@ -4,10 +4,10 @@
       entity_id: group.all_devices
       state: 'home'
     - platform: state
-      entity_id: binary_sensor.living_sensor
+      entity_id: binary_sensor.living_sensor_119
       state: 'on'
     - platform: numeric_state
-      entity_id: sensor.living_lux
+      entity_id: sensor.living_lux_130
       below: 7
   condition:
     - condition: state
@@ -17,10 +17,10 @@
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: light.woonkamer_spots
+      entity_id: light.woonkamer_spots_5
       state: 'off'
     - condition: numeric_state
-      entity_id: sensor.living_lux
+      entity_id: sensor.living_lux_130
       below: 7
   action:
     - service: scene.turn_on
@@ -29,14 +29,14 @@
 - alias: 'Living lights off'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.living_lux
+      entity_id: sensor.living_lux_130
       above: 12
     - platform: state
       entity_id: group.all_devices
       state: 'not_home'
   condition:
     - condition: state
-      entity_id: light.woonkamer_spots
+      entity_id: light.woonkamer_spots_5
       state: 'on'
   action:
     - service: script.turn_lights_off

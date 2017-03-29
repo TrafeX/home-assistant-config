@@ -40,10 +40,10 @@
     - delay: 0:15:00
     - service: light.turn_on
       data:
-        entity_id: light.keuken_spots
+        entity_id: light.keuken_spots_7
         brightness: 30
     - service: light.turn_off
-      entity_id: light.keuken_spots
+      entity_id: light.keuken_spots_7
 
 - alias: 'Turn on gang1ste when ghost mode enabled'
   trigger:
@@ -57,11 +57,11 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.overloop_licht_1ste
+        entity_id: light.overloop_licht_1ste_44
         brightness: 40
     - delay: 0:20:00
     - service: light.turn_off
-      entity_id: light.overloop_licht_1ste
+      entity_id: light.overloop_licht_1ste_44
 
 - alias: 'Turn on gangBG when ghost mode enabled'
   trigger:
@@ -74,7 +74,7 @@
       state: 'on'
   action:
     - service: light.turn_on
-      entity_id: light.gang_licht
+      entity_id: light.gang_licht_31
     - delay: 0:05:00
     - service: light.turn_off
-      entity_id: light.gang_licht
+      entity_id: light.gang_licht_31

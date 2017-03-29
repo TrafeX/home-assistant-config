@@ -36,7 +36,7 @@ cameras:
 house:
   name: Huis
   entities:
-    - switch.ventilatie
+    - switch.ventilatie_145
     - alarm_control_panel.home_alarm
     - input_boolean.night_mode
     - input_boolean.ghost_mode
@@ -47,61 +47,61 @@ living:
     - scene.living_normal
     - scene.living_movie
     - script.turn_lights_off
-    - light.woonkamer_spots
-    - light.keuken_spots
-    - binary_sensor.living_sensor
+    - light.woonkamer_spots_5
+    - light.keuken_spots_7
+    - binary_sensor.living_sensor_119
     - sensor.netatmo_indoor_temperature
     - sensor.netatmo_indoor_humidity
     - sensor.netatmo_indoor_co2
-    - sensor.living_temperature
-    - sensor.living_humidity
-    - sensor.living_lux
+    - sensor.living_temperature_128
+    - sensor.living_humidity_131
+    - sensor.living_lux_130
 backyard:
   name: Achtertuin
   entities:
-    - binary_sensor.achtertuin_sensor
-    - light.buitenlicht_achter
-    - light.licht_tuindeur
+    - binary_sensor.achtertuin_sensor_141
+    - light.buitenlicht_achter_6
+    - light.licht_tuindeur_148
     - sensor.netatmo_outdoor_temperature
     - sensor.netatmo_outdoor_humidity
-    - sensor.backyard_temp
-    - sensor.backyard_humidity
-    - sensor.backyard_lux
+    - sensor.backyard_temp_142
+    - sensor.backyard_humidity_144
+    - sensor.backyard_lux_143
     - binary_sensor.shed_sensor
     - sensor.shed_humidity
     - sensor.shed_temperature
 frontyard:
   name: Voortuin
   entities:
-    - light.buitenlicht_voorkant
+    - light.buitenlicht_voorkant_32
 hallwaygf:
   name: Gang BG
   entities:
-    - binary_sensor.voordeur
-    - binary_sensor.rookmelder_bg
-    - light.gang_licht
-    - sensor.temperatuur_bg
+    - binary_sensor.voordeur_200
+    - binary_sensor.rookmelder_bg_3
+    - light.gang_licht_31
+    - sensor.temperatuur_bg_4
 hallway1st:
   name: Gang 1ste
   entities:
-    - binary_sensor.gang_1ste_sensor
-    - binary_sensor.rookmelder_1ste
-    - light.overloop_licht_1ste
-    - sensor.hallway1st_temp
-    - sensor.hallway1st_humidity
-    - sensor.hallway1st_lux
-    - sensor.temperatuur_1ste
+    - binary_sensor.gang_1ste_sensor_170
+    - binary_sensor.rookmelder_1ste_22
+    - light.overloop_licht_1ste_44
+    - sensor.hallway1st_temp_182
+    - sensor.hallway1st_humidity_184
+    - sensor.hallway1st_lux_183
+    - sensor.temperatuur_1ste_23
 hallway2nd:
   name: Gang 2de
   entities:
-    - binary_sensor.gang_2de_sensor
-    - binary_sensor.rookmelder_2de
-    - light.overloop_licht_2de
-    - sensor.hallway2nd_temp
-    - sensor.hallway2nd_humidity
-    - sensor.hallway2nd_lux
-    - sensor.temperatuur_2de
+    - binary_sensor.gang_2de_sensor_159
+    - binary_sensor.rookmelder_2de_133
+    - light.overloop_licht_2de_132
+    - sensor.hallway2nd_temp_186
+    - sensor.hallway2nd_humidity_188
+    - sensor.hallway2nd_lux_187
+    - sensor.temperatuur_2de_134
 office:
   name: Werkkamer
   entities:
-    - light.werkkamer_licht
+    - light.werkkamer_licht_152
