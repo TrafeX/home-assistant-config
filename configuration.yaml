@@ -137,15 +137,12 @@ binary_sensor:
 input_boolean:
   night_mode:
     name: Slaapstand
-    initial: off
     icon: mdi:sleep
   ghost_mode:
     name: Ghostmode
-    initial: off
     icon: mdi:ghost
   notify_backyard_motion:
     name: Notify on backyard motion
-    initial: off
     icon: mdi:access-point
 
 media_player:
