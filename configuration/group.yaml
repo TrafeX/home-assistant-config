@@ -16,7 +16,7 @@ home:
     - device_tracker.chantal_mobile
     - binary_sensor.wasmachine_state
     - sensor.power_usage
-    - sensor.ping_to_vera
+    - binary_sensor.ping_to_vera
 mediaplayers:
   name: Media
   view: yes

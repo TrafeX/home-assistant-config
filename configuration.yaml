@@ -89,10 +89,6 @@ sensor:
     method: GET
     name: Power usage
     unit_of_measurement: "W"
-  - platform: command_line
-    name: Ping to Vera
-    command: "ping -c 1 192.168.150.10 | tail -1| awk '{print $4}' | cut -d '/' -f 2"
-    unit_of_measurement: "ms"
   - platform: mqtt
     name: "Shed Temperature"
     state_topic: "homeassistant/sensor/shed_temperature/state"
@@ -133,6 +129,9 @@ binary_sensor:
     name: "Shed sensor"
     state_topic: "homeassistant/binary_sensor/shed_motion/state"
     device_class: motion
+  - platform: ping
+    host: 192.168.150.10
+    name: Ping to Vera
 
 input_boolean:
   night_mode:
