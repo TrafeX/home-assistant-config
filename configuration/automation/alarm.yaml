@@ -93,7 +93,7 @@
         message: >
           Activiteit op:
           {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' and state.name != 'Wasmachine' %}
+            {% if state.state == 'on' and state.name != 'Wasmachine' and state.name != 'Ping to Vera' %}
               {{ state.name }}
             {%- endif -%}
           {% endfor %}
