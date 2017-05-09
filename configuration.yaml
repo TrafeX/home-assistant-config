@@ -50,17 +50,19 @@ influxdb:
   host: influxdb
   database: homeassistant
   default_measurement: state
-  blacklist:
-    - sensor.power_usage
-    - switch.achtertuin_sensor_141
-    - switch.gang_1ste_sensor_170
-    - switch.gang_2de_sensor_159
-    - switch.living_sensor_119
-    - switch.rookmelder_1ste_22
-    - switch.rookmelder_2de_133
-    - switch.rookmelder_bg_3
-    - switch.voordeur_200
-    - switch.wasmachine_37
+  exclude:
+    entities:
+      - sensor.power_usage
+      - switch.achtertuin_sensor_141
+      - switch.gang_1ste_sensor_170
+      - switch.gang_2de_sensor_159
+      - switch.living_sensor_119
+      - switch.rookmelder_1ste_22
+      - switch.rookmelder_2de_133
+      - switch.rookmelder_bg_3
+      - switch.voordeur_200
+      - switch.wasmachine_37
+      - binary_sensor.ping_to_vera
   tags:
     source: hass
 
