@@ -2,13 +2,13 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.rookmelder_1ste_22
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.rookmelder_2de_133
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.rookmelder_bg_3
-      state: 'on'
+      to: 'on'
   action:
     - service: notify.all
       data_template:

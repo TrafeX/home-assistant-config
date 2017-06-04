@@ -2,10 +2,10 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      to: 'home'
     - platform: state
       entity_id: binary_sensor.living_sensor_119
-      state: 'on'
+      to: 'on'
     - platform: numeric_state
       entity_id: sensor.living_lux_130
       below: 7
@@ -33,7 +33,7 @@
       above: 12
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   condition:
     - condition: state
       entity_id: light.woonkamer_spots_5

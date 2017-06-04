@@ -170,7 +170,6 @@ notify:
       - service: telegram_notify
   - name: telegram_notify
     platform: telegram
-    api_key: !secret telegram_api_key
     chat_id: !secret telegram_chat_id
 
 automation: !include_dir_merge_list configuration/automation/

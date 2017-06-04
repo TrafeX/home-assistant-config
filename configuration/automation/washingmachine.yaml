@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.wasmachine_state
-      state: 'off'
+      to: 'off'
       for:
         hours: 0
         minutes: 2

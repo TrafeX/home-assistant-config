@@ -15,7 +15,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.night_mode
-      state: 'off'
+      to: 'off'
   condition:
     - condition: state
       entity_id: group.all_devices
@@ -28,7 +28,7 @@
   trigger:
     - platform: state
       entity_id: switch.ventilatie_145
-      state: 'on'
+      to: 'on'
   action:
     - delay: 2:00:00
     - service: switch.turn_off

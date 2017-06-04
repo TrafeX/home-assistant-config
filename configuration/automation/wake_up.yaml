@@ -1,7 +1,7 @@
 - alias: 'Deactivate night mode in weekend'
   trigger:
     - platform: time
-      after: '8:00:00'
+      at: '8:00:00'
   condition:
     - condition: time
       after: '8:00:00'
@@ -15,7 +15,7 @@
 - alias: 'Deactivate night mode on workday'
   trigger:
     - platform: time
-      after: '6:30:00'
+      at: '6:30:00'
   condition:
     - condition: time
       after: '6:30:00'

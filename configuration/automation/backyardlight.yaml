@@ -2,10 +2,10 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      to: 'home'
     - platform: state
       entity_id: binary_sensor.living_sensor_119
-      state: 'on'
+      to: 'on'
     - platform: sun
       event: 'sunset'
       offset: '+00:30:00'
@@ -35,7 +35,7 @@
       offset: '-00:30:00'
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: light.turn_off
       data:

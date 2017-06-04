@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.achtertuin_sensor_141
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: sun.sun
@@ -16,7 +16,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.achtertuin_sensor_141
-      state: 'off'
+      to: 'off'
   condition:
     - condition: state
       entity_id: light.licht_tuindeur_148

@@ -2,16 +2,16 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.living_sensor_119
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.gang_1ste_sensor_170
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.gang_2de_sensor_159
-      state: 'on'
+      to: 'on'
     - platform: state
       entity_id: binary_sensor.voordeur_200
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
@@ -24,7 +24,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.voordeur_200
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
@@ -37,7 +37,7 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
@@ -46,7 +46,7 @@
   trigger:
     - platform: state
       entity_id: input_boolean.night_mode
-      state: 'on'
+      to: 'on'
   action:
     - service: alarm_control_panel.alarm_arm_home
       entity_id: alarm_control_panel.home_alarm
@@ -55,10 +55,10 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      to: 'home'
     - platform: state
       entity_id: input_boolean.night_mode
-      state: 'off'
+      to: 'off'
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
@@ -67,7 +67,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'triggered'
+      to: 'triggered'
       for:
         hours: 0
         minutes: 0
@@ -85,7 +85,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'triggered'
+      to: 'triggered'
   action:
     - service: notify.all
       data_template:

@@ -2,10 +2,10 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'armed_home'
+      to: 'armed_home'
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'armed_away'
+      to: 'armed_away'
   action:
     - service: shell_command.privacy_mode_disable
 
@@ -13,7 +13,7 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      state: 'disarmed'
+      to: 'disarmed'
   action:
     - service: shell_command.privacy_mode_enable
 

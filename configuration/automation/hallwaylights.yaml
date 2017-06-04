@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.gang_1ste_sensor_170
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: group.all_devices
@@ -25,7 +25,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.gang_2de_sensor_159
-      state: 'on'
+      to: 'on'
   condition:
     - condition: state
       entity_id: group.all_devices
@@ -48,10 +48,10 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.gang_1ste_sensor_170
-      state: 'off'
+      to: 'off'
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   condition:
     - condition: state
       entity_id: light.overloop_licht_1ste_44
@@ -64,10 +64,10 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.gang_2de_sensor_159
-      state: 'off'
+      to: 'off'
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   condition:
     - condition: state
       entity_id: light.overloop_licht_2de_132

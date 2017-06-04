@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      to: 'home'
   condition:
     - condition: state
       entity_id: group.all_devices

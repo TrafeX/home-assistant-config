@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'home'
+      to: 'home'
   action:
     - service: notify.all
       data:
@@ -16,7 +16,7 @@
   trigger:
     - platform: state
       entity_id: group.all_devices
-      state: 'not_home'
+      to: 'not_home'
   action:
     - service: notify.all
       data:
