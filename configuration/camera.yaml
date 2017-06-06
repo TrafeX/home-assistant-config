@@ -5,7 +5,7 @@
     username: !secret camera_frontyard_user
     password: !secret camera_frontyard_password
   - platform: foscam
-    ip: 192.168.150.15
+    ip: 192.168.150.17
     name: Backyard
     port: 88
     username: !secret camera_backyard_user
@@ -20,3 +20,9 @@
     mjpeg_url: http://192.168.150.13/image/jpeg.cgi
     username: !secret camera_living_user
     password: !secret camera_living_password
+  - platform: foscam
+    ip: 192.168.150.15
+    name: Shed
+    port: 88
+    username: !secret camera_shed_user
+    password: !secret camera_shed_password
