@@ -1,4 +1,4 @@
-home:
+default_view:
   view: yes
   icon: mdi:home-outline
   entities:
@@ -21,10 +21,10 @@ mediaplayers:
   name: Media
   view: yes
   entities:
+    - media_player.sony_bravia_tv
     - media_player.chromekamer
     - media_player.woonkamer
     - media_player.keuken
-    - media_player.sony_bravia_tv
 cameras:
   name: Cameras
   view: yes
