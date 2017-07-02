@@ -15,10 +15,13 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.ghost_mode
 
-- alias: 'Turn off ghost mode'
+- alias: 'Turn off ghost mode when coming home or at 1:00'
   trigger:
     - platform: time
       at: '01:00:00'
+    - platform: state
+      entity_id: group.all_devices
+      to: 'home'
   condition:
     - condition: state
       entity_id: input_boolean.ghost_mode
