@@ -1,0 +1,35 @@
+- alias: 'Dim lights when TV is on'
+  trigger:
+    - platform: state
+      entity_id: media_player.chromekamer
+      to: 'playing'
+    - platform: state
+      entity_id: media_player.sony_bravia_tv
+      to: 'on'
+    - platform: state
+      entity_id: light.woonkamer_spots_5
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: media_player.sony_bravia_tv
+      state: 'on'
+    - condition: numeric_state
+      entity_id: light.woonkamer_spots_5
+      value_template: '{{ state.attributes.brightness }}'
+      above: 45
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_tv
+
+- alias: 'Turn off TV when leaving'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: media_player.sony_bravia_tv
+      state: 'on'
+  action:
+    - service: media_player.turn_off
+      entity_id: media_player.sony_bravia_tv
