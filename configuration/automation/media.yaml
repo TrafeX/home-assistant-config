@@ -21,11 +21,14 @@
     - service: scene.turn_on
       entity_id: scene.living_tv
 
-- alias: 'Turn off TV when leaving'
+- alias: 'Turn off TV when leaving or sleeping'
   trigger:
     - platform: state
       entity_id: group.all_devices
       to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
   condition:
     - condition: state
       entity_id: media_player.sony_bravia_tv
