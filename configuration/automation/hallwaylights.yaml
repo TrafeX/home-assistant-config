@@ -7,9 +7,14 @@
     - condition: state
       entity_id: group.all_devices
       state: 'home'
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: numeric_state
+          entity_id: sensor.hallway1st_lux_183
+          below: 1
   action:
     - service: light.turn_on
       data_template:
@@ -30,9 +35,14 @@
     - condition: state
       entity_id: group.all_devices
       state: 'home'
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: numeric_state
+          entity_id: sensor.hallway2nd_lux_187
+          below: 1
   action:
     - service: light.turn_on
       data_template:
