@@ -10,6 +10,7 @@ default_view:
     - group.hallway1st
     - group.hallway2nd
     - group.office
+    - group.masterbedroom
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
@@ -102,6 +103,12 @@ hallway2nd:
     - sensor.hallway2nd_humidity_188
     - sensor.hallway2nd_lux_187
     - sensor.temperatuur_2de_134
+masterbedroom:
+  name: Slaapkamer
+  entities:
+    - sensor.netatmo_bedroom_temperature
+    - sensor.netatmo_bedroom_humidity
+    - sensor.netatmo_bedroom_co2
 office:
   name: Werkkamer
   entities:
