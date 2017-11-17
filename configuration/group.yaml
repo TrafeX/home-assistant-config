@@ -61,14 +61,13 @@ living:
 backyard:
   name: Achtertuin
   entities:
-    - binary_sensor.achtertuin_sensor_141
+    - binary_sensor.backyard_motion_204
     - light.buitenlicht_achter_6
     - light.licht_tuindeur_148
     - sensor.netatmo_outdoor_temperature
     - sensor.netatmo_outdoor_humidity
-    - sensor.backyard_temp_142
-    - sensor.backyard_humidity_144
-    - sensor.backyard_lux_143
+    - sensor.backyard_temp1_202
+    - sensor.backyard_lux1_203
     - binary_sensor.shed_sensor
     - sensor.shed_humidity
     - sensor.shed_temperature

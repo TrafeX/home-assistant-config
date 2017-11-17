@@ -1,7 +1,7 @@
 - alias: 'Trigger notification when motion in backyard'
   trigger:
     - platform: state
-      entity_id: binary_sensor.achtertuin_sensor_141
+      entity_id: binary_sensor.backyard_motion_204
       to: 'on'
   condition:
     - condition: state
