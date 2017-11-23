@@ -9,6 +9,8 @@
       state: 'on'
   action:
     - service: notify.all
+      data:
+        message: "Beweging in de achtertuin"
     - service: notify.telegram_notify
       data_template:
         message: "Beweging in achtertuin"
@@ -28,6 +30,8 @@
       state: 'on'
   action:
     - service: notify.all
+      data:
+        message: "Beweging in de schuur"
     - service: notify.telegram_notify
       data_template:
         message: "Beweging in schuur"
