@@ -1,0 +1,9 @@
+- alias: 'Notify when pressing the doorbell'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.ring_voordeur_ding
+      to: 'on'
+  action:
+    - service: script.sonos_speak
+      data:
+        message: 'Er staat iemand voor de voordeur'

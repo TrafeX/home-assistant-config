@@ -100,6 +100,7 @@ sensor:
     name: "Shed Humidity"
     state_topic: "homeassistant/sensor/shed_humidity/state"
     unit_of_measurement: "%"
+  - platform: ring
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/
@@ -111,6 +112,10 @@ netatmo:
   secret_key: !secret netatmo_secret_key
   username: !secret netatmo_username
   password: !secret netatmo_password
+
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
 
 shell_command:
   vera_home_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"'
@@ -135,6 +140,7 @@ binary_sensor:
   - platform: ping
     host: 192.168.150.10
     name: Ping to Vera
+  - platform: ring
 
 input_boolean:
   night_mode:
