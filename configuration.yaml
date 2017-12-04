@@ -64,6 +64,8 @@ influxdb:
       - switch.voordeur_200
       - switch.wasmachine_37
       - binary_sensor.ping_to_vera
+      - sensor.ring_voordeur_battery
+      - sensor.ring_voordeur_wifi_signal_strength
   tags:
     source: hass
 
