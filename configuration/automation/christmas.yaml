@@ -1,0 +1,44 @@
+- alias: 'Christmas lights on when motion in living'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_sensor_119
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.christmas_tree_206
+    - service: switch.turn_on
+      entity_id: switch.christmas_star_207
+
+- alias: 'Christmas lights off when leaving or sleeping'
+  trigger:
+    - platform: state
+      entity_id: group.all_devices
+      to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.christmas_tree_206
+    - service: switch.turn_off
+      entity_id: switch.christmas_star_207
+
+- alias: 'Christmas star on when sun goes down and not home'
+  trigger:
+    - platform: sun
+      event: 'sunset'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.christmas_star_207
+
