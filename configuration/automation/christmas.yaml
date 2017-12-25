@@ -30,6 +30,18 @@
     - service: switch.turn_off
       entity_id: switch.christmas_star_207
 
+- alias: 'Christmas lights off when not home'
+  trigger:
+    - platform: time
+      at: '23:30:00'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'not_home'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.christmas_star_207
+
 - alias: 'Christmas star on when sun goes down and not home'
   trigger:
     - platform: sun
