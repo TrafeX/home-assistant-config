@@ -214,3 +214,8 @@ alarm_control_panel:
   name: Home Alarm
   pending_time: 0
   trigger_time: 1 # Workaround to prevent being in the triggered state
+
+vacuum:
+  - platform: xiaomi_miio
+    host: 192.168.150.162
+    token: !secret xiaomi_token

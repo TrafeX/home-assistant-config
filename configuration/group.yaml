@@ -60,6 +60,7 @@ living:
     - sensor.living_lux_130
     - switch.christmas_tree_206
     - switch.christmas_star_207
+    - vacuum.xiaomi_vacuum_cleaner
 backyard:
   name: Achtertuin
   entities:
