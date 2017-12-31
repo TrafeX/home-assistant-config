@@ -11,6 +11,7 @@ default_view:
     - group.hallway2nd
     - group.office
     - group.masterbedroom
+    - group.babyroom
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
@@ -119,3 +120,8 @@ office:
   name: Werkkamer
   entities:
     - light.werkkamer_licht_152
+
+babyroom:
+  name: Babykamer
+  entities:
+    - light.light_babyroom_208
