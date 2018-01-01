@@ -1,0 +1,16 @@
+- alias: 'Notify when the vacuum robot is done'
+  trigger:
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      to: 'off'
+  action:
+    - service: notify.all
+      data_template:
+        title: "*De robotstofzuiger is klaar!*"
+        message: >
+          Status: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
+          Tijd: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }}sec.
+          Oppervlakte: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m2.
+#    - service: script.sonos_speak
+#      data:
+#        message: 'De robotstofzuiger is klaar'
