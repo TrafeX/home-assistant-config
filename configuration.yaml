@@ -22,9 +22,21 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+map:
+
+zone:
+  # This will override the default home zone
+  - name: Home
+    latitude: !secret home_latitude
+    longitude: !secret home_longitude
+    radius: 100
+    icon: mdi:account-multiple
+
 http:
   api_password: !secret api_password
   base_url: !secret base_url
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
 
 # Checks for available updates
 updater:
@@ -219,3 +231,5 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.150.162
     token: !secret xiaomi_token
+
+ios:

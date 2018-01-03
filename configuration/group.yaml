@@ -15,7 +15,7 @@ default_view:
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
-    - device_tracker.chantal_mobile
+    - device_tracker._chantal
     - binary_sensor.wasmachine_state
     - sensor.power_usage
     - binary_sensor.ping_to_vera
