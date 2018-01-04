@@ -18,7 +18,6 @@ default_view:
     - device_tracker._chantal
     - binary_sensor.wasmachine_state
     - sensor.power_usage
-    - binary_sensor.ping_to_vera
 mediaplayers:
   name: Media
   view: yes

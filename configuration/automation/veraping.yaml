@@ -1,0 +1,9 @@
+- alias: 'Trigger notification when Vera is unreachable'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.ping_to_vera
+      to: 'off'
+  action:
+    - service: notify.all
+      data:
+        message: Vera Edge is onbereikbaar!

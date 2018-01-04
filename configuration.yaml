@@ -30,7 +30,7 @@ zone:
     latitude: !secret home_latitude
     longitude: !secret home_longitude
     radius: 100
-    icon: mdi:account-multiple
+    icon: mdi:home
 
 http:
   api_password: !secret api_password
