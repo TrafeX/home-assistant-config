@@ -8,9 +8,6 @@
       entity_id: input_boolean.notify_backyard_motion
       state: 'on'
   action:
-    - service: notify.all
-      data:
-        message: "Beweging in de achtertuin"
     - service: notify.telegram_notify
       data_template:
         message: "Beweging in achtertuin"
@@ -29,9 +26,6 @@
       entity_id: input_boolean.notify_backyard_motion
       state: 'on'
   action:
-    - service: notify.all
-      data:
-        message: "Beweging in de schuur"
     - service: notify.telegram_notify
       data_template:
         message: "Beweging in schuur"
