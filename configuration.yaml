@@ -201,15 +201,8 @@ device_tracker:
      host: 192.168.150.1
      username: !secret router_user
      password: !secret router_password
-     consider_home: 0:15
+     consider_home: 0:10
      track_new_devices: no
-   - platform: nmap_tracker
-     home_interval: 15
-     consider_home: 0:15
-     track_new_devices: no
-     hosts:
-      - 192.168.150.190
-      - 192.168.150.191
 
 telegram_bot:
   platform: polling
