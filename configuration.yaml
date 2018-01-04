@@ -193,9 +193,6 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
-automation: !include_dir_merge_list configuration/automation/
-script: !include_dir_named configuration/script/
-
 device_tracker:
    - platform: asuswrt
      host: 192.168.150.1
@@ -210,10 +207,6 @@ telegram_bot:
   allowed_chat_ids:
     - !secret telegram_chat_id
 
-group: !include configuration/group.yaml
-scene: !include configuration/scene.yaml
-camera: !include configuration/camera.yaml
-
 alarm_control_panel:
   platform: manual
   name: Home Alarm
@@ -226,3 +219,10 @@ vacuum:
     token: !secret xiaomi_token
 
 ios:
+
+automation: !include_dir_merge_list configuration/automation/
+script: !include_dir_named configuration/script/
+
+group: !include configuration/group.yaml
+scene: !include configuration/scene.yaml
+camera: !include configuration/camera.yaml
