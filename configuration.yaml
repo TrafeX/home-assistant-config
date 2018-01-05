@@ -200,6 +200,7 @@ device_tracker:
      password: !secret router_password
      consider_home: 0:10
      track_new_devices: no
+   - platform: owntracks_http
 
 telegram_bot:
   platform: polling
