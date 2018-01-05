@@ -58,8 +58,6 @@ living:
     - sensor.living_temperature_128
     - sensor.living_humidity_131
     - sensor.living_lux_130
-    - switch.christmas_tree_206
-    - switch.christmas_star_207
     - vacuum.xiaomi_vacuum_cleaner
 backyard:
   name: Achtertuin
