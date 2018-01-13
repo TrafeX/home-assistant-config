@@ -78,6 +78,8 @@ influxdb:
       - binary_sensor.ping_to_vera
       - sensor.ring_voordeur_battery
       - sensor.ring_voordeur_wifi_signal_strength
+      - sensor._chantal_battery_level
+      - sensor._chantal_battery_state
   tags:
     source: hass
 
@@ -199,7 +201,8 @@ device_tracker:
      username: !secret router_user
      password: !secret router_password
      consider_home: 0:10
-     track_new_devices: no
+     new_device_defaults:
+       track_new_devices: False
    - platform: owntracks_http
 
 telegram_bot:
