@@ -5,8 +5,15 @@
       to: 'home'
   action:
     - service: notify.all
-      data:
-        message: Welkom thuis!
+      data_template:
+        title: "Welkom thuis!"
+        message: >
+          Aanwezig:
+          {% for state in states.device_tracker -%}
+            {% if state.state == 'home' %}
+              {{ state.name }}
+            {%- endif -%}
+          {% endfor %}
     - service: shell_command.vera_home_mode
     - service: script.sonos_speak
       data:
