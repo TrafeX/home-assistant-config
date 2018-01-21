@@ -146,9 +146,8 @@ binary_sensor:
         friendly_name: 'Wasmachine'
         value_template: >
           {% if states.switch.wasmachine_37 %}
-            {{ states.switch.wasmachine_37.attributes.current_power_w > 3 }}
+            {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
           {% endif %}
-        entity_id: switch.wasmachine_37
   - platform: mqtt
     name: "Shed sensor"
     state_topic: "homeassistant/binary_sensor/shed_motion/state"
