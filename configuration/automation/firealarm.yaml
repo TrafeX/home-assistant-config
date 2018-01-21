@@ -14,20 +14,14 @@
       data_template:
         title: "*BRAND alarm!*"
         message: >
-
           Brandmelding op:
           {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' and state.name != 'Wasmachine' %}
+            {% if state.state == 'on' and state.name != 'Wasmachine' and state.name != 'Ping to Vera' %}
               {{ state.name }}
             {%- endif -%}
           {% endfor %}
-    - service: media_player.media_pause
-      entity_id: media_player.woonkamer
-    - service: media_player.volume_set
-      data:
-        entity_id: media_player.woonkamer
-        volume_level: 0.60
-    - service: tts.google_say
-      entity_id: media_player.woonkamer
+    - service: light.turn_on
+      entity_id: group.all_lights
+    - service: script.sonos_speak
       data:
         message: 'Er is brand gedetecteerd! Verlaat de woning!'
