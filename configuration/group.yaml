@@ -96,9 +96,7 @@ hallwaygf:
     - light.gang_licht_31
     - sensor.temperatuur_bg_4
     - binary_sensor.ring_voordeur_ding
-    - sensor.ring_voordeur_last_ding
     - binary_sensor.ring_voordeur_motion
-    - sensor.ring_voordeur_last_motion
 hallway1st:
   name: Gang 1ste
   entities:
