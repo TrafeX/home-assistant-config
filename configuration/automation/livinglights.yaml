@@ -40,3 +40,39 @@
       state: 'on'
   action:
     - service: script.turn_lights_off
+
+- alias: 'Living lights on during sleepmode'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_sensor_119
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+    - condition: numeric_state
+      entity_id: sensor.living_lux_130
+      below: 7
+  action:
+    - service: scene.turn_on
+      entity_id: scene.living_night
+
+- alias: 'Living lights off during sleepmode'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_sensor_119
+      to: 'off'
+      for:
+        minutes: 10
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+  action:
+    - service: script.turn_lights_off

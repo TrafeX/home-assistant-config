@@ -22,3 +22,11 @@
     light.keuken_spots_7:
       state: on
       brightness: 65
+- name: Living Night
+  entities:
+    light.woonkamer_spots_5:
+      state: on
+      brightness: 30
+    light.keuken_spots_7:
+      state: on
+      brightness: 30
