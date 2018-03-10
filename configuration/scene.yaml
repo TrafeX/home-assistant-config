@@ -26,7 +26,7 @@
   entities:
     light.woonkamer_spots_5:
       state: on
-      brightness: 30
+      brightness: 40
     light.keuken_spots_7:
       state: on
-      brightness: 30
+      brightness: 40
