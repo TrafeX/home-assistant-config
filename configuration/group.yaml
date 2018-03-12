@@ -131,3 +131,7 @@ babyroom:
   name: Babykamer
   entities:
     - light.light_babyroom_208
+    - binary_sensor.babyroom_sensor_216
+    - sensor.babyroom_temp_217
+    - sensor.babyroom_humidity_219
+    - sensor.babyroom_lux_218

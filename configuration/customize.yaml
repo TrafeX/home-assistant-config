@@ -12,6 +12,8 @@ binary_sensor.gang_1ste_sensor_170:
   device_class: motion
 binary_sensor.gang_2de_sensor_159:
   device_class: motion
+binary_sensor.babyroom_sensor_216:
+  device_class: motion
 sensor.yr_symbol:
   friendly_name: Weer
 sensor.power_usage:

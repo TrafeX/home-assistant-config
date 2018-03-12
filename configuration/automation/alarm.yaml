@@ -12,6 +12,9 @@
     - platform: state
       entity_id: binary_sensor.voordeur_200
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.babyroom_sensor_216
+      to: 'on'
   condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
