@@ -1,5 +1,6 @@
 /*
 !/configuration
+!/custom_components
 !configuration.yaml
 !*.sh
 !README.md

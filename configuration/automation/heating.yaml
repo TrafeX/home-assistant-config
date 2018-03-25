@@ -1,0 +1,10 @@
+- alias: 'Turn heating down when night mode activates'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.heating
+        temperature: 17

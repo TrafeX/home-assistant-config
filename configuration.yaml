@@ -117,6 +117,13 @@ sensor:
     state_topic: "homeassistant/sensor/shed_humidity/state"
     unit_of_measurement: "%"
   - platform: ring
+  - platform: template
+    sensors:
+      nefit_pressure:
+        friendly_name: 'Nefit Pressure'
+        value_template: '{{ states.climate.heating.attributes.system_pressure }}'
+        unit_of_measurement: 'bar'
+        icon_template: mdi:gauge
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/
@@ -220,6 +227,13 @@ vacuum:
   - platform: xiaomi_miio
     host: 192.168.150.162
     token: !secret xiaomi_token
+
+climate:
+  platform: nefit
+  name: Heating
+  serial: !secret nefit_serial
+  accesskey: !secret nefit_accesskey
+  password: !secret nefit_password
 
 ios:
 

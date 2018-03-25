@@ -55,6 +55,8 @@ house:
     - input_boolean.night_mode
     - input_boolean.ghost_mode
     - input_boolean.notify_backyard_motion
+    - climate.heating
+    - sensor.nefit_pressure
 living:
   name: Woonkamer & keuken
   entities:

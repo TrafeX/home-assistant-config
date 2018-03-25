@@ -21,6 +21,9 @@ Some of the things I've implemented:
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
 * Notify when someone is ringing the doorbell
 * Notify when the vacuum cleaner is done
+* Set security camera in privacy mode when at home
+* Dim the lights when the TV is turned on
+* Turn the heating down when night mode is activated
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2016/10/Selection_525.png "Home Assistant dashboard")
