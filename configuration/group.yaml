@@ -55,6 +55,7 @@ house:
     - input_boolean.night_mode
     - input_boolean.ghost_mode
     - input_boolean.notify_backyard_motion
+    - input_boolean.automatic_vacuum_cleaner
     - climate.heating
     - sensor.nefit_pressure
 living:

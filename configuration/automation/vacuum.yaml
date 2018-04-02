@@ -11,6 +11,43 @@
           Status: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
           Tijd: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }}mins.
           Oppervlakte: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m2.
-#    - service: script.sonos_speak
-#      data:
-#        message: 'De robotstofzuiger is klaar'
+
+- alias: 'Notify the vacuum cleaner will run at night'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatic_vacuum_cleaner
+      state: 'on'
+    - condition: time
+      weekday:
+        - sun
+        - wed
+  action:
+    - service: notify.all
+      data_template:
+        title: "Vannacht gaat de robotstofzuiger aan de gang"
+
+- alias: 'Run the vacuum cleaner at night'
+  trigger:
+    - platform: time
+      at: '1:30:00'
+  condition:
+    - condition: state
+      entity_id: group.all_devices
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.automatic_vacuum_cleaner
+      state: 'on'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+    - condition: time
+      weekday:
+        - sun
+        - wed
+  action:
+    - service: vacuum.turn_on
+      entity_id: vacuum.xiaomi_vacuum_cleaner
