@@ -24,7 +24,9 @@
     - condition: time
       weekday:
         - sun
-        - wed
+        - tue
+        - thu
+        - sat
   action:
     - service: notify.all
       data_template:
@@ -46,8 +48,10 @@
       state: 'on'
     - condition: time
       weekday:
-        - sun
+        - mon
         - wed
+        - fri
+        - sun
   action:
     - service: vacuum.turn_on
       entity_id: vacuum.xiaomi_vacuum_cleaner
