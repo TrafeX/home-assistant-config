@@ -74,6 +74,7 @@ living:
     - sensor.living_humidity_131
     - sensor.living_lux_130
     - vacuum.xiaomi_vacuum_cleaner
+    - script.empty_vacuum_cleaner
 backyard:
   name: Achtertuin
   entities:
