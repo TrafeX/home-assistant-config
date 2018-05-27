@@ -240,6 +240,19 @@ climate:
 
 ios:
 
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  client_id: !secret google_assistant_client_id
+  access_token: !secret google_assistant_access_token
+  api_key: !secret google_assistant_api_key
+  exposed_domains:
+    - light
+    - scene
+    - input_boolean
+    - media_player
+    - climate
+    - script
+
 automation: !include_dir_merge_list configuration/automation/
 script: !include_dir_named configuration/script/
 
