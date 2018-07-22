@@ -27,6 +27,9 @@
       data:
         entity_id: light.buitenlicht_achter_6
         brightness: 25
+    - service: light.turn_on
+      data:
+        entity_id: light.garden_lights_245
 
 - alias: 'Backyard light off'
   trigger:
@@ -40,4 +43,7 @@
     - service: light.turn_off
       data:
         entity_id: light.buitenlicht_achter_6
+    - service: light.turn_off
+      data:
+        entity_id: light.garden_lights_245
 
