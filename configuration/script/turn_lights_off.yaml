@@ -8,3 +8,5 @@ sequence:
     entity_id: light.buitenlicht_achter_6
   - service: light.turn_off
     entity_id: light.licht_tuindeur_148
+  - service: light.turn_off
+    entity_id: light.garden_lights_245
