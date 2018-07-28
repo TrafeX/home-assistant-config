@@ -183,23 +183,16 @@ input_boolean:
 media_player:
   - platform: braviatv
     host: 192.168.150.192
-  - platform: sonos
+
+sonos:
+  media_player:
     hosts:
       - 192.168.150.141
       - 192.168.150.197
-  - platform: cast
-    host: 192.168.150.124
 
-# New way of configuring since 0.72, not working yet;
-#sonos:
-#  media_player:
-#    hosts:
-#      - 192.168.150.141
-#      - 192.168.150.197
-#
-#cast:
-#  media_player:
-#    - host: 192.168.150.124
+cast:
+  media_player:
+    - host: 192.168.150.124
 
 tts:
   - platform: google
