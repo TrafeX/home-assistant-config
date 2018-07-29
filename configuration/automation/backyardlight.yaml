@@ -3,9 +3,6 @@
     - platform: state
       entity_id: group.all_devices
       to: 'home'
-    - platform: state
-      entity_id: binary_sensor.living_sensor_119
-      to: 'on'
     - platform: sun
       event: 'sunset'
       offset: '+00:30:00'
