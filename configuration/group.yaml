@@ -75,6 +75,8 @@ living:
     - sensor.living_lux_130
     - vacuum.xiaomi_vacuum_cleaner
     - script.empty_vacuum_cleaner
+    - plant.hangplant
+    - plant.hoekplant
 backyard:
   name: Achtertuin
   entities:

@@ -109,15 +109,15 @@ sensor:
     value_template: '{{ value_json.pwr }}'
     method: GET
     name: Power usage
-    unit_of_measurement: "W"
+    unit_of_measurement: 'W'
   - platform: mqtt
-    name: "Shed Temperature"
-    state_topic: "homeassistant/sensor/shed_temperature/state"
-    unit_of_measurement: "°C"
+    name: 'Shed Temperature'
+    state_topic: homeassistant/sensor/shed_temperature/state
+    unit_of_measurement: '°C'
   - platform: mqtt
-    name: "Shed Humidity"
-    state_topic: "homeassistant/sensor/shed_humidity/state"
-    unit_of_measurement: "%"
+    name: 'Shed Humidity'
+    state_topic: homeassistant/sensor/shed_humidity/state
+    unit_of_measurement: '%'
   - platform: ring
   - platform: template
     sensors:
@@ -126,6 +126,84 @@ sensor:
         value_template: '{{ states.climate.heating.attributes.system_pressure }}'
         unit_of_measurement: 'bar'
         icon_template: mdi:gauge
+  - platform: mqtt
+    name: plant_1_moisture
+    state_topic: home/plants/plant1/
+    value_template: '{{ value_json.moisture }}'
+    device_class: humidity
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: plant_1_battery
+    state_topic: home/plants/plant1/
+    value_template: '{{ value_json.battery }}'
+    device_class: battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: plant_1_temperature
+    state_topic: home/plants/plant1/
+    value_template: '{{ value_json.temperature }}'
+    device_class: temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: plant_1_conductivity
+    state_topic: home/plants/plant1/
+    value_template: '{{ value_json.conductivity }}'
+    unit_of_measurement: 'μS/cm'
+  - platform: mqtt
+    name: plant_1_brightness
+    state_topic: home/plants/plant1/
+    value_template: '{{ value_json.brightness }}'
+    device_class: illuminance
+    unit_of_measurement: 'lux'
+  - platform: mqtt
+    name: plant_2_moisture
+    state_topic: home/plants/plant2/
+    value_template: '{{ value_json.moisture }}'
+    device_class: humidity
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: plant_2_battery
+    state_topic: home/plants/plant2/
+    value_template: '{{ value_json.battery }}'
+    device_class: battery
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: plant_2_temperature
+    state_topic: home/plants/plant2/
+    value_template: '{{ value_json.temperature }}'
+    device_class: temperature
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: plant_2_conductivity
+    state_topic: home/plants/plant2/
+    value_template: '{{ value_json.conductivity }}'
+    unit_of_measurement: 'μS/cm'
+  - platform: mqtt
+    name: plant_2_brightness
+    state_topic: home/plants/plant2/
+    value_template: '{{ value_json.brightness }}'
+    device_class: illuminance
+    unit_of_measurement: 'lux'
+
+plant:
+  hangplant:
+    sensors:
+      moisture: sensor.plant_1_moisture
+      battery: sensor.plant_1_battery
+      temperature: sensor.plant_1_temperature
+      conductivity: sensor.plant_1_conductivity
+      brightness: sensor.plant_1_brightness
+    min_moisture: 15
+    min_battery: 15
+  hoekplant:
+    sensors:
+      moisture: sensor.plant_2_moisture
+      battery: sensor.plant_2_battery
+      temperature: sensor.plant_2_temperature
+      conductivity: sensor.plant_2_conductivity
+      brightness: sensor.plant_2_brightness
+    min_moisture: 15
+    min_battery: 15
 
 vera:
   vera_controller_url: http://192.168.150.10:3480/
@@ -158,8 +236,8 @@ binary_sensor:
             {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
           {% endif %}
   - platform: mqtt
-    name: "Shed sensor"
-    state_topic: "homeassistant/binary_sensor/shed_motion/state"
+    name: 'Shed sensor'
+    state_topic: homeassistant/binary_sensor/shed_motion/state
     device_class: motion
   - platform: ping
     host: 192.168.150.10
