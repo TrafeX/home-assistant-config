@@ -7,3 +7,13 @@
     - service: notify.all
       data:
         message: Vera Edge is onbereikbaar!
+
+- alias: 'Trigger notification when Vera is back online'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.ping_to_vera
+    to: 'on'
+  action:
+  - service: notify.all
+    data:
+        message: Vera Edge is weer bereikbaar
