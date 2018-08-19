@@ -104,6 +104,7 @@ mqtt:
 
 sensor:
   - platform: yr
+  - platform: ring
   - platform: rest
     resource: http://192.168.150.19/a?f=j
     value_template: '{{ value_json.pwr }}'
@@ -118,14 +119,11 @@ sensor:
     name: 'Shed Humidity'
     state_topic: homeassistant/sensor/shed_humidity/state
     unit_of_measurement: '%'
-  - platform: ring
-  - platform: template
-    sensors:
-      nefit_pressure:
-        friendly_name: 'Nefit Pressure'
-        value_template: '{{ states.climate.heating.attributes.system_pressure }}'
-        unit_of_measurement: 'bar'
-        icon_template: mdi:gauge
+  - platform: mqtt
+    state_topic: 'home/presence/owner/living/94:65:2d:d8:b6:3b'
+    value_template: '{{ value_json.confidence }}'
+    unit_of_measurement: '%'
+    name: 'Tim living'
   - platform: mqtt
     name: plant_1_moisture
     state_topic: home/plants/plant1/
