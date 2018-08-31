@@ -52,5 +52,5 @@
         - thu
         - sat
   action:
-    - service: vacuum.turn_on
+    - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
