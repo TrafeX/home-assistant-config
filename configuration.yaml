@@ -82,6 +82,7 @@ influxdb:
       - sensor.ring_voordeur_wifi_signal_strength
       - sensor._chantal_battery_level
       - sensor._chantal_battery_state
+      - sensor.tim_living
   tags:
     source: hass
 
