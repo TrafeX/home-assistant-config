@@ -2,7 +2,7 @@
   trigger:
     - platform: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'off'
+      from: 'cleaning'
   action:
     - service: notify.all
       data_template:
