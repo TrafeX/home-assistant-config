@@ -325,16 +325,68 @@ ios:
 
 google_assistant:
   project_id: !secret google_assistant_project_id
-  client_id: !secret google_assistant_client_id
-  access_token: !secret google_assistant_access_token
-  api_key: !secret google_assistant_api_key
-  exposed_domains:
-    - light
-    - scene
-    - input_boolean
-    - media_player
-    - climate
-    - script
+  expose_by_default: false
+  entity_config:
+    climate.heating:
+      name: Verwarming
+      room: Huis
+      expose: true
+    input_boolean.night_mode:
+      name: Slaapstand
+      room: Huis
+      expose: true
+    switch.ventilatie_145:
+      name: Ventilatie
+      room: Huis
+      expose: true
+    light.woonkamer_spots_5:
+      name: Woonkamer licht
+      room: Woonkamer
+      expose: true
+    light.keuken_spots_7:
+      name: Keuken licht
+      room: Keuken
+      expose: true
+    light.buitenlicht_achter_6:
+      name: Achtertuin licht
+      room: Achtertuin
+      expose: true
+    light.buitenlicht_voorkant_32:
+      name: Voortuin licht
+      room: Voortuin
+      expose: true
+    light.gang_licht_31:
+      name: Gang licht
+      room: Gang
+      expose: true
+    light.licht_tuindeur_148:
+      name: Tuindeur licht
+      room: Achtertuin
+      expose: true
+    light.light_babyroom_208:
+      name: Babykamer licht
+      room: Babykamer
+      expose: true
+    light.overloop_licht_1ste_44:
+      name: Overloop eerste licht
+      room: Overloop eerste verdieping
+      expose: true
+    light.overloop_licht_2de_132:
+      name: Overloop tweede licht
+      room: Overloop tweede verdieping
+      expose: true
+    light.werkkamer_licht_152:
+      name: Werkkamer licht
+      room: Werkkamer
+      expose: true
+    scene.living_movie:
+      name: Movie night scene
+      room: Woonkamer
+      expose: true
+    scene.living_normal:
+      name: Woonkamer normaal scene
+      room: Woonkamer
+      expose: true
 
 automation: !include_dir_merge_list configuration/automation/
 script: !include_dir_named configuration/script/
