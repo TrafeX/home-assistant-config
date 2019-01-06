@@ -86,7 +86,6 @@ influxdb:
   tags:
     source: hass
 
-# MQTT
 mqtt:
   broker: mosquitto
   port: 1883
@@ -288,14 +287,13 @@ notify:
     chat_id: !secret telegram_chat_id
 
 device_tracker:
-   - platform: asuswrt
-     host: 192.168.150.1
-     username: !secret router_user
-     password: !secret router_password
-     consider_home: 0:10
-     new_device_defaults:
-       track_new_devices: False
-   - platform: owntracks_http
+  - platform: asuswrt
+    host: 192.168.150.1
+    username: !secret router_user
+    password: !secret router_password
+    consider_home: 0:10
+    new_device_defaults:
+      track_new_devices: false
 
 telegram_bot:
   platform: polling
@@ -322,6 +320,11 @@ climate:
   password: !secret nefit_password
 
 ios:
+
+asuswrt:
+  host: 192.168.150.1
+  username: !secret router_user
+  password: !secret router_password
 
 google_assistant:
   project_id: !secret google_assistant_project_id
