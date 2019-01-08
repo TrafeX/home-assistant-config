@@ -26,6 +26,7 @@ mediaplayers:
     - media_player.chromekamer
     - media_player.woonkamer
     - media_player.keuken
+    - media_player.woonkamer_2
 cameras:
   name: Cameras
   view: yes

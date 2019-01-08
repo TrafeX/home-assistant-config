@@ -22,6 +22,7 @@
           {% endfor %}
     - service: light.turn_on
       entity_id: group.all_lights
-    - service: script.sonos_speak
+    - service: tts.google_say
       data:
+        entity_id: media_player.woonkamer_2
         message: 'Er is brand gedetecteerd! Verlaat de woning!'

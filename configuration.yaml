@@ -269,6 +269,7 @@ sonos:
 cast:
   media_player:
     - host: 192.168.150.124
+    - host: 192.168.150.153
 
 tts:
   - platform: google

@@ -4,6 +4,7 @@
       entity_id: binary_sensor.ring_voordeur_ding
       to: 'on'
   action:
-    - service: script.sonos_speak
+    - service: tts.google_say
       data:
+        entity_id: media_player.woonkamer_2
         message: 'Er staat iemand voor de voordeur'

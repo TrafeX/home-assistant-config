@@ -15,8 +15,9 @@
             {%- endif -%}
           {% endfor %}
     - service: shell_command.vera_home_mode
-    - service: script.sonos_speak
+    - service: tts.google_say
       data:
+        entity_id: media_player.woonkamer_2
         message: 'Welkom thuis!'
 
 - alias: 'Leaving'
