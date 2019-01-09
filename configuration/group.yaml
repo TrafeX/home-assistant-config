@@ -33,8 +33,9 @@ cameras:
   entities:
     - camera.frontyard
     - camera.backyard
-    - camera.shed
     - camera.street
+    - camera.other
+    - camera.shed
     - camera.living
 system:
   name: System

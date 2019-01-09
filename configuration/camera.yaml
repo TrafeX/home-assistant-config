@@ -11,11 +11,6 @@
     username: !secret camera_backyard_user
     password: !secret camera_backyard_password
   - platform: mjpeg
-    name: Street
-    mjpeg_url: http://192.168.150.14/axis-cgi/jpg/image.cgi
-    username: !secret camera_street_user
-    password: !secret camera_street_password
-  - platform: mjpeg
     name: Living
     mjpeg_url: http://192.168.150.13/image/jpeg.cgi
     username: !secret camera_living_user
@@ -26,3 +21,15 @@
     port: 88
     username: !secret camera_shed_user
     password: !secret camera_shed_password
+  - platform: generic
+    name: Street
+    username: !secret camera_street_user
+    password: !secret camera_street_password
+    still_image_url: https://192.168.150.176/cgi-bin/currentpic.cgi
+    verify_ssl: false
+  - platform: generic
+    name: Other
+    username: !secret camera_other_user
+    password: !secret camera_other_password
+    still_image_url: https://192.168.150.118/cgi-bin/currentpic.cgi
+    verify_ssl: false
