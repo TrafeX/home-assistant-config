@@ -15,7 +15,7 @@ default_view:
     - sun.sun
     - sensor.yr_symbol
     - device_tracker.tim_mobile
-    - device_tracker._chantal
+    - device_tracker.chantal
     - binary_sensor.wasmachine_state
     - sensor.power_usage
 mediaplayers:
