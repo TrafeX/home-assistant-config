@@ -80,9 +80,11 @@ influxdb:
       - binary_sensor.ping_to_vera
       - sensor.ring_voordeur_battery
       - sensor.ring_voordeur_wifi_signal_strength
-      - sensor.chantal_battery_level
-      - sensor.chantal_battery_state
+      - sensor._chantal_battery_level
+      - sensor._chantal_battery_state
       - sensor.tim_living
+      - sensor.netatmo_bedroom_battery_percent
+      - sensor.netatmo_outdoor_battery_percent
   tags:
     source: hass
 
