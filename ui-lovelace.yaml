@@ -18,13 +18,16 @@ views:
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
           - input_boolean.automatic_vacuum_cleaner
-        show_header_toggle: true
-      - type: alarm-panel
-        name: Alarm
-        entity: alarm_control_panel.home_alarm
+        show_header_toggle: false
       - type: thermostat
-        name: Heating
+        name: Verwarming
         entity: climate.heating
+      - type: horizontal-stack
+        cards:
+        - type: light
+          entity: light.woonkamer_spots_5
+        - type: light
+          entity: light.keuken_spots_7
       - type: entities
         title: Woonkamer & keuken
         entities:
@@ -50,12 +53,12 @@ views:
         name: Hoek plant
         entity: plant.hoekplant
       - type: entities
-        title: Achtertuin
+        title: Buiten
         entities:
           - binary_sensor.backyard_motion_204
           - light.buitenlicht_achter_6
           - light.licht_tuindeur_148
-          - light.licht_tuindeur_148
+          - light.buitenlicht_voorkant_32
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temp1_202
@@ -63,11 +66,6 @@ views:
           - binary_sensor.shed_sensor
           - sensor.shed_humidity
           - sensor.shed_temperature
-        show_header_toggle: false
-      - type: entities
-        title: Voortuin
-        entities:
-          - light.buitenlicht_voorkant_32
         show_header_toggle: false
       - type: entities
         title: Gang BG
@@ -116,13 +114,16 @@ views:
       - type: entities
         title: Babykamer
         entities:
+          - binary_sensor.babyroom_sensor_216
           - light.light_babyroom_208
           - switch.fan_babyroom_242
-          - binary_sensor.babyroom_sensor_216
           - sensor.babyroom_temp_217
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218
         show_header_toggle: false
+      - type: alarm-panel
+        name: Alarm
+        entity: alarm_control_panel.home_alarm
     icon: 'mdi:home-outline'
   - path: mediaplayers
     title: Media
