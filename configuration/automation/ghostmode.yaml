@@ -32,7 +32,7 @@
 
 - alias: 'Turn on kitchen lights when ghost mode enabled'
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/30'
       seconds: 0
   condition:
@@ -50,7 +50,7 @@
 
 - alias: 'Turn on gang1ste when ghost mode enabled'
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/45'
       seconds: 0
   condition:
@@ -68,7 +68,7 @@
 
 - alias: 'Turn on gangBG when ghost mode enabled'
   trigger:
-    - platform: time
+    - platform: time_pattern
       minutes: '/20'
       seconds: 0
   condition:
