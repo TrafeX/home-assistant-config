@@ -2,6 +2,7 @@
 !/configuration
 !/custom_components
 !configuration.yaml
+!ui-lovelace.yaml
 !*.sh
 !README.md
 !.gitignore

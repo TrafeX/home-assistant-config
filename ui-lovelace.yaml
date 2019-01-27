@@ -1,0 +1,156 @@
+title: Home
+views:
+  - path: default_view
+    title: default_view
+    badges:
+      - binary_sensor.wasmachine_state
+      - device_tracker.tim_mobile
+      - device_tracker.chantal
+      - sensor.yr_symbol
+      - sensor.power_usage
+      - sun.sun
+    cards:
+      - type: entities
+        title: Huis
+        entities:
+          - switch.ventilatie_145
+          - input_boolean.night_mode
+          - input_boolean.ghost_mode
+          - input_boolean.notify_backyard_motion
+          - input_boolean.automatic_vacuum_cleaner
+        show_header_toggle: true
+      - type: alarm-panel
+        name: Alarm
+        entity: alarm_control_panel.home_alarm
+      - type: thermostat
+        name: Heating
+        entity: climate.heating
+      - type: entities
+        title: Woonkamer & keuken
+        entities:
+          - scene.living_normal
+          - scene.living_movie
+          - script.turn_lights_off
+          - light.woonkamer_spots_5
+          - light.keuken_spots_7
+          - binary_sensor.living_sensor_119
+          - sensor.netatmo_indoor_temperature
+          - sensor.netatmo_indoor_humidity
+          - sensor.netatmo_indoor_co2
+          - sensor.living_temperature_128
+          - sensor.living_humidity_131
+          - sensor.living_lux_130
+          - vacuum.xiaomi_vacuum_cleaner
+          - script.empty_vacuum_cleaner
+        show_header_toggle: false
+      - type: plant-status
+        name: Gang plant
+        entity: plant.hangplant
+      - type: plant-status
+        name: Hoek plant
+        entity: plant.hoekplant
+      - type: entities
+        title: Achtertuin
+        entities:
+          - binary_sensor.backyard_motion_204
+          - light.buitenlicht_achter_6
+          - light.licht_tuindeur_148
+          - light.licht_tuindeur_148
+          - sensor.netatmo_outdoor_temperature
+          - sensor.netatmo_outdoor_humidity
+          - sensor.backyard_temp1_202
+          - sensor.backyard_lux1_203
+          - binary_sensor.shed_sensor
+          - sensor.shed_humidity
+          - sensor.shed_temperature
+        show_header_toggle: false
+      - type: entities
+        title: Voortuin
+        entities:
+          - light.buitenlicht_voorkant_32
+        show_header_toggle: false
+      - type: entities
+        title: Gang BG
+        entities:
+          - binary_sensor.voordeur_200
+          - binary_sensor.rookmelder_bg_3
+          - light.gang_licht_31
+          - sensor.temperatuur_bg_4
+          - binary_sensor.ring_voordeur_ding
+          - binary_sensor.ring_voordeur_motion
+        show_header_toggle: false
+      - type: entities
+        title: Gang 1ste
+        entities:
+          - binary_sensor.gang_1ste_sensor_170
+          - binary_sensor.rookmelder_1ste_22
+          - light.overloop_licht_1ste_44
+          - sensor.hallway1st_temp_182
+          - sensor.hallway1st_humidity_184
+          - sensor.hallway1st_lux_183
+          - sensor.temperatuur_1ste_23
+        show_header_toggle: false
+      - type: entities
+        title: Gang 2de
+        entities:
+          - binary_sensor.gang_2de_sensor_159
+          - binary_sensor.rookmelder_2de_133
+          - light.overloop_licht_2de_132
+          - sensor.hallway2nd_temp_186
+          - sensor.hallway2nd_humidity_188
+          - sensor.hallway2nd_lux_187
+          - sensor.temperatuur_2de_134
+        show_header_toggle: false
+      - type: entities
+        title: Werkkamer
+        entities:
+          - light.werkkamer_licht_152
+        show_header_toggle: false
+      - type: entities
+        title: Slaapkamer
+        entities:
+          - sensor.netatmo_bedroom_temperature
+          - sensor.netatmo_bedroom_humidity
+          - sensor.netatmo_bedroom_co2
+        show_header_toggle: false
+      - type: entities
+        title: Babykamer
+        entities:
+          - light.light_babyroom_208
+          - switch.fan_babyroom_242
+          - binary_sensor.babyroom_sensor_216
+          - sensor.babyroom_temp_217
+          - sensor.babyroom_humidity_219
+          - sensor.babyroom_lux_218
+        show_header_toggle: false
+    icon: 'mdi:home-outline'
+  - path: mediaplayers
+    title: Media
+    badges: []
+    cards:
+      - type: media-control
+        entity: media_player.sony_bravia_tv
+      - type: media-control
+        entity: media_player.chromekamer
+      - type: media-control
+        entity: media_player.woonkamer
+      - type: media-control
+        entity: media_player.keuken
+      - type: media-control
+        entity: media_player.woonkamer_2
+  - path: cameras
+    title: Cameras
+    badges: []
+    cards:
+      - type: picture-entity
+        entity: camera.frontyard
+      - type: picture-entity
+        entity: camera.backyard
+      - type: picture-entity
+        entity: camera.street
+      - type: picture-entity
+        entity: camera.other
+      - type: picture-entity
+        entity: camera.shed
+      - type: picture-entity
+        entity: camera.living

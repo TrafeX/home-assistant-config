@@ -22,6 +22,9 @@ homeassistant:
 # Enables the frontend
 frontend:
 
+lovelace:
+  mode: yaml
+
 map:
 
 zone:
@@ -397,6 +400,5 @@ google_assistant:
 automation: !include_dir_merge_list configuration/automation/
 script: !include_dir_named configuration/script/
 
-group: !include configuration/group.yaml
 scene: !include configuration/scene.yaml
 camera: !include configuration/camera.yaml
