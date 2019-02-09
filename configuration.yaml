@@ -25,6 +25,8 @@ frontend:
 lovelace:
   mode: yaml
 
+system_health:
+
 map:
 
 zone:
