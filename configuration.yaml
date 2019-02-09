@@ -133,6 +133,12 @@ sensor:
     value_template: '{{ value_json.confidence }}'
     unit_of_measurement: '%'
     name: 'Tim living'
+  - platform: template
+    sensors:
+      nefit_temperature:
+        friendly_name: 'Nefit Temperature'
+        value_template: '{{ states.climate.heating.attributes.current_temperature }}'
+        unit_of_measurement: '°C'
   - platform: mqtt
     name: plant_1_moisture
     state_topic: home/plants/plant1/
