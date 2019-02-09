@@ -155,3 +155,151 @@ views:
         entity: camera.shed
       - type: picture-entity
         entity: camera.living
+
+  - path: floorplan
+    title: Floorplan
+    badges: []
+    cards:
+    - type: picture-elements
+      image: /local/floorplan.png
+      elements:
+        - type: state-icon
+          entity: light.woonkamer_spots_5
+          style:
+            top: 29%
+            left: 68%
+        - type: state-icon
+          entity: light.woonkamer_spots_5
+          style:
+            top: 42%
+            left: 36%
+        - type: state-icon
+          entity: light.keuken_spots_7
+          style:
+            top: 71%
+            left: 69%
+        - type: state-icon
+          entity: light.buitenlicht_achter_6
+          style:
+            top: 10%
+            left: 37%
+        - type: state-icon
+          tap_action:
+            action: toggle
+          entity: light.licht_tuindeur_148
+          style:
+            top: 3%
+            left: 30%
+        - type: state-icon
+          entity: binary_sensor.backyard_motion_204
+          style:
+            top: 3%
+            left: 21%
+        - type: state-icon
+          tap_action:
+            action: toggle
+          entity: light.buitenlicht_voorkant_32
+          style:
+            top: 85%
+            left: 52%
+        - type: state-icon
+          tap_action:
+            action: toggle
+          entity: light.gang_licht_31
+          style:
+            top: 84%
+            left: 39%
+        - type: state-icon
+          entity: binary_sensor.rookmelder_bg_3
+          style:
+            top: 80%
+            left: 39%
+        - type: state-label
+          entity: sensor.netatmo_indoor_temperature
+          style:
+            top: 20%
+            left: 29%
+        - type: state-icon
+          entity: binary_sensor.living_sensor_119
+          style:
+            top: 52%
+            left: 82%
+        - type: state-icon
+          entity: binary_sensor.voordeur_200
+          style:
+            top: 88.6%
+            left: 48%
+        - type: state-icon
+          entity: vacuum.xiaomi_vacuum_cleaner
+          style:
+            top: 24%
+            left: 19%
+        - type: state-label
+          entity: sensor.living_temperature_128
+          style:
+            top: 52%
+            left: 71%
+        - type: state-label
+          entity: sensor.netatmo_outdoor_temperature
+          style:
+            top: 5%
+            left: 60%
+        - type: state-icon
+          entity: media_player.sony_bravia_tv
+          style:
+            top: 29%
+            left: 82%
+        - type: state-icon
+          entity: media_player.chromekamer
+          style:
+            top: 24%
+            left: 82%
+        - type: state-icon
+          entity: media_player.woonkamer
+          style:
+            top: 34%
+            left: 82%
+        - type: state-icon
+          entity: media_player.woonkamer_2
+          style:
+            top: 20%
+            left: 19%
+        - type: state-icon
+          entity: media_player.keuken
+          style:
+            top: 78%
+            left: 82%
+        - type: icon
+          entity: camera.living
+          icon: mdi:cctv
+          style:
+            top: 56%
+            left: 21%
+            transform: "scaleX(-1)"
+        - type: icon
+          entity: camera.frontyard
+          icon: mdi:cctv
+          style:
+            top: 85%
+            left: 65%
+        - type: icon
+          entity: camera.backyard
+          icon: mdi:cctv
+          style:
+            top: 3%
+            left: 50%
+        - type: state-icon
+          entity: binary_sensor.ring_voordeur_motion
+          style:
+            top: 85%
+            left: 58%
+        - type: state-icon
+          entity: climate.heating
+          style:
+            top: 61%
+            left: 23%
+        - type: state-label
+          entity: sensor.nefit_temperature
+          style:
+            top: 52%
+            left: 29%
