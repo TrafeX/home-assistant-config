@@ -10,12 +10,12 @@ Some of the things I've implemented:
 * Fully automated living lights
 * Automated hallway lights which dim at night
 * Notify when washing machine is finished
-* Play a speech message on Sonos as notification
+* Play a speech message via the Google Home
 * Presence detection with home coming and leaving automation
 * Night mode
 * Integration with Vera
 * Enable ventilation when CO2 level reaches a certain level
-* Automated Christmas lights
+* Automated Christmas lights (only during the holydays 😉)
 * Youless integration
 * Notify when one of the smoke sensors detects smoke
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
@@ -24,7 +24,11 @@ Some of the things I've implemented:
 * Set security camera in privacy mode when at home
 * Dim the lights when the TV is turned on
 * Turn the heating down when night mode is activated
+* Notify when you leave the frontdoor open
+* A shiny interface with the new [Lovelace UI](https://www.home-assistant.io/lovelace/)
+* Showing the health of my plants
+* Make my vacuum cleaner come from under the couch to be able to empty it
 
 
-![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2016/10/Selection_525.png "Home Assistant dashboard")
+![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
 
