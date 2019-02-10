@@ -47,7 +47,7 @@ views:
           - script.empty_vacuum_cleaner
         show_header_toggle: false
       - type: plant-status
-        name: Gang plant
+        name: Hang plant
         entity: plant.hangplant
       - type: plant-status
         name: Hoek plant
