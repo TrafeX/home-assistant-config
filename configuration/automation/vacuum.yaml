@@ -22,10 +22,11 @@
       state: 'on'
     - condition: time
       weekday:
-        - sat
-        - mon
-        - wed
+        - sun
+        - tue
+        - thu
         - fri
+        - sat
   action:
     - service: notify.all
       data:
@@ -47,10 +48,11 @@
       state: 'on'
     - condition: time
       weekday:
-        - sun
-        - tue
-        - thu
+        - mon
+        - wed
+        - fri
         - sat
+        - sun
   action:
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
