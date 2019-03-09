@@ -14,8 +14,8 @@ from homeassistant.exceptions import PlatformNotReady, InvalidStateError
 import logging
 import voluptuous as vol
 
-from homeassistant.components.climate import (ClimateDevice, PLATFORM_SCHEMA,
-    STATE_AUTO, STATE_MANUAL,
+from homeassistant.components.climate import (ClimateDevice, PLATFORM_SCHEMA)
+from homeassistant.components.climate.const import (STATE_AUTO, STATE_MANUAL, 
     SUPPORT_TARGET_TEMPERATURE, SUPPORT_OPERATION_MODE)
 from homeassistant.const import TEMP_CELSIUS, ATTR_TEMPERATURE
 from homeassistant.const import STATE_UNKNOWN, EVENT_HOMEASSISTANT_STOP
@@ -87,13 +87,13 @@ class NefitThermostat(ClimateDevice):
                        access_key=accesskey,
                        password=password,
                        message_callback=self.parse_message)
-
+        
         self._client.failed_auth_handler = self.failed_auth_handler
         self._client.no_content_callback = self.no_content_callback
 
     async def connect(self):
         self._client.connect()
-        _LOGGER.debug("Waiting for connected event")
+        _LOGGER.debug("Waiting for connected event")        
         try:
             # await self._client.xmppclient.connected_event.wait()
             await asyncio.wait_for(self._client.xmppclient.connected_event.wait(), timeout=5.0)
@@ -102,14 +102,14 @@ class NefitThermostat(ClimateDevice):
                                             self._shutdown)
         except concurrent.futures._base.TimeoutError:
             _LOGGER.debug("TimeoutError on waiting for connected event")
-            self.hass.components.persistent_notification.create(
+            self.hass.components.persistent_notification.create( 
                 'Timeout while connecting to Bosch cloud. Retrying in the background',
                 title='Nefit error',
                 notification_id='nefit_logon_error')
             raise PlatformNotReady
-
+        
         if self.error_state == "authentication_failed":
-            self.hass.components.persistent_notification.create(
+            self.hass.components.persistent_notification.create( 
                 'Invalid credentials while connecting to Bosch cloud.',
                 title='Nefit error',
                 notification_id='nefit_logon_error')
@@ -146,19 +146,19 @@ class NefitThermostat(ClimateDevice):
             self._data['inhouse_temperature'] = float(data['value']['IHT'])
             self._data['user_mode'] = data['value']['UMD']
             self._stateattr['boiler_indicator_raw'] = data['value']['BAI']
-            self._stateattr['current_time'] = data['value']['CTD']
+            self._stateattr['current_time'] = data['value']['CTD']        
         elif data['id'] == '/heatingCircuits/hc1/actualSupplyTemperature':
             self._stateattr['supply_temperature'] = data['value']
         elif data['id'] == '/system/sensors/temperatures/outdoor_t1':
             self._stateattr['outdoor_temperature'] = data['value']
         elif data['id'] == '/system/appliance/systemPressure':
-            self._stateattr['system_pressure'] = data['value']
+            self._stateattr['system_pressure'] = data['value']            
         elif data['id'] == '/ecus/rrc/recordings/yearTotal':
             self._stateattr['year_total'] = data['value']
 
         if data['id'] in self._url_events:
             self._url_events[data['id']].set()
-
+            
     async def async_update(self):
         """Get latest data
         """
@@ -169,9 +169,9 @@ class NefitThermostat(ClimateDevice):
             event.clear()
             self._client.get(url)
             tasks.append(asyncio.wait_for(event.wait(), timeout=10))
-
+        
         await asyncio.gather(*tasks)
-
+    
         _LOGGER.debug("async_update finished")
 
     @property
@@ -247,7 +247,7 @@ class NefitThermostat(ClimateDevice):
         await asyncio.wait_for(self._client.xmppclient.message_event.wait(), timeout=10.0)
         self._client.xmppclient.message_event.clear()
         self._data['target_temperature'] = temperature
-
+        
 
     def _shutdown(self, event):
         _LOGGER.debug("shutdown")
