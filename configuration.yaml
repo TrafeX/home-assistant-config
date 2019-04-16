@@ -19,6 +19,10 @@ homeassistant:
       icon: mdi:water-percent
   customize: !include configuration/customize.yaml
 
+  auth_providers:
+    - type: legacy_api_password
+      api_password: !secret api_password
+
 # Enables the frontend
 frontend:
 
@@ -30,7 +34,6 @@ system_health:
 map:
 
 zone:
-  # This will override the default home zone
   - name: Home
     latitude: !secret home_latitude
     longitude: !secret home_longitude
@@ -38,7 +41,6 @@ zone:
     icon: mdi:home
 
 http:
-  api_password: !secret api_password
   base_url: !secret base_url
   ip_ban_enabled: True
   login_attempts_threshold: 5
