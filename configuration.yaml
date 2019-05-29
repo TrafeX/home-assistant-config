@@ -130,11 +130,6 @@ sensor:
     name: 'Shed Humidity'
     state_topic: homeassistant/sensor/shed_humidity/state
     unit_of_measurement: '%'
-  - platform: mqtt
-    state_topic: 'home/presence/owner/living/94:65:2d:d8:b6:3b'
-    value_template: '{{ value_json.confidence }}'
-    unit_of_measurement: '%'
-    name: 'Tim living'
   - platform: template
     sensors:
       nefit_temperature:
