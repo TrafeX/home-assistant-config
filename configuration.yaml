@@ -284,7 +284,7 @@ cast:
     - host: 192.168.150.153
 
 tts:
-  - platform: google
+  - platform: google_translate
     language: nl
     cache: true
     cache_dir: /tmp/tts
