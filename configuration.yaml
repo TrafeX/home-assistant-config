@@ -12,9 +12,9 @@ homeassistant:
   time_zone: Europe/Amsterdam
 
   customize_glob:
-    "sensor.*_lux":
+    "sensor.*_lux*":
       device_class: light
-    "sensor.*_humidity":
+    "sensor.*_humidity*":
       device_class: moisture
       icon: mdi:water-percent
   customize: !include configuration/customize.yaml
