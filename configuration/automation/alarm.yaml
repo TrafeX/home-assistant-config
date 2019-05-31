@@ -22,11 +22,29 @@
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
+    - service: script.notify_of_movement
+
+- alias: 'Trigger alarm while armed night'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.voordeur_200
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_night
+  action:
+    - service: alarm_control_panel.alarm_trigger
+      entity_id: alarm_control_panel.home_alarm
+    - service: script.notify_of_movement
 
 - alias: 'Trigger alarm while armed home'
   trigger:
     - platform: state
       entity_id: binary_sensor.voordeur_200
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.backyard_motion_204
       to: 'on'
   condition:
     - condition: state
@@ -35,6 +53,7 @@
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
+    - service: script.notify_of_movement
 
 - alias: 'Activate alarm when away'
   trigger:
@@ -51,10 +70,10 @@
       entity_id: input_boolean.night_mode
       to: 'on'
   action:
-    - service: alarm_control_panel.alarm_arm_home
+    - service: alarm_control_panel.alarm_arm_night
       entity_id: alarm_control_panel.home_alarm
 
-- alias: 'Deactivate alarm when home or awake'
+- alias: 'Deactivate away and night alarm when home or awake '
   trigger:
     - platform: state
       entity_id: group.all_devices
@@ -62,26 +81,17 @@
     - platform: state
       entity_id: input_boolean.night_mode
       to: 'off'
+  condition:
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_away
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: armed_night
   action:
     - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.home_alarm
-
-- alias: 'Reset alarm after triggered'
-  trigger:
-    - platform: state
-      entity_id: alarm_control_panel.home_alarm
-      to: 'triggered'
-      for:
-        hours: 0
-        minutes: 0
-        seconds: 10
-  action:
-    - service_template: >
-        {% if is_state('input_boolean.night_mode', 'true') %}
-          alarm_control_panel.alarm_arm_home
-        {% else %}
-          alarm_control_panel.alarm_arm_away
-        {% endif %}
       entity_id: alarm_control_panel.home_alarm
 
 - alias: 'Notify of alarm'
@@ -93,21 +103,4 @@
     - service: notify.all
       data_template:
         title: "*Inbraak alarm!*"
-        message: >
-          Activiteit op:
-          {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' and state.name != 'Wasmachine' and state.name != 'Ping to Vera' %}
-              {{ state.name }}
-            {%- endif -%}
-          {% endfor %}
-    - service: notify.telegram_notify
-      data_template:
-        message: "Inbraak alarm"
-        data:
-          photo:
-            - url: "http://127.0.0.1:8123{{ states.camera.backyard.attributes.entity_picture }}"
-              caption: Backyard
-            - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
-              caption: Frontyard
-            - url: "http://127.0.0.1:8123{{ states.camera.living.attributes.entity_picture }}"
-              caption: Living
+        message: "Het inbraakalarm (status: {{ states.alarm_control_panel.home_alarm.state }}) is geactiveerd!"

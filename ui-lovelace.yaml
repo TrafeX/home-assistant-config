@@ -22,6 +22,13 @@ views:
       - type: thermostat
         name: Verwarming
         entity: climate.heating
+      - type: alarm-panel
+        name: Alarm
+        states:
+          - arm_home
+          - arm_away
+          - arm_night
+        entity: alarm_control_panel.home_alarm
       - type: horizontal-stack
         cards:
         - type: light
@@ -120,9 +127,6 @@ views:
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218
         show_header_toggle: false
-      - type: alarm-panel
-        name: Alarm
-        entity: alarm_control_panel.home_alarm
     icon: 'mdi:home-outline'
   - path: mediaplayers
     title: Media
@@ -173,6 +177,10 @@ views:
         show_header_toggle: false
       - type: alarm-panel
         name: Alarm
+        states:
+          - arm_home
+          - arm_away
+          - arm_night
         entity: alarm_control_panel.home_alarm
   - path: floorplan
     title: Floorplan

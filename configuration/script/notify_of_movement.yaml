@@ -1,0 +1,24 @@
+alias: 'Notify of movement'
+sequence:
+  - service: notify.all
+    data_template:
+      title: "*Beweging gedecteerd!*"
+      message: >
+        Activiteit op:
+        {% for state in states.binary_sensor -%}
+          {% if state.state == 'on' and state.name != 'Wasmachine' and state.name != 'Ping to Vera' %}
+            {{ state.name }}
+          {%- endif -%}
+        {% endfor %}
+  - service: notify.telegram_notify
+    data_template:
+      message: "Beweging gedetecteerd"
+      data:
+        photo:
+          - url: "http://127.0.0.1:8123{{ states.camera.backyard.attributes.entity_picture }}"
+            caption: Backyard
+          - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
+            caption: Frontyard
+          - url: "http://127.0.0.1:8123{{ states.camera.living.attributes.entity_picture }}"
+            caption: Living
+

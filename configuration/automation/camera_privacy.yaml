@@ -6,6 +6,9 @@
     - platform: state
       entity_id: alarm_control_panel.home_alarm
       to: 'armed_away'
+    - platform: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_night'
   action:
     - service: shell_command.privacy_mode_disable
 

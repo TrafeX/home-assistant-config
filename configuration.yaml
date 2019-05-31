@@ -317,8 +317,10 @@ telegram_bot:
 alarm_control_panel:
   platform: manual
   name: Home Alarm
-  pending_time: 0
-  trigger_time: 1 # Workaround to prevent being in the triggered state
+  pending_time: 30
+  trigger_time: 60
+  triggered:
+    pending_time: 0
 
 vacuum:
   - platform: xiaomi_miio
