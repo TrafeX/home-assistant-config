@@ -1,4 +1,4 @@
-binary_sensor.rookmelder_bg_3:
+binary_sensor.rookmelder_bg_247:
   device_class: smoke
 binary_sensor.rookmelder_1ste_22:
   device_class: smoke

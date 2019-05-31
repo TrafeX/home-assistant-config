@@ -71,9 +71,9 @@ views:
         title: Gang BG
         entities:
           - binary_sensor.voordeur_200
-          - binary_sensor.rookmelder_bg_3
+          - binary_sensor.rookmelder_bg_247
           - light.gang_licht_31
-          - sensor.temperatuur_bg_4
+          - sensor.temperatuur_bg_248
           - binary_sensor.ring_voordeur_ding
           - binary_sensor.ring_voordeur_motion
         show_header_toggle: false
@@ -116,7 +116,6 @@ views:
         entities:
           - binary_sensor.babyroom_sensor_216
           - light.light_babyroom_208
-          - switch.fan_babyroom_242
           - sensor.babyroom_temp_217
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218
@@ -229,7 +228,7 @@ views:
             top: 84%
             left: 39%
         - type: state-icon
-          entity: binary_sensor.rookmelder_bg_3
+          entity: binary_sensor.rookmelder_bg_247
           style:
             top: 80%
             left: 39%

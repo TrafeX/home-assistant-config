@@ -7,7 +7,7 @@
       entity_id: binary_sensor.rookmelder_2de_133
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.rookmelder_bg_3
+      entity_id: binary_sensor.rookmelder_bg_247
       to: 'on'
   action:
     - service: notify.all
