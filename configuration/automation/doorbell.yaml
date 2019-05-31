@@ -8,3 +8,10 @@
       data:
         entity_id: media_player.woonkamer_2
         message: 'Er staat iemand voor de voordeur'
+    - service: notify.telegram_notify
+      data_template:
+        message: "Er is aangebeld bij de voordeur"
+        data:
+          photo:
+            - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
+              caption: Er is aangebeld bij de voordeur
