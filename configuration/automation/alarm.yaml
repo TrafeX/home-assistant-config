@@ -16,9 +16,14 @@
       entity_id: binary_sensor.babyroom_sensor_216
       to: 'on'
   condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: armed_away
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: armed_away
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: triggered
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
@@ -30,9 +35,14 @@
       entity_id: binary_sensor.voordeur_200
       to: 'on'
   condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: armed_night
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: armed_night
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: triggered
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
@@ -47,9 +57,14 @@
       entity_id: binary_sensor.backyard_motion_204
       to: 'on'
   condition:
-    - condition: state
-      entity_id: alarm_control_panel.home_alarm
-      state: armed_home
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: armed_home
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: triggered
   action:
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
@@ -90,6 +105,9 @@
       - condition: state
         entity_id: alarm_control_panel.home_alarm
         state: armed_night
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: triggered
   action:
     - service: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
@@ -98,9 +116,9 @@
   trigger:
     - platform: state
       entity_id: alarm_control_panel.home_alarm
-      to: 'triggered'
+      to: triggered
   action:
     - service: notify.all
       data_template:
         title: "*Inbraak alarm!*"
-        message: "Het inbraakalarm (status: {{ states.alarm_control_panel.home_alarm.state }}) is geactiveerd!"
+        message: "Het inbraakalarm (status: {{ trigger.from_state.state }}) is geactiveerd"
