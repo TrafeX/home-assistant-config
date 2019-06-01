@@ -32,3 +32,30 @@ Some of the things I've implemented:
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
 
+Hardware
+--------
+
+The following hardware is integrated in this system.
+
+| Quantity | Type | Brand | Protocol |
+|----------|------|-------|----------|
+| 1 | Controller | Vera Edge | zwave |
+| 3 | Dimmer | Fibaro dimmer 500w (FGD-211) | zwave |
+| 2 | Dimmer | Fibaro dimmer 2 250watt | zwave |
+| 1 | Wallplug | Aeon Labs Inline Smart Energie | zwave |
+| 2 | Wallplug | Greenwave Powernode-1 | zwave |
+| 1 | Wallplug | TBK Home | zwave |
+| 3 | Smoke sensor | Fibaro Smoke sensor (FGSS001) | zwave |
+| 1 | Insertmodule | Philiotech 2x1,5kw (PAN04) | zwave |
+| 1 | Insertmodule | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave |
+| 4 | Multisensor | Aeon Labs Multisensor 6 | zwave |
+| 2 | Door sensor | Sensative Strips Guard | zwave |
+| 1 | Motion sensor | Neo Coolcam motion sensor | zwave |
+| 2 | Flower sensor | Xiaomi Flora | bluetooth |
+| 1 | Assistant | Google Home Mini | wifi |
+| 1 | Weather | Netatmo Weatherstation | wifi |
+| 1 | Weather | Netatmo extension module | wifi |
+| 1 | Thermostat | Nefit Easy | wifi |
+| 1 | Energy | Youless Energy monitor LS110 | wifi |
+| 6 | Camera | Foscam, D-Link, Xiaomi | wifi |
+| 1 | Doorbell | Ring video doorbell | wifi |
