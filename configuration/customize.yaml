@@ -21,6 +21,8 @@ sensor.power_usage:
   friendly_name: Verbruik
 binary_sensor.voordeur_200:
   device_class: opening
+binary_sensor.schuifpui_249:
+  device_class: opening
 switch.ventilatie_145:
   icon: mdi:fan
 

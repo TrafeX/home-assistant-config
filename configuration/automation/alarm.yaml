@@ -10,10 +10,13 @@
       entity_id: binary_sensor.gang_2de_sensor_159
       to: 'on'
     - platform: state
+      entity_id: binary_sensor.babyroom_sensor_216
+      to: 'on'
+    - platform: state
       entity_id: binary_sensor.voordeur_200
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.babyroom_sensor_216
+      entity_id: binary_sensor.schuifpui_249
       to: 'on'
   condition:
     - condition: or
@@ -34,6 +37,9 @@
     - platform: state
       entity_id: binary_sensor.voordeur_200
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.schuifpui_249
+      to: 'on'
   condition:
     - condition: or
       conditions:
@@ -52,6 +58,9 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.voordeur_200
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.schuifpui_249
       to: 'on'
     - platform: state
       entity_id: binary_sensor.backyard_motion_204
@@ -121,4 +130,4 @@
     - service: notify.all
       data_template:
         title: "*Inbraak alarm!*"
-        message: "Het inbraakalarm (status: {{ trigger.from_state.state }}) is geactiveerd"
+        message: "Het inbraakalarm is geactiveerd!"
