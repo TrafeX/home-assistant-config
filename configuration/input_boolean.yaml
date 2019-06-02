@@ -1,0 +1,12 @@
+night_mode:
+  name: Slaapstand
+  icon: mdi:sleep
+ghost_mode:
+  name: Ghostmode
+  icon: mdi:ghost
+notify_backyard_motion:
+  name: Notify on backyard motion
+  icon: mdi:access-point
+automatic_vacuum_cleaner:
+  name: Run the vacuum cleaner at night
+  icon: mdi:robot

@@ -1,0 +1,16 @@
+- platform: template
+  sensors:
+    wasmachine_state:
+      friendly_name: 'Wasmachine'
+      value_template: >
+        {% if states.switch.wasmachine_37 %}
+          {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
+        {% endif %}
+- platform: mqtt
+  name: 'Shed sensor'
+  state_topic: homeassistant/binary_sensor/shed_motion/state
+  device_class: motion
+- platform: ping
+  host: 192.168.150.10
+  name: Ping to Vera
+- platform: ring

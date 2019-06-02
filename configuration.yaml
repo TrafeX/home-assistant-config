@@ -1,38 +1,32 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret home_latitude
   longitude: !secret home_longitude
-  # Impacts weather/sunrise data
   elevation: 0
-  # Unit system
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Amsterdam
 
-  customize_glob:
-    "sensor.*_lux*":
-      device_class: light
-    "sensor.*_humidity*":
-      device_class: moisture
-      icon: mdi:water-percent
+  customize_glob: !include configuration/customize_glob.yaml
   customize: !include configuration/customize.yaml
 
   auth_providers:
     - type: legacy_api_password
       api_password: !secret api_password
 
-# Enables the frontend
+# Enable the frontend
 frontend:
 
+# Enable lovelace with yaml configuration
 lovelace:
   mode: yaml
 
+# Enable system health on info page
 system_health:
 
+# Show the map
 map:
 
+# Define home zone for presence detection
 zone:
   - name: Home
     latitude: !secret home_latitude
@@ -40,6 +34,7 @@ zone:
     radius: 100
     icon: mdi:home
 
+# Configure HTTP access
 http:
   base_url: !secret base_url
   ip_ban_enabled: True
@@ -57,6 +52,7 @@ history:
 # View all events in a logbook
 logbook:
 
+# Configure the history of the logbook
 recorder:
   purge_interval: 2
   purge_keep_days: 8
@@ -65,9 +61,10 @@ recorder:
 # Track the sun
 sun:
 
+# Enable config via the interface
 config:
 
-# InfluxDB
+# Send statistics to InfluxDB
 influxdb:
   host: influxdb
   database: homeassistant
@@ -97,6 +94,7 @@ influxdb:
   tags:
     source: hass
 
+# Setup MQTT
 mqtt:
   broker: mosquitto
   port: 1883
@@ -113,176 +111,58 @@ mqtt:
     qos: 1
     retain: true
 
-sensor:
-  - platform: yr
-  - platform: ring
-  - platform: rest
-    resource: http://192.168.150.19/a?f=j
-    value_template: '{{ value_json.pwr }}'
-    method: GET
-    name: Power usage
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: 'Shed Temperature'
-    state_topic: homeassistant/sensor/shed_temperature/state
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: 'Shed Humidity'
-    state_topic: homeassistant/sensor/shed_humidity/state
-    unit_of_measurement: '%'
-  - platform: template
-    sensors:
-      nefit_temperature:
-        friendly_name: 'Nefit Temperature'
-        value_template: '{{ states.climate.heating.attributes.current_temperature }}'
-        unit_of_measurement: '°C'
-  - platform: mqtt
-    name: plant_1_moisture
-    state_topic: home/plants/plant1/
-    value_template: '{{ value_json.moisture }}'
-    device_class: humidity
-    unit_of_measurement: '%'
-  - platform: mqtt
-    name: plant_1_battery
-    state_topic: home/plants/plant1/
-    value_template: '{{ value_json.battery }}'
-    device_class: battery
-    unit_of_measurement: '%'
-  - platform: mqtt
-    name: plant_1_temperature
-    state_topic: home/plants/plant1/
-    value_template: '{{ value_json.temperature }}'
-    device_class: temperature
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: plant_1_conductivity
-    state_topic: home/plants/plant1/
-    value_template: '{{ value_json.conductivity }}'
-    unit_of_measurement: 'μS/cm'
-  - platform: mqtt
-    name: plant_1_brightness
-    state_topic: home/plants/plant1/
-    value_template: '{{ value_json.brightness }}'
-    device_class: illuminance
-    unit_of_measurement: 'lux'
-  - platform: mqtt
-    name: plant_2_moisture
-    state_topic: home/plants/plant2/
-    value_template: '{{ value_json.moisture }}'
-    device_class: humidity
-    unit_of_measurement: '%'
-  - platform: mqtt
-    name: plant_2_battery
-    state_topic: home/plants/plant2/
-    value_template: '{{ value_json.battery }}'
-    device_class: battery
-    unit_of_measurement: '%'
-  - platform: mqtt
-    name: plant_2_temperature
-    state_topic: home/plants/plant2/
-    value_template: '{{ value_json.temperature }}'
-    device_class: temperature
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: plant_2_conductivity
-    state_topic: home/plants/plant2/
-    value_template: '{{ value_json.conductivity }}'
-    unit_of_measurement: 'μS/cm'
-  - platform: mqtt
-    name: plant_2_brightness
-    state_topic: home/plants/plant2/
-    value_template: '{{ value_json.brightness }}'
-    device_class: illuminance
-    unit_of_measurement: 'lux'
+# Configure custom sensors
+sensor: !include configuration/sensor.yaml
 
-plant:
-  hangplant:
-    sensors:
-      moisture: sensor.plant_1_moisture
-      battery: sensor.plant_1_battery
-      temperature: sensor.plant_1_temperature
-      conductivity: sensor.plant_1_conductivity
-      brightness: sensor.plant_1_brightness
-    min_moisture: 15
-    min_battery: 15
-  hoekplant:
-    sensors:
-      moisture: sensor.plant_2_moisture
-      battery: sensor.plant_2_battery
-      temperature: sensor.plant_2_temperature
-      conductivity: sensor.plant_2_conductivity
-      brightness: sensor.plant_2_brightness
-    min_moisture: 15
-    min_battery: 15
+# Configure binary sensors
+binary_sensor: !include configuration/binary_sensor.yaml
 
+# Configure plant sensors
+plant: !include configuration/plant.yaml
+
+# Configure Vera integration
 vera:
   vera_controller_url: http://192.168.150.10:3480/
   lights: [5, 7, 31, 6, 44, 132, 148, 32, 152, 208, 245]
   exclude: [197, 198, 199, 149, 150, 30, 146, 147, 213]
 
+# Configure Netatmo integration
 netatmo:
   api_key: !secret netatmo_api_key
   secret_key: !secret netatmo_secret_key
   username: !secret netatmo_username
   password: !secret netatmo_password
 
+# Configure Ring integration
 ring:
   username: !secret ring_username
   password: !secret ring_password
 
-shell_command:
-  vera_home_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"'
-  vera_away_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"'
-  privacy_mode_enable: !secret cmd_privacy_mode_enable
-  privacy_mode_disable: !secret cmd_privacy_mode_disable
+# Configure shell commands
+shell_command: !include configuration/shell_command.yaml
 
-binary_sensor:
-  - platform: template
-    sensors:
-      wasmachine_state:
-        friendly_name: 'Wasmachine'
-        value_template: >
-          {% if states.switch.wasmachine_37 %}
-            {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
-          {% endif %}
-  - platform: mqtt
-    name: 'Shed sensor'
-    state_topic: homeassistant/binary_sensor/shed_motion/state
-    device_class: motion
-  - platform: ping
-    host: 192.168.150.10
-    name: Ping to Vera
-  - platform: ring
+# Configure input boolean switches
+input_boolean: !include configuration/input_boolean.yaml
 
-input_boolean:
-  night_mode:
-    name: Slaapstand
-    icon: mdi:sleep
-  ghost_mode:
-    name: Ghostmode
-    icon: mdi:ghost
-  notify_backyard_motion:
-    name: Notify on backyard motion
-    icon: mdi:access-point
-  automatic_vacuum_cleaner:
-    name: Run the vacuum cleaner at night
-    icon: mdi:robot
-
+# Configure media players
 media_player:
   - platform: braviatv
     host: 192.168.150.192
 
+# Configure Sonos integration
 sonos:
   media_player:
     hosts:
       - 192.168.150.141
       - 192.168.150.197
 
+# Configure Google Cast integration
 cast:
   media_player:
     - host: 192.168.150.124
     - host: 192.168.150.153
 
+# Configure TTS engine
 tts:
   - platform: google_translate
     language: nl
@@ -291,6 +171,7 @@ tts:
     time_memory: 300
     service_name: google_say
 
+# Configure notify platforms
 notify:
   - name: all
     platform: group
@@ -300,6 +181,7 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
+# Configure device trackers
 device_tracker:
   - platform: asuswrt
     host: 192.168.150.1
@@ -309,12 +191,14 @@ device_tracker:
     new_device_defaults:
       track_new_devices: false
 
+# Configure Telegram integration
 telegram_bot:
   platform: polling
   api_key: !secret telegram_api_key
   allowed_chat_ids:
     - !secret telegram_chat_id
 
+# Configure alarm panel
 alarm_control_panel:
   platform: manual
   name: Home Alarm
@@ -323,11 +207,13 @@ alarm_control_panel:
   triggered:
     pending_time: 0
 
+# Configure vacuum
 vacuum:
   - platform: xiaomi_miio
     host: 192.168.150.162
     token: !secret xiaomi_token
 
+# Configure climate
 climate:
   platform: nefit
   name: Heating
@@ -335,81 +221,29 @@ climate:
   accesskey: !secret nefit_accesskey
   password: !secret nefit_password
 
+# Enable iOS support
 ios:
 
+# Configure asuswrt integration
 asuswrt:
   host: 192.168.150.1
   username: !secret router_user
   password: !secret router_password
 
-google_assistant:
-  project_id: !secret google_assistant_project_id
-  expose_by_default: false
-  entity_config:
-    climate.heating:
-      name: Verwarming
-      room: Huis
-      expose: true
-    input_boolean.night_mode:
-      name: Slaapstand
-      room: Huis
-      expose: true
-    switch.ventilatie_145:
-      name: Ventilatie
-      room: Huis
-      expose: true
-    light.woonkamer_spots_5:
-      name: Woonkamer licht
-      room: Woonkamer
-      expose: true
-    light.keuken_spots_7:
-      name: Keuken licht
-      room: Keuken
-      expose: true
-    light.buitenlicht_achter_6:
-      name: Achtertuin licht
-      room: Achtertuin
-      expose: true
-    light.buitenlicht_voorkant_32:
-      name: Voortuin licht
-      room: Voortuin
-      expose: true
-    light.gang_licht_31:
-      name: Gang licht
-      room: Gang
-      expose: true
-    light.licht_tuindeur_148:
-      name: Tuindeur licht
-      room: Achtertuin
-      expose: true
-    light.light_babyroom_208:
-      name: Babykamer licht
-      room: Babykamer
-      expose: true
-    light.overloop_licht_1ste_44:
-      name: Overloop eerste licht
-      room: Overloop eerste verdieping
-      expose: true
-    light.overloop_licht_2de_132:
-      name: Overloop tweede licht
-      room: Overloop tweede verdieping
-      expose: true
-    light.werkkamer_licht_152:
-      name: Werkkamer licht
-      room: Werkkamer
-      expose: true
-    scene.living_movie:
-      name: Movie night scene
-      room: Woonkamer
-      expose: true
-    scene.living_normal:
-      name: Woonkamer normaal scene
-      room: Woonkamer
-      expose: true
+# Configure Google Assistant integration
+google_assistant: !include configuration/google_assistant.yaml
 
+# Configure automations
 automation: !include_dir_merge_list configuration/automation/
+
+# Configure scripts
 script: !include_dir_named configuration/script/
 
+# Configure scenes
 scene: !include configuration/scene.yaml
+
+# Configure camera's
 camera: !include configuration/camera.yaml
+
+# Configure alerts
 alert: !include configuration/alert.yaml

@@ -1,0 +1,4 @@
+vera_home_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"'
+vera_away_mode: 'curl -k "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"'
+privacy_mode_enable: !secret cmd_privacy_mode_enable
+privacy_mode_disable: !secret cmd_privacy_mode_disable
