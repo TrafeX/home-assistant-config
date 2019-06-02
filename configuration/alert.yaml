@@ -1,0 +1,11 @@
+frontdoor_open:
+  name: The frontdoor is left open for more than 10 minutes
+  message: De voordeur staat al {{ relative_time(states.binary_sensor.voordeur_200.last_changed) }} minuten open
+  done_message: De voordeur is gesloten
+  entity_id: binary_sensor.voordeur_200
+  state: 'on'
+  repeat: 10
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - telegram_notify

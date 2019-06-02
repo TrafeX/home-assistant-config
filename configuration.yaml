@@ -412,3 +412,4 @@ script: !include_dir_named configuration/script/
 
 scene: !include configuration/scene.yaml
 camera: !include configuration/camera.yaml
+alert: !include configuration/alert.yaml
