@@ -15,6 +15,7 @@
         data:
           inline_keyboard:
             - 'Stop:/stop_blinklights'
+    - service: script.start_blink_lights
 
 - alias: 'Stop blink lights from Telegram'
   trigger:
@@ -33,3 +34,4 @@
         data:
           inline_keyboard:
             - 'Blink lights:/blinklights'
+    - service: script.stop_blink_lights
