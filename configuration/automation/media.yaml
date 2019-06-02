@@ -15,7 +15,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: light.woonkamer_spots_5
-      value_template: '{{ state.attributes.brightness }}'
+      value_template: '{{ state.attributes.brightness|default(0) }}'
       above: 45
   action:
     - service: scene.turn_on
