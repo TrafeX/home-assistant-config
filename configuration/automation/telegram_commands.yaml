@@ -1,0 +1,35 @@
+- alias: 'Start blink lights from Telegram'
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/blinklights'
+  action:
+    - service: telegram_bot.answer_callback_query
+      data_template:
+        callback_query_id: '{{ trigger.event.data.id }}'
+        message: 'Blinking lights enabled'
+    - service: notify.telegram_notify
+      data:
+        message: 'Blinking lights enabled'
+        data:
+          inline_keyboard:
+            - 'Stop:/stop_blinklights'
+
+- alias: 'Stop blink lights from Telegram'
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/stop_blinklights'
+  action:
+    - service: telegram_bot.answer_callback_query
+      data_template:
+        callback_query_id: '{{ trigger.event.data.id }}'
+        message: 'Blinking lights disabled'
+    - service: notify.telegram_notify
+      data:
+        message: 'Blinking lights disabled'
+        data:
+          inline_keyboard:
+            - 'Blink lights:/blinklights'

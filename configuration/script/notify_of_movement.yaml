@@ -2,7 +2,7 @@ alias: 'Notify of movement'
 sequence:
   - service: notify.all
     data_template:
-      title: "*Beweging gedecteerd!*"
+      title: "*Beweging gedetecteerd!*"
       message: >
         Activiteit op:
         {% for state in states.binary_sensor -%}
