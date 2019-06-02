@@ -1,0 +1,3 @@
+[submodule "custom_components/nefit"]
+	path = custom_components/nefit
+	url = https://github.com/marconfus/ha-nefit-ng.git
