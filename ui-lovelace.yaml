@@ -4,8 +4,8 @@ views:
     title: default_view
     badges:
       - binary_sensor.wasmachine_state
-      - device_tracker.tim_mobile
-      - device_tracker.chantal
+      - person.tim
+      - person.chantal
       - sensor.yr_symbol
       - sensor.power_usage
       - sun.sun
@@ -18,6 +18,7 @@ views:
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
           - input_boolean.automatic_vacuum_cleaner
+          - input_select.guest_presence
         show_header_toggle: false
       - type: thermostat
         name: Verwarming

@@ -38,7 +38,7 @@
       at: '1:30:00'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.automatic_vacuum_cleaner

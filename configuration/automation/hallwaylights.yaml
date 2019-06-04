@@ -5,7 +5,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: or
       conditions:
@@ -33,7 +33,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: or
       conditions:
@@ -60,7 +60,7 @@
       entity_id: binary_sensor.gang_1ste_sensor_170
       to: 'off'
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   condition:
     - condition: state
@@ -76,7 +76,7 @@
       entity_id: binary_sensor.gang_2de_sensor_159
       to: 'off'
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   condition:
     - condition: state

@@ -1,11 +1,11 @@
 - alias: 'Turn on GangBG light when coming home'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode

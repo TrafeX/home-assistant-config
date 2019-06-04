@@ -28,6 +28,7 @@ Some of the things I've implemented:
 * A shiny interface with the new [Lovelace UI](https://www.home-assistant.io/lovelace/)
 * Showing the health of my plants
 * Make my vacuum cleaner come from under the couch to be able to empty it
+* Have a 'guest presence' select input to override the presence detection
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")

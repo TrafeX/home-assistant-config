@@ -24,7 +24,7 @@
 - alias: 'Turn off TV when leaving or sleeping'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
     - platform: state
       entity_id: input_boolean.night_mode

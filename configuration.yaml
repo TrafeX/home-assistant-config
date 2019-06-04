@@ -144,6 +144,9 @@ shell_command: !include configuration/shell_command.yaml
 # Configure input boolean switches
 input_boolean: !include configuration/input_boolean.yaml
 
+# Configure input select boxes
+input_select: !include configuration/input_select.yaml
+
 # Configure media players
 media_player:
   - platform: braviatv
@@ -229,6 +232,12 @@ asuswrt:
   host: 192.168.150.1
   username: !secret router_user
   password: !secret router_password
+
+# Configure persons
+person: !include configuration/person.yaml
+
+# Configure groups
+group: !include configuration/group.yaml
 
 # Configure Google Assistant integration
 google_assistant: !include configuration/google_assistant.yaml

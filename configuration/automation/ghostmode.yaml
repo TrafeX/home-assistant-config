@@ -6,7 +6,7 @@
     - condition: time
       after: '22:30:00'
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'not_home'
     - condition: state
       entity_id: input_boolean.night_mode
@@ -20,7 +20,7 @@
     - platform: time
       at: '01:00:00'
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
   condition:
     - condition: state

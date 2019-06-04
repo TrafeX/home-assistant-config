@@ -1,0 +1,7 @@
+guest_presence:
+  name: Guest presence
+  options:
+    - home
+    - not_home
+  initial: not_home
+  icon: mdi:home-account

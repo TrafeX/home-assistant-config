@@ -1,14 +1,14 @@
 - alias: 'Backyard light on'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
     - platform: sun
       event: 'sunset'
       offset: '+00:30:00'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode
@@ -31,7 +31,7 @@
       event: 'sunrise'
       offset: '-00:30:00'
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   action:
     - service: light.turn_off

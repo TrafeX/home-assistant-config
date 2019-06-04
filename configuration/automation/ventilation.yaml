@@ -5,7 +5,7 @@
       above: 1200
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
   action:
     - service: switch.turn_on
@@ -18,7 +18,7 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
   action:
     - service: switch.turn_on

@@ -1,7 +1,7 @@
 - alias: 'Living lights on'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
     - platform: state
       entity_id: binary_sensor.living_sensor_119
@@ -11,7 +11,7 @@
       below: 7
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode
@@ -32,7 +32,7 @@
       entity_id: sensor.living_lux_130
       above: 12
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   condition:
     - condition: state
@@ -48,7 +48,7 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode
@@ -69,7 +69,7 @@
         minutes: 15
   condition:
     - condition: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode

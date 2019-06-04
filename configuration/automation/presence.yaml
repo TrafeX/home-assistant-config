@@ -1,7 +1,7 @@
 - alias: 'Home coming'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
   action:
     - service: notify.all
@@ -23,7 +23,7 @@
 - alias: 'Leaving'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   action:
     - service: notify.all

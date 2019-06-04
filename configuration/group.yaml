@@ -1,0 +1,5 @@
+all_persons:
+  entities:
+    - person.tim
+    - person.chantal
+    - input_select.guest_presence

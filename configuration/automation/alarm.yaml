@@ -82,7 +82,7 @@
 - alias: 'Activate alarm when away'
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'not_home'
   action:
     - service: alarm_control_panel.alarm_arm_away
@@ -100,7 +100,7 @@
 - alias: 'Deactivate away and night alarm when home or awake '
   trigger:
     - platform: state
-      entity_id: group.all_devices
+      entity_id: group.all_persons
       to: 'home'
     - platform: state
       entity_id: input_boolean.night_mode
