@@ -31,7 +31,7 @@ zone:
   - name: Home
     latitude: !secret home_latitude
     longitude: !secret home_longitude
-    radius: 100
+    radius: 75
     icon: mdi:home
 
 # Configure HTTP access
