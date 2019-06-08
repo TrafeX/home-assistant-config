@@ -19,7 +19,6 @@ Some of the things I've implemented:
 * Youless integration
 * Notify when one of the smoke sensors detects smoke
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
-* Notify when someone is ringing the doorbell
 * Notify when the vacuum cleaner is done
 * Set security camera in privacy mode when at home
 * Dim the lights when the TV is turned on
@@ -29,6 +28,7 @@ Some of the things I've implemented:
 * Showing the health of my plants
 * Make my vacuum cleaner come from under the couch to be able to empty it
 * Have a 'guest presence' select input to override the presence detection
+* Send a snapshot of the person ringing the doorbell
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
