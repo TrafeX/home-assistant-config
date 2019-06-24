@@ -125,6 +125,7 @@ views:
         entities:
           - binary_sensor.babyroom_sensor_216
           - light.light_babyroom_208
+          - switch.fan_250
           - sensor.babyroom_temp_217
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218

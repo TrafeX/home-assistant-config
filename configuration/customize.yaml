@@ -25,6 +25,8 @@ binary_sensor.schuifpui_249:
   device_class: opening
 switch.ventilatie_145:
   icon: mdi:fan
+switch.fan_250:
+  icon: mdi:fan
 person.chantal:
   entity_picture: !secret picture_chantal
 person.tim:
