@@ -15,6 +15,7 @@ Some of the things I've implemented:
 * Night mode
 * Integration with Vera
 * Enable ventilation when CO2 level reaches a certain level
+* Enable ventilation when the shower is used
 * Automated Christmas lights (only during the holydays 😉)
 * Youless integration
 * Notify when one of the smoke sensors detects smoke

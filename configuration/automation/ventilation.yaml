@@ -5,18 +5,26 @@
       above: 1200
   condition:
     - condition: state
+      entity_id: switch.ventilatie_145
+      state: 'off'
+    - condition: state
       entity_id: group.all_persons
       state: 'home'
   action:
     - service: switch.turn_on
       entity_id: switch.ventilatie_145
 
-- alias: 'Turn on ventilation when waking up'
+- alias: 'Turn on ventilation when using hot water for more than 3 minutes'
   trigger:
     - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'off'
+      entity_id: binary_sensor.hotwater_active
+      to: 'on'
+      for:
+        minutes: 3
   condition:
+    - condition: state
+      entity_id: switch.ventilatie_145
+      state: 'off'
     - condition: state
       entity_id: group.all_persons
       state: 'home'
@@ -39,6 +47,10 @@
     - platform: state
       entity_id: input_boolean.night_mode
       to: 'on'
+  condition:
+    - condition: state
+      entity_id: switch.ventilatie_145
+      state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.ventilatie_145
