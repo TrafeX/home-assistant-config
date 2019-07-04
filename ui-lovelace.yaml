@@ -170,15 +170,24 @@ views:
     cards:
       - type: entities
         entities:
-          - binary_sensor.living_sensor_119
-          - binary_sensor.gang_1ste_sensor_170
-          - binary_sensor.gang_2de_sensor_159
-          - binary_sensor.babyroom_sensor_216
-          - binary_sensor.backyard_motion_204
-          - binary_sensor.shed_sensor
-          - binary_sensor.ring_voordeur_motion
-          - binary_sensor.voordeur_200
-          - binary_sensor.schuifpui_249
+          - entity: binary_sensor.living_sensor_119
+            secondary_info: last-changed
+          - entity: binary_sensor.gang_1ste_sensor_170
+            secondary_info: last-changed
+          - entity: binary_sensor.gang_2de_sensor_159
+            secondary_info: last-changed
+          - entity: binary_sensor.babyroom_sensor_216
+            secondary_info: last-changed
+          - entity: binary_sensor.backyard_motion_204
+            secondary_info: last-changed
+          - entity: binary_sensor.shed_sensor
+            secondary_info: last-changed
+          - entity: binary_sensor.ring_voordeur_motion
+            secondary_info: last-changed
+          - entity: binary_sensor.ring_voordeur_motion
+            secondary_info: last-changed
+          - entity: binary_sensor.schuifpui_249
+            secondary_info: last-changed
         show_header_toggle: false
       - type: alarm-panel
         name: Alarm
