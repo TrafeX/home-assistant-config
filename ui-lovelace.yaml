@@ -6,8 +6,8 @@ views:
       - binary_sensor.wasmachine_state
       - person.tim
       - person.chantal
-      - sensor.yr_symbol
-      - sensor.power_usage
+      - sensor.power_consumption
+      - sensor.hourly_gas_consumption
       - sun.sun
     cards:
       - type: entities

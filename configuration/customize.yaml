@@ -16,9 +16,6 @@ binary_sensor.babyroom_sensor_216:
   device_class: motion
 sensor.yr_symbol:
   friendly_name: Weer
-sensor.power_usage:
-  device_class: power
-  friendly_name: Verbruik
 binary_sensor.voordeur_200:
   device_class: opening
 binary_sensor.schuifpui_249:

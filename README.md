@@ -17,7 +17,6 @@ Some of the things I've implemented:
 * Enable ventilation when CO2 level reaches a certain level
 * Enable ventilation when the shower is used
 * Automated Christmas lights (only during the holydays 😉)
-* Youless integration
 * Notify when one of the smoke sensors detects smoke
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
 * Notify when the vacuum cleaner is done
@@ -30,6 +29,7 @@ Some of the things I've implemented:
 * Make my vacuum cleaner come from under the couch to be able to empty it
 * Have a 'guest presence' select input to override the presence detection
 * Send a snapshot of the person ringing the doorbell
+* DSMR integration, monitoring my energy and gas usage
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
@@ -58,6 +58,5 @@ The following hardware is integrated in this system.
 | 1 | Weather | Netatmo Weatherstation | wifi |
 | 1 | Weather | Netatmo extension module | wifi |
 | 1 | Thermostat | Nefit Easy | wifi |
-| 1 | Energy | Youless Energy monitor LS110 | wifi |
 | 6 | Camera | Foscam, D-Link, Xiaomi | wifi |
 | 1 | Doorbell | Ring video doorbell | wifi |

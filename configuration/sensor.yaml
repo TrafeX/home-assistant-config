@@ -1,11 +1,5 @@
 - platform: yr
 - platform: ring
-- platform: rest
-  resource: http://192.168.150.19/a?f=j
-  value_template: '{{ value_json.pwr }}'
-  method: GET
-  name: Power usage
-  unit_of_measurement: 'W'
 - platform: mqtt
   name: 'Shed Temperature'
   state_topic: homeassistant/sensor/shed_temperature/state
@@ -78,3 +72,7 @@
   value_template: '{{ value_json.brightness }}'
   device_class: illuminance
   unit_of_measurement: 'lux'
+- platform: dsmr
+  host: 192.168.150.11
+  port: 6000
+  dsmr_version: 5

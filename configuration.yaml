@@ -57,7 +57,15 @@ recorder:
   purge_interval: 2
   purge_keep_days: 14
   db_url: !secret db_url
-
+  exclude:
+    entities:
+      - sensor.power_consumption
+      - sensor.power_consumption_phase_l1
+      - sensor.power_consumption_phase_l2
+      - sensor.power_consumption_phase_l3
+      - sensor.voltage_phase_l1
+      - sensor.voltage_phase_l2
+      - sensor.voltage_phase_l3
 # Track the sun
 sun:
 
@@ -71,7 +79,6 @@ influxdb:
   default_measurement: state
   exclude:
     entities:
-      - sensor.power_usage
       - switch.achtertuin_sensor_141
       - switch.gang_1ste_sensor_170
       - switch.gang_2de_sensor_159
