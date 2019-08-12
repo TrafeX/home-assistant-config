@@ -10,6 +10,7 @@ homeassistant:
   customize: !include configuration/customize.yaml
 
   auth_providers:
+    - type: homeassistant
     - type: legacy_api_password
       api_password: !secret api_password
 
