@@ -25,8 +25,8 @@
     name: Street
     username: !secret camera_street_user
     password: !secret camera_street_password
-    still_image_url: https://192.168.150.176/cgi-bin/currentpic.cgi
-    stream_source: rtsp://192.168.150.176:8554/unicast
+    still_image_url: https://192.168.150.135/cgi-bin/currentpic.cgi
+    stream_source: rtsp://192.168.150.135:8554/unicast
     verify_ssl: false
   - platform: generic
     name: Other
