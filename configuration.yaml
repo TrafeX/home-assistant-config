@@ -92,6 +92,8 @@ influxdb:
       - switch.wasmachine_37
       - binary_sensor.ping_to_vera
       - binary_sensor.wasmachine_state
+      - binary_sensor.hotwater_active
+      - binary_sensor.updater
       - sensor.ring_voordeur_battery
       - sensor.ring_voordeur_wifi_signal_strength
       - sensor.chantal_battery_level
@@ -101,6 +103,12 @@ influxdb:
       - sensor.tim_living
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
+      - sensor.netatmo_bedroom_max_temp
+      - sensor.netatmo_bedroom_min_temp
+      - sensor.netatmo_outdoor_max_temp
+      - sensor.netatmo_outdoor_min_temp
+      - sensor.netatmo_indoor_max_temp
+      - sensor.netatmo_indoor_min_temp
       - sensor.plant_2_battery
       - device_tracker.tim_mobile
   tags:
