@@ -8,7 +8,7 @@
         {% endif %}
     hotwater_active:
       friendly_name: 'Hot Water'
-      value_template: '{{ states.climate.heating.attributes.boiler_indicator_raw == "HW" }}'
+      value_template: '{{ states.climate.heating.attributes.boiler_indicator == "HW" }}'
 - platform: mqtt
   name: 'Shed sensor'
   state_topic: homeassistant/binary_sensor/shed_motion/state
