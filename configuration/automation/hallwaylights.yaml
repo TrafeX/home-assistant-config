@@ -21,9 +21,9 @@
         entity_id: light.overloop_licht_1ste_44
         brightness: >
           {% if is_state('input_boolean.night_mode', 'on') %}
-            40
+            30
           {% else %}
-            100
+            80
           {% endif %}
 
 - alias: 'Turn on Gang2de light when motion'
@@ -49,9 +49,9 @@
         entity_id: light.overloop_licht_2de_132
         brightness: >
           {% if is_state('input_boolean.night_mode', 'on') %}
-            40
+            30
           {% else %}
-            100
+            80
           {% endif %}
 
 - alias: 'Turn off Gang1ste light'
