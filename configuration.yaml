@@ -41,9 +41,6 @@ http:
   ip_ban_enabled: True
   login_attempts_threshold: 5
 
-# Checks for available updates
-updater:
-
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
@@ -67,6 +64,7 @@ recorder:
       - sensor.voltage_phase_l1
       - sensor.voltage_phase_l2
       - sensor.voltage_phase_l3
+
 # Track the sun
 sun:
 
