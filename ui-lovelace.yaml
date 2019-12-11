@@ -70,7 +70,6 @@ views:
           - light.buitenlicht_achter_6
           - light.licht_tuindeur_148
           - light.buitenlicht_voorkant_32
-          - light.garden_lights_251
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temp1_202
