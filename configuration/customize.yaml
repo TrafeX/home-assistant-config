@@ -24,6 +24,11 @@ switch.ventilatie_145:
   icon: mdi:fan
 switch.fan_250:
   icon: mdi:fan
+light.christmas_star_251:
+  icon: mdi:star
+light.christmas_tree_253:
+  icon: mdi:pine-tree
+
 person.chantal:
   entity_picture: !secret picture_chantal
 person.tim:
