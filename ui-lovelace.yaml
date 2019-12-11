@@ -57,12 +57,6 @@ views:
           - vacuum.xiaomi_vacuum_cleaner
           - script.empty_vacuum_cleaner
         show_header_toggle: false
-      - type: plant-status
-        name: Hang plant
-        entity: plant.hangplant
-      - type: plant-status
-        name: Hoek plant
-        entity: plant.hoekplant
       - type: entities
         title: Buiten
         entities:
