@@ -66,7 +66,7 @@ views:
       - type: entities
         title: Buiten
         entities:
-          - binary_sensor.backyard_motion_204
+          - binary_sensor.backyard_sensor_201
           - light.buitenlicht_achter_6
           - light.licht_tuindeur_148
           - light.buitenlicht_voorkant_32
@@ -179,7 +179,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
-          - entity: binary_sensor.backyard_motion_204
+          - entity: binary_sensor.backyard_sensor_201
             secondary_info: last-changed
           - entity: binary_sensor.shed_sensor
             secondary_info: last-changed
@@ -232,7 +232,7 @@ views:
             top: 3%
             left: 30%
         - type: state-icon
-          entity: binary_sensor.backyard_motion_204
+          entity: binary_sensor.backyard_sensor_201
           style:
             top: 3%
             left: 21%
