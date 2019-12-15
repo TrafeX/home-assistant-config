@@ -1,8 +1,8 @@
 alias: 'Empty the vacuum cleaner'
 sequence:
-  - service: vacuum.xiaomi_remote_control_move_step
+  - service: xiaomi_miio.vacuum_remote_control_move_step
     data:
       entity_id: vacuum.xiaomi_vacuum_cleaner
       velocity: 0.29
-      rotation: 0
+      rotation: -20
       duration: 3000
