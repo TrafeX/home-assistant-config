@@ -8,5 +8,5 @@ notify_backyard_motion:
   name: Notify on backyard motion
   icon: mdi:access-point
 automatic_vacuum_cleaner:
-  name: Run the vacuum cleaner at night
+  name: Run the vacuum cleaner this night
   icon: mdi:robot
