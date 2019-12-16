@@ -10,6 +10,9 @@
     - condition: state
       entity_id: input_boolean.night_mode
       state: 'off'
+    - condition: state
+      entity_id: light.christmas_tree_253
+      state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.christmas_tree_253
