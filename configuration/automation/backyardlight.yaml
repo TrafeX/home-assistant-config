@@ -1,4 +1,4 @@
-- alias: 'Backyard light on'
+- alias: 'Turn on backyard light'
   trigger:
     - platform: state
       entity_id: group.all_persons
@@ -25,7 +25,7 @@
         entity_id: light.buitenlicht_achter_6
         brightness: 25
 
-- alias: 'Backyard light off'
+- alias: 'Turn off backyard light'
   trigger:
     - platform: sun
       event: 'sunrise'
@@ -38,3 +38,32 @@
       data:
         entity_id: light.buitenlicht_achter_6
 
+- alias: 'Raise brightness of backyard light when motion'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_sensor_201
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.buitenlicht_achter_6
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buitenlicht_achter_6
+        brightness: 100
+
+- alias: 'Dim brightness of backyard light'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_sensor_201
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.buitenlicht_achter_6
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.buitenlicht_achter_6
+        brightness: 25
