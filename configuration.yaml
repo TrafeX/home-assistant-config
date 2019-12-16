@@ -95,11 +95,7 @@ influxdb:
       - sensor.ring_voordeur_battery
       - sensor.ring_voordeur_wifi_signal_strength
       - sensor.battery_level
-      - sensor.chantal_battery_level
-      - sensor.chantal_battery_level_2
-      - sensor.chantal_battery_state
-      - sensor.chantal_battery_state_2
-      - sensor.tim_living
+      - sensor.battery_state
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
       - sensor.netatmo_bedroom_max_temp
@@ -108,8 +104,6 @@ influxdb:
       - sensor.netatmo_outdoor_min_temp
       - sensor.netatmo_indoor_max_temp
       - sensor.netatmo_indoor_min_temp
-      - sensor.plant_2_battery
-      - device_tracker.tim_mobile
   tags:
     source: hass
 
