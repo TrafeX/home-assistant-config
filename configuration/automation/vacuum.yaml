@@ -58,3 +58,5 @@
   action:
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.automatic_vacuum_cleaner
