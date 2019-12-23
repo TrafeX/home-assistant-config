@@ -1,4 +1,4 @@
-- alias: 'Trigger notification when motion in backyard'
+- alias: 'Notify when motion in backyard'
   trigger:
     - platform: state
       entity_id: binary_sensor.backyard_sensor_201
@@ -16,7 +16,7 @@
             - url: "http://127.0.0.1:8123{{ states.camera.backyard.attributes.entity_picture }}"
               caption: Beweging in achtertuin
 
-- alias: 'Trigger notification when motion in shed'
+- alias: 'Notify when motion in shed'
   trigger:
     - platform: state
       entity_id: binary_sensor.shed_sensor
