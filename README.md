@@ -32,6 +32,7 @@ Some of the things I've implemented:
 * DSMR integration, monitoring my energy and gas usage
 * Notify when the wind conditions are bad and we need to close some windows
 * Brighten the backyard lights when motion is detected
+* Notify when the powerline voltage is fluctuation too much
 
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
