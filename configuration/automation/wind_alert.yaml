@@ -1,0 +1,14 @@
+- alias: 'Notify when wind conditions are bad'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.weather_forecast_wind_speed
+      above: 8
+  condition:
+    - condition: numeric_state
+      entity_id: sendor.weather_forecast_wind_direction
+      above: 270
+      below: 90
+  action:
+    - service: notify.all
+      data_template:
+        message: 'De wind neemt toe en komt uit het noorden: {{ states("sensor.weather_forecast_wind_speed") }}/ms'

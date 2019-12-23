@@ -1,4 +1,9 @@
 - platform: yr
+  name: Weather forecast
+  forecast: 12
+  monitored_conditions:
+    - windSpeed
+    - windDirection
 - platform: ring
 - platform: mqtt
   name: 'Shed Temperature'
