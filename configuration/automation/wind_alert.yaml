@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.weather_forecast_wind_speed
-      above: 8
+      above: 5
   condition:
     - condition: numeric_state
       entity_id: sendor.weather_forecast_wind_direction
