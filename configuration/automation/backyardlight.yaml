@@ -3,6 +3,9 @@
     - platform: state
       entity_id: group.all_persons
       to: 'home'
+    - platform: state
+      entity_id: binary_sensor.living_sensor_119
+      to: 'on'
     - platform: sun
       event: 'sunset'
       offset: '+00:30:00'
@@ -16,9 +19,14 @@
     - condition: state
       entity_id: light.buitenlicht_achter_6
       state: 'off'
-    - condition: sun
-      after: 'sunset'
-      after_offset: '+00:30:00'
+    - condition: or
+      conditions:
+      - condition: sun
+        after: 'sunset'
+        after_offset: '+00:30:00'
+      - condition: sun
+        before: 'sunrise'
+        before_offset: '-00:30:00'
   action:
     - service: light.turn_on
       data:
