@@ -1,6 +1,6 @@
 - platform: yr
   name: Weather forecast
-  forecast: 12
+  forecast: 8
   monitored_conditions:
     - windSpeed
     - windDirection
