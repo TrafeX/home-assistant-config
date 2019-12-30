@@ -32,6 +32,6 @@
     name: Other
     username: !secret camera_other_user
     password: !secret camera_other_password
-    still_image_url: https://192.168.150.237/cgi-bin/currentpic.cgi
-    stream_source: rtsp://192.168.150.237:8554/unicast
+    still_image_url: https://192.168.150.236/cgi-bin/currentpic.cgi
+    stream_source: rtsp://192.168.150.236:8554/unicast
     verify_ssl: false
