@@ -14,6 +14,7 @@ Some of the things I've implemented:
 * Presence detection with home coming and leaving automation
 * Night mode
 * Integration with Vera
+* Modules with ESPHome communicating via MQTT
 * Enable ventilation when CO2 level reaches a certain level
 * Enable ventilation when the shower is used
 * Automated Christmas lights (only during the holydays 😉)

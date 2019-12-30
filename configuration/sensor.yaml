@@ -7,11 +7,13 @@
 - platform: ring
 - platform: mqtt
   name: 'Shed Temperature'
-  state_topic: homeassistant/sensor/shed_temperature/state
+  state_topic: shed/sensor/shed_temperature/state
+  availability_topic: shed/status
   unit_of_measurement: '°C'
 - platform: mqtt
   name: 'Shed Humidity'
-  state_topic: homeassistant/sensor/shed_humidity/state
+  state_topic: shed/sensor/shed_humidity/state
+  availability_topic: shed/status
   unit_of_measurement: '%'
 - platform: template
   sensors:
