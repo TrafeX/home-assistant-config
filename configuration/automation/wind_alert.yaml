@@ -3,11 +3,18 @@
     - platform: numeric_state
       entity_id: sensor.weather_forecast_wind_speed
       above: 6
+    - platform: numeric_state
+      entity_id: sendor.weather_forecast_wind_direction
+      above: 190
+      below: 350
   condition:
     - condition: numeric_state
       entity_id: sendor.weather_forecast_wind_direction
       above: 190
       below: 350
+    - condition: numeric_state
+      entity_id: sensor.weather_forecast_wind_speed
+      above: 6
   action:
     - service: notify.all
       data_template:
