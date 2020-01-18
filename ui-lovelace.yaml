@@ -77,8 +77,8 @@ views:
           - binary_sensor.rookmelder_bg_247
           - light.gang_licht_31
           - sensor.temperatuur_bg_248
-          - binary_sensor.ring_voordeur_ding
-          - binary_sensor.ring_voordeur_motion
+          - binary_sensor.voordeur_ding
+          - binary_sensor.voordeur_motion
         show_header_toggle: false
       - type: entities
         title: Gang 1ste
@@ -322,7 +322,7 @@ views:
             top: 3%
             left: 50%
         - type: state-icon
-          entity: binary_sensor.ring_voordeur_motion
+          entity: binary_sensor.voordeur_motion
           style:
             top: 85%
             left: 58%

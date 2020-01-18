@@ -21,7 +21,7 @@
             {%- endif -%}
           {% endfor %}
     - service: light.turn_on
-      entity_id: group.all_lights
+      entity_id: all
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_2

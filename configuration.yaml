@@ -92,8 +92,7 @@ influxdb:
       - binary_sensor.wasmachine_state
       - binary_sensor.hotwater_active
       - binary_sensor.updater
-      - sensor.ring_voordeur_battery
-      - sensor.ring_voordeur_wifi_signal_strength
+      - sensor.voordeur_battery
       - sensor.battery_level
       - sensor.battery_state
       - sensor.netatmo_bedroom_battery_percent

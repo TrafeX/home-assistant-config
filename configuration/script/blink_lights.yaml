@@ -1,10 +1,10 @@
 alias: 'Blink lights'
 sequence:
   - service: light.turn_on
-    entity_id: group.all_lights
+    entity_id: all
   - delay:
       seconds: 4
   - service: light.turn_off
-    entity_id: group.all_lights
+    entity_id: all
   - service: script.turn_on
     entity_id: script.start_blink_lights
