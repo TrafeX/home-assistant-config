@@ -75,7 +75,7 @@ views:
         entities:
           - binary_sensor.voordeur_200
           - binary_sensor.rookmelder_bg_247
-          - light.gang_licht_31
+          - light.gang_licht_30
           - sensor.temperatuur_bg_248
           - binary_sensor.voordeur_ding
           - binary_sensor.voordeur_motion
@@ -238,7 +238,7 @@ views:
         - type: state-icon
           tap_action:
             action: toggle
-          entity: light.gang_licht_31
+          entity: light.gang_licht_30
           style:
             top: 84%
             left: 39%

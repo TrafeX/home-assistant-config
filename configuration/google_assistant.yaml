@@ -29,7 +29,7 @@ entity_config:
     name: Voortuin licht
     room: Voortuin
     expose: true
-  light.gang_licht_31:
+  light.gang_licht_30:
     name: Gang licht
     room: Gang
     expose: true
