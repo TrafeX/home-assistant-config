@@ -94,6 +94,7 @@ influxdb:
       - binary_sensor.updater
       - sensor.voordeur_battery
       - sensor.battery_level
+      - sensor.battery_level_2
       - sensor.battery_state
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
@@ -140,10 +141,8 @@ vera:
 
 # Configure Netatmo integration
 netatmo:
-  api_key: !secret netatmo_api_key
-  secret_key: !secret netatmo_secret_key
-  username: !secret netatmo_username
-  password: !secret netatmo_password
+  client_id: !secret netatmo_api_key
+  client_secret: !secret netatmo_secret_key
 
 # Configure Ring integration
 ring:
