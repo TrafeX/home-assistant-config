@@ -228,12 +228,12 @@ vacuum:
     token: !secret xiaomi_token
 
 # Configure climate
-climate:
-  platform: nefit
-  name: Heating
-  serial: !secret nefit_serial
-  accesskey: !secret nefit_accesskey
-  password: !secret nefit_password
+nefiteasy:
+  devices:
+    - serial: !secret nefit_serial
+      accesskey: !secret nefit_accesskey
+      password: !secret nefit_password
+      name: Heating
 
 # Enable iOS support
 ios:
