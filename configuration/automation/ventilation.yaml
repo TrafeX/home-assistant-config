@@ -17,8 +17,8 @@
 - alias: 'Turn on ventilation when using hot water for more than 3 minutes'
   trigger:
     - platform: state
-      entity_id: binary_sensor.hotwater_active
-      to: 'on'
+      entity_id: sensor.heating_status
+      to: 'hot water active'
       for:
         minutes: 3
   condition:

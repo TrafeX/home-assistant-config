@@ -6,9 +6,6 @@
         {% if states.switch.wasmachine_37 %}
           {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
         {% endif %}
-    hotwater_active:
-      friendly_name: 'Hot Water'
-      value_template: '{{ states.climate.heating.attributes.boiler_indicator == "HW" }}'
 - platform: mqtt
   name: 'Shed sensor'
   state_topic: shed/binary_sensor/shed_motion/state
