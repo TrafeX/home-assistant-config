@@ -6,7 +6,7 @@ Features
 --------
 Some of the things I've implemented:
 
-* Alarm system wich sends snapshots of the camera's when motion is detected
+* Alarm system which sends snapshots of the camera's when motion is detected
 * Fully automated living lights
 * Automated hallway lights which dim at night
 * Notify when washing machine is finished
@@ -17,7 +17,7 @@ Some of the things I've implemented:
 * Modules with ESPHome communicating via MQTT
 * Enable ventilation when CO2 level reaches a certain level
 * Enable ventilation when the shower is used
-* Automated Christmas lights (only during the holydays 😉)
+* Automated Christmas lights (only during the holidays 😉)
 * Notify when one of the smoke sensors detects smoke
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
 * Notify when the vacuum cleaner is done
