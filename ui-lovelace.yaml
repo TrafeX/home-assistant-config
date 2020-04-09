@@ -185,7 +185,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.shed_sensor
             secondary_info: last-changed
-          - entity: binary_sensor.ring_voordeur_motion
+          - entity: binary_sensor.voordeur_motion
             secondary_info: last-changed
           - entity: binary_sensor.voordeur_200
             secondary_info: last-changed
