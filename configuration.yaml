@@ -230,6 +230,8 @@ alarm_control_panel:
   trigger_time: 60
   triggered:
     pending_time: 0
+  armed_home:
+    pending_time: 5
 
 # Configure vacuum
 vacuum:
