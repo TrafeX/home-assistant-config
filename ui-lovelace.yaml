@@ -161,8 +161,6 @@ views:
       - type: picture-entity
         entity: camera.street
       - type: picture-entity
-        entity: camera.other
-      - type: picture-entity
         entity: camera.shed
       - type: picture-entity
         entity: camera.living

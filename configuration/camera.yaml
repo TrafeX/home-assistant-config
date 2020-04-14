@@ -10,11 +10,6 @@
     port: 88
     username: !secret camera_backyard_user
     password: !secret camera_backyard_password
-  - platform: mjpeg
-    name: Living
-    mjpeg_url: http://192.168.150.13/image/jpeg.cgi
-    username: !secret camera_living_user
-    password: !secret camera_living_password
   - platform: foscam
     ip: 192.168.150.15
     name: Shed
@@ -29,7 +24,7 @@
     stream_source: rtsp://192.168.150.135:8554/unicast
     verify_ssl: false
   - platform: generic
-    name: Other
+    name: Living
     username: !secret camera_other_user
     password: !secret camera_other_password
     still_image_url: https://192.168.150.236/cgi-bin/currentpic.cgi
