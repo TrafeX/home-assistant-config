@@ -149,14 +149,24 @@ ring:
   username: !secret ring_username
   password: !secret ring_password
 
-# Configure shell commands
-shell_command: !include configuration/shell_command.yaml
-
 # Configure input boolean switches
 input_boolean: !include configuration/input_boolean.yaml
 
 # Configure input select boxes
 input_select: !include configuration/input_select.yaml
+
+# Configure REST commands
+rest_command:
+  enable_privacy_mode:
+    url: !secret privacy_mode_enable_url
+    verify_ssl: false
+  disable_privacy_mode:
+    url: !secret privacy_mode_disable_url
+    verify_ssl: false
+  vera_home_mode:
+    url: "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"
+  vera_away_mode:
+    url: "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"
 
 # Configure media players
 media_player:

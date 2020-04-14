@@ -10,7 +10,7 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'armed_night'
   action:
-    - service: shell_command.privacy_mode_disable
+    - service: rest_command.disable_privacy_mode
 
 - alias: 'Enable camera privacy when alarm is disarmed'
   trigger:
@@ -18,5 +18,5 @@
       entity_id: alarm_control_panel.home_alarm
       to: 'disarmed'
   action:
-    - service: shell_command.privacy_mode_enable
+    - service: rest_command.enable_privacy_mode
 

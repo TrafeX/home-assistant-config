@@ -14,7 +14,7 @@
               {{ state.name }}
             {%- endif -%}
           {% endfor %}
-    - service: shell_command.vera_home_mode
+    - service: rest_command.vera_home_mode
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_2
@@ -29,4 +29,4 @@
     - service: notify.all
       data:
         message: Afwezigheid gedetecteerd
-    - service: shell_command.vera_away_mode
+    - service: rest_command.vera_away_mode
