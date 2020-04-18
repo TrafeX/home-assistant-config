@@ -136,7 +136,7 @@ plant: !include configuration/plant.yaml
 # Configure Vera integration
 vera:
   vera_controller_url: http://192.168.150.10:3480/
-  lights: [5, 7, 30, 6, 44, 132, 148, 32, 152, 208, 245, 251, 253]
+  lights: [5, 7, 30, 6, 44, 132, 148, 32, 152, 208, 245, 251, 253, 254]
   exclude: [197, 198, 199, 149, 150, 31, 146, 147, 213]
 
 # Configure Netatmo integration

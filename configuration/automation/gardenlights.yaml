@@ -1,0 +1,40 @@
+- alias: 'Garden lights on when sun is setting'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+    - platform: sun
+      event: 'sunset'
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: state
+      entity_id: light.garden_lights_254
+      state: 'off'
+    - condition: sun
+      after: 'sunset'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.garden_lights_254
+
+- alias: 'Garden lights off when going away or to sleep'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.garden_lights_254
+      state: 'on'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.garden_lights_254
