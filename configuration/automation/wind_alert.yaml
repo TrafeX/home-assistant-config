@@ -2,7 +2,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.weather_forecast_wind_speed
-      above: 6
+      above: 8
     - platform: numeric_state
       entity_id: sensor.weather_forecast_wind_direction
       above: 190
@@ -14,7 +14,7 @@
       below: 350
     - condition: numeric_state
       entity_id: sensor.weather_forecast_wind_speed
-      above: 6
+      above: 8
   action:
     - service: notify.all
       data_template:
