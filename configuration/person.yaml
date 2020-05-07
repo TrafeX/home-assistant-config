@@ -8,5 +8,5 @@
   id: peebeezaiWohthahk0de
   user_id: !secret user_id_chantal
   device_trackers:
-    - device_tracker.chantal_2
     - device_tracker.chantal_router
+    - device_tracker.in2013
