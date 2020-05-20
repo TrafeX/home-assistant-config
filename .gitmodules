@@ -1,6 +1,0 @@
-[submodule "custom_components/nefit"]
-	path = custom_components/nefit
-	url = https://github.com/marconfus/ha-nefit-ng.git
-[submodule "custom_components/nefiteasy"]
-	path = custom_components/nefiteasy
-	url = https://github.com/ksya/ha-nefiteasy.git

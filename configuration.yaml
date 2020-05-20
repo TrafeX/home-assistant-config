@@ -52,7 +52,6 @@ logbook:
 
 # Configure the history of the logbook
 recorder:
-  purge_interval: 2
   purge_keep_days: 14
   db_url: !secret db_url
   exclude:
