@@ -129,8 +129,9 @@
   action:
     - service: notify.all
       data_template:
-        title: '*Inbraak alarm!*'
+        title: '🚨 *Inbraak alarm!*'
         message: 'Het inbraakalarm is geactiveerd! Status: {{ trigger.from_state.state|default("unknown")|replace("_", " ") }}'
         data:
           inline_keyboard:
             - 'Blink lights:/blinklights'
+            - 'Disarm alarm:/disarm_alarm'

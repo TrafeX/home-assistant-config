@@ -225,12 +225,11 @@ telegram_bot:
 alarm_control_panel:
   platform: manual
   name: Home Alarm
-  pending_time: 30
+  arming_time: 30
   trigger_time: 60
-  triggered:
-    pending_time: 0
+  delay_time: 60
   armed_home:
-    pending_time: 5
+    arming_time: 5
 
 # Configure vacuum
 vacuum:

@@ -35,3 +35,20 @@
           inline_keyboard:
             - 'Blink lights:/blinklights'
     - service: script.stop_blink_lights
+
+- alias: 'Disarm alarm'
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/disarm_alarm'
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.home_alarm
+    - service: telegram_bot.answer_callback_query
+      data_template:
+        callback_query_id: '{{ trigger.event.data.id }}'
+        message: 'Alarm disarmed'
+    - service: notify.telegram_notify
+      data:
+        message: '✅ Alarm disarmed'

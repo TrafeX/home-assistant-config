@@ -1,8 +1,8 @@
 alias: 'Notify of movement'
 sequence:
-  - service: notify.all
+  - service: notify.telegram_notify
     data_template:
-      title: "*Beweging gedetecteerd!*"
+      title: "⚠ *Beweging gedetecteerd!*"
       message: >
         Activiteit op:
         {% for state in states.binary_sensor -%}
@@ -10,6 +10,9 @@ sequence:
             {{ state.name }}
           {%- endif -%}
         {% endfor %}
+      data:
+        inline_keyboard:
+          - 'Disarm alarm:/disarm_alarm'
   - service: notify.telegram_notify
     data_template:
       message: "Beweging gedetecteerd"
