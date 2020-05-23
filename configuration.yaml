@@ -5,6 +5,8 @@ homeassistant:
   elevation: 0
   unit_system: metric
   time_zone: Europe/Amsterdam
+  internal_url: !secret base_url
+  external_url: !secret base_url
 
   customize_glob: !include configuration/customize_glob.yaml
   customize: !include configuration/customize.yaml
@@ -37,7 +39,6 @@ zone:
 
 # Configure HTTP access
 http:
-  base_url: !secret base_url
   use_x_forwarded_for: true
   trusted_proxies: 172.17.0.0/16
 
@@ -250,6 +251,10 @@ asuswrt:
   host: 192.168.150.1
   username: !secret router_user
   password: !secret router_password
+
+home_connect:
+  client_id: !secret home_connect_client_id
+  client_secret: !secret home_connect_client_secret
 
 # Configure persons
 person: !include configuration/person.yaml

@@ -3,7 +3,7 @@ views:
   - path: default_view
     title: default_view
     badges:
-      - binary_sensor.wasmachine_state
+      - switch.wasmachine_power
       - person.tim
       - person.chantal
       - sensor.power_consumption
