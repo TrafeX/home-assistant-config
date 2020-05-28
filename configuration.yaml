@@ -93,9 +93,6 @@ influxdb:
       - binary_sensor.hotwater_active
       - binary_sensor.updater
       - sensor.voordeur_battery
-      - sensor.battery_level
-      - sensor.battery_level_2
-      - sensor.battery_state
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
       - sensor.netatmo_bedroom_max_temp
@@ -104,6 +101,8 @@ influxdb:
       - sensor.netatmo_outdoor_min_temp
       - sensor.netatmo_indoor_max_temp
       - sensor.netatmo_indoor_min_temp
+      - sensor.in2013_battery_level
+      - sensor.oneplus_a5010_battery_level
   tags:
     source: hass
 
