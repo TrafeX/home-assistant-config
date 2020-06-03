@@ -7,13 +7,14 @@ Features
 Some of the things I've implemented:
 
 * Alarm system which sends snapshots of the camera's when motion is detected
+* Ability to disarm the alarm via Telegram actions
 * Fully automated living lights
 * Automated hallway lights which dim at night
 * Notify when washing machine is finished
-* Play a speech message via the Google Home
+* Play speech messages via the Google Home
 * Presence detection with home coming and leaving automation
 * Night mode
-* Integration with Vera
+* Integration with Vera Edge
 * Modules with ESPHome communicating via MQTT
 * Enable ventilation when CO2 level reaches a certain level
 * Enable ventilation when the shower is used
@@ -25,7 +26,6 @@ Some of the things I've implemented:
 * Dim the lights when the TV is turned on
 * Turn the heating down when night mode is activated
 * Notify when you leave the frontdoor open
-* A shiny interface with the new [Lovelace UI](https://www.home-assistant.io/lovelace/)
 * Showing the health of my plants
 * Make my vacuum cleaner come from under the couch to be able to empty it
 * Have a 'guest presence' select input to override the presence detection
