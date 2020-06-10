@@ -18,4 +18,4 @@
   action:
     - service: notify.all
       data_template:
-        message: 'Over 8 uur neemt de wind neemt toe en komt uit het westen: {{ states("sensor.weather_forecast_wind_speed") }}/ms'
+        message: 'Vanaf {{ (as_timestamp(now()) | int + (8*60*60)) | timestamp_custom("%H:%M") }} neemt de wind neemt toe en komt uit het westen: {{ states("sensor.weather_forecast_wind_speed") }}/ms'
