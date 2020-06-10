@@ -6,7 +6,7 @@
       for:
         minutes: 3
   action:
-    - service: notify.all
+    - service: notify.apps
       data:
         message: 'De wasdroger is klaar'
     - service: tts.google_say

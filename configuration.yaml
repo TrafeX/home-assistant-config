@@ -196,6 +196,11 @@ tts:
 
 # Configure notify platforms
 notify:
+  - name: apps
+    platform: group
+    services:
+      - service: mobile_app_tim_mobile
+      - service: telegram_notify
   - name: all
     platform: group
     services:
