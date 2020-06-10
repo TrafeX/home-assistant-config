@@ -1,0 +1,19 @@
+- alias: 'Notify when the washing machine is finished'
+  trigger:
+    - platform: template
+      value_template: >
+        {% if as_timestamp(states('sensor.wasmachine_remaining_program_time')) < as_timestamp(now()) %}
+        true
+        {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
+        true
+        {% endif %}"
+      for:
+        minutes: 1
+  action:
+    - service: notify.apps
+      data:
+        message: 'De wasmachine is klaar'
+    - service: tts.google_say
+      data:
+        entity_id: media_player.woonkamer_2
+        message: 'De wasmachine is klaar'
