@@ -1,7 +1,7 @@
-- alias: 'Notify when washing machine is finished'
+- alias: 'Notify when the wash dryer is finished'
   trigger:
     - platform: state
-      entity_id: binary_sensor.wasmachine_state
+      entity_id: binary_sensor.wash_dryer_state
       to: 'off'
       for:
         hours: 0
@@ -10,8 +10,8 @@
   action:
     - service: notify.all
       data:
-        message: 'De wasmachine is klaar'
+        message: 'De wasdroger is klaar'
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_2
-        message: 'De wasmachine is klaar'
+        message: 'De wasdroger is klaar'

@@ -3,7 +3,7 @@ views:
   - path: default_view
     title: default_view
     badges:
-      - switch.wasmachine_power
+      - binary_sensor.wash_dryer_state
       - person.tim
       - person.chantal
       - sensor.power_consumption
@@ -385,3 +385,8 @@ views:
           style:
             top: 52%
             left: 29%
+    - type: map
+      entities:
+        - device_tracker.oneplus_a5010
+        - device_tracker.in2013
+      hours_to_show: 24
