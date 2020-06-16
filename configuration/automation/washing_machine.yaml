@@ -6,7 +6,7 @@
         true
         {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
         true
-        {% endif %}"
+        {% endif %}
       for:
         minutes: 1
   action:
