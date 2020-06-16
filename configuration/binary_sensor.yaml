@@ -2,6 +2,8 @@
   sensors:
     wash_dryer_state:
       friendly_name: 'Wash dryer'
+      delay_on:
+        seconds: 15
       value_template: >
         {% if states.switch.wasmachine_37 %}
           {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
