@@ -143,11 +143,6 @@ netatmo:
   client_id: !secret netatmo_api_key
   client_secret: !secret netatmo_secret_key
 
-# Configure Ring integration
-ring:
-  username: !secret ring_username
-  password: !secret ring_password
-
 # Configure input boolean switches
 input_boolean: !include configuration/input_boolean.yaml
 

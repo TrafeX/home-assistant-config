@@ -4,7 +4,6 @@
   monitored_conditions:
     - windSpeed
     - windDirection
-- platform: ring
 - platform: mqtt
   name: 'Shed Temperature'
   state_topic: shed/sensor/shed_temperature/state

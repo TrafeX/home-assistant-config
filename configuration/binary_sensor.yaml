@@ -14,7 +14,6 @@
 - platform: ping
   host: 192.168.150.10
   name: Ping to Vera
-- platform: ring
 - platform: trend
   sensors:
     voltage_sags:
