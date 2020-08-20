@@ -1,5 +1,7 @@
 project_id: !secret google_assistant_project_id
+service_account: !include ../hass_sa.json
 expose_by_default: false
+report_state: true
 entity_config:
   climate.heating:
     name: Verwarming
