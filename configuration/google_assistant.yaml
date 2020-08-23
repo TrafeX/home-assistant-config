@@ -55,6 +55,10 @@ entity_config:
     name: Werkkamer licht
     room: Werkkamer
     expose: true
+  vacuum.xiaomi_vacuum_cleaner:
+    name: Stofzuiger
+    room: Woonkamer
+    expose: true
   scene.living_movie:
     name: Movie night scene
     room: Woonkamer
@@ -62,4 +66,8 @@ entity_config:
   scene.living_normal:
     name: Woonkamer normaal scene
     room: Woonkamer
+    expose: true
+  camera.frontyard:
+    name: Voortuin camera
+    room: Voortuin
     expose: true
