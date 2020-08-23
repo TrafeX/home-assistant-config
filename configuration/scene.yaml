@@ -1,4 +1,5 @@
 - name: Living Movie
+  icon: mdi:movie-open
   entities:
     light.woonkamer_spots_5:
       state: on
@@ -15,6 +16,7 @@
       state: on
       brightness: 65
 - name: Living Normal
+  icon: mdi:brightness-5
   entities:
     light.woonkamer_spots_5:
       state: on
