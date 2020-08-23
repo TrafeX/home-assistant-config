@@ -55,7 +55,6 @@ views:
           - sensor.living_humidity_131
           - sensor.living_lux_130
           - vacuum.xiaomi_vacuum_cleaner
-          - script.empty_vacuum_cleaner
         show_header_toggle: false
       - type: entities
         title: Buiten

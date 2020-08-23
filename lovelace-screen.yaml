@@ -1,0 +1,189 @@
+title: Screen dashboard
+views:
+  - path: dashboard
+    title: Dashboard
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: input_boolean.night_mode
+              - type: button
+                entity: input_boolean.automatic_vacuum_cleaner
+              - type: button
+                entity: scene.living_normal
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_normal
+              - type: button
+                entity: scene.living_movie
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_movie
+              - type: button
+                entity: binary_sensor.washing_machine_state
+              - type: button
+                entity: binary_sensor.wash_dryer_state
+              - type: alarm-panel
+                name: Alarm
+                states:
+                  - arm_home
+                  - arm_away
+                  - arm_night
+                entity: alarm_control_panel.home_alarm
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.woonkamer_spots_5
+              - type: light
+                entity: light.keuken_spots_7
+              - type: light
+                entity: light.buitenlicht_achter_6
+              - type: light
+                entity: light.overloop_licht_1ste_44
+              - type: light
+                entity: light.light_babyroom_208
+              - type: light
+                entity: light.overloop_licht_2de_132
+              - type: light
+                entity: light.werkkamer_licht_152
+              - type: button
+                entity: light.gang_licht_30
+              - type: button
+                entity: light.buitenlicht_voorkant_32
+              - type: button
+                entity: light.licht_tuindeur_148
+              - type: button
+                entity: light.garden_lights_254
+          - type: horizontal-stack
+            cards:
+              - type: picture-entity
+                entity: camera.frontyard
+              - type: picture-entity
+                entity: camera.backyard
+              - type: picture-entity
+                entity: camera.living
+              - type: picture-entity
+                entity: camera.street
+          - type: horizontal-stack
+            cards:
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.living_sensor_119
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.gang_1ste_sensor_170
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.gang_2de_sensor_159
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.babyroom_sensor_216
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.backyard_sensor_201
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.shed_sensor
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.voordeur_motion
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.voordeur_200
+                    secondary_info: last-changed
+              - type: entities
+                state_color: true
+                show_header_toggle: false
+                entities:
+                  - entity: binary_sensor.schuifpui_249
+                    secondary_info: last-changed
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                name: Living
+                graph: line
+                detail: 2
+                entity: sensor.living_temperature_128
+              - type: sensor
+                name: Outdoor
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_outdoor_temperature
+              - type: sensor
+                name: 1st floor hallway
+                graph: line
+                detail: 2
+                entity: sensor.hallway1st_temp_182
+              - type: sensor
+                name: 2nd floor hallway
+                graph: line
+                detail: 2
+                entity: sensor.hallway2nd_temp_186
+              - type: sensor
+                name: Babyroom
+                graph: line
+                detail: 2
+                entity: sensor.babyroom_temp_217
+              - type: sensor
+                name: Master bedroom
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_bedroom_temperature
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                name: Living
+                graph: line
+                detail: 2
+                entity: sensor.living_humidity_131
+              - type: sensor
+                name: Outdoor
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_outdoor_humidity
+              - type: sensor
+                name: Living co2
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_indoor_co2
+              - type: sensor
+                name: Master bedroom
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_bedroom_co2
+              - type: gauge
+                entity: sensor.power_consumption
+                severity:
+                  green: 0
+                  yellow: 1
+                  red: 3
