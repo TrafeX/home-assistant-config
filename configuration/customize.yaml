@@ -14,16 +14,20 @@ binary_sensor.gang_2de_sensor_159:
   device_class: motion
 binary_sensor.babyroom_sensor_216:
   device_class: motion
-sensor.yr_symbol:
-  friendly_name: Weer
 binary_sensor.voordeur_200:
   device_class: opening
 binary_sensor.schuifpui_249:
   device_class: opening
+
 switch.ventilatie_145:
   icon: mdi:fan
 switch.fan_250:
   icon: mdi:fan
+
+binary_sensor.wash_dryer_state:
+  icon: mdi:tumble-dryer
+binary_sensor.washing_machine_state:
+  icon: mdi:washing-machine
 
 person.chantal:
   entity_picture: !secret picture_chantal

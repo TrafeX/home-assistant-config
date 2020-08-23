@@ -1,14 +1,8 @@
 - alias: 'Notify when the washing machine is finished'
   trigger:
-    - platform: template
-      value_template: >
-        {% if as_timestamp(states('sensor.wasmachine_remaining_program_time')) < as_timestamp(now()) %}
-        true
-        {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
-        true
-        {% endif %}
-      for:
-        minutes: 1
+    - platform: state
+      entity_id: binary_sensor.washing_machine_state
+      to: 'off'
   action:
     - service: notify.apps
       data:

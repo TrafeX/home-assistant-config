@@ -8,6 +8,16 @@
         {% if states.switch.wasmachine_37 %}
           {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
         {% endif %}
+    washing_machine_state:
+      friendly_name: 'Washing machine'
+      delay_off:
+        minutes: 1
+      value_template: >
+        {% if as_timestamp(states('sensor.wasmachine_remaining_program_time')) < as_timestamp(now()) %}
+        true
+        {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
+        true
+        {% endif %}
 - platform: mqtt
   name: 'Shed sensor'
   state_topic: shed/binary_sensor/shed_motion/state
