@@ -30,3 +30,6 @@
     still_image_url: https://192.168.150.236/cgi-bin/currentpic.cgi
     stream_source: rtsp://192.168.150.236:8554/unicast
     verify_ssl: false
+  - platform: generic
+    name: Doorbell
+    still_image_url: !secret frontyard_snapshot_url

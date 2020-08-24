@@ -4,6 +4,10 @@
       entity_id: binary_sensor.voordeur_ding
       to: 'on'
   action:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.frontyard
+        filename: !secret frontyard_snapshot_folder
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_2
@@ -13,5 +17,5 @@
         message: "Er is aangebeld bij de voordeur"
         data:
           photo:
-            - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
+            - url: !secret frontyard_snapshot_url
               caption: Er is aangebeld bij de voordeur

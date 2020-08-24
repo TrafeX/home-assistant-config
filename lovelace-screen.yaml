@@ -8,6 +8,13 @@ views:
         cards:
           - type: horizontal-stack
             cards:
+              - type: entities
+                show_header_toggle: false
+                entities:
+                  - type: cast
+                    dashboard: screen-dashboard
+                    view: dashboard
+                    name: Cast screen
               - type: button
                 entity: input_boolean.night_mode
               - type: button
@@ -63,14 +70,34 @@ views:
                 entity: light.garden_lights_254
           - type: horizontal-stack
             cards:
-              - type: picture-entity
-                entity: camera.frontyard
-              - type: picture-entity
-                entity: camera.backyard
-              - type: picture-entity
-                entity: camera.living
+              - type: picture-glance
+                title: Frontyard
+                entities:
+                  - binary_sensor.voordeur_ding
+                  - binary_sensor.voordeur_motion
+                  - binary_sensor.voordeur_200
+                camera_image: camera.frontyard
+              - type: picture-glance
+                title: Backyard
+                entities:
+                  - binary_sensor.backyard_sensor_201
+                  - entity: sensor.netatmo_outdoor_temperature
+                    show_state: true
+                camera_image: camera.backyard
+              - type: picture-glance
+                title: Hallway
+                entities:
+                  - entity: sensor.temperatuur_bg_248
+                    show_state: true
+                camera_image: camera.living
               - type: picture-entity
                 entity: camera.street
+              - type: picture-glance
+                title: Last doorbell
+                entities:
+                  - entity: sensor.voordeur_last_ding
+                    show_state: true
+                camera_image: camera.doorbell
           - type: horizontal-stack
             cards:
               - type: entities
@@ -183,6 +210,7 @@ views:
                 entity: sensor.netatmo_bedroom_co2
               - type: gauge
                 entity: sensor.power_consumption
+                max: 10
                 severity:
                   green: 0
                   yellow: 1
