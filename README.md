@@ -64,3 +64,6 @@ The following hardware is integrated in this system.
 | 1 | Thermostat | Nefit Easy | wifi |
 | 6 | Camera | Foscam, D-Link, Xiaomi | wifi |
 | 1 | Doorbell | Ring video doorbell | wifi |
+| 1 | Google | Google Home Mini | wifi |
+| 1 | Google | Google Nest Mini | wifi |
+| 1 | Google | Google Nest Hub | wifi |

@@ -10,3 +10,6 @@ notify_backyard_motion:
 automatic_vacuum_cleaner:
   name: Run the vacuum cleaner this night
   icon: mdi:robot
+cast_dashboard:
+  name: Cast dashboard to Home Hub
+  icon: mdi:monitor-dashboard

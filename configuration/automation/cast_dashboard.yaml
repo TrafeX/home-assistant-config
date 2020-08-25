@@ -1,0 +1,25 @@
+- alias: 'Notify when motion in backyard'
+  trigger:
+    - entity_id: input_boolean.cast_dashboard
+      platform: state
+      to: 'on'
+  action:
+    - data:
+        entity_id: media_player.home_hub
+      service: media_player.turn_off
+    - delay: 00:00:01
+    - data:
+        entity_id: media_player.home_hub
+      service: media_player.turn_on
+    - data:
+        entity_id: media_player.home_hub
+        view_path: dashboard
+      service: cast.show_lovelace_view
+    - delay: 00:00:05
+    - data:
+        dashboard_path: lovelace
+        entity_id: media_player.home_hub
+        view_path: dashboard
+      service: cast.show_lovelace_view
+    - entity_id: input_boolean.cast_dashboard
+      service: homeassistant.turn_off

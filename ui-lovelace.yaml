@@ -19,6 +19,7 @@ views:
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
           - input_boolean.automatic_vacuum_cleaner
+          - input_boolean.cast_dashboard
           - input_select.guest_presence
         show_header_toggle: false
       - type: thermostat
@@ -33,10 +34,10 @@ views:
         entity: alarm_control_panel.home_alarm
       - type: horizontal-stack
         cards:
-        - type: light
-          entity: light.woonkamer_spots_5
-        - type: light
-          entity: light.keuken_spots_7
+          - type: light
+            entity: light.woonkamer_spots_5
+          - type: light
+            entity: light.keuken_spots_7
       - type: entities
         title: Woonkamer & keuken
         state_color: true
@@ -148,7 +149,11 @@ views:
       - type: media-control
         entity: media_player.keuken
       - type: media-control
+        entity: media_player.woonkamer_mini
+      - type: media-control
         entity: media_player.woonkamer_2
+      - type: media-control
+        entity: media_player.home_hub
   - path: cameras
     title: Cameras
     icon: mdi:cctv
@@ -201,151 +206,303 @@ views:
     title: Floorplan
     icon: mdi:floor-plan
     cards:
-    - type: picture-elements
-      image: /local/floorplan.png
-      elements:
-        - type: state-icon
-          entity: light.woonkamer_spots_5
-          style:
-            top: 29%
-            left: 68%
-        - type: state-icon
-          entity: light.woonkamer_spots_5
-          style:
-            top: 42%
-            left: 36%
-        - type: state-icon
-          entity: light.keuken_spots_7
-          style:
-            top: 71%
-            left: 69%
-        - type: state-icon
-          entity: light.buitenlicht_achter_6
-          style:
-            top: 10%
-            left: 37%
-        - type: state-icon
-          tap_action:
-            action: toggle
-          entity: light.licht_tuindeur_148
-          style:
-            top: 3%
-            left: 30%
-        - type: state-icon
-          entity: binary_sensor.backyard_sensor_201
-          style:
-            top: 3%
-            left: 21%
-        - type: state-icon
-          tap_action:
-            action: toggle
-          entity: light.buitenlicht_voorkant_32
-          style:
-            top: 85%
-            left: 52%
-        - type: state-icon
-          tap_action:
-            action: toggle
-          entity: light.gang_licht_30
-          style:
-            top: 84%
-            left: 39%
-        - type: state-icon
-          entity: binary_sensor.rookmelder_bg_247
-          style:
-            top: 80%
-            left: 39%
-        - type: state-label
-          entity: sensor.netatmo_indoor_temperature
-          style:
-            top: 20%
-            left: 29%
-        - type: state-icon
-          entity: binary_sensor.living_sensor_119
-          style:
-            top: 52%
-            left: 82%
-        - type: state-icon
-          entity: binary_sensor.voordeur_200
-          style:
-            top: 88.6%
-            left: 48%
-        - type: state-icon
-          entity: vacuum.xiaomi_vacuum_cleaner
-          style:
-            top: 24%
-            left: 19%
-        - type: state-label
-          entity: sensor.living_temperature_128
-          style:
-            top: 52%
-            left: 71%
-        - type: state-label
-          entity: sensor.netatmo_outdoor_temperature
-          style:
-            top: 5%
-            left: 60%
-        - type: state-icon
-          entity: media_player.sony_bravia_tv
-          style:
-            top: 29%
-            left: 82%
-        - type: state-icon
-          entity: media_player.chromekamer
-          style:
-            top: 24%
-            left: 82%
-        - type: state-icon
-          entity: media_player.woonkamer
-          style:
-            top: 34%
-            left: 82%
-        - type: state-icon
-          entity: media_player.woonkamer_2
-          style:
-            top: 20%
-            left: 19%
-        - type: state-icon
-          entity: media_player.keuken
-          style:
-            top: 78%
-            left: 82%
-        - type: icon
-          entity: camera.living
-          icon: mdi:cctv
-          style:
-            top: 56%
-            left: 21%
-            transform: "scaleX(-1)"
-        - type: icon
-          entity: camera.frontyard
-          icon: mdi:cctv
-          style:
-            top: 85%
-            left: 65%
-        - type: icon
-          entity: camera.backyard
-          icon: mdi:cctv
-          style:
-            top: 3%
-            left: 50%
-        - type: state-icon
-          entity: binary_sensor.voordeur_motion
-          style:
-            top: 85%
-            left: 58%
-        - type: state-icon
-          entity: climate.heating
-          style:
-            top: 61%
-            left: 23%
-        - type: state-label
-          entity: sensor.nefit_temperature
-          style:
-            top: 52%
-            left: 29%
-    - type: map
-      entities:
-        - device_tracker.oneplus_a5010
-        - device_tracker.in2013
-      hours_to_show: 24
+      - type: picture-elements
+        image: /local/floorplan.png
+        elements:
+          - type: state-icon
+            entity: light.woonkamer_spots_5
+            style:
+              top: 29%
+              left: 68%
+          - type: state-icon
+            entity: light.woonkamer_spots_5
+            style:
+              top: 42%
+              left: 36%
+          - type: state-icon
+            entity: light.keuken_spots_7
+            style:
+              top: 71%
+              left: 69%
+          - type: state-icon
+            entity: light.buitenlicht_achter_6
+            style:
+              top: 10%
+              left: 37%
+          - type: state-icon
+            tap_action:
+              action: toggle
+            entity: light.licht_tuindeur_148
+            style:
+              top: 3%
+              left: 30%
+          - type: state-icon
+            entity: binary_sensor.backyard_sensor_201
+            style:
+              top: 3%
+              left: 21%
+          - type: state-icon
+            tap_action:
+              action: toggle
+            entity: light.buitenlicht_voorkant_32
+            style:
+              top: 85%
+              left: 52%
+          - type: state-icon
+            tap_action:
+              action: toggle
+            entity: light.gang_licht_30
+            style:
+              top: 84%
+              left: 39%
+          - type: state-icon
+            entity: binary_sensor.rookmelder_bg_247
+            style:
+              top: 80%
+              left: 39%
+          - type: state-label
+            entity: sensor.netatmo_indoor_temperature
+            style:
+              top: 20%
+              left: 29%
+          - type: state-icon
+            entity: binary_sensor.living_sensor_119
+            style:
+              top: 52%
+              left: 82%
+          - type: state-icon
+            entity: binary_sensor.voordeur_200
+            style:
+              top: 88.6%
+              left: 48%
+          - type: state-icon
+            entity: vacuum.xiaomi_vacuum_cleaner
+            style:
+              top: 24%
+              left: 19%
+          - type: state-label
+            entity: sensor.living_temperature_128
+            style:
+              top: 52%
+              left: 71%
+          - type: state-label
+            entity: sensor.netatmo_outdoor_temperature
+            style:
+              top: 5%
+              left: 60%
+          - type: state-icon
+            entity: media_player.sony_bravia_tv
+            style:
+              top: 29%
+              left: 82%
+          - type: state-icon
+            entity: media_player.chromekamer
+            style:
+              top: 24%
+              left: 82%
+          - type: state-icon
+            entity: media_player.woonkamer
+            style:
+              top: 34%
+              left: 82%
+          - type: state-icon
+            entity: media_player.woonkamer_mini
+            style:
+              top: 20%
+              left: 19%
+          - type: state-icon
+            entity: media_player.keuken
+            style:
+              top: 78%
+              left: 82%
+          - type: icon
+            entity: camera.living
+            icon: mdi:cctv
+            style:
+              top: 56%
+              left: 21%
+              transform: "scaleX(-1)"
+          - type: icon
+            entity: camera.frontyard
+            icon: mdi:cctv
+            style:
+              top: 85%
+              left: 65%
+          - type: icon
+            entity: camera.backyard
+            icon: mdi:cctv
+            style:
+              top: 3%
+              left: 50%
+          - type: state-icon
+            entity: binary_sensor.voordeur_motion
+            style:
+              top: 85%
+              left: 58%
+          - type: state-icon
+            entity: climate.heating
+            style:
+              top: 61%
+              left: 23%
+          - type: state-label
+            entity: sensor.nefit_temperature
+            style:
+              top: 52%
+              left: 29%
+      - type: map
+        entities:
+          - device_tracker.oneplus_a5010
+          - device_tracker.in2013
+        hours_to_show: 24
+  - path: dashboard
+    title: Dashboard
+    icon: mdi:monitor-dashboard
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.woonkamer_spots_5
+              - type: light
+                entity: light.keuken_spots_7
+              - type: light
+                entity: light.buitenlicht_achter_6
+              - type: light
+                entity: light.overloop_licht_1ste_44
+              - type: light
+                entity: light.light_babyroom_208
+              - type: light
+                entity: light.overloop_licht_2de_132
+              - type: light
+                entity: light.werkkamer_licht_152
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: light.gang_licht_30
+              - type: button
+                entity: light.buitenlicht_voorkant_32
+              - type: button
+                entity: light.licht_tuindeur_148
+              - type: button
+                entity: light.garden_lights_254
+              - type: button
+                entity: input_boolean.night_mode
+              - type: button
+                entity: input_boolean.automatic_vacuum_cleaner
+              - type: button
+                entity: scene.living_normal
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_normal
+              - type: button
+                entity: scene.living_movie
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.living_movie
+              - type: button
+                entity: binary_sensor.washing_machine_state
+              - type: button
+                entity: binary_sensor.wash_dryer_state
+          - type: horizontal-stack
+            cards:
+              - type: picture-glance
+                title: Frontyard
+                entities:
+                  - binary_sensor.voordeur_ding
+                  - binary_sensor.voordeur_motion
+                  - binary_sensor.voordeur_200
+                camera_image: camera.frontyard
+              - type: picture-glance
+                title: Backyard
+                entities:
+                  - binary_sensor.backyard_sensor_201
+                  - entity: sensor.netatmo_outdoor_temperature
+                    show_state: true
+                camera_image: camera.backyard
+              - type: picture-glance
+                title: Hallway
+                entities:
+                  - entity: sensor.temperatuur_bg_248
+                    show_state: true
+                camera_image: camera.living
+              - type: picture-glance
+                title: Last doorbell
+                entities:
+                  - entity: sensor.voordeur_last_ding
+                    show_state: true
+                camera_image: camera.doorbell
+          - type: horizontal-stack
+            cards:
+              - type: button
+                entity: binary_sensor.living_sensor_119
+              - type: button
+                entity: binary_sensor.gang_1ste_sensor_170
+              - type: button
+                entity: binary_sensor.gang_2de_sensor_159
+              - type: button
+                entity: binary_sensor.babyroom_sensor_216
+              - type: button
+                entity: binary_sensor.backyard_sensor_201
+              - type: button
+                entity: binary_sensor.shed_sensor
+              - type: button
+                entity: binary_sensor.voordeur_motion
+              - type: button
+                entity: binary_sensor.voordeur_200
+              - type: button
+                entity: binary_sensor.schuifpui_249
+          - type: horizontal-stack
+            cards:
+              - type: sensor
+                name: Living
+                graph: line
+                detail: 2
+                entity: sensor.living_temperature_128
+              - type: sensor
+                name: Outdoor
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_outdoor_temperature
+              - type: sensor
+                name: 1st floor hallway
+                graph: line
+                detail: 2
+                entity: sensor.hallway1st_temp_182
+              - type: sensor
+                name: 2nd floor hallway
+                graph: line
+                detail: 2
+                entity: sensor.hallway2nd_temp_186
+              - type: sensor
+                name: Babyroom
+                graph: line
+                detail: 2
+                entity: sensor.babyroom_temp_217
+              - type: sensor
+                name: Master bedroom
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_bedroom_temperature
+              - type: sensor
+                name: Living
+                graph: line
+                detail: 2
+                entity: sensor.living_humidity_131
+              - type: sensor
+                name: Outdoor
+                graph: line
+                detail: 2
+                entity: sensor.netatmo_outdoor_humidity
+              - type: gauge
+                entity: sensor.power_consumption
+                max: 10
+                severity:
+                  green: 0
+                  yellow: 1
+                  red: 3
