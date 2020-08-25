@@ -9,5 +9,5 @@
         message: 'De wasmachine is klaar'
     - service: tts.google_say
       data:
-        entity_id: media_player.woonkamer_2
+        entity_id: media_player.woonkamer_mini
         message: 'De wasmachine is klaar'

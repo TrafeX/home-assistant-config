@@ -17,7 +17,7 @@
     - service: rest_command.vera_home_mode
     - service: tts.google_say
       data:
-        entity_id: media_player.woonkamer_2
+        entity_id: media_player.woonkamer_mini
         message: 'Welkom thuis!'
 
 - alias: 'Leaving'
