@@ -14,7 +14,7 @@
         minutes: 1
       value_template: >
         {% if states.sensor.wasmachine_remaining_program_time %}
-          {% if as_timestamp(states('sensor.wasmachine_remaining_program_time')) < as_timestamp(now()) %}
+          {% if float(as_timestamp(states('sensor.wasmachine_remaining_program_time'))) < as_timestamp(now()) %}
           true
           {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
           true
