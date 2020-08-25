@@ -3,3 +3,7 @@ all_persons:
     - person.tim
     - person.chantal
     - input_select.guest_presence
+announcement_speakers:
+  entities:
+    - media_player.woonkamer_mini
+    - media_player.first_floor
