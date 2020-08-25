@@ -39,6 +39,10 @@ entity_config:
     name: Tuindeur licht
     room: Achtertuin
     expose: true
+  light.garden_lights_254:
+    name: Tuin licht
+    room: Achtertuin
+    expose: true
   light.light_babyroom_208:
     name: Babykamer licht
     room: Babykamer
@@ -70,4 +74,12 @@ entity_config:
   camera.frontyard:
     name: Voortuin camera
     room: Voortuin
+    expose: true
+  camera.backyard:
+    name: Achtertuin camera
+    room: Achtertuin
+    expose: true
+  camera.living:
+    name: Gang camera
+    room: Gang
     expose: true
