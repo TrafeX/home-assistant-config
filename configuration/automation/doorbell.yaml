@@ -10,7 +10,7 @@
         filename: !secret frontyard_snapshot_folder
     - service: tts.google_say
       data:
-        entity_id: media_player.woonkamer_2
+        entity_id: media_player.woonkamer_mini
         message: 'Er staat iemand voor de voordeur'
     - service: notify.telegram_notify
       data_template:
@@ -19,3 +19,7 @@
           photo:
             - url: !secret frontyard_snapshot_url
               caption: Er is aangebeld bij de voordeur
+    - service: camera.play_stream
+      data:
+        entity_id: camera.frontyard
+        media_player: media_player.home_hub
