@@ -13,12 +13,10 @@
       delay_off:
         minutes: 1
       value_template: >
-        {% if states.sensor.wasmachine_remaining_program_time %}
-          {% if float(as_timestamp(states('sensor.wasmachine_remaining_program_time'))) < as_timestamp(now()) %}
-          true
-          {% elif states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
-          true
-          {% endif %}
+        {% if states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
+        false
+        {% elif as_timestamp(states('sensor.wasmachine_remaining_program_time')) > as_timestamp(now()) %}
+        true
         {% endif %}
 - platform: mqtt
   name: 'Shed sensor'
