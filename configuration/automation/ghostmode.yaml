@@ -48,7 +48,7 @@
     - service: light.turn_off
       entity_id: light.keuken_spots_7
 
-- alias: 'Turn on gang1ste when ghost mode enabled'
+- alias: 'Turn on Gang1ste when ghost mode enabled'
   trigger:
     - platform: time_pattern
       minutes: '/45'
@@ -66,7 +66,7 @@
     - service: light.turn_off
       entity_id: light.overloop_licht_1ste_44
 
-- alias: 'Turn on gangBG when ghost mode enabled'
+- alias: 'Turn on GangBG when ghost mode enabled'
   trigger:
     - platform: time_pattern
       minutes: '/20'

@@ -151,7 +151,7 @@ views:
       - type: media-control
         entity: media_player.woonkamer_mini
       - type: media-control
-        entity: media_player.woonkamer_2
+        entity: media_player.first_floor
       - type: media-control
         entity: media_player.home_hub
   - path: cameras
