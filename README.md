@@ -36,7 +36,7 @@ Some of the things I've implemented:
 * Notify when the powerline voltage is fluctuation too much
 
 
-![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2019/02/home-assistant-v2.png "Home Assistant dashboard")
+![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2020/09/home-assistent-v3.png "Home Assistant dashboard")
 
 Hardware
 --------
@@ -58,7 +58,6 @@ The following hardware is integrated in this system.
 | 2 | Door sensor | Sensative Strips Guard | zwave |
 | 1 | Motion sensor | Neo Coolcam motion sensor | zwave |
 | 2 | Flower sensor | Xiaomi Flora | bluetooth |
-| 1 | Assistant | Google Home Mini | wifi |
 | 1 | Weather | Netatmo Weatherstation | wifi |
 | 1 | Weather | Netatmo extension module | wifi |
 | 1 | Thermostat | Nefit Easy | wifi |
