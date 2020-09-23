@@ -10,10 +10,10 @@ Some of the things I've implemented:
 * Ability to disarm the alarm via Telegram actions
 * Fully automated living lights
 * Automated hallway lights which dim at night
-* Notify when washing machine is finished
-* Play speech messages via the Google Home
+* Notify when washing machine or wash dryer is finished
+* Play speech messages via the Google Mini's
 * Presence detection with home coming and leaving automation
-* Night mode
+* Night mode; turn the ground floor lights off and dim the hallway lights
 * Integration with Vera Edge
 * Modules with ESPHome communicating via MQTT
 * Enable ventilation when CO2 level reaches a certain level
@@ -21,20 +21,19 @@ Some of the things I've implemented:
 * Automated Christmas lights (only during the holidays 😉)
 * Notify when one of the smoke sensors detects smoke
 * Ghost mode; turn on lights for a short period when away to pretend someone is home
+* Start the vacuum cleaner based on a schedule with the option to override per day
 * Notify when the vacuum cleaner is done
-* Set security camera in privacy mode when at home
 * Dim the lights when the TV is turned on
 * Turn the heating down when night mode is activated
 * Notify when you leave the frontdoor open
-* Showing the health of my plants
 * Make my vacuum cleaner come from under the couch to be able to empty it
-* Have a 'guest presence' select input to override the presence detection
-* Send a snapshot of the person ringing the doorbell
+* Have a 'guest presence' option to override the presence detection
+* Send a snapshot of the person ringing the doorbell and announce it on the Google Mini's
 * DSMR integration, monitoring my energy and gas usage
 * Notify when the wind conditions are bad and we need to close some windows
 * Brighten the backyard lights when motion is detected
-* Notify when the powerline voltage is fluctuation too much
-
+* Notify when the powerline voltage fluctuates too much
+* Cast a dashboard view of Home Assistant to Google Nest Hub
 
 ![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2020/09/home-assistent-v3.png "Home Assistant dashboard")
 
