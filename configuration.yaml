@@ -29,6 +29,9 @@ system_health:
 # Show the map
 map:
 
+# Enable using media sources
+media_source:
+
 # Define home zone for presence detection
 zone:
   - name: Home
