@@ -1,9 +1,3 @@
-- platform: yr
-  name: Weather forecast
-  forecast: 8
-  monitored_conditions:
-    - windSpeed
-    - windDirection
 - platform: mqtt
   name: 'Shed Temperature'
   state_topic: shed/sensor/shed_temperature/state
