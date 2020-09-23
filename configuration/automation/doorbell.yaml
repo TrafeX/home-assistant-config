@@ -17,7 +17,7 @@
         message: "Er is aangebeld bij de voordeur"
         data:
           photo:
-            - url: !secret frontyard_snapshot_url
+            - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
               caption: Er is aangebeld bij de voordeur
     - service: camera.play_stream
       data:
