@@ -164,8 +164,6 @@ views:
       - type: picture-entity
         entity: camera.backyard
       - type: picture-entity
-        entity: camera.street
-      - type: picture-entity
         entity: camera.shed
       - type: picture-entity
         entity: camera.living
