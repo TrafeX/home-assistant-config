@@ -22,14 +22,6 @@ mobile_app:
 # Enable lovelace with yaml configuration
 lovelace:
   mode: yaml
-  resources:
-    - url: /local/dashboard.css
-      type: css
-  dashboards:
-    screen-dashboard:
-      mode: yaml
-      filename: lovelace-screen.yaml
-      title: Screen
 
 # Enable system health on info page
 system_health:
