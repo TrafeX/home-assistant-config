@@ -1,12 +1,12 @@
-- alias: 'Notify when the voltage is fluctuating'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.voltage_sags
-      to: "on"
-    - platform: state
-      entity_id: binary_sensor.voltage_swells
-      to: "on"
-  action:
-    - service: notify.all
-      data_template:
-        message: 'Het voltage is onstabiel: {{ states("sensor.voltage_phase_l1") }}V'
+#- alias: 'Notify when the voltage is fluctuating'
+#  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.voltage_sags
+#      to: "on"
+#    - platform: state
+#      entity_id: binary_sensor.voltage_swells
+#      to: "on"
+#  action:
+#    - service: notify.all
+#      data_template:
+#        message: 'Het voltage is onstabiel: {{ states("sensor.voltage_phase_l1") }}V'
