@@ -3,32 +3,32 @@
   entities:
     light.woonkamer_spots_5:
       state: on
-      brightness: 30
+      brightness: 25
     light.keuken_spots_7:
       state: on
-      brightness: 30
+      brightness: 25
 - name: Living TV
   entities:
     light.woonkamer_spots_5:
       state: on
-      brightness: 40
+      brightness: 75
     light.keuken_spots_7:
       state: on
-      brightness: 65
+      brightness: 125
 - name: Living Normal
   icon: mdi:brightness-5
   entities:
     light.woonkamer_spots_5:
       state: on
-      brightness: 65
+      brightness: 125
     light.keuken_spots_7:
       state: on
-      brightness: 65
+      brightness: 125
 - name: Living Night
   entities:
     light.woonkamer_spots_5:
       state: on
-      brightness: 30
+      brightness: 50
     light.keuken_spots_7:
       state: on
-      brightness: 40
+      brightness: 75
