@@ -23,3 +23,7 @@
       data:
         entity_id: camera.frontyard
         media_player: media_player.home_hub
+    - delay:
+        minutes: 2
+    - service: media_player.turn_off
+      entity_id: media_player.home_hub
