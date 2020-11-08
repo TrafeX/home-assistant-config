@@ -95,6 +95,7 @@ influxdb:
       - binary_sensor.wasmachine_state
       - binary_sensor.hotwater_active
       - binary_sensor.updater
+      - binary_sensor.in2013_is_charging
       - sensor.voordeur_battery
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
@@ -112,6 +113,7 @@ influxdb:
 # Setup MQTT
 mqtt:
   broker: mosquitto
+  discovery: false
   port: 1883
   client_id: home-assistant
   keepalive: 60
