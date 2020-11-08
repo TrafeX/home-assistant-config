@@ -9,14 +9,18 @@
     - platform: state
       entity_id: binary_sensor.rookmelder_bg_247
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.co_sensor_255
+      to: 'on'
   action:
     - service: notify.all
       data_template:
         title: "*BRAND alarm!*"
         message: >
-          Brandmelding op:
+          Brandmelding of koolmonoxide melding op: {{ trigger.to_state.name }}
+          Andere active sensors:
           {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' and state.name != 'Wasmachine' and state.name != 'Ping to Vera' %}
+            {% if state.state == 'on' and state.name != 'Ping to Vera' %}
               {{ state.name }}
             {%- endif -%}
           {% endfor %}
