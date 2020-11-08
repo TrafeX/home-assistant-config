@@ -113,7 +113,7 @@ influxdb:
 # Setup MQTT
 mqtt:
   broker: mosquitto
-  discovery: false
+  discovery: true
   port: 1883
   client_id: home-assistant
   keepalive: 60

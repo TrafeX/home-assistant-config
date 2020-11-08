@@ -19,7 +19,7 @@
 - alias: 'Notify when motion in shed'
   trigger:
     - platform: state
-      entity_id: binary_sensor.shed_sensor
+      entity_id: binary_sensor.shed_motion
       to: 'on'
   condition:
     - condition: state

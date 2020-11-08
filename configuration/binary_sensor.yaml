@@ -18,11 +18,6 @@
         {% elif as_timestamp(states('sensor.wasmachine_remaining_program_time')) > as_timestamp(now()) %}
         true
         {% endif %}
-- platform: mqtt
-  name: 'Shed sensor'
-  state_topic: shed/binary_sensor/shed_motion/state
-  availability_topic: shed/status
-  device_class: motion
 - platform: ping
   host: 192.168.150.10
   name: Ping to Vera

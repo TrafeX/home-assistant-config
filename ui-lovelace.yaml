@@ -70,7 +70,7 @@ views:
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temp1_202
           - sensor.backyard_lux1_203
-          - binary_sensor.shed_sensor
+          - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature
         show_header_toggle: false
@@ -185,7 +185,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.backyard_sensor_201
             secondary_info: last-changed
-          - entity: binary_sensor.shed_sensor
+          - entity: binary_sensor.shed_motion
             secondary_info: last-changed
           - entity: binary_sensor.voordeur_motion
             secondary_info: last-changed
@@ -449,7 +449,7 @@ views:
               - type: button
                 entity: binary_sensor.backyard_sensor_201
               - type: button
-                entity: binary_sensor.shed_sensor
+                entity: binary_sensor.shed_motion
               - type: button
                 entity: binary_sensor.voordeur_motion
               - type: button
