@@ -51,6 +51,7 @@ The following hardware is integrated in this system.
 | 2 | Wallplug | Greenwave Powernode-1 | zwave |
 | 1 | Wallplug | TBK Home | zwave |
 | 3 | Smoke sensor | Fibaro Smoke sensor (FGSS001) | zwave |
+| 1 | CO sensor | Fibaro CO sensor (FGCD001) | zwave |
 | 1 | Insertmodule | Philiotech 2x1,5kw (PAN04) | zwave |
 | 1 | Insertmodule | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave |
 | 4 | Multisensor | Aeon Labs Multisensor 6 | zwave |

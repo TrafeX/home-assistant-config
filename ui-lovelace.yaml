@@ -103,6 +103,7 @@ views:
         entities:
           - binary_sensor.gang_2de_sensor_159
           - binary_sensor.rookmelder_2de_133
+          - binary_sensor.co_sensor_255
           - light.overloop_licht_2de_132
           - sensor.hallway2nd_temp_186
           - sensor.hallway2nd_humidity_188

@@ -4,6 +4,8 @@ binary_sensor.rookmelder_1ste_22:
   device_class: smoke
 binary_sensor.rookmelder_2de_133:
   device_class: smoke
+binary_sensor.co_sensor_255:
+  device_class: gas
 binary_sensor.living_sensor_119:
   device_class: motion
 binary_sensor.backyard_sensor_201:
