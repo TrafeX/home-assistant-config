@@ -143,20 +143,33 @@ views:
     icon: mdi:youtube-tv
     badges: []
     cards:
-      - type: media-control
-        entity: media_player.sony_bravia_tv
-      - type: media-control
-        entity: media_player.chromekamer
-      - type: media-control
-        entity: media_player.woonkamer
-      - type: media-control
-        entity: media_player.keuken
-      - type: media-control
-        entity: media_player.woonkamer_mini
-      - type: media-control
-        entity: media_player.first_floor
-      - type: media-control
-        entity: media_player.home_hub
+      - type: vertical-stack
+        title: TV
+        cards:
+          - type: media-control
+            entity: media_player.sony_bravia_tv
+          - type: media-control
+            entity: media_player.chromekamer
+          - type: media-control
+            entity: media_player.master_bedroom_tv
+          - type: media-control
+            entity: media_player.slaapkamer
+      - type: vertical-stack
+        title: Sonos
+        cards:
+          - type: media-control
+            entity: media_player.woonkamer
+          - type: media-control
+            entity: media_player.keuken
+      - type: vertical-stack
+        title: Assistants
+        cards:
+          - type: media-control
+            entity: media_player.woonkamer_mini
+          - type: media-control
+            entity: media_player.first_floor
+          - type: media-control
+            entity: media_player.home_hub
   - path: cameras
     title: Cameras
     icon: mdi:cctv

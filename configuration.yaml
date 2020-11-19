@@ -250,6 +250,10 @@ home_connect:
   client_id: !secret home_connect_client_id
   client_secret: !secret home_connect_client_secret
 
+webostv:
+  host: 192.168.150.159
+  name: Master bedroom TV
+
 stream:
 
 # Configure persons
