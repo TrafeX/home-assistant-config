@@ -136,6 +136,11 @@ views:
           - sensor.babyroom_temp_217
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218
+      - type: entities
+        title: Tygo's kamer
+        state_color: true
+        entities:
+          - light.slaapkamer_tygo_257
         show_header_toggle: false
     icon: 'mdi:home-outline'
   - path: mediaplayers
