@@ -12,7 +12,7 @@ binary_sensor.backyard_sensor_201:
   device_class: motion
 binary_sensor.gang_1ste_sensor_170:
   device_class: motion
-binary_sensor.gang_2de_sensor_159:
+binary_sensor.gang_2de_sensor_260:
   device_class: motion
 binary_sensor.babyroom_sensor_216:
   device_class: motion

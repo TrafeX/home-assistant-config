@@ -32,7 +32,7 @@
 - alias: 'Turn on Gang2de light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor_159
+      entity_id: binary_sensor.gang_2de_sensor_260
       to: 'on'
   condition:
     - condition: state
@@ -44,7 +44,7 @@
           entity_id: sun.sun
           state: 'below_horizon'
         - condition: numeric_state
-          entity_id: sensor.hallway2nd_lux_187
+          entity_id: sensor.hallway2nd_lux_262
           below: 1
   action:
     - service: light.turn_on
@@ -76,7 +76,7 @@
 - alias: 'Turn off Gang2de light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor_159
+      entity_id: binary_sensor.gang_2de_sensor_260
       to: 'off'
     - platform: state
       entity_id: group.all_persons

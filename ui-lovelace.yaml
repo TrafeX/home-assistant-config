@@ -103,13 +103,13 @@ views:
         title: Gang 2de
         state_color: true
         entities:
-          - binary_sensor.gang_2de_sensor_159
+          - binary_sensor.gang_2de_sensor_260
           - binary_sensor.rookmelder_2de_133
           - binary_sensor.co_sensor_255
           - light.overloop_licht_2de_132
-          - sensor.hallway2nd_temp_186
-          - sensor.hallway2nd_humidity_188
-          - sensor.hallway2nd_lux_187
+          - sensor.hallway2nd_temp_261
+          - sensor.hallway2nd_humidity_263
+          - sensor.hallway2nd_lux_262
           - sensor.temperatuur_2de_134
         show_header_toggle: false
       - type: entities
@@ -199,7 +199,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.gang_1ste_sensor_170
             secondary_info: last-changed
-          - entity: binary_sensor.gang_2de_sensor_159
+          - entity: binary_sensor.gang_2de_sensor_260
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
@@ -463,7 +463,7 @@ views:
               - type: button
                 entity: binary_sensor.gang_1ste_sensor_170
               - type: button
-                entity: binary_sensor.gang_2de_sensor_159
+                entity: binary_sensor.gang_2de_sensor_260
               - type: button
                 entity: binary_sensor.babyroom_sensor_216
               - type: button
@@ -497,7 +497,7 @@ views:
                 name: 2nd floor hallway
                 graph: line
                 detail: 2
-                entity: sensor.hallway2nd_temp_186
+                entity: sensor.hallway2nd_temp_261
               - type: sensor
                 name: Babyroom
                 graph: line

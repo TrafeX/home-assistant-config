@@ -7,7 +7,7 @@
       entity_id: binary_sensor.gang_1ste_sensor_170
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor_159
+      entity_id: binary_sensor.gang_2de_sensor_260
       to: 'on'
     - platform: state
       entity_id: binary_sensor.babyroom_sensor_216
