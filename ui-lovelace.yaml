@@ -47,6 +47,7 @@ views:
           - script.turn_lights_off
           - light.woonkamer_spots_5
           - light.keuken_spots_7
+          - light.kerstboom_265
           - binary_sensor.living_sensor_119
           - binary_sensor.schuifpui_249
           - sensor.netatmo_indoor_temperature
@@ -66,6 +67,7 @@ views:
           - light.licht_tuindeur_148
           - light.buitenlicht_voorkant_32
           - light.garden_lights_254
+          - light.christmas_lights_250
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temp1_202
@@ -132,10 +134,10 @@ views:
         entities:
           - binary_sensor.babyroom_sensor_216
           - light.light_babyroom_208
-          - switch.fan_250
           - sensor.babyroom_temp_217
           - sensor.babyroom_humidity_219
           - sensor.babyroom_lux_218
+        show_header_toggle: false
       - type: entities
         title: Tygo's kamer
         state_color: true

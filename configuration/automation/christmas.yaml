@@ -1,0 +1,46 @@
+- alias: 'Christmas tree on when motion in living'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_sensor_119
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: state
+      entity_id: light.kerstboom_265
+      state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.kerstboom_265
+
+- alias: 'Christmas tree off when leaving or sleeping'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.kerstboom_265
+
+- alias: 'Christmas lights off at midnight'
+  trigger:
+    - platform: time
+      at: '0:30:00'
+  action:
+    - service: light.turn_off
+      entity_id: light.christmas_lights_250
+
+- alias: 'Christmas lights on in the morning'
+  trigger:
+    - platform: time
+      at: '6:00:00'
+  action:
+    - service: light.turn_on
+      entity_id: light.christmas_lights_250

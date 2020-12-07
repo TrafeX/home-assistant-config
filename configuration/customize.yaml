@@ -23,9 +23,10 @@ binary_sensor.schuifpui_249:
 
 switch.ventilatie_145:
   icon: mdi:fan
-switch.fan_250:
-  icon: mdi:fan
-
+light.christmas_lights_250:
+  icon: mdi:string-lights
+light.kerstboom_265:
+  icon: mdi:pine-tree
 binary_sensor.wash_dryer_state:
   icon: mdi:tumble-dryer
 binary_sensor.washing_machine_state:
