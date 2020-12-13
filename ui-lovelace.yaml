@@ -113,6 +113,7 @@ views:
           - sensor.hallway2nd_humidity_263
           - sensor.hallway2nd_lux_262
           - sensor.temperatuur_2de_134
+          - sensor.temperature_sensor_256
         show_header_toggle: false
       - type: entities
         title: Werkkamer
