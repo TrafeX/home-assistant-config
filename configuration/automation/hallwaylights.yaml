@@ -7,9 +7,6 @@
     - condition: state
       entity_id: group.all_persons
       state: 'home'
-    - condition: time
-      before: '6:00:00'
-      after: '8:00:00'
     - condition: or
       conditions:
         - condition: state
