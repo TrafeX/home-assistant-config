@@ -4,6 +4,10 @@
       friendly_name: 'Nefit Temperature'
       value_template: '{{ states.climate.heating.attributes.current_temperature }}'
       unit_of_measurement: '°C'
+    vera_response_time:
+      friendly_name: 'Vera response time'
+      value_template: "{{ state_attr('binary_sensor.ping_to_vera', 'round_trip_time_avg') }}"
+      unit_of_measurement: 'ms'
 - platform: dsmr
   host: 192.168.150.11
   port: 6000
