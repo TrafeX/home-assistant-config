@@ -83,7 +83,7 @@ influxdb:
     entities:
       - switch.achtertuin_sensor_141
       - switch.gang_1ste_sensor_170
-      - switch.gang_2de_sensor_159
+      - switch.gang_2de_sensor_260
       - switch.living_sensor_119
       - switch.rookmelder_1ste_22
       - switch.rookmelder_2de_133
@@ -92,22 +92,15 @@ influxdb:
       - switch.schuifpui_249
       - switch.wasmachine_37
       - binary_sensor.ping_to_vera
-      - binary_sensor.wasmachine_state
-      - binary_sensor.hotwater_active
       - binary_sensor.updater
       - binary_sensor.in2013_is_charging
       - binary_sensor.tim_mobile_is_aan_het_opladen
       - sensor.voordeur_battery
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
-      - sensor.netatmo_bedroom_max_temp
-      - sensor.netatmo_bedroom_min_temp
-      - sensor.netatmo_outdoor_max_temp
-      - sensor.netatmo_outdoor_min_temp
-      - sensor.netatmo_indoor_max_temp
-      - sensor.netatmo_indoor_min_temp
       - sensor.in2013_battery_level
       - sensor.in2013_storage_sensor
+      - sensor.oneplus_a5010_battery_level
       - sensor.tim_mobile_storage_sensor
   tags:
     source: hass
