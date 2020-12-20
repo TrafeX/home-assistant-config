@@ -399,6 +399,8 @@ views:
                 entity: light.overloop_licht_2de_132
               - type: light
                 entity: light.werkkamer_licht_152
+              - type: light
+                entity: light.slaapkamer_tygo_257
           - type: horizontal-stack
             cards:
               - type: button
