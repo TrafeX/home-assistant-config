@@ -16,7 +16,7 @@
       entity_id: binary_sensor.voordeur_200
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_249
+      entity_id: binary_sensor.schuifpui_266
       to: 'on'
   condition:
     - condition: or
@@ -38,7 +38,7 @@
       entity_id: binary_sensor.voordeur_200
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_249
+      entity_id: binary_sensor.schuifpui_266
       to: 'on'
   condition:
     - condition: or
@@ -60,7 +60,7 @@
       entity_id: binary_sensor.voordeur_200
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_249
+      entity_id: binary_sensor.schuifpui_266
       to: 'on'
     - platform: state
       entity_id: binary_sensor.backyard_sensor_201

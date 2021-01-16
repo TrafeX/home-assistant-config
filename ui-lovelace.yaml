@@ -48,7 +48,7 @@ views:
           - light.woonkamer_spots_5
           - light.keuken_spots_7
           - binary_sensor.living_sensor_119
-          - binary_sensor.schuifpui_249
+          - binary_sensor.schuifpui_266
           - sensor.netatmo_indoor_temperature
           - sensor.netatmo_indoor_humidity
           - sensor.netatmo_indoor_co2
@@ -212,7 +212,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.voordeur_200
             secondary_info: last-changed
-          - entity: binary_sensor.schuifpui_249
+          - entity: binary_sensor.schuifpui_266
             secondary_info: last-changed
         show_header_toggle: false
       - type: alarm-panel
@@ -478,7 +478,7 @@ views:
               - type: button
                 entity: binary_sensor.voordeur_200
               - type: button
-                entity: binary_sensor.schuifpui_249
+                entity: binary_sensor.schuifpui_266
           - type: horizontal-stack
             cards:
               - type: sensor
