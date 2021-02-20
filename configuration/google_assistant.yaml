@@ -79,7 +79,7 @@ entity_config:
     name: Achtertuin camera
     room: Achtertuin
     expose: true
-  camera.living:
+  camera.hallway:
     name: Gang camera
     room: Gang
     expose: true

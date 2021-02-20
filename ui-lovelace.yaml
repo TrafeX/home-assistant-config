@@ -188,7 +188,9 @@ views:
       - type: picture-entity
         entity: camera.shed
       - type: picture-entity
-        entity: camera.living
+        entity: camera.hallway
+      - type: picture-entity
+        entity: camera.tygo
   - path: security
     title: Security
     icon: mdi:security
@@ -336,7 +338,7 @@ views:
               top: 78%
               left: 82%
           - type: icon
-            entity: camera.living
+            entity: camera.hallway
             icon: mdi:cctv
             style:
               top: 56%
@@ -452,7 +454,7 @@ views:
                 entities:
                   - entity: sensor.temperatuur_bg_248
                     show_state: true
-                camera_image: camera.living
+                camera_image: camera.hallway
               - type: picture-glance
                 title: Last doorbell
                 entities:
