@@ -84,6 +84,7 @@ views:
           - sensor.temperatuur_bg_248
           - binary_sensor.voordeur_ding
           - binary_sensor.voordeur_motion
+          - binary_sensor.hallway_motion_sensor
           - sensor.storage_temperature
           - sensor.storage_humidity
         show_header_toggle: false
@@ -141,6 +142,7 @@ views:
         title: Tygo's kamer
         state_color: true
         entities:
+          - binary_sensor.tygo_bedroom_motion_sensor
           - light.slaapkamer_tygo_257
         show_header_toggle: false
     icon: 'mdi:home-outline'
