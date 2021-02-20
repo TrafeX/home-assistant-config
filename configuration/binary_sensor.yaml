@@ -18,6 +18,9 @@
         {% elif as_timestamp(states('sensor.wasmachine_remaining_program_time')) > as_timestamp(now()) %}
         true
         {% endif %}
+    hotwater_active:
+      friendly_name: 'Hot Water'
+      value_template: '{{ states.climate.heating.attributes.boiler_indicator == "HW" }}'
 - platform: ping
   host: 192.168.150.10
   name: Ping to Vera
