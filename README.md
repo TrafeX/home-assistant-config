@@ -30,7 +30,6 @@ Some of the things I've implemented:
 * Have a 'guest presence' option to override the presence detection
 * Send a snapshot of the person ringing the doorbell and announce it on the Google Mini's
 * DSMR integration, monitoring my energy and gas usage
-* Notify when the wind conditions are bad and we need to close some windows
 * Brighten the backyard lights when motion is detected
 * Notify when the powerline voltage fluctuates too much
 * Cast a dashboard view of Home Assistant to Google Nest Hub
