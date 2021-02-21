@@ -6,7 +6,7 @@
         seconds: 15
       value_template: >
         {% if states.switch.wasmachine_37 %}
-          {{ states.switch.wasmachine_37.attributes.current_power_w > 2 }}
+          {{ state_attr('switch.wasmachine_37', 'current_power_w') > 2 }}
         {% endif %}
     washing_machine_state:
       friendly_name: 'Washing machine'
@@ -20,7 +20,7 @@
         {% endif %}
     hotwater_active:
       friendly_name: 'Hot Water'
-      value_template: '{{ states.climate.heating.attributes.boiler_indicator == "HW" }}'
+      value_template: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
 - platform: ping
   host: 192.168.150.10
   name: Ping to Vera

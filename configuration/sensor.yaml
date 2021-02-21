@@ -2,7 +2,7 @@
   sensors:
     nefit_temperature:
       friendly_name: 'Nefit Temperature'
-      value_template: '{{ states.climate.heating.attributes.current_temperature }}'
+      value_template: "{{ state_attr('climate.heating', 'current_temperature') }}"
       unit_of_measurement: '°C'
     vera_response_time:
       friendly_name: 'Vera response time'
