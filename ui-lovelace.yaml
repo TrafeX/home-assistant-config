@@ -208,6 +208,10 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
+          - entity: binary_sensor.hallway_motion_sensor
+            secondary_info: last-changed
+          - entity: binary_sensor.tygo_bedroom_motion_sensor
+            secondary_info: last-changed
           - entity: binary_sensor.backyard_sensor_201
             secondary_info: last-changed
           - entity: binary_sensor.shed_motion
