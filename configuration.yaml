@@ -192,16 +192,6 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
-# Configure device trackers
-device_tracker:
-  - platform: asuswrt
-    host: 192.168.150.1
-    username: !secret router_user
-    password: !secret router_password
-    consider_home: 0:10
-    new_device_defaults:
-      track_new_devices: false
-
 # Configure Telegram integration
 telegram_bot:
   platform: polling
@@ -232,12 +222,6 @@ nefiteasy:
       accesskey: !secret nefit_accesskey
       password: !secret nefit_password
       name: Heating
-
-# Configure asuswrt integration
-asuswrt:
-  host: 192.168.150.1
-  username: !secret router_user
-  password: !secret router_password
 
 home_connect:
   client_id: !secret home_connect_client_id
