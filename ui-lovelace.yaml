@@ -538,3 +538,41 @@ views:
                   green: 0
                   yellow: 1
                   red: 3
+  - path: network
+    title: Network
+    icon: mdi:lan
+    panel: true
+    cards:
+      - type: grid
+        cards:
+        - type: sensor
+          name: Connected devices
+          graph: line
+          detail: 2
+          entity: sensor.asuswrt_devices_connected
+        - type: sensor
+          name: Download speed
+          graph: line
+          detail: 2
+          entity: sensor.asuswrt_download_speed
+        - type: sensor
+          name: Upload speed
+          graph: line
+          detail: 2
+          entity: sensor.asuswrt_upload_speed
+        - type: sensor
+          name: Downloaded data
+          graph: line
+          detail: 2
+          entity: sensor.asuswrt_download
+        - type: sensor
+          name: Uploaded data
+          graph: line
+          detail: 2
+          entity: sensor.asuswrt_upload
+        - type: sensor
+          name: Vera response time
+          graph: line
+          detail: 2
+          entity: sensor.vera_response_time
+
