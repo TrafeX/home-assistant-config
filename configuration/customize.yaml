@@ -25,8 +25,6 @@ switch.ventilatie_145:
   icon: mdi:fan
 binary_sensor.wash_dryer_state:
   icon: mdi:tumble-dryer
-binary_sensor.washing_machine_state:
-  icon: mdi:washing-machine
 
 person.chantal:
   entity_picture: !secret picture_chantal

@@ -1,8 +1,11 @@
 - alias: 'Notify when the washing machine is finished'
   trigger:
     - platform: state
-      entity_id: binary_sensor.washing_machine_state
-      to: 'off'
+      entity_id: sensor.wasmachine_operation_state
+      to: 'Ready'
+    - platform: state
+      entity_id: sensor.wasmachine_operation_state
+      to: 'Finished'
   action:
     - service: notify.apps
       data:

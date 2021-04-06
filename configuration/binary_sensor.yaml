@@ -8,16 +8,6 @@
         {% if states.switch.wasmachine_37 %}
           {{ state_attr('switch.wasmachine_37', 'current_power_w') > 2 }}
         {% endif %}
-    washing_machine_state:
-      friendly_name: 'Washing machine'
-      delay_off:
-        minutes: 1
-      value_template: >
-        {% if states('sensor.wasmachine_remaining_program_time') == 'unavailable' %}
-        false
-        {% elif as_timestamp(states('sensor.wasmachine_remaining_program_time')) > as_timestamp(now()) %}
-        true
-        {% endif %}
     hotwater_active:
       friendly_name: 'Hot Water'
       value_template: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
