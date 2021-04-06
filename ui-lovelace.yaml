@@ -142,7 +142,6 @@ views:
         title: Tygo's kamer
         state_color: true
         entities:
-          - binary_sensor.tygo_bedroom_motion_sensor
           - light.slaapkamer_tygo_257
         show_header_toggle: false
     icon: 'mdi:home-outline'
@@ -192,8 +191,6 @@ views:
       - type: picture-entity
         entity: camera.hallway
       - type: picture-entity
-        entity: camera.tygo
-      - type: picture-entity
         entity: camera.doorbell
   - path: security
     title: Security
@@ -211,8 +208,6 @@ views:
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
           - entity: binary_sensor.hallway_motion_sensor
-            secondary_info: last-changed
-          - entity: binary_sensor.tygo_bedroom_motion_sensor
             secondary_info: last-changed
           - entity: binary_sensor.backyard_sensor_201
             secondary_info: last-changed
