@@ -165,7 +165,6 @@ media_player:
 sonos:
   media_player:
     hosts:
-      - 192.168.150.141
       - 192.168.150.197
 
 # Configure TTS engine
