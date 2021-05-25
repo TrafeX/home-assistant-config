@@ -43,7 +43,7 @@ zone:
 # Configure HTTP access
 http:
   use_x_forwarded_for: true
-  trusted_proxies: 172.17.0.0/16
+  trusted_proxies: 172.23.0.0/16
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
