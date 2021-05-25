@@ -33,13 +33,6 @@
     - condition: state
       entity_id: group.all_persons
       state: 'home'
-    - condition: time
-      weekday:
-        - sun
-        - tue
-        - thu
-        - fri
-        - sat
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.automatic_vacuum_cleaner
