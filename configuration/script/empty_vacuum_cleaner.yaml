@@ -4,5 +4,5 @@ sequence:
     data:
       entity_id: vacuum.xiaomi_vacuum_cleaner
       velocity: 0.29
-      rotation: -20
-      duration: 3000
+      rotation: 20
+      duration: 4000
