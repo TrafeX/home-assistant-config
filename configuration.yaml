@@ -100,8 +100,10 @@ influxdb:
       - sensor.netatmo_outdoor_battery_percent
       - sensor.in2013_battery_level
       - sensor.in2013_storage_sensor
-      - sensor.oneplus_a5010_battery_level
+      - sensor.in2013_battery_temperature
+      - sensor.tim_mobile_battery_level
       - sensor.tim_mobile_storage_sensor
+      - sensor.tim_mobile_battery_temperature
   tags:
     source: hass
 

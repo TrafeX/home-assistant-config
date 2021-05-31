@@ -3,7 +3,7 @@
   user_id: !secret user_id_tim
   device_trackers:
     - device_tracker.tim
-    - device_tracker.oneplus_a5010
+    - device_tracker.tim_mobile
 - name: Chantal
   id: peebeezaiWohthahk0de
   user_id: !secret user_id_chantal

@@ -374,7 +374,7 @@ views:
               left: 29%
       - type: map
         entities:
-          - device_tracker.oneplus_a5010
+          - device_tracker.tim_mobile
           - device_tracker.in2013
         hours_to_show: 24
   - path: dashboard
