@@ -86,8 +86,6 @@ views:
           - binary_sensor.voordeur_ding
           - binary_sensor.voordeur_motion
           - binary_sensor.hallway_motion_sensor
-          - sensor.storage_temperature
-          - sensor.storage_humidity
         show_header_toggle: false
       - type: entities
         title: Gang 1ste
