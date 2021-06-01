@@ -14,9 +14,9 @@
 - platform: ping
   host: 192.168.150.10
   name: Ping to Vera
-#- platform: trend
-#  sensors:
-#    voltage_sags:
-#      entity_id: sensor.voltage_sags_phase_l1
-#    voltage_swells:
-#      entity_id: sensor.voltage_swells_phase_l1
+- platform: trend
+  sensors:
+    voltage_sags:
+      entity_id: sensor.voltage_sags_phase_l1
+    voltage_swells:
+      entity_id: sensor.voltage_swells_phase_l1
