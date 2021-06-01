@@ -211,12 +211,6 @@ alarm_control_panel:
   armed_home:
     arming_time: 5
 
-# Configure vacuum
-vacuum:
-  - platform: xiaomi_miio
-    host: 192.168.150.162
-    token: !secret xiaomi_token
-
 # Configure climate
 nefiteasy:
   devices:
