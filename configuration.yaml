@@ -101,6 +101,7 @@ influxdb:
       - sensor.in2013_battery_level
       - sensor.in2013_storage_sensor
       - sensor.in2013_battery_temperature
+      - sensor.in2013_light_sensor
       - sensor.tim_mobile_battery_level
       - sensor.tim_mobile_storage_sensor
       - sensor.tim_mobile_battery_temperature
