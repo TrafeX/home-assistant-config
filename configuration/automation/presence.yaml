@@ -7,13 +7,8 @@
     - service: notify.all
       data_template:
         title: "Welkom thuis!"
-        message: >
-          Aanwezig:
-          {% for state in states.device_tracker -%}
-            {% if state.state == 'home' %}
-              {{ state.name }}
-            {%- endif -%}
-          {% endfor %}
+        message: "Aanwezig: {{ state_attr(trigger.entity_id, 'friendly_name') }}"
+
     - service: rest_command.vera_home_mode
     - service: tts.google_say
       data:
