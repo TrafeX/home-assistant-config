@@ -8,6 +8,9 @@
       friendly_name: 'Vera response time'
       value_template: "{{ state_attr('binary_sensor.ping_to_vera', 'round_trip_time_avg') }}"
       unit_of_measurement: 'ms'
+    lights_on:
+      friendly_name: 'Lights that are on'
+      value_template: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
 - platform: dsmr
   host: 192.168.150.11
   port: 6000

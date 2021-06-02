@@ -3,9 +3,9 @@ views:
   - path: default_view
     title: default_view
     badges:
-      - binary_sensor.wash_dryer_state
       - person.tim
       - person.chantal
+      - sensor.lights_on
       - sensor.power_consumption
       - sensor.hourly_gas_consumption
       - sun.sun
