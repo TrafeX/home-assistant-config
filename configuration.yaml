@@ -202,13 +202,13 @@ telegram_bot:
 
 # Configure alarm panel
 alarm_control_panel:
-  platform: manual
-  name: Home Alarm
-  arming_time: 30
-  trigger_time: 60
-  delay_time: 60
-  armed_home:
-    arming_time: 5
+  - platform: manual
+    name: Home Alarm
+    arming_time: 30
+    trigger_time: 60
+    delay_time: 60
+    armed_home:
+      arming_time: 5
 
 # Configure climate
 nefiteasy:
