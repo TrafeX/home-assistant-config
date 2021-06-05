@@ -18,5 +18,7 @@
   sensors:
     voltage_sags:
       entity_id: sensor.voltage_sags_phase_l1
+      sample_duration: 300
     voltage_swells:
       entity_id: sensor.voltage_swells_phase_l1
+      sample_duration: 300
