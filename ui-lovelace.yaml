@@ -432,7 +432,7 @@ views:
                   service_data:
                     entity_id: scene.living_movie
               - type: button
-                entity: binary_sensor.washing_machine_state
+                entity: sensor.wasmachine_operation_state
               - type: button
                 entity: binary_sensor.wash_dryer_state
           - type: horizontal-stack
