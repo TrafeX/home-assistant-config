@@ -54,6 +54,9 @@ history:
 # View all events in a logbook
 logbook:
 
+# Enable Energy dashboard
+energy:
+
 # Configure the history of the logbook
 recorder:
   purge_keep_days: 14
