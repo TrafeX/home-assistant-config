@@ -34,7 +34,7 @@ Some of the things I've implemented:
 * Notify when the powerline voltage fluctuates too much
 * Cast a dashboard view of Home Assistant to Google Nest Hub
 
-![Home Assistant dashboard](https://www.trafex.nl/wp-content/uploads/2020/09/home-assistent-v3.png "Home Assistant dashboard")
+![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
 Hardware
 --------
