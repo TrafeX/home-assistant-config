@@ -12,7 +12,3 @@
       friendly_name: 'Lights that are on'
       value_template: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
       unit_of_measurement: lights
-- platform: dsmr
-  host: 192.168.150.11
-  port: 6000
-  dsmr_version: 5

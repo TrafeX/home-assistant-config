@@ -162,11 +162,6 @@ rest_command:
   vera_away_mode:
     url: "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"
 
-# Configure media players
-media_player:
-  - platform: braviatv
-    host: 192.168.150.192
-
 # Configure Sonos integration
 sonos:
   media_player:
