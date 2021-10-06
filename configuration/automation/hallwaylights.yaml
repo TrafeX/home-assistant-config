@@ -14,7 +14,7 @@
           state: 'below_horizon'
         - condition: numeric_state
           entity_id: sensor.hallway1st_lux_183
-          below: 1
+          below: 8
   action:
     - service: light.turn_on
       data_template:
