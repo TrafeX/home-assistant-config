@@ -3,6 +3,13 @@
     - platform: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
       from: 'cleaning'
+  condition:
+    - condition: not
+      conditions:
+        - alias: "Don't trigger when the vacuum is unavailable"
+          condition: state
+          entity_id: vacuum.xiaomi_vacuum_cleaner
+          state: "unavailable"
   action:
     - service: notify.all
       data_template:
@@ -28,7 +35,7 @@
 - alias: 'Set the vacuum cleaner to run upcoming night'
   trigger:
     - platform: time
-      at: '5:00:00'
+      at: '05:00:00'
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -40,7 +47,7 @@
 - alias: 'Run the vacuum cleaner at night'
   trigger:
     - platform: time
-      at: '1:30:00'
+      at: '01:30:00'
   condition:
     - condition: state
       entity_id: input_boolean.automatic_vacuum_cleaner
