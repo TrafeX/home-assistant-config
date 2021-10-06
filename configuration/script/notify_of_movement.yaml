@@ -6,7 +6,7 @@ sequence:
       message: >
         Activiteit op:
         {% for state in states.binary_sensor -%}
-          {% if state.state == 'on' and state.entity_id != "binary_sensor.in2013_is_charging" and state.name != 'Ping to Vera' %}
+          {% if state.state == 'on' and state.entity_id != "binary_sensor.in2013_is_charging" and state.name != 'Ping to Vera' and state.entity_id != "binary_sensor.wasmachine_remote_control" %}
             {{ state.name }}
           {%- endif -%}
         {% endfor %}
