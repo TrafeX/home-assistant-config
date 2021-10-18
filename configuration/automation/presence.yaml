@@ -7,7 +7,8 @@
     - service: notify.telegram_notify
       data_template:
         title: "Welkom thuis!"
-        message: "Aanwezig: {{ state_attr(trigger.entity_id, 'friendly_name') }}"
+        message: "Aanwezigheid gedetecteerd"
+        # message: "Aanwezig: !{{ state_attr(trigger.entity_id, 'friendly_name') }}"
 
     - service: rest_command.vera_home_mode
     - service: tts.google_say
