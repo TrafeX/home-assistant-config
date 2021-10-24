@@ -43,7 +43,7 @@ zone:
 # Configure HTTP access
 http:
   use_x_forwarded_for: true
-  trusted_proxies: 172.23.0.0/16
+  trusted_proxies: 10.42.0.0/16
 
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
@@ -79,7 +79,7 @@ config:
 
 # Send statistics to InfluxDB
 influxdb:
-  host: influxdb
+  host: vps01.trafex.nl
   database: homeassistant
   default_measurement: state
   exclude:
@@ -113,9 +113,9 @@ influxdb:
 
 # Setup MQTT
 mqtt:
-  broker: mosquitto
+  broker: mqtt.local.trafex.nl
   discovery: true
-  port: 1883
+  port: 31883
   client_id: home-assistant
   keepalive: 60
   birth_message:
