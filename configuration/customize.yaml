@@ -16,6 +16,8 @@ binary_sensor.gang_2de_sensor_260:
   device_class: motion
 binary_sensor.babyroom_sensor_216:
   device_class: motion
+binary_sensor.tygo_sensor_274:
+  device_class: motion
 binary_sensor.voordeur_200:
   device_class: opening
 binary_sensor.schuifpui_266:

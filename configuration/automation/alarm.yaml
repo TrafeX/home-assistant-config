@@ -13,6 +13,9 @@
       entity_id: binary_sensor.babyroom_sensor_216
       to: 'on'
     - platform: state
+      entity_id: binary_sensor.tygo_sensor_274
+      to: 'on'
+    - platform: state
       entity_id: binary_sensor.voordeur_200
       to: 'on'
     - platform: state

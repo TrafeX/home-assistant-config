@@ -53,7 +53,7 @@ The following hardware is integrated in this system.
 | 1 | CO sensor | Fibaro CO sensor (FGCD001) | zwave |
 | 1 | Insertmodule | Philiotech 2x1,5kw (PAN04) | zwave |
 | 1 | Insertmodule | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave |
-| 4 | Multisensor | Aeon Labs Multisensor 6 | zwave |
+| 5 | Multisensor | Aeon Labs Multisensor 6 | zwave |
 | 2 | Door sensor | Sensative Strips Guard | zwave |
 | 1 | Motion sensor | Neo Coolcam motion sensor | zwave |
 | 2 | Flower sensor | Xiaomi Flora | bluetooth |

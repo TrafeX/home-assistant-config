@@ -143,7 +143,11 @@ views:
         title: Tygo's kamer
         state_color: true
         entities:
+          - binary_sensor.tygo_sensor_274
           - light.slaapkamer_tygo_257
+          - sensor.tygo_temperature_275
+          - sensor.tygo_humidity_277
+          - sensor.tygo_lux_276
         show_header_toggle: false
     icon: 'mdi:home-outline'
   - path: mediaplayers
@@ -205,6 +209,8 @@ views:
           - entity: binary_sensor.gang_2de_sensor_260
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
+            secondary_info: last-changed
+          - entity: binary_sensor.tygo_sensor_274
             secondary_info: last-changed
           - entity: binary_sensor.hallway_motion_sensor
             secondary_info: last-changed
