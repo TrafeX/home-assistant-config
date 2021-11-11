@@ -19,11 +19,3 @@
           photo:
             - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
               caption: Er is aangebeld bij de voordeur
-    - service: camera.play_stream
-      data:
-        entity_id: camera.frontyard
-        media_player: media_player.home_hub
-    - delay:
-        minutes: 2
-    - service: media_player.turn_off
-      entity_id: media_player.home_hub
