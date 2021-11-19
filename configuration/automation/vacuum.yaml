@@ -15,9 +15,9 @@
       data_template:
         title: "*De robotstofzuiger is klaar!*"
         message: >
-          Status: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.status }}
-          Tijd: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaning_time }}mins.
-          Oppervlakte: {{ states.vacuum.xiaomi_vacuum_cleaner.attributes.cleaned_area }}m2.
+          Status: {{ states('vacuum.xiaomi_vacuum_cleaner') }}
+          Tijd: {{ (int(states('sensor.xiaomi_vacuum_cleaner_last_clean_duration'))/60)|round }}mins.
+          Oppervlakte: {{ states('sensor.xiaomi_vacuum_cleaner_last_clean_area') }}m2.
 
 - alias: 'Notify the vacuum cleaner will run this night'
   trigger:
