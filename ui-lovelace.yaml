@@ -194,6 +194,8 @@ views:
         entity: camera.hallway
       - type: picture-entity
         entity: camera.doorbell
+      - type: picture-entity
+        entity: camera.xiaomi_cloud_map_extractor
   - path: security
     title: Security
     icon: mdi:security
