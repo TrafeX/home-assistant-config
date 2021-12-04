@@ -15,6 +15,6 @@
   action:
     - service: light.turn_on
       entity_id: light.gang_licht_30
-    - delay: 0:02
+    - delay: 0:10
     - service: light.turn_off
       entity_id: light.gang_licht_30
