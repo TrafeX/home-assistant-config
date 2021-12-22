@@ -5,6 +5,13 @@
       to: 'off'
       for:
         minutes: 3
+  condition:
+    - condition: not
+      conditions:
+        - alias: "Don't trigger when the wash dryer is unavailable"
+          condition: state
+          entity_id: binary_sensor.wash_dryer_state
+          state: "unavailable"
   action:
     - service: notify.apps
       data:
