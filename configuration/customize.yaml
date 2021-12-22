@@ -1,8 +1,8 @@
 binary_sensor.rookmelder_bg_247:
   device_class: smoke
-binary_sensor.rookmelder_1ste_22:
+binary_sensor.rookmelder_1ste_284:
   device_class: smoke
-binary_sensor.rookmelder_2de_133:
+binary_sensor.rookmelder_2de_280:
   device_class: smoke
 binary_sensor.co_sensor_255:
   device_class: gas

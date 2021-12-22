@@ -1,10 +1,10 @@
 - alias: 'Trigger fire alarm when smoke detected'
   trigger:
     - platform: state
-      entity_id: binary_sensor.rookmelder_1ste_22
+      entity_id: binary_sensor.rookmelder_1ste_284
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.rookmelder_2de_133
+      entity_id: binary_sensor.rookmelder_2de_280
       to: 'on'
     - platform: state
       entity_id: binary_sensor.rookmelder_bg_247

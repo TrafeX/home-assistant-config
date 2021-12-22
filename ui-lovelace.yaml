@@ -94,25 +94,25 @@ views:
         state_color: true
         entities:
           - binary_sensor.gang_1ste_sensor_170
-          - binary_sensor.rookmelder_1ste_22
+          - binary_sensor.rookmelder_1ste_284
           - light.overloop_licht_1ste_44
           - sensor.hallway1st_temp_182
           - sensor.hallway1st_humidity_184
           - sensor.hallway1st_lux_183
-          - sensor.temperatuur_1ste_23
+          - sensor.temperatuur_1ste_285
         show_header_toggle: false
       - type: entities
         title: Gang 2de
         state_color: true
         entities:
           - binary_sensor.gang_2de_sensor_260
-          - binary_sensor.rookmelder_2de_133
+          - binary_sensor.rookmelder_2de_280
           - binary_sensor.co_sensor_255
           - light.overloop_licht_2de_132
           - sensor.hallway2nd_temp_261
           - sensor.hallway2nd_humidity_263
           - sensor.hallway2nd_lux_262
-          - sensor.temperatuur_2de_134
+          - sensor.temperatuur_2de_281
           - sensor.temperature_sensor_256
         show_header_toggle: false
       - type: entities
