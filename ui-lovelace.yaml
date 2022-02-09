@@ -46,7 +46,7 @@ views:
           - script.turn_lights_off
           - light.woonkamer_spots_5
           - light.keuken_spots_7
-          - light.kerstboom_279
+          - switch.kerstboom_279
           - binary_sensor.living_sensor_119
           - binary_sensor.schuifpui_266
           - sensor.netatmo_indoor_temperature
