@@ -1,0 +1,8 @@
+- alias: Turn Windmill on/off
+  trigger:
+    platform: state
+    entity_id: input_boolean.run_windmill
+  action:
+    - service: esphome.stepper_control_stepper
+      data_template:
+        state: '{{ trigger.to_state.state }}'

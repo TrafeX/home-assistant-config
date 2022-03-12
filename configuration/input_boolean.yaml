@@ -13,3 +13,6 @@ automatic_vacuum_cleaner:
 cast_dashboard:
   name: Cast dashboard to Home Hub
   icon: mdi:monitor-dashboard
+run_windmill:
+  name: Molen
+  icon: mdi:rotate-right
