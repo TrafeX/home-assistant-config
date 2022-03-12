@@ -114,24 +114,6 @@ influxdb:
   tags:
     source: hass
 
-# Setup MQTT
-mqtt:
-  broker: mqtt.local.trafex.nl
-  discovery: true
-  port: 31883
-  client_id: home-assistant
-  keepalive: 60
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-    qos: 1
-    retain: true
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-    qos: 1
-    retain: true
-
 # Configure custom sensors
 sensor: !include configuration/sensor.yaml
 
