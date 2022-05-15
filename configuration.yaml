@@ -79,9 +79,15 @@ config:
 
 # Send statistics to InfluxDB
 influxdb:
+  api_version: 2
   host: vps01.trafex.nl
+  port: 8086
   database: homeassistant
   default_measurement: state
+  organization: 61ca8c1950652acb
+  ssl: false
+  bucket: homeassistant/autogen
+  token: !secret influxdb_token
   exclude:
     entities:
       - switch.achtertuin_sensor_141
@@ -111,6 +117,14 @@ influxdb:
       - sensor.tim_mobile_battery_level
       - sensor.tim_mobile_storage_sensor
       - sensor.tim_mobile_battery_temperature
+      - sensor.txnas_cpu_utilization_total
+      - sensor.txnas_cpu_utilization_user
+      - sensor.txnas_memory_usage_real
+      - sensor.txnas_volume_used
+      - sensor.txnas_temperature
+      - sensor.txnas_temperature_2
+      - sensor.txnas_temperature_3
+      - sensor.txnas_average_disk_temp
   tags:
     source: hass
 
