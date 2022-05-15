@@ -15,12 +15,3 @@
   - platform: generic
     name: Doorbell
     still_image_url: !secret frontyard_snapshot_url
-  - platform: xiaomi_cloud_map_extractor
-    host: !secret xiaomi_vacuum_host
-    token: !secret xiaomi_token
-    username: !secret xiaomi_cloud_username
-    password: !secret xiaomi_cloud_password
-    draw: ['all']
-    scan_interval: 30
-    attributes:
-      - calibration_points
