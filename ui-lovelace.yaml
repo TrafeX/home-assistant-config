@@ -57,7 +57,6 @@ views:
           - sensor.living_lux_130
           - vacuum.xiaomi_vacuum_cleaner
           - script.empty_vacuum_cleaner
-          - input_boolean.run_windmill
         show_header_toggle: false
       - type: entities
         title: Buiten
