@@ -239,8 +239,5 @@ script: !include_dir_named configuration/script/
 # Configure scenes
 scene: !include configuration/scene.yaml
 
-# Configure camera's
-camera: !include configuration/camera.yaml
-
 # Configure alerts
 alert: !include configuration/alert.yaml
