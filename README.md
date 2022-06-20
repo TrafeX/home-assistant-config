@@ -1,6 +1,5 @@
 Home Assistant configuration
 ============================
-My Home Assistant configuration which connects to my Vera Edge to extend it's functionality.
 
 Features
 --------
@@ -41,27 +40,26 @@ Hardware
 
 The following hardware is integrated in this system.
 
-| Quantity | Type | Brand | Protocol |
-|----------|------|-------|----------|
-| 1 | Controller | Vera Edge | zwave |
-| 5 | Dimmer | Fibaro dimmer 500w (FGD-211) | zwave |
-| 3 | Dimmer | Fibaro dimmer 2 250watt (FGD-212) | zwave |
-| 1 | Wallplug | Aeon Labs Inline Smart Energie | zwave |
-| 2 | Wallplug | Greenwave Powernode-1 | zwave |
-| 1 | Wallplug | TBK Home | zwave |
-| 3 | Smoke sensor | Fibaro Smoke sensor (FGSS001) | zwave |
-| 1 | CO sensor | Fibaro CO sensor (FGCD001) | zwave |
-| 1 | Insertmodule | Philiotech 2x1,5kw (PAN04) | zwave |
-| 1 | Insertmodule | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave |
-| 5 | Multisensor | Aeon Labs Multisensor 6 | zwave |
-| 2 | Door sensor | Sensative Strips Guard | zwave |
-| 1 | Motion sensor | Neo Coolcam motion sensor | zwave |
-| 2 | Flower sensor | Xiaomi Flora | bluetooth |
-| 1 | Weather | Netatmo Weatherstation | wifi |
-| 1 | Weather | Netatmo extension module | wifi |
-| 1 | Thermostat | Nefit Easy | wifi |
-| 6 | Camera | Foscam, D-Link, Xiaomi | wifi |
-| 1 | Doorbell | Ring video doorbell | wifi |
-| 1 | Assistant | Google Home Mini | wifi |
-| 1 | Assistant | Google Nest Mini | wifi |
-| 1 | Assistant | Google Nest Hub | wifi |
+| Quantity | Type          | Brand                                 | Protocol |
+| -------- | ------------- | ------------------------------------- | -------- |
+| 1        | Controller    | Vera Edge                             | zwave    |
+| 5        | Dimmer        | Fibaro dimmer 500w (FGD-211)          | zwave    |
+| 3        | Dimmer        | Fibaro dimmer 2 250watt (FGD-212)     | zwave    |
+| 1        | Wallplug      | Aeon Labs Inline Smart Energy         | zwave    |
+| 2        | Wallplug      | Greenwave Powernode-1                 | zwave    |
+| 1        | Wallplug      | TBK Home                              | zwave    |
+| 3        | Smoke sensor  | Fibaro Smoke sensor (FGSS001)         | zwave    |
+| 1        | CO sensor     | Fibaro CO sensor (FGCD001)            | zwave    |
+| 1        | Insertmodule  | Philiotech 2x1,5kw (PAN04)            | zwave    |
+| 1        | Insertmodule  | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave    |
+| 5        | Multisensor   | Aeon Labs Multisensor 6               | zwave    |
+| 2        | Door sensor   | Sensative Strips Guard                | zwave    |
+| 1        | Motion sensor | Neo Coolcam motion sensor             | zwave    |
+| 1        | Weather       | Netatmo Weatherstation                | wifi     |
+| 2        | Weather       | Netatmo extension module              | wifi     |
+| 1        | Thermostat    | Nefit Easy                            | wifi     |
+| 6        | Camera        | Foscam, D-Link, Xiaomi                | wifi     |
+| 1        | Doorbell      | Ring video doorbell                   | wifi     |
+| 1        | Assistant     | Google Home Mini                      | wifi     |
+| 1        | Assistant     | Google Nest Mini                      | wifi     |
+| 2        | Assistant     | Google Nest Hub                       | wifi     |
