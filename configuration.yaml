@@ -134,9 +134,6 @@ sensor: !include configuration/sensor.yaml
 # Configure binary sensors
 binary_sensor: !include configuration/binary_sensor.yaml
 
-# Configure plant sensors
-plant: !include configuration/plant.yaml
-
 # Configure Vera integration
 vera:
   vera_controller_url: http://192.168.150.10:3480/
