@@ -1,4 +1,4 @@
-- alias: 'Notify when motion in backyard'
+- alias: 'Cast dashboard to Home Hub'
   trigger:
     - entity_id: input_boolean.cast_dashboard
       platform: state

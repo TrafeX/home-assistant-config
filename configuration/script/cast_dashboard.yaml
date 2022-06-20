@@ -1,4 +1,4 @@
-alias: Show dashboard on Home Hub
+alias: Show dashboard on Nest Hub
 sequence:
   - data:
       entity_id: media_player.werkkamer

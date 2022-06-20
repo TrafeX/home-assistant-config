@@ -18,7 +18,7 @@ views:
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
           - input_boolean.automatic_vacuum_cleaner
-          - input_boolean.cast_dashboard
+          - script.cast_dashboard
           - input_select.guest_presence
         show_header_toggle: false
       - type: thermostat
@@ -189,13 +189,15 @@ views:
     badges: []
     cards:
       - type: picture-entity
-        entity: camera.frontyard
+        entity: camera.txnas_frontyard_cam
       - type: picture-entity
-        entity: camera.backyard
+        entity: camera.txnas_backyard
+      - type: picture-entity
+        entity: camera.txnas_babycam
       - type: picture-entity
         entity: camera.shed
       - type: picture-entity
-        entity: camera.hallway
+        entity: camera.txnas_hallway
       - type: picture-entity
         entity: camera.doorbell
   - path: security
@@ -423,9 +425,9 @@ views:
               - type: button
                 entity: light.garden_lights_254
               - type: button
-                entity: input_boolean.night_mode
+                entity: light.led_strip_small_office
               - type: button
-                entity: input_boolean.automatic_vacuum_cleaner
+                entity: input_boolean.night_mode
               - type: button
                 entity: scene.living_normal
                 tap_action:
@@ -440,10 +442,6 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.living_movie
-              - type: button
-                entity: sensor.wasmachine_operation_state
-              - type: button
-                entity: binary_sensor.wash_dryer_state
           - type: horizontal-stack
             cards:
               - type: picture-glance
@@ -452,20 +450,20 @@ views:
                   - binary_sensor.voordeur_ding
                   - binary_sensor.voordeur_motion
                   - binary_sensor.voordeur_200
-                camera_image: camera.frontyard
+                camera_image: camera.txnas_frontyard_cam
               - type: picture-glance
                 title: Backyard
                 entities:
                   - binary_sensor.backyard_sensor_201
                   - entity: sensor.netatmo_outdoor_temperature
                     show_state: true
-                camera_image: camera.backyard
+                camera_image: camera.txnas_backyard
               - type: picture-glance
                 title: Hallway
                 entities:
                   - entity: sensor.temperatuur_bg_248
                     show_state: true
-                camera_image: camera.hallway
+                camera_image: camera.txnas_hallway
               - type: picture-glance
                 title: Last doorbell
                 entities:
@@ -520,7 +518,7 @@ views:
                 detail: 2
                 entity: sensor.babyroom_temp_217
               - type: sensor
-                name: Master bedroom
+                name: Small office
                 graph: line
                 detail: 2
                 entity: sensor.netatmo_bedroom_temperature
