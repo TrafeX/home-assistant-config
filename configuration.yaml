@@ -134,17 +134,6 @@ sensor: !include configuration/sensor.yaml
 # Configure binary sensors
 binary_sensor: !include configuration/binary_sensor.yaml
 
-# Configure Vera integration
-vera:
-  vera_controller_url: http://192.168.150.10:3480/
-  lights: [5, 7, 30, 6, 44, 132, 148, 32, 152, 208, 245, 251, 253, 254, 265, 250]
-  exclude: [197, 198, 199, 149, 150, 31, 146, 147, 213]
-
-# Configure Netatmo integration
-netatmo:
-  client_id: !secret netatmo_api_key
-  client_secret: !secret netatmo_secret_key
-
 # Configure input boolean switches
 input_boolean: !include configuration/input_boolean.yaml
 
@@ -211,10 +200,6 @@ nefiteasy:
       accesskey: !secret nefit_accesskey
       password: !secret nefit_password
       name: Heating
-
-home_connect:
-  client_id: !secret home_connect_client_id
-  client_secret: !secret home_connect_client_secret
 
 stream:
 
