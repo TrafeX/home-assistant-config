@@ -6,7 +6,7 @@
         seconds: 15
       value_template: >
         {% if states.switch.wasmachine_37 %}
-          {{ state_attr('switch.wasmachine_37', 'current_power_w') > 2 }}
+          {{ state_attr('switch.wasmachine_37', 'current_power_w')|int > 2 }}
         {% endif %}
     hotwater_active:
       friendly_name: 'Hot Water'
