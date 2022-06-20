@@ -32,3 +32,21 @@
     light.keuken_spots_7:
       state: on
       brightness: 75
+- name: Small office warm
+  icon: mdi:white-balance-sunny
+  entities:
+    light.led_strip_small_office:
+      state: on
+      color_mode: hs
+      hs_color:
+        - 30
+        - 100
+      brightness: 255
+- name: Small office light
+  icon: mdi:brightness-6
+  entities:
+    light.led_strip_small_office:
+      state: on
+      color_mode: color_temp
+      color_temp: 500
+      brightness: 160
