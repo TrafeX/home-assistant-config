@@ -1,7 +1,7 @@
 alias: Show dashboard on Home Hub
 sequence:
   - data:
-      entity_id: media_player.home_hub
+      entity_id: media_player.werkkamer
       dashboard_path: lovelace
       view_path: dashboard
     service: cast.show_lovelace_view

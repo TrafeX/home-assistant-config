@@ -116,14 +116,6 @@ views:
           - sensor.temperature_sensor_256
         show_header_toggle: false
       - type: entities
-        title: Slaapkamer
-        state_color: true
-        entities:
-          - sensor.netatmo_bedroom_temperature
-          - sensor.netatmo_bedroom_humidity
-          - sensor.netatmo_bedroom_co2
-        show_header_toggle: false
-      - type: entities
         title: Babykamer
         state_color: true
         entities:
@@ -147,6 +139,9 @@ views:
         title: Werkkamer klein
         state_color: true
         entities:
+          - sensor.netatmo_bedroom_temperature
+          - sensor.netatmo_bedroom_humidity
+          - sensor.netatmo_bedroom_co2
           - light.led_strip_small_office
         show_header_toggle: false
       - type: entities
@@ -186,6 +181,8 @@ views:
             entity: media_player.first_floor
           - type: media-control
             entity: media_player.home_hub
+          - type: media-control
+            entity: media_player.werkkamer
   - path: cameras
     title: Cameras
     icon: mdi:cctv

@@ -56,8 +56,12 @@ entity_config:
     room: Overloop tweede verdieping
     expose: true
   light.werkkamer_licht_152:
-    name: Werkkamer licht
-    room: Werkkamer
+    name: Werkkamer groot licht
+    room: Werkkamer groot
+    expose: true
+  light.led_strip_small_office:
+    name: Werkkamer klein LED strip
+    room: Werkkamer klein
     expose: true
   vacuum.xiaomi_vacuum_cleaner:
     name: Stofzuiger
