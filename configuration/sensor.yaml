@@ -12,3 +12,8 @@
       friendly_name: 'Lights that are on'
       value_template: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
       unit_of_measurement: lights
+- platform: rest
+  scan_interval: 00:05:00
+  resource: http://ip.jsontest.com
+  name: External IP
+  value_template: "{{ value_json.ip }}"

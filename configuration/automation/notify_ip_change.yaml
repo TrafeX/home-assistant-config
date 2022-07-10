@@ -1,0 +1,11 @@
+- alias: Notify when the external IP changes
+  trigger:
+    - platform: state
+      entity_id: sensor.external_ip
+  condition:
+    - condition: template
+      value_template: '"{{ trigger.to_state.state != ''None'' }}"'
+  action:
+    - service: notify.all
+      data_template:
+        message: 'The external IP changed: {{ states.sensor.external_ip.state }}'

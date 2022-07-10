@@ -32,6 +32,7 @@ Some of the things I've implemented:
 * Brighten the backyard lights when motion is detected
 * Notify when the powerline voltage fluctuates too much
 * Cast a dashboard view of Home Assistant to Google Nest Hub
+* Notify when the external IP changes
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
