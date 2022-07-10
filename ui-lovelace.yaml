@@ -481,6 +481,8 @@ views:
               - type: button
                 entity: binary_sensor.babyroom_sensor_216
               - type: button
+                entity: binary_sensor.tygo_sensor_274
+              - type: button
                 entity: binary_sensor.backyard_sensor_201
               - type: button
                 entity: binary_sensor.shed_motion
