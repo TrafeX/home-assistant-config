@@ -99,7 +99,7 @@ influxdb:
       - switch.rookmelder_bg_247
       - switch.voordeur_200
       - switch.schuifpui_249
-      - switch.wasmachine_37
+      - switch.wasdryer
       - binary_sensor.ping_to_vera
       - binary_sensor.updater
       - binary_sensor.in2013_is_charging

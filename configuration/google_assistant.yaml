@@ -27,11 +27,11 @@ entity_config:
     name: Achtertuin licht
     room: Achtertuin
     expose: true
-  light.buitenlicht_voorkant_32:
+  light.buitenlicht_voorkant:
     name: Voortuin licht
     room: Voortuin
     expose: true
-  light.gang_licht_30:
+  light.gang_bg:
     name: Gang licht
     room: Gang
     expose: true
@@ -55,7 +55,7 @@ entity_config:
     name: Overloop tweede licht
     room: Overloop tweede verdieping
     expose: true
-  light.werkkamer_licht_152:
+  light.large_office:
     name: Werkkamer groot licht
     room: Werkkamer groot
     expose: true

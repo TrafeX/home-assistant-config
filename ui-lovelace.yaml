@@ -65,7 +65,7 @@ views:
           - binary_sensor.backyard_sensor_201
           - light.buitenlicht_achter_6
           - light.licht_tuindeur_148
-          - light.buitenlicht_voorkant_32
+          - light.buitenlicht_voorkant
           - light.garden_lights_254
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
@@ -81,7 +81,7 @@ views:
         entities:
           - binary_sensor.voordeur_200
           - binary_sensor.rookmelder_bg_247
-          - light.gang_licht_30
+          - light.gang_bg
           - sensor.temperatuur_bg_248
           - binary_sensor.voordeur_ding
           - binary_sensor.voordeur_motion
@@ -129,11 +129,11 @@ views:
         title: Tygo's kamer
         state_color: true
         entities:
-          - binary_sensor.tygo_sensor_274
-          - light.slaapkamer_tygo_257
-          - sensor.tygo_temperature_275
-          - sensor.tygo_humidity_277
-          - sensor.tygo_lux_276
+          - binary_sensor.tygo_motion_detection
+          - light.bedroom_tygo
+          - sensor.tygo_temperature
+          - sensor.tygo_humidity
+          - sensor.tygo_illuminance
         show_header_toggle: false
       - type: entities
         title: Werkkamer klein
@@ -148,7 +148,7 @@ views:
         title: Werkkamer groot
         state_color: true
         entities:
-          - light.werkkamer_licht_152
+          - light.large_office
         show_header_toggle: false
     icon: 'mdi:home-outline'
   - path: mediaplayers
@@ -195,6 +195,8 @@ views:
       - type: picture-entity
         entity: camera.txnas_babycam
       - type: picture-entity
+        entity: camera.tygo_mainstream
+      - type: picture-entity
         entity: camera.shed
       - type: picture-entity
         entity: camera.txnas_hallway
@@ -215,7 +217,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
-          - entity: binary_sensor.tygo_sensor_274
+          - entity: binary_sensor.tygo_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.hallway_motion_sensor
             secondary_info: last-changed
@@ -279,14 +281,14 @@ views:
           - type: state-icon
             tap_action:
               action: toggle
-            entity: light.buitenlicht_voorkant_32
+            entity: light.buitenlicht_voorkant
             style:
               top: 85%
               left: 52%
           - type: state-icon
             tap_action:
               action: toggle
-            entity: light.gang_licht_30
+            entity: light.gang_bg
             style:
               top: 84%
               left: 39%
@@ -411,15 +413,15 @@ views:
               - type: light
                 entity: light.overloop_licht_2de_132
               - type: light
-                entity: light.werkkamer_licht_152
+                entity: light.large_office
               - type: light
-                entity: light.slaapkamer_tygo_257
+                entity: light.bedroom_tygo
           - type: horizontal-stack
             cards:
               - type: button
-                entity: light.gang_licht_30
+                entity: light.gang_bg
               - type: button
-                entity: light.buitenlicht_voorkant_32
+                entity: light.buitenlicht_voorkant
               - type: button
                 entity: light.licht_tuindeur_148
               - type: button
@@ -481,7 +483,7 @@ views:
               - type: button
                 entity: binary_sensor.babyroom_sensor_216
               - type: button
-                entity: binary_sensor.tygo_sensor_274
+                entity: binary_sensor.tygo_motion_detection
               - type: button
                 entity: binary_sensor.backyard_sensor_201
               - type: button

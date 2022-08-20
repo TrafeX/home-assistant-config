@@ -5,7 +5,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.buitenlicht_voorkant_32
+        entity_id: light.buitenlicht_voorkant
 
 - alias: 'Frontyard light off'
   trigger:
@@ -15,4 +15,4 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.buitenlicht_voorkant_32
+        entity_id: light.buitenlicht_voorkant

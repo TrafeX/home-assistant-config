@@ -4,10 +4,7 @@
       friendly_name: 'Wash dryer'
       delay_on:
         seconds: 15
-      value_template: >
-        {% if states.switch.wasmachine_37 %}
-          {{ state_attr('switch.wasmachine_37', 'current_power_w')|int > 2 }}
-        {% endif %}
+      value_template: "{{ states('sensor.washdryer_consumption_w')|int > 2 }}"
     hotwater_active:
       friendly_name: 'Hot Water'
       value_template: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"

@@ -44,6 +44,7 @@ The following hardware is integrated in this system.
 | Quantity | Type          | Brand                                 | Protocol |
 | -------- | ------------- | ------------------------------------- | -------- |
 | 1        | Controller    | Vera Edge                             | zwave    |
+| 1        | Controller    | Aeon Labs z-stick gen5+               | zwave    |
 | 5        | Dimmer        | Fibaro dimmer 500w (FGD-211)          | zwave    |
 | 3        | Dimmer        | Fibaro dimmer 2 250watt (FGD-212)     | zwave    |
 | 1        | Wallplug      | Aeon Labs Inline Smart Energy         | zwave    |
