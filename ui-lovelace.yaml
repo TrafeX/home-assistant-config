@@ -66,7 +66,6 @@ views:
           - light.backyard
           - light.gardendoor
           - light.buitenlicht_voorkant
-          - light.garden_lights_254
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temperature
@@ -424,8 +423,6 @@ views:
                 entity: light.buitenlicht_voorkant
               - type: button
                 entity: light.gardendoor
-              - type: button
-                entity: light.garden_lights_254
               - type: button
                 entity: light.led_strip_small_office
               - type: button
