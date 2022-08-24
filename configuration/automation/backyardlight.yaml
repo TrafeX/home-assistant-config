@@ -17,7 +17,7 @@
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: light.buitenlicht_achter_6
+      entity_id: light.backyard
       state: 'off'
     - condition: or
       conditions:
@@ -30,7 +30,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.buitenlicht_achter_6
+        entity_id: light.backyard
         brightness: 25
 
 - alias: 'Turn off backyard light'
@@ -44,34 +44,34 @@
   action:
     - service: light.turn_off
       data:
-        entity_id: light.buitenlicht_achter_6
+        entity_id: light.backyard
 
 - alias: 'Raise brightness of backyard light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.backyard_sensor_201
+      entity_id: binary_sensor.backyard_motion_detection
       to: 'on'
   condition:
     - condition: state
-      entity_id: light.buitenlicht_achter_6
+      entity_id: light.backyard
       state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.buitenlicht_achter_6
+        entity_id: light.backyard
         brightness: 100
 
 - alias: 'Dim brightness of backyard light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.backyard_sensor_201
+      entity_id: binary_sensor.backyard_motion_detection
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.buitenlicht_achter_6
+      entity_id: light.backyard
       state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.buitenlicht_achter_6
+        entity_id: light.backyard
         brightness: 25

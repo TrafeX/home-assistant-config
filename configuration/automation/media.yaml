@@ -7,14 +7,14 @@
       entity_id: media_player.sony_bravia_tv
       to: 'playing'
     - platform: state
-      entity_id: light.woonkamer_spots_5
+      entity_id: light.living_spots
       to: 'on'
   condition:
     - condition: state
       entity_id: media_player.sony_bravia_tv
       state: 'playing'
     - condition: numeric_state
-      entity_id: light.woonkamer_spots_5
+      entity_id: light.living_spots
       value_template: '{{ state.attributes.brightness|default(0) }}'
       above: 45
   action:

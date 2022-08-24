@@ -15,15 +15,15 @@ entity_config:
     name: Ventilatie
     room: Huis
     expose: true
-  light.woonkamer_spots_5:
+  light.living_spots:
     name: Woonkamer licht
     room: Woonkamer
     expose: true
-  light.keuken_spots_7:
+  light.kitchen:
     name: Keuken licht
     room: Keuken
     expose: true
-  light.buitenlicht_achter_6:
+  light.backyard:
     name: Achtertuin licht
     room: Achtertuin
     expose: true
@@ -35,7 +35,7 @@ entity_config:
     name: Gang licht
     room: Gang
     expose: true
-  light.licht_tuindeur_148:
+  light.gardendoor:
     name: Tuindeur licht
     room: Achtertuin
     expose: true
@@ -51,7 +51,7 @@ entity_config:
     name: Overloop eerste licht
     room: Overloop eerste verdieping
     expose: true
-  light.overloop_licht_2de_132:
+  light.hallway_2nd:
     name: Overloop tweede licht
     room: Overloop tweede verdieping
     expose: true

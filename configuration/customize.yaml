@@ -1,18 +1,18 @@
-binary_sensor.rookmelder_bg_247:
+binary_sensor.hallway_gf_smoke_alarm:
   device_class: smoke
 binary_sensor.rookmelder_1ste_284:
   device_class: smoke
 binary_sensor.rookmelder_2de_280:
   device_class: smoke
-binary_sensor.co_sensor_255:
+binary_sensor.carbon_monoxide_detected:
   device_class: gas
 binary_sensor.living_sensor_119:
   device_class: motion
-binary_sensor.backyard_sensor_201:
+binary_sensor.backyard_motion_detection:
   device_class: motion
 binary_sensor.gang_1ste_sensor_170:
   device_class: motion
-binary_sensor.gang_2de_sensor_260:
+binary_sensor.hallway_2nd_motion_detection:
   device_class: motion
 binary_sensor.babyroom_sensor_216:
   device_class: motion

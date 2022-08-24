@@ -7,10 +7,10 @@
       entity_id: binary_sensor.rookmelder_2de_280
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.rookmelder_bg_247
+      entity_id: binary_sensor.hallway_gf_smoke_alarm
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.co_sensor_255
+      entity_id: binary_sensor.carbon_monoxide_detected
       to: 'on'
   action:
     - service: notify.all

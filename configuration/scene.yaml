@@ -1,35 +1,35 @@
 - name: Living Movie
   icon: mdi:movie-open
   entities:
-    light.woonkamer_spots_5:
+    light.living_spots:
       state: on
       brightness: 15
-    light.keuken_spots_7:
+    light.kitchen:
       state: on
       brightness: 15
 - name: Living TV
   entities:
-    light.woonkamer_spots_5:
+    light.living_spots:
       state: on
       brightness: 75
-    light.keuken_spots_7:
+    light.kitchen:
       state: on
       brightness: 125
 - name: Living Normal
   icon: mdi:brightness-5
   entities:
-    light.woonkamer_spots_5:
+    light.living_spots:
       state: on
       brightness: 125
-    light.keuken_spots_7:
+    light.kitchen:
       state: on
       brightness: 125
 - name: Living Night
   entities:
-    light.woonkamer_spots_5:
+    light.living_spots:
       state: on
       brightness: 50
-    light.keuken_spots_7:
+    light.kitchen:
       state: on
       brightness: 75
 - name: Small office warm

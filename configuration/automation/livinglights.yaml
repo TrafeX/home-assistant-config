@@ -17,7 +17,7 @@
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: light.woonkamer_spots_5
+      entity_id: light.living_spots
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.living_lux_130
@@ -36,7 +36,7 @@
       to: 'not_home'
   condition:
     - condition: state
-      entity_id: light.woonkamer_spots_5
+      entity_id: light.living_spots
       state: 'on'
   action:
     - service: script.turn_lights_off

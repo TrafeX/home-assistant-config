@@ -42,11 +42,11 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.keuken_spots_7
+        entity_id: light.kitchen
         brightness: 30
     - delay: 0:15:00
     - service: light.turn_off
-      entity_id: light.keuken_spots_7
+      entity_id: light.kitchen
 
 - alias: 'Turn on Gang1ste when ghost mode enabled'
   trigger:

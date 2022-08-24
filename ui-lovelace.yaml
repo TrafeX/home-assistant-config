@@ -34,9 +34,9 @@ views:
       - type: horizontal-stack
         cards:
           - type: light
-            entity: light.woonkamer_spots_5
+            entity: light.living_spots
           - type: light
-            entity: light.keuken_spots_7
+            entity: light.kitchen
       - type: entities
         title: Woonkamer & keuken
         state_color: true
@@ -44,8 +44,8 @@ views:
           - scene.living_normal
           - scene.living_movie
           - script.turn_lights_off
-          - light.woonkamer_spots_5
-          - light.keuken_spots_7
+          - light.living_spots
+          - light.kitchen
           - switch.plug_1_279
           - binary_sensor.living_sensor_119
           - binary_sensor.schuifpui_266
@@ -62,15 +62,15 @@ views:
         title: Buiten
         state_color: true
         entities:
-          - binary_sensor.backyard_sensor_201
-          - light.buitenlicht_achter_6
-          - light.licht_tuindeur_148
+          - binary_sensor.backyard_motion_detection
+          - light.backyard
+          - light.gardendoor
           - light.buitenlicht_voorkant
           - light.garden_lights_254
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
-          - sensor.backyard_temp1_202
-          - sensor.backyard_lux1_203
+          - sensor.backyard_temperature
+          - sensor.backyard_illuminance
           - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature
@@ -80,9 +80,9 @@ views:
         state_color: true
         entities:
           - binary_sensor.voordeur_200
-          - binary_sensor.rookmelder_bg_247
+          - binary_sensor.hallway_gf_smoke_alarm
           - light.gang_bg
-          - sensor.temperatuur_bg_248
+          - sensor.hallway_gf_smoke_temperature
           - binary_sensor.voordeur_ding
           - binary_sensor.voordeur_motion
           - binary_sensor.hallway_motion_sensor
@@ -105,15 +105,15 @@ views:
         title: Gang 2de
         state_color: true
         entities:
-          - binary_sensor.gang_2de_sensor_260
+          - binary_sensor.hallway_2nd_motion_detection
           - binary_sensor.rookmelder_2de_280
-          - binary_sensor.co_sensor_255
-          - light.overloop_licht_2de_132
-          - sensor.hallway2nd_temp_261
-          - sensor.hallway2nd_humidity_263
-          - sensor.hallway2nd_lux_262
+          - binary_sensor.carbon_monoxide_detected
+          - light.hallway_2nd
+          - sensor.hallway_2nd_temperature
+          - sensor.hallway_2nd_humidity
+          - sensor.hallway_2nd_illuminance
           - sensor.temperatuur_2de_281
-          - sensor.temperature_sensor_256
+          - sensor.co_temperature
         show_header_toggle: false
       - type: entities
         title: Babykamer
@@ -213,7 +213,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.gang_1ste_sensor_170
             secondary_info: last-changed
-          - entity: binary_sensor.gang_2de_sensor_260
+          - entity: binary_sensor.hallway_2nd_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.babyroom_sensor_216
             secondary_info: last-changed
@@ -221,7 +221,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.hallway_motion_sensor
             secondary_info: last-changed
-          - entity: binary_sensor.backyard_sensor_201
+          - entity: binary_sensor.backyard_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.shed_motion
             secondary_info: last-changed
@@ -247,34 +247,34 @@ views:
         image: /local/floorplan.png
         elements:
           - type: state-icon
-            entity: light.woonkamer_spots_5
+            entity: light.living_spots
             style:
               top: 29%
               left: 68%
           - type: state-icon
-            entity: light.woonkamer_spots_5
+            entity: light.living_spots
             style:
               top: 42%
               left: 36%
           - type: state-icon
-            entity: light.keuken_spots_7
+            entity: light.kitchen
             style:
               top: 71%
               left: 69%
           - type: state-icon
-            entity: light.buitenlicht_achter_6
+            entity: light.backyard
             style:
               top: 10%
               left: 37%
           - type: state-icon
             tap_action:
               action: toggle
-            entity: light.licht_tuindeur_148
+            entity: light.gardendoor
             style:
               top: 3%
               left: 30%
           - type: state-icon
-            entity: binary_sensor.backyard_sensor_201
+            entity: binary_sensor.backyard_motion_detection
             style:
               top: 3%
               left: 21%
@@ -293,7 +293,7 @@ views:
               top: 84%
               left: 39%
           - type: state-icon
-            entity: binary_sensor.rookmelder_bg_247
+            entity: binary_sensor.hallway_gf_smoke_alarm
             style:
               top: 80%
               left: 39%
@@ -401,17 +401,17 @@ views:
           - type: horizontal-stack
             cards:
               - type: light
-                entity: light.woonkamer_spots_5
+                entity: light.living_spots
               - type: light
-                entity: light.keuken_spots_7
+                entity: light.kitchen
               - type: light
-                entity: light.buitenlicht_achter_6
+                entity: light.backyard
               - type: light
                 entity: light.overloop_licht_1ste_44
               - type: light
                 entity: light.light_babyroom_208
               - type: light
-                entity: light.overloop_licht_2de_132
+                entity: light.hallway_2nd
               - type: light
                 entity: light.large_office
               - type: light
@@ -423,7 +423,7 @@ views:
               - type: button
                 entity: light.buitenlicht_voorkant
               - type: button
-                entity: light.licht_tuindeur_148
+                entity: light.gardendoor
               - type: button
                 entity: light.garden_lights_254
               - type: button
@@ -456,14 +456,14 @@ views:
               - type: picture-glance
                 title: Backyard
                 entities:
-                  - binary_sensor.backyard_sensor_201
+                  - binary_sensor.backyard_motion_detection
                   - entity: sensor.netatmo_outdoor_temperature
                     show_state: true
                 camera_image: camera.txnas_backyard
               - type: picture-glance
                 title: Hallway
                 entities:
-                  - entity: sensor.temperatuur_bg_248
+                  - entity: sensor.hallway_gf_smoke_temperature
                     show_state: true
                 camera_image: camera.txnas_hallway
               - type: picture-glance
@@ -479,13 +479,13 @@ views:
               - type: button
                 entity: binary_sensor.gang_1ste_sensor_170
               - type: button
-                entity: binary_sensor.gang_2de_sensor_260
+                entity: binary_sensor.hallway_2nd_motion_detection
               - type: button
                 entity: binary_sensor.babyroom_sensor_216
               - type: button
                 entity: binary_sensor.tygo_motion_detection
               - type: button
-                entity: binary_sensor.backyard_sensor_201
+                entity: binary_sensor.backyard_motion_detection
               - type: button
                 entity: binary_sensor.shed_motion
               - type: button
@@ -515,7 +515,7 @@ views:
                 name: 2nd floor hallway
                 graph: line
                 detail: 2
-                entity: sensor.hallway2nd_temp_261
+                entity: sensor.hallway_2nd_temperature
               - type: sensor
                 name: Babyroom
                 graph: line

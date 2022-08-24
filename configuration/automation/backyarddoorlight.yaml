@@ -1,7 +1,7 @@
 - alias: 'Turn on backyard door light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.backyard_sensor_201
+      entity_id: binary_sensor.backyard_motion_detection
       to: 'on'
   condition:
     - condition: state
@@ -10,17 +10,17 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.licht_tuindeur_148
+        entity_id: light.gardendoor
 
 - alias: 'Turn off backyard door light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.backyard_sensor_201
+      entity_id: binary_sensor.backyard_motion_detection
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.licht_tuindeur_148
+      entity_id: light.gardendoor
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.licht_tuindeur_148
+      entity_id: light.gardendoor

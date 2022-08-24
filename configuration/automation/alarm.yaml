@@ -7,7 +7,7 @@
       entity_id: binary_sensor.gang_1ste_sensor_170
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.gang_2de_sensor_260
+      entity_id: binary_sensor.hallway_2nd_motion_detection
       to: 'on'
     - platform: state
       entity_id: binary_sensor.babyroom_sensor_216
@@ -66,7 +66,7 @@
       entity_id: binary_sensor.schuifpui_266
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.backyard_sensor_201
+      entity_id: binary_sensor.backyard_motion_detection
       to: 'on'
   condition:
     - condition: or
