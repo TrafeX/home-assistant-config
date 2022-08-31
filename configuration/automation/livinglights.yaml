@@ -4,10 +4,10 @@
       entity_id: group.all_persons
       to: 'home'
     - platform: state
-      entity_id: binary_sensor.living_sensor_119
+      entity_id: binary_sensor.living_motion_detection
       to: 'on'
     - platform: numeric_state
-      entity_id: sensor.living_lux_130
+      entity_id: sensor.living_illuminance
       below: 7
   condition:
     - condition: state
@@ -20,7 +20,7 @@
       entity_id: light.living_spots
       state: 'off'
     - condition: numeric_state
-      entity_id: sensor.living_lux_130
+      entity_id: sensor.living_illuminance
       below: 7
   action:
     - service: scene.turn_on
@@ -29,7 +29,7 @@
 - alias: 'Living lights off'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.living_lux_130
+      entity_id: sensor.living_illuminance
       above: 12
     - platform: state
       entity_id: group.all_persons
@@ -44,7 +44,7 @@
 - alias: 'Living lights on during sleepmode'
   trigger:
     - platform: state
-      entity_id: binary_sensor.living_sensor_119
+      entity_id: binary_sensor.living_motion_detection
       to: 'on'
   condition:
     - condition: state
@@ -54,7 +54,7 @@
       entity_id: input_boolean.night_mode
       state: 'on'
     - condition: numeric_state
-      entity_id: sensor.living_lux_130
+      entity_id: sensor.living_illuminance
       below: 7
   action:
     - service: scene.turn_on
@@ -63,7 +63,7 @@
 - alias: 'Living lights off during sleepmode'
   trigger:
     - platform: state
-      entity_id: binary_sensor.living_sensor_119
+      entity_id: binary_sensor.living_motion_detection
       to: 'off'
       for:
         minutes: 15

@@ -46,15 +46,14 @@ views:
           - script.turn_lights_off
           - light.living_spots
           - light.kitchen
-          - switch.plug_1_279
-          - binary_sensor.living_sensor_119
+          - binary_sensor.living_motion_detection
           - binary_sensor.schuifpui_266
           - sensor.netatmo_indoor_temperature
           - sensor.netatmo_indoor_humidity
           - sensor.netatmo_indoor_co2
-          - sensor.living_temperature_128
-          - sensor.living_humidity_131
-          - sensor.living_lux_130
+          - sensor.living_temperature
+          - sensor.living_humidity
+          - sensor.living_illuminance
           - vacuum.xiaomi_vacuum_cleaner
           - script.empty_vacuum_cleaner
         show_header_toggle: false
@@ -78,7 +77,7 @@ views:
         title: Gang BG
         state_color: true
         entities:
-          - binary_sensor.voordeur_200
+          - binary_sensor.frontdoor_is_open
           - binary_sensor.hallway_gf_smoke_alarm
           - light.gang_bg
           - sensor.hallway_gf_smoke_temperature
@@ -92,13 +91,13 @@ views:
         title: Gang 1ste
         state_color: true
         entities:
-          - binary_sensor.gang_1ste_sensor_170
-          - binary_sensor.rookmelder_1ste_284
-          - light.overloop_licht_1ste_44
-          - sensor.hallway1st_temp_182
-          - sensor.hallway1st_humidity_184
-          - sensor.hallway1st_lux_183
-          - sensor.temperatuur_1ste_285
+          - binary_sensor.hallway_1st_motion_detection
+          - binary_sensor.hallway_1st_smoke_alarm
+          - light.hallway_1st
+          - sensor.hallway_1st_temperature
+          - sensor.hallway_1st_humidity
+          - sensor.hallway_1st_illuminance
+          - sensor.hallway_1st_smoke_temperature
         show_header_toggle: false
       - type: entities
         title: Gang 2de
@@ -115,17 +114,17 @@ views:
           - sensor.co_temperature
         show_header_toggle: false
       - type: entities
-        title: Babykamer
+        title: Slaapkamer Jens
         state_color: true
         entities:
-          - binary_sensor.babyroom_sensor_216
+          - binary_sensor.bedroom_jens_motion_detection
           - light.light_babyroom_208
-          - sensor.babyroom_temp_217
-          - sensor.babyroom_humidity_219
-          - sensor.babyroom_lux_218
+          - sensor.bedroom_jens_temperature
+          - sensor.bedroom_jens_humidity
+          - sensor.bedroom_jens_illuminance
         show_header_toggle: false
       - type: entities
-        title: Tygo's kamer
+        title: Slaapkamer Tygo
         state_color: true
         entities:
           - binary_sensor.tygo_motion_detection
@@ -208,13 +207,13 @@ views:
       - type: entities
         state_color: true
         entities:
-          - entity: binary_sensor.living_sensor_119
+          - entity: binary_sensor.living_motion_detection
             secondary_info: last-changed
-          - entity: binary_sensor.gang_1ste_sensor_170
+          - entity: binary_sensor.hallway_1st_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.hallway_2nd_motion_detection
             secondary_info: last-changed
-          - entity: binary_sensor.babyroom_sensor_216
+          - entity: binary_sensor.bedroom_jens_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.tygo_motion_detection
             secondary_info: last-changed
@@ -226,7 +225,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.voordeur_motion
             secondary_info: last-changed
-          - entity: binary_sensor.voordeur_200
+          - entity: binary_sensor.frontdoor_is_open
             secondary_info: last-changed
           - entity: binary_sensor.schuifpui_266
             secondary_info: last-changed
@@ -302,12 +301,12 @@ views:
               top: 20%
               left: 29%
           - type: state-icon
-            entity: binary_sensor.living_sensor_119
+            entity: binary_sensor.living_motion_detection
             style:
               top: 52%
               left: 82%
           - type: state-icon
-            entity: binary_sensor.voordeur_200
+            entity: binary_sensor.frontdoor_is_open
             style:
               top: 88.6%
               left: 48%
@@ -317,7 +316,7 @@ views:
               top: 24%
               left: 19%
           - type: state-label
-            entity: sensor.living_temperature_128
+            entity: sensor.living_temperature
             style:
               top: 52%
               left: 71%
@@ -406,7 +405,7 @@ views:
               - type: light
                 entity: light.backyard
               - type: light
-                entity: light.overloop_licht_1ste_44
+                entity: light.hallway_1st
               - type: light
                 entity: light.light_babyroom_208
               - type: light
@@ -448,7 +447,7 @@ views:
                 entities:
                   - binary_sensor.voordeur_ding
                   - binary_sensor.voordeur_motion
-                  - binary_sensor.voordeur_200
+                  - binary_sensor.frontdoor_is_open
                 camera_image: camera.txnas_frontyard_cam
               - type: picture-glance
                 title: Backyard
@@ -472,13 +471,13 @@ views:
           - type: horizontal-stack
             cards:
               - type: button
-                entity: binary_sensor.living_sensor_119
+                entity: binary_sensor.living_motion_detection
               - type: button
-                entity: binary_sensor.gang_1ste_sensor_170
+                entity: binary_sensor.hallway_1st_motion_detection
               - type: button
                 entity: binary_sensor.hallway_2nd_motion_detection
               - type: button
-                entity: binary_sensor.babyroom_sensor_216
+                entity: binary_sensor.bedroom_jens_motion_detection
               - type: button
                 entity: binary_sensor.tygo_motion_detection
               - type: button
@@ -488,7 +487,7 @@ views:
               - type: button
                 entity: binary_sensor.voordeur_motion
               - type: button
-                entity: binary_sensor.voordeur_200
+                entity: binary_sensor.frontdoor_is_open
               - type: button
                 entity: binary_sensor.schuifpui_266
           - type: horizontal-stack
@@ -497,7 +496,7 @@ views:
                 name: Living
                 graph: line
                 detail: 2
-                entity: sensor.living_temperature_128
+                entity: sensor.living_temperature
               - type: sensor
                 name: Outdoor
                 graph: line
@@ -507,17 +506,17 @@ views:
                 name: 1st floor hallway
                 graph: line
                 detail: 2
-                entity: sensor.hallway1st_temp_182
+                entity: sensor.hallway_1st_temperature
               - type: sensor
                 name: 2nd floor hallway
                 graph: line
                 detail: 2
                 entity: sensor.hallway_2nd_temperature
               - type: sensor
-                name: Babyroom
+                name: Jens
                 graph: line
                 detail: 2
-                entity: sensor.babyroom_temp_217
+                entity: sensor.bedroom_jens_temperature
               - type: sensor
                 name: Small office
                 graph: line
@@ -527,7 +526,7 @@ views:
                 name: Living
                 graph: line
                 detail: 2
-                entity: sensor.living_humidity_131
+                entity: sensor.living_humidity
               - type: sensor
                 name: Outdoor
                 graph: line

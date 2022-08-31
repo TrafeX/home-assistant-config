@@ -60,11 +60,11 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.overloop_licht_1ste_44
+        entity_id: light.hallway_1st
         brightness: 40
     - delay: 0:20:00
     - service: light.turn_off
-      entity_id: light.overloop_licht_1ste_44
+      entity_id: light.hallway_1st
 
 - alias: 'Turn on GangBG when ghost mode enabled'
   trigger:

@@ -4,7 +4,7 @@
       entity_id: group.all_persons
       to: 'home'
     - platform: state
-      entity_id: binary_sensor.living_sensor_119
+      entity_id: binary_sensor.living_motion_detection
       to: 'on'
     - platform: sun
       event: 'sunset'

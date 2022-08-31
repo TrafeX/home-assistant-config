@@ -1,7 +1,7 @@
 - alias: 'Turn on Gang1ste light when motion'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor_170
+      entity_id: binary_sensor.hallway_1st_motion_detection
       to: 'on'
   condition:
     - condition: state
@@ -13,12 +13,12 @@
           entity_id: sun.sun
           state: 'below_horizon'
         - condition: numeric_state
-          entity_id: sensor.hallway1st_lux_183
-          below: 8
+          entity_id: sensor.hallway_1st_illuminance
+          below: 6
   action:
     - service: light.turn_on
       data_template:
-        entity_id: light.overloop_licht_1ste_44
+        entity_id: light.hallway_1st
         brightness: >
           {% if is_state('input_boolean.night_mode', 'on') %}
             30
@@ -57,18 +57,18 @@
 - alias: 'Turn off Gang1ste light'
   trigger:
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor_170
+      entity_id: binary_sensor.hallway_1st_motion_detection
       to: 'off'
     - platform: state
       entity_id: group.all_persons
       to: 'not_home'
   condition:
     - condition: state
-      entity_id: light.overloop_licht_1ste_44
+      entity_id: light.hallway_1st
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.overloop_licht_1ste_44
+      entity_id: light.hallway_1st
 
 - alias: 'Turn off Gang2de light'
   trigger:

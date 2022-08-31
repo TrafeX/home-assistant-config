@@ -1,22 +1,22 @@
 - alias: 'Trigger alarm while armed away'
   trigger:
     - platform: state
-      entity_id: binary_sensor.living_sensor_119
+      entity_id: binary_sensor.living_motion_detection
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.gang_1ste_sensor_170
+      entity_id: binary_sensor.hallway_1st_motion_detection
       to: 'on'
     - platform: state
       entity_id: binary_sensor.hallway_2nd_motion_detection
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.babyroom_sensor_216
+      entity_id: binary_sensor.bedroom_jens_motion_detection
       to: 'on'
     - platform: state
       entity_id: binary_sensor.tygo_motion_detection
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.voordeur_200
+      entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
       entity_id: binary_sensor.schuifpui_266
@@ -38,7 +38,7 @@
 - alias: 'Trigger alarm while armed night'
   trigger:
     - platform: state
-      entity_id: binary_sensor.voordeur_200
+      entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
       entity_id: binary_sensor.schuifpui_266
@@ -60,7 +60,7 @@
 - alias: 'Trigger alarm while armed home'
   trigger:
     - platform: state
-      entity_id: binary_sensor.voordeur_200
+      entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
       entity_id: binary_sensor.schuifpui_266

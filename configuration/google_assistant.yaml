@@ -43,7 +43,7 @@ entity_config:
     name: Babykamer licht
     room: Babykamer
     expose: true
-  light.overloop_licht_1ste_44:
+  light.hallway_1st:
     name: Overloop eerste licht
     room: Overloop eerste verdieping
     expose: true
