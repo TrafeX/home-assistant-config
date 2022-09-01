@@ -1,10 +1,5 @@
-binary_sensor.bedroom_jens_motion_detection:
-  device_class: motion
 binary_sensor.schuifpui_266:
   device_class: opening
-
-switch.ventilatie_145:
-  icon: mdi:fan
 binary_sensor.wash_dryer_state:
   icon: mdi:tumble-dryer
 

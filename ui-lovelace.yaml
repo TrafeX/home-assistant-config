@@ -13,7 +13,7 @@ views:
         title: Huis
         state_color: true
         entities:
-          - switch.ventilatie_145
+          - switch.mechanical_ventilation
           - input_boolean.night_mode
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
@@ -104,13 +104,11 @@ views:
         state_color: true
         entities:
           - binary_sensor.hallway_2nd_motion_detection
-          - binary_sensor.rookmelder_2de_280
           - binary_sensor.carbon_monoxide_detected
           - light.hallway_2nd
           - sensor.hallway_2nd_temperature
           - sensor.hallway_2nd_humidity
           - sensor.hallway_2nd_illuminance
-          - sensor.temperatuur_2de_281
           - sensor.co_temperature
         show_header_toggle: false
       - type: entities
@@ -118,7 +116,7 @@ views:
         state_color: true
         entities:
           - binary_sensor.bedroom_jens_motion_detection
-          - light.light_babyroom_208
+          - light.bedroom_jens
           - sensor.bedroom_jens_temperature
           - sensor.bedroom_jens_humidity
           - sensor.bedroom_jens_illuminance
@@ -407,7 +405,7 @@ views:
               - type: light
                 entity: light.hallway_1st
               - type: light
-                entity: light.light_babyroom_208
+                entity: light.bedroom_jens
               - type: light
                 entity: light.hallway_2nd
               - type: light

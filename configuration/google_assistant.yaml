@@ -11,7 +11,7 @@ entity_config:
     name: Slaapstand
     room: Huis
     expose: true
-  switch.ventilatie_145:
+  switch.mechanical_ventilation:
     name: Ventilatie
     room: Huis
     expose: true
@@ -39,7 +39,7 @@ entity_config:
     name: Tuindeur licht
     room: Achtertuin
     expose: true
-  light.light_babyroom_208:
+  light.bedroom_jens:
     name: Babykamer licht
     room: Babykamer
     expose: true
