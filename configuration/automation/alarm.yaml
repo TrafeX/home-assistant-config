@@ -19,7 +19,7 @@
       entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_266
+      entity_id: binary_sensor.sliding_backdoor_is_open
       to: 'on'
   condition:
     - condition: or
@@ -41,7 +41,7 @@
       entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_266
+      entity_id: binary_sensor.sliding_backdoor_is_open
       to: 'on'
   condition:
     - condition: or
@@ -63,7 +63,7 @@
       entity_id: binary_sensor.frontdoor_is_open
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.schuifpui_266
+      entity_id: binary_sensor.sliding_backdoor_is_open
       to: 'on'
     - platform: state
       entity_id: binary_sensor.backyard_motion_detection

@@ -1,5 +1,3 @@
-binary_sensor.schuifpui_266:
-  device_class: opening
 binary_sensor.wash_dryer_state:
   icon: mdi:tumble-dryer
 

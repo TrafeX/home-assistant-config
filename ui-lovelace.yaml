@@ -47,7 +47,7 @@ views:
           - light.living_spots
           - light.kitchen
           - binary_sensor.living_motion_detection
-          - binary_sensor.schuifpui_266
+          - binary_sensor.sliding_backdoor_is_open
           - sensor.netatmo_indoor_temperature
           - sensor.netatmo_indoor_humidity
           - sensor.netatmo_indoor_co2
@@ -225,7 +225,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.frontdoor_is_open
             secondary_info: last-changed
-          - entity: binary_sensor.schuifpui_266
+          - entity: binary_sensor.sliding_backdoor_is_open
             secondary_info: last-changed
         show_header_toggle: false
       - type: alarm-panel
@@ -487,7 +487,7 @@ views:
               - type: button
                 entity: binary_sensor.frontdoor_is_open
               - type: button
-                entity: binary_sensor.schuifpui_266
+                entity: binary_sensor.sliding_backdoor_is_open
           - type: horizontal-stack
             cards:
               - type: sensor
