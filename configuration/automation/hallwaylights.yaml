@@ -14,7 +14,7 @@
           state: 'below_horizon'
         - condition: numeric_state
           entity_id: sensor.hallway_1st_illuminance
-          below: 6
+          below: 4
   action:
     - service: light.turn_on
       data_template:
