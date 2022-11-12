@@ -13,7 +13,7 @@ Some of the things I've implemented:
 * Play speech messages via the Google Mini's
 * Presence detection with home coming and leaving automation
 * Night mode; turn the ground floor lights off and dim the hallway lights
-* Integration with Vera Edge
+* Integration with ZwaveJS
 * Modules with ESPHome communicating via MQTT
 * Enable ventilation when CO2 level reaches a certain level
 * Enable ventilation when the shower is used
@@ -43,7 +43,6 @@ The following hardware is integrated in this system.
 
 | Quantity | Type          | Brand                                 | Protocol |
 | -------- | ------------- | ------------------------------------- | -------- |
-| 1        | Controller    | Vera Edge                             | zwave    |
 | 1        | Controller    | Aeon Labs z-stick gen5+               | zwave    |
 | 5        | Dimmer        | Fibaro dimmer 500w (FGD-211)          | zwave    |
 | 3        | Dimmer        | Fibaro dimmer 2 250watt (FGD-212)     | zwave    |

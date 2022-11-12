@@ -8,9 +8,6 @@
     hotwater_active:
       friendly_name: 'Hot Water'
       value_template: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
-- platform: ping
-  host: 192.168.150.10
-  name: Ping to Vera
 - platform: trend
   sensors:
     voltage_sags:

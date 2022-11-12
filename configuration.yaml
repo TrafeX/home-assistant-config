@@ -90,17 +90,6 @@ influxdb:
   token: !secret influxdb_token
   exclude:
     entities:
-      - switch.achtertuin_sensor_141
-      - switch.gang_1ste_sensor_170
-      - switch.gang_2de_sensor_260
-      - switch.living_sensor_119
-      - switch.rookmelder_1ste_22
-      - switch.rookmelder_2de_133
-      - switch.rookmelder_bg_247
-      - switch.voordeur_200
-      - switch.schuifpui_249
-      - switch.wasdryer
-      - binary_sensor.ping_to_vera
       - binary_sensor.updater
       - binary_sensor.in2013_is_charging
       - binary_sensor.tim_mobile_is_aan_het_opladen
@@ -139,13 +128,6 @@ input_boolean: !include configuration/input_boolean.yaml
 
 # Configure input select boxes
 input_select: !include configuration/input_select.yaml
-
-# Configure REST commands
-rest_command:
-  vera_home_mode:
-    url: "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=6"
-  vera_away_mode:
-    url: "http://192.168.150.10:3480/data_request?id=lu_action&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=RunScene&SceneNum=16"
 
 # Configure Sonos integration
 sonos:

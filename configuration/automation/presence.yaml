@@ -9,8 +9,6 @@
         title: "Welkom thuis!"
         message: "Aanwezigheid gedetecteerd"
         # message: "Aanwezig: !{{ state_attr(trigger.entity_id, 'friendly_name') }}"
-
-    - service: rest_command.vera_home_mode
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini
@@ -25,4 +23,3 @@
     - service: notify.telegram_notify
       data:
         message: Afwezigheid gedetecteerd
-    - service: rest_command.vera_away_mode

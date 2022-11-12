@@ -4,10 +4,6 @@
       friendly_name: 'Nefit Temperature'
       value_template: "{{ state_attr('climate.heating', 'current_temperature') }}"
       unit_of_measurement: '°C'
-    vera_response_time:
-      friendly_name: 'Vera response time'
-      value_template: "{{ state_attr('binary_sensor.ping_to_vera', 'round_trip_time_avg') }}"
-      unit_of_measurement: 'ms'
     lights_on:
       friendly_name: 'Lights that are on'
       value_template: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
