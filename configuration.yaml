@@ -88,6 +88,7 @@ influxdb:
   ssl: false
   bucket: homeassistant/autogen
   token: !secret influxdb_token
+  precision: ms
   exclude:
     entities:
       - binary_sensor.updater
