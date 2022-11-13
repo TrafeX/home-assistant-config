@@ -15,7 +15,7 @@
       state: 'playing'
     - condition: numeric_state
       entity_id: light.living_spots
-      value_template: '{{ state.attributes.brightness|default(0) }}'
+      value_template: "{{ state_attr('light.living_spots', 'brightness') }}"
       above: 45
   action:
     - service: scene.turn_on
