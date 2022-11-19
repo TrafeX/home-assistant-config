@@ -13,3 +13,8 @@
   resource: http://ip.jsontest.com
   name: External IP
   value_template: "{{ value_json.ip }}"
+- platform: derivative
+  name: Hourly Gas Consumption
+  source: sensor.gas_consumption
+  unit_time: h
+  time_window: "00:01:00"

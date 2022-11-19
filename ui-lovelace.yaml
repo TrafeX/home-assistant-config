@@ -532,6 +532,7 @@ views:
                 entity: sensor.netatmo_outdoor_humidity
               - type: gauge
                 entity: sensor.power_consumption
+                name: Power
                 max: 10
                 severity:
                   green: 0
