@@ -23,7 +23,7 @@ Some of the things I've implemented:
 * Start the vacuum cleaner based on a schedule with the option to override per day
 * Notify when the vacuum cleaner is done
 * Dim the lights when the TV is turned on
-* Turn the heating down when night mode is activated
+* Turn the heating down when night mode is activated or leaving home
 * Notify when you leave the frontdoor open
 * Make my vacuum cleaner come from under the couch to be able to empty it
 * Have a 'guest presence' option to override the presence detection

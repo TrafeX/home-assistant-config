@@ -7,4 +7,39 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.heating
+        temperature: 16.5
+
+- alias: 'Turn heating down when leaving'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'not_home'
+      for:
+        hours: 1
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.heating
         temperature: 17
+
+- alias: 'Turn heating up when coming home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'off'
+    - condition: time
+      after: "07:00:00"
+      before: "22:00:00"
+    - condition: numeric_state
+      entity_id: climate.heating
+      attribute: temperature
+      below: 18
+  action:
+    - service: climate.set_temperature
+      data:
+        entity_id: climate.heating
+        temperature: 18
