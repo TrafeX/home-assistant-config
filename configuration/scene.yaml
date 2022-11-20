@@ -3,10 +3,10 @@
   entities:
     light.living_spots:
       state: on
-      brightness: 25
+      brightness: 22
     light.kitchen:
       state: on
-      brightness: 25
+      brightness: 22
 - name: Living TV
   entities:
     light.living_spots:
