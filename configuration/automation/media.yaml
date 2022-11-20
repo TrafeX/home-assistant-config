@@ -15,8 +15,8 @@
       state: 'playing'
     - condition: numeric_state
       entity_id: light.living_spots
-      value_template: "{{ state_attr('light.living_spots', 'brightness') }}"
-      above: 45
+      attribute: brightness
+      above: 50
   action:
     - service: scene.turn_on
       entity_id: scene.living_tv
