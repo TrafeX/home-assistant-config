@@ -58,6 +58,12 @@ views:
           - script.empty_vacuum_cleaner
         show_header_toggle: false
       - type: entities
+        title: Koelkast
+        state_color: true
+        entities:
+          - sensor.refrigerator_temperature
+          - sensor.refrigerator_humidity
+      - type: entities
         title: Buiten
         state_color: true
         entities:
@@ -112,6 +118,13 @@ views:
           - sensor.co_temperature
         show_header_toggle: false
       - type: entities
+        title: Slaapkamer
+        state_color: true
+        entities:
+          - sensor.masterbedroom_temperature
+          - sensor.masterbedroom_humidity
+        show_header_toggle: false
+      - type: entities
         title: Slaapkamer Jens
         state_color: true
         entities:
@@ -135,16 +148,25 @@ views:
         title: Werkkamer klein
         state_color: true
         entities:
+          - light.led_strip_small_office
           - sensor.netatmo_bedroom_temperature
           - sensor.netatmo_bedroom_humidity
           - sensor.netatmo_bedroom_co2
-          - light.led_strip_small_office
         show_header_toggle: false
       - type: entities
         title: Werkkamer groot
         state_color: true
         entities:
           - light.large_office
+          - sensor.office_large_temperature
+          - sensor.office_large_humidity
+        show_header_toggle: false
+      - type: entities
+        title: Badkamer 2de
+        state_color: true
+        entities:
+          - sensor.bathroom_2nd_temperature
+          - sensor.bathroom_2nd_humidity
         show_header_toggle: false
     icon: 'mdi:home-outline'
   - path: mediaplayers

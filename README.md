@@ -64,3 +64,5 @@ The following hardware is integrated in this system.
 | 1        | Assistant     | Google Home Mini                      | wifi     |
 | 1        | Assistant     | Google Nest Mini                      | wifi     |
 | 2        | Assistant     | Google Nest Hub                       | wifi     |
+| 1        | Led strip     | Homeylux led strip RGBWW 5 meter      | wifi     |
+| 4        | Multisensor   | Tuya temperature & humidity sensors   | wifi     |
