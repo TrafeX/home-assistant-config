@@ -1,4 +1,4 @@
-- alias: 'Living lights on'
+- alias: 'Turn living lights on'
   trigger:
     - platform: state
       entity_id: group.all_persons
@@ -8,7 +8,7 @@
       to: 'on'
     - platform: numeric_state
       entity_id: sensor.living_illuminance
-      below: 7
+      below: 5
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -21,16 +21,16 @@
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.living_illuminance
-      below: 7
+      below: 5
   action:
     - service: scene.turn_on
       entity_id: scene.living_normal
 
-- alias: 'Living lights off'
+- alias: 'Turn living lights off when enough daylight or leaving'
   trigger:
     - platform: numeric_state
       entity_id: sensor.living_illuminance
-      above: 12
+      above: 5
     - platform: state
       entity_id: group.all_persons
       to: 'not_home'
@@ -38,6 +38,29 @@
     - condition: state
       entity_id: light.living_spots
       state: 'on'
+  action:
+    - service: script.turn_lights_off
+
+- alias: 'Turn living lights off when no activity'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.living_motion_detection
+      to: 'off'
+      for:
+        minutes: 15
+  condition:
+    - condition: state
+      entity_id: group.all_persons
+      state: 'home'
+    - condition: state
+      entity_id: input_boolean.night_mode
+      state: 'on'
+    - condition: state
+      entity_id: light.living_spots
+      state: 'on'
+    - condition: state
+      entity_id: media_player.sony_bravia_tv
+      state: 'off'
   action:
     - service: script.turn_lights_off
 
