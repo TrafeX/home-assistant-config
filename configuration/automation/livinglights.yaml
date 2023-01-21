@@ -54,7 +54,7 @@
       state: 'home'
     - condition: state
       entity_id: input_boolean.night_mode
-      state: 'on'
+      state: 'off'
     - condition: state
       entity_id: light.living_spots
       state: 'on'
