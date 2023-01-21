@@ -46,6 +46,7 @@ views:
           - script.turn_lights_off
           - light.living_spots
           - light.kitchen
+          - light.partylight
           - binary_sensor.living_motion_detection
           - binary_sensor.sliding_backdoor_is_open
           - sensor.netatmo_indoor_temperature
