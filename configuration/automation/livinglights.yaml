@@ -8,7 +8,7 @@
       to: 'on'
     - platform: numeric_state
       entity_id: sensor.living_illuminance
-      below: 5
+      below: 6
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -21,7 +21,7 @@
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.living_illuminance
-      below: 5
+      below: 6
   action:
     - service: scene.turn_on
       entity_id: scene.living_normal
@@ -30,7 +30,7 @@
   trigger:
     - platform: numeric_state
       entity_id: sensor.living_illuminance
-      above: 5
+      above: 6
     - platform: state
       entity_id: group.all_persons
       to: 'not_home'
@@ -47,7 +47,7 @@
       entity_id: binary_sensor.living_motion_detection
       to: 'off'
       for:
-        minutes: 15
+        minutes: 30
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -78,7 +78,7 @@
       state: 'on'
     - condition: numeric_state
       entity_id: sensor.living_illuminance
-      below: 7
+      below: 6
   action:
     - service: scene.turn_on
       entity_id: scene.living_night
