@@ -72,7 +72,6 @@ views:
           - light.backyard
           - light.gardendoor
           - light.buitenlicht_voorkant
-          - light.kerstverlichting
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temperature
