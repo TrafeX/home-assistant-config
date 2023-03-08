@@ -33,10 +33,14 @@ views:
         entity: alarm_control_panel.home_alarm
       - type: horizontal-stack
         cards:
-          - type: light
+          - type: tile
             entity: light.living_spots
-          - type: light
+            features:
+              - type: light-brightness
+          - type: tile
             entity: light.kitchen
+            features:
+              - type: light-brightness
       - type: entities
         title: Woonkamer & keuken
         state_color: true
