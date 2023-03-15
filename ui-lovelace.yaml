@@ -411,7 +411,7 @@ views:
               left: 29%
       - type: map
         entities:
-          - device_tracker.tim_mobile
+          - device_tracker.timmobile
           - device_tracker.in2013
         hours_to_show: 24
   - path: dashboard
