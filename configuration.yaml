@@ -150,7 +150,7 @@ notify:
   - name: apps
     platform: group
     services:
-      - service: mobile_app_tim_mobile
+      - service: mobile_app_timmobile
   - name: all
     platform: group
     services:

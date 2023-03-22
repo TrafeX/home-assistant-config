@@ -1,0 +1,7 @@
+alias: Show dashboard on Living Hub
+sequence:
+  - data:
+      entity_id: media_player.home_hub
+      dashboard_path: lovelace
+      view_path: dashboard
+    service: cast.show_lovelace_view

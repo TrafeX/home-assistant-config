@@ -18,7 +18,7 @@ views:
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
           - input_boolean.automatic_vacuum_cleaner
-          - script.cast_dashboard
+          - script.cast_dashboard_office
           - input_select.guest_presence
         show_header_toggle: false
       - type: thermostat
@@ -560,11 +560,11 @@ views:
               - type: gauge
                 entity: sensor.power_consumption
                 name: Power
-                max: 10
+                max: 4000
                 severity:
                   green: 0
-                  yellow: 1
-                  red: 3
+                  yellow: 500
+                  red: 1500
   - path: network
     title: Network
     icon: mdi:lan
