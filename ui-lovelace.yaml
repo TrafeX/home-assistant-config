@@ -24,13 +24,15 @@ views:
       - type: thermostat
         name: Verwarming
         entity: climate.heating
-      - type: alarm-panel
-        name: Alarm
-        states:
-          - arm_home
-          - arm_away
-          - arm_night
+      - type: tile
         entity: alarm_control_panel.home_alarm
+        features:
+        - type: "alarm-modes"
+          modes:
+            - armed_home
+            - armed_away
+            - armed_night
+            - disarmed
       - type: horizontal-stack
         cards:
           - type: tile
