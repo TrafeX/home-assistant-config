@@ -176,14 +176,6 @@ alarm_control_panel:
     armed_home:
       arming_time: 5
 
-# Configure climate
-nefiteasy:
-  devices:
-    - serial: !secret nefit_serial
-      accesskey: !secret nefit_accesskey
-      password: !secret nefit_password
-      name: Heating
-
 stream:
 
 # Configure persons
