@@ -1,0 +1,22 @@
+- alias: 'Notify when UPS running on battery'
+  trigger:
+    - platform: state
+      entity_id: sensor.ups_status
+      from: "ONLINE"
+  action:
+    - service: notify.all
+      data_template:
+        title: '⚠️ *UPS status*'
+        message: "UPS changed status to {{ states('sensor.ups_status') }}"
+
+- alias: 'Shutdown NAS when running on UPS battery'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.ups_time_on_battery
+      above: 60
+  action:
+    - service: notify.all
+      data_template:
+        title: '⚠️ *UPS status*'
+        message: 'NAS will be shutdown'
+    - service: synology_dsm.shutdown
