@@ -599,9 +599,4 @@ views:
           graph: line
           detail: 2
           entity: sensor.asuswrt_upload
-        - type: sensor
-          name: Vera response time
-          graph: line
-          detail: 2
-          entity: sensor.vera_response_time
 
