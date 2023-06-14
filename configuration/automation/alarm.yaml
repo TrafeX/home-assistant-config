@@ -1,25 +1,14 @@
 - alias: 'Trigger alarm while armed away'
   trigger:
     - platform: state
-      entity_id: binary_sensor.living_motion_detection
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.hallway_1st_motion_detection
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.hallway_2nd_motion_detection
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.bedroom_jens_motion_detection
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.tygo_motion_detection
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.frontdoor_is_open
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.sliding_backdoor_is_open
+      entity_id:
+        - binary_sensor.living_motion_detection
+        - binary_sensor.hallway_1st_motion_detection
+        - binary_sensor.hallway_2nd_motion_detection
+        - binary_sensor.bedroom_jens_motion_detection
+        - binary_sensor.tygo_motion_detection
+        - binary_sensor.frontdoor_is_open
+        - binary_sensor.sliding_backdoor_is_open
       to: 'on'
   condition:
     - condition: or
@@ -60,13 +49,10 @@
 - alias: 'Trigger alarm while armed home'
   trigger:
     - platform: state
-      entity_id: binary_sensor.frontdoor_is_open
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.sliding_backdoor_is_open
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.backyard_motion_detection
+      entity_id:
+        - binary_sensor.frontdoor_is_open
+        - binary_sensor.sliding_backdoor_is_open
+        - binary_sensor.backyard_motion_detection
       to: 'on'
   condition:
     - condition: or

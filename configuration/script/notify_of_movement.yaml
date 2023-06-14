@@ -4,12 +4,15 @@ sequence:
     data_template:
       title: "⚠ *Beweging gedetecteerd!*"
       message: >
-        Activiteit op:
-        {% for state in states.binary_sensor -%}
-          {% if state.state == 'on' and state.entity_id != "binary_sensor.in2013_is_charging" and state.entity_id != "binary_sensor.wasmachine_remote_control" %}
-            {{ state.name }}
-          {%- endif -%}
-        {% endfor %}
+        Activiteit op: {{ [
+            'binary_sensor.living_motion_detection',
+            'binary_sensor.hallway_1st_motion_detection',
+            'binary_sensor.hallway_2nd_motion_detection',
+            'binary_sensor.bedroom_jens_motion_detection',
+            'binary_sensor.tygo_motion_detection',
+            'binary_sensor.frontdoor_is_open',
+            'binary_sensor.sliding_backdoor_is_open',
+            ] | select('is_state', 'on') | map('state_attr', 'friendly_name') | list }}
       data:
         inline_keyboard:
           - 'Disarm alarm:/disarm_alarm'
