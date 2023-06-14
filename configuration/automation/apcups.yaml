@@ -2,7 +2,6 @@
   trigger:
     - platform: state
       entity_id: sensor.ups_status
-      from: "ONLINE"
   action:
     - service: notify.all
       data_template:
