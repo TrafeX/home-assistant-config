@@ -65,12 +65,6 @@ views:
           - script.empty_vacuum_cleaner
         show_header_toggle: false
       - type: entities
-        title: Koelkast
-        state_color: true
-        entities:
-          - sensor.refrigerator_temperature
-          - sensor.refrigerator_humidity
-      - type: entities
         title: Buiten
         state_color: true
         entities:
@@ -100,6 +94,12 @@ views:
           - sensor.storage_temperature
           - sensor.storage_humidity
         show_header_toggle: false
+      - type: entities
+        title: Meterkast
+        state_color: true
+        entities:
+          - sensor.fusebox_temperature
+          - sensor.fusebox_humidity
       - type: entities
         title: Gang 1ste
         state_color: true
