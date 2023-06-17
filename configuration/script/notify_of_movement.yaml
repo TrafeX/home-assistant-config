@@ -27,3 +27,7 @@ sequence:
             caption: Frontyard
           - url: "http://127.0.0.1:8123{{ states.camera.hallway.attributes.entity_picture }}"
             caption: Hallway
+          - url: "http://127.0.0.1:8123{{ states.camera.tygo_mainstream.attributes.entity_picture }}"
+            caption: Tygo
+          - url: "http://127.0.0.1:8123{{ states.camera.txnas_babycam.attributes.entity_picture }}"
+            caption: Jens
