@@ -34,6 +34,7 @@ Some of the things I've implemented:
 * Cast a dashboard view of Home Assistant to Google Nest Hub
 * Notify when the external IP changes
 * Shutdown NAS when the UPS is running on battery for too long
+* Notify when one the battery powered sensors is running low on battery
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
