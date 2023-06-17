@@ -178,6 +178,13 @@ alarm_control_panel:
 
 stream:
 
+command_line:
+  sensor:
+    name: Raspberry PI CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(2) }}'
+
 # Configure persons
 person: !include configuration/person.yaml
 
