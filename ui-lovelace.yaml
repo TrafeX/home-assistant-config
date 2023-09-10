@@ -53,14 +53,18 @@ views:
           - light.living_spots
           - light.kitchen
           - light.partylight
+          - type: divider
           - binary_sensor.living_motion_detection
           - binary_sensor.sliding_backdoor_is_open
+          - type: divider
           - sensor.netatmo_indoor_temperature
           - sensor.netatmo_indoor_humidity
           - sensor.netatmo_indoor_co2
+          - type: divider
           - sensor.living_temperature
           - sensor.living_humidity
           - sensor.living_illuminance
+          - type: divider
           - vacuum.xiaomi_vacuum_cleaner
           - script.empty_vacuum_cleaner
         show_header_toggle: false
@@ -72,10 +76,12 @@ views:
           - light.backyard
           - light.gardendoor
           - light.buitenlicht_voorkant
+          - type: divider
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
           - sensor.backyard_temperature
           - sensor.backyard_illuminance
+          - type: divider
           - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature
@@ -599,4 +605,13 @@ views:
           graph: line
           detail: 2
           entity: sensor.asuswrt_upload
-
+        - type: sensor
+          name: Raspberry Pi temperature
+          graph: line
+          detail: 2
+          entity: sensor.raspberry_pi_cpu_temperature
+        - type: sensor
+          name: UPS load
+          graph: line
+          detail: 2
+          entity: sensor.ups_load
