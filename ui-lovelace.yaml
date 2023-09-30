@@ -94,8 +94,8 @@ views:
           - binary_sensor.hallway_gf_smoke_alarm
           - light.gang_bg
           - sensor.hallway_gf_smoke_temperature
-          - binary_sensor.voordeur_ding
-          - binary_sensor.voordeur_motion
+          - binary_sensor.doorbell_visitor
+          - binary_sensor.doorbell_motion
           - binary_sensor.hallway_motion_sensor
           - sensor.storage_temperature
           - sensor.storage_humidity
@@ -232,6 +232,8 @@ views:
       - type: picture-entity
         entity: camera.txnas_hallway
       - type: picture-entity
+        entity: camera.doorbell_sub
+      - type: picture-entity
         entity: camera.doorbell
   - path: security
     title: Security
@@ -256,7 +258,7 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.shed_motion
             secondary_info: last-changed
-          - entity: binary_sensor.voordeur_motion
+          - entity: binary_sensor.doorbell_motion
             secondary_info: last-changed
           - entity: binary_sensor.frontdoor_is_open
             secondary_info: last-changed
@@ -405,7 +407,7 @@ views:
               top: 3%
               left: 50%
           - type: state-icon
-            entity: binary_sensor.voordeur_motion
+            entity: binary_sensor.doorbell_motion
             style:
               top: 85%
               left: 58%
@@ -480,8 +482,8 @@ views:
               - type: picture-glance
                 title: Frontyard
                 entities:
-                  - binary_sensor.voordeur_ding
-                  - binary_sensor.voordeur_motion
+                  - binary_sensor.doorbell_visitor
+                  - binary_sensor.doorbell_motion
                   - binary_sensor.frontdoor_is_open
                 camera_image: camera.txnas_frontyard_cam
               - type: picture-glance
@@ -520,7 +522,7 @@ views:
               - type: button
                 entity: binary_sensor.shed_motion
               - type: button
-                entity: binary_sensor.voordeur_motion
+                entity: binary_sensor.doorbell_motion
               - type: button
                 entity: binary_sensor.frontdoor_is_open
               - type: button

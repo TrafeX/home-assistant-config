@@ -1,12 +1,12 @@
 - alias: 'Notify when pressing the doorbell'
   trigger:
     - platform: state
-      entity_id: binary_sensor.voordeur_ding
+      entity_id: binary_sensor.doorbell_visitor
       to: 'on'
   action:
     - service: camera.snapshot
       data:
-        entity_id: camera.frontyard
+        entity_id: camera.doorbell_sub
         filename: !secret frontyard_snapshot_folder
     - service: tts.google_say
       data:

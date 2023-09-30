@@ -62,7 +62,7 @@ The following hardware is integrated in this system.
 | 2        | Weather       | Netatmo extension module              | wifi     |
 | 1        | Thermostat    | Nefit Easy                            | wifi     |
 | 6        | Camera        | Foscam, D-Link, Xiaomi                | wifi     |
-| 1        | Doorbell      | Ring video doorbell                   | wifi     |
+| 1        | Doorbell      | Reolink doorbell                      | lan      |
 | 1        | Assistant     | Google Home Mini                      | wifi     |
 | 1        | Assistant     | Google Nest Mini                      | wifi     |
 | 2        | Assistant     | Google Nest Hub                       | wifi     |
