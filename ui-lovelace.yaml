@@ -6,7 +6,7 @@ views:
       - person.tim
       - person.chantal
       - sensor.lights_on
-      - sensor.power_consumption
+      - sensor.power_consumption_phase_l1
       - sun.sun
     cards:
       - type: entities
@@ -263,13 +263,15 @@ views:
           - entity: binary_sensor.sliding_backdoor_is_open
             secondary_info: last-changed
         show_header_toggle: false
-      - type: alarm-panel
-        name: Alarm
-        states:
-          - arm_home
-          - arm_away
-          - arm_night
+      - type: tile
         entity: alarm_control_panel.home_alarm
+        features:
+        - type: "alarm-modes"
+          modes:
+            - armed_home
+            - armed_away
+            - armed_night
+            - disarmed
   - path: floorplan
     title: Floorplan
     icon: mdi:floor-plan
@@ -566,15 +568,15 @@ views:
                 detail: 2
                 entity: sensor.netatmo_outdoor_humidity
               - type: gauge
-                entity: sensor.power_consumption
+                entity: sensor.power_consumption_phase_l1
                 name: Power
-                max: 4000
+                max: 4
                 severity:
                   green: 0
-                  yellow: 500
-                  red: 1500
-  - path: network
-    title: Network
+                  yellow: 0.5
+                  red: 2
+  - path: pertype
+    title: Per Type
     icon: mdi:lan
     panel: true
     cards:
@@ -615,3 +617,60 @@ views:
           graph: line
           detail: 2
           entity: sensor.ups_load
+
+  - path: network
+    title: Network
+    panel: true
+    icon: mdi:lan
+    cards:
+      - type: grid
+        columns: 3
+        cards:
+          - type: vertical-stack
+            title: Lights
+            cards:
+              - type: tile
+                entity: light.living_spots
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.kitchen
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.partylight
+              - type: tile
+                entity: light.backyard
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.gardendoor
+              - type: tile
+                entity: light.buitenlicht_voorkant
+              - type: tile
+                entity: light.gang_bg
+              - type: tile
+                entity: light.hallway_1st
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.hallway_2nd
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.bedroom_jens
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.bedroom_tygo
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.led_strip_small_office
+                features:
+                  - type: light-brightness
+              - type: tile
+                entity: light.large_office
+                features:
+                  - type: light-brightness
+
