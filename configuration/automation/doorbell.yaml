@@ -11,10 +11,13 @@
           message: "Er is aangebeld bij de voordeur om {{ now().strftime('%H:%M') }}."
           data:
             image: "/api/camera_proxy/camera.doorbell_sub"
-            clickAction: "/lovelace/cameras"
+            clickAction: "entityId:camera.doorbell_sub"
             ttl: 0
+            vibrationPattern: "50, 200, 50, 500, 50"
             priority: high
+            importance: high
             channel: Doorbell
+            notification_icon: mdi:doorbell
       - sequence:
         - service: camera.play_stream
           data:
