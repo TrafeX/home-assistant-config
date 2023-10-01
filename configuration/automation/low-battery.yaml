@@ -4,7 +4,7 @@
     input:
       day: '0'
       threshold: '15'
-      time: '10:00:00'
+      time: '08:00:00'
       exclude:
         entity_id:
           - sensor.strips_mazw_battery_level
