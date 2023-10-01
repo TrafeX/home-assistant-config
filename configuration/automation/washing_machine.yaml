@@ -7,7 +7,7 @@
       entity_id: sensor.wasmachine_operation_state
       to: 'Finished'
   action:
-    - service: notify.apps
+    - service: notify.app_tim
       data:
         message: 'De wasmachine is klaar'
     - service: tts.google_say

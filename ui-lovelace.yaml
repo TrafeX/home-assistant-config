@@ -220,6 +220,8 @@ views:
     badges: []
     cards:
       - type: picture-entity
+        entity: camera.doorbell_sub
+      - type: picture-entity
         entity: camera.txnas_frontyard_cam
       - type: picture-entity
         entity: camera.txnas_backyard
@@ -231,8 +233,6 @@ views:
         entity: camera.shed
       - type: picture-entity
         entity: camera.txnas_hallway
-      - type: picture-entity
-        entity: camera.doorbell_sub
       - type: picture-entity
         entity: camera.doorbell
   - path: security

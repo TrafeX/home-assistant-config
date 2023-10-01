@@ -4,18 +4,46 @@
       entity_id: binary_sensor.doorbell_visitor
       to: 'on'
   action:
-    - service: camera.snapshot
-      data:
-        entity_id: camera.doorbell_sub
-        filename: !secret frontyard_snapshot_folder
-    - service: tts.google_say
-      data:
-        entity_id: group.announcement_speakers
-        message: 'Er staat iemand voor de voordeur'
-    - service: notify.telegram_notify
-      data_template:
-        message: "Er is aangebeld bij de voordeur"
+    - parallel:
+      - service: notify.apps
         data:
-          photo:
-            - url: !secret frontyard_snapshot_url
-              caption: Er is aangebeld bij de voordeur
+          title: "Deurbel"
+          message: "Er is aangebeld bij de voordeur om {{ now().strftime('%H:%M') }}."
+          data:
+            image: "/api/camera_proxy/camera.doorbell_sub"
+            clickAction: "/lovelace/cameras"
+            ttl: 0
+            priority: high
+            channel: Doorbell
+      - sequence:
+        - service: camera.play_stream
+          data:
+            entity_id: camera.doorbell_sub
+            media_player:
+              - media_player.werkkamer
+              - media_player.home_hub
+        - delay: "00:01:00"
+        - service: media_player.media_stop
+          data: 
+            entity_id: 
+              - media_player.werkkamer
+              - media_player.home_hub
+      - service: camera.snapshot
+        data:
+          entity_id: camera.doorbell_sub
+          filename: !secret frontyard_snapshot_folder
+      - choose:
+          - conditions:
+              - condition: and
+                conditions: 
+                  - condition: state
+                    entity_id: group.all_persons
+                    state: 'home'
+                  - condition: state
+                    entity_id: input_boolean.night_mode
+                    state: 'off'
+            sequence:
+              - service: tts.google_say
+                data:
+                  entity_id: group.announcement_speakers
+                  message: 'Er staat iemand voor de voordeur'

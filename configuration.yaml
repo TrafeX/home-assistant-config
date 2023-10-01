@@ -151,10 +151,15 @@ tts:
 
 # Configure notify platforms
 notify:
+  - name: app_tim
+    platform: group
+    services:
+      - service: mobile_app_timmobile
   - name: apps
     platform: group
     services:
       - service: mobile_app_timmobile
+      - service: mobile_app_in2013
   - name: all
     platform: group
     services:
