@@ -122,8 +122,11 @@ influxdb:
   tags:
     source: hass
 
-# Configure custom sensors
+# Configure custom sensors (legacy style)
 sensor: !include configuration/sensor.yaml
+
+# Configure template sensors (modern style)
+template: !include configuration/template.yaml
 
 # Configure binary sensors
 binary_sensor: !include configuration/binary_sensor.yaml
