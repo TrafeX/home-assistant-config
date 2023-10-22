@@ -1,0 +1,20 @@
+- alias: 'Turn on chargers once a month for 12 hours'
+  trigger:
+    - platform: time
+      at: '08:00:00'
+  condition:
+    - condition: template
+      value_template: "{{ now().strftime('%d')|int == 1 }}"
+  action:
+    - service: notify.app_tim
+      data:
+        message: 'Opladers in schuur worden ingeschakeld'
+    - service: switch.turn_on
+      entity_id: switch.schuur_opladers
+    - delay: '12:00:00'
+    - service: notify.app_tim
+      data:
+        message: 'Opladers in schuur worden uitgeschakeld'
+    - service: switch.turn_off
+      entity_id: switch.schuur_opladers
+      

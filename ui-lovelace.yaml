@@ -83,6 +83,7 @@ views:
           - sensor.backyard_temperature
           - sensor.backyard_illuminance
           - type: divider
+          - switch.schuur_opladers
           - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature

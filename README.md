@@ -35,6 +35,7 @@ Some of the things I've implemented:
 * Notify when the external IP changes
 * Shutdown NAS when the UPS is running on battery for too long
 * Notify when one the battery powered sensors is running low on battery
+* Turn on chargers in the shed every month during winter to prevent the batteries from dying
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
