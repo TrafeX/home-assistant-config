@@ -16,6 +16,8 @@ homeassistant:
 
 # Enable the frontend
 frontend:
+  extra_module_url:
+    - /local/layout-card.js
 
 mobile_app:
 

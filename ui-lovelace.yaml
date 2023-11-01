@@ -602,14 +602,17 @@ views:
                   green: 0
                   yellow: 0.5
                   red: 2
-  - path: network
-    title: Network
-    icon: mdi:lan
-    panel: true
+  - path: graphs
+    title: Graphs
+    icon: mdi:chart-bar
+    # panel: true
+    type: custom:grid-layout
+    layout:
+      grid-template-columns: 1fr 1fr
+      mediaquery:
+        "(max-width: 1024px)":
+          grid-template-columns: 100%
     cards:
-      - type: grid
-        columns: 2
-        cards:
         - type: statistics-graph
           title: Switch good packets
           period: 5minute
@@ -689,6 +692,32 @@ views:
           stat_types:
             - change
         - type: statistics-graph
+          title: Power usage
+          chart_type: line
+          period: 5minute
+          entities:
+            - name: Large office
+              entity: sensor.large_office_power
+            - name: Switch01
+              entity: sensor.switch01_power
+            - name: Switch02
+              entity: sensor.switch02_power
+            - name: Bedroom Jens
+              entity: sensor.light_jens_power
+            - name: Bedroom Tygo
+              entity: sensor.bedroom_tygo_power
+            - name: Wasdroger
+              entity: sensor.wasdroger_electric_consumption_w
+            - name: Tuindeur
+              entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
+            - name: Schuur opladers
+              entity: sensor.schuur_opladers_electric_consumption_w
+          stat_types:
+            - mean
+          days_to_show: 1
+          unit: W
+        - type: statistics-graph
+          title: Heating
           chart_type: line
           period: 5minute
           entities:
