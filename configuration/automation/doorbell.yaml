@@ -18,19 +18,6 @@
             importance: high
             channel: Doorbell
             notification_icon: mdi:doorbell
-      - sequence:
-        - service: camera.play_stream
-          data:
-            entity_id: camera.doorbell_sub
-            media_player:
-              - media_player.werkkamer
-              - media_player.home_hub
-        - delay: "00:01:00"
-        - service: media_player.media_stop
-          data: 
-            entity_id: 
-              - media_player.werkkamer
-              - media_player.home_hub
       - service: camera.snapshot
         data:
           entity_id: camera.doorbell_sub
