@@ -8,7 +8,9 @@
       exclude:
         entity_id:
           - sensor.strips_mazw_battery_level
+          - sensor.strips_guard_700_battery_level
           - binary_sensor.strips_mazw_low_battery_level
+          - binary_sensor.strips_guard_700_low_battery_level
       actions:
         - service: notify.persistent_notification
           data: 
