@@ -6,7 +6,7 @@ views:
       - person.tim
       - person.chantal
       - sensor.lights_on
-      - sensor.power_consumption_phase_l1
+      - sensor.power_consumption
       - sun.sun
     cards:
       - type: entities
@@ -28,12 +28,12 @@ views:
       - type: tile
         entity: alarm_control_panel.home_alarm
         features:
-        - type: "alarm-modes"
-          modes:
-            - armed_home
-            - armed_away
-            - armed_night
-            - disarmed
+          - type: "alarm-modes"
+            modes:
+              - armed_home
+              - armed_away
+              - armed_night
+              - disarmed
       - type: horizontal-stack
         cards:
           - type: tile
@@ -167,7 +167,6 @@ views:
           - sensor.netatmo_bedroom_temperature
           - sensor.netatmo_bedroom_humidity
           - sensor.netatmo_bedroom_co2
-        show_header_toggle: false
       - type: entities
         title: Werkkamer groot
         state_color: true
@@ -183,7 +182,7 @@ views:
           - sensor.bathroom_2nd_temperature
           - sensor.bathroom_2nd_humidity
         show_header_toggle: false
-    icon: 'mdi:home-outline'
+    icon: "mdi:home-outline"
   - path: mediaplayers
     title: Media
     icon: mdi:youtube-tv
@@ -272,12 +271,12 @@ views:
       - type: tile
         entity: alarm_control_panel.home_alarm
         features:
-        - type: "alarm-modes"
-          modes:
-            - armed_home
-            - armed_away
-            - armed_night
-            - disarmed
+          - type: "alarm-modes"
+            modes:
+              - armed_home
+              - armed_away
+              - armed_night
+              - disarmed
   - path: floorplan
     title: Floorplan
     icon: mdi:floor-plan
@@ -595,13 +594,13 @@ views:
                 detail: 2
                 entity: sensor.netatmo_outdoor_humidity
               - type: gauge
-                entity: sensor.power_consumption_phase_l1
+                entity: sensor.power_consumption
                 name: Power
-                max: 4
+                max: 4000
                 severity:
                   green: 0
-                  yellow: 0.5
-                  red: 2
+                  yellow: 1500
+                  red: 3000
   - path: graphs
     title: Graphs
     icon: mdi:chart-bar
@@ -613,132 +612,132 @@ views:
         "(max-width: 1024px)":
           grid-template-columns: 100%
     cards:
-        - type: statistics-graph
-          title: Switch good packets
-          period: 5minute
-          days_to_show: 2
-          entities:
-            - name: P1 Doorbell TX
-              entity: sensor.switch_port_1_tx_good_packets
-            - name: P1 Doorbell RX
-              entity: sensor.switch_port_1_rx_good_packets
-            - name: P2 TX
-              entity: sensor.switch_port_2_tx_good_packets
-            - name: P2 RX
-              entity: sensor.switch_port_2_rx_good_packets
-            - name: P3 TX
-              entity: sensor.switch_port_3_tx_good_packets
-            - name: P3 RX 
-              entity: sensor.switch_port_3_rx_good_packets
-            - name: P4 TX 
-              entity: sensor.switch_port_4_tx_good_packets
-            - name: P4 RX 
-              entity: sensor.switch_port_4_rx_good_packets
-            - name: P5 EoP TX 
-              entity: sensor.switch_port_5_tx_good_packets
-            - name: P5 EoP RX 
-              entity: sensor.switch_port_5_rx_good_packets
-            - name: P6 RPi TX 
-              entity: sensor.switch_port_6_tx_good_packets
-            - name: P6 RPi RX 
-              entity: sensor.switch_port_6_rx_good_packets
-            - name: P7 NAS TX 
-              entity: sensor.switch_port_7_tx_good_packets
-            - name: P7 NAS RX 
-              entity: sensor.switch_port_7_rx_good_packets
-            - name: P8 Router TX 
-              entity: sensor.switch_port_8_tx_good_packets
-            - name: P8 Router RX 
-              entity: sensor.switch_port_8_rx_good_packets
-          stat_types:
-            - change
-        - type: statistics-graph
-          title: Switch bad packets
-          period: 5minute
-          days_to_show: 2
-          entities:
-            - name: P1 Doorbell TX
-              entity: sensor.switch_port_1_tx_bad_packets
-            - name: P1 Doorbell RX
-              entity: sensor.switch_port_1_rx_bad_packets
-            - name: P2 TX
-              entity: sensor.switch_port_2_tx_bad_packets
-            - name: P2 RX
-              entity: sensor.switch_port_2_rx_bad_packets
-            - name: P3 TX
-              entity: sensor.switch_port_3_tx_bad_packets
-            - name: P3 RX 
-              entity: sensor.switch_port_3_rx_bad_packets
-            - name: P4 TX 
-              entity: sensor.switch_port_4_tx_bad_packets
-            - name: P4 RX 
-              entity: sensor.switch_port_4_rx_bad_packets
-            - name: P5 EoP TX 
-              entity: sensor.switch_port_5_tx_bad_packets
-            - name: P5 EoP RX 
-              entity: sensor.switch_port_5_rx_bad_packets
-            - name: P6 RPi TX 
-              entity: sensor.switch_port_6_tx_bad_packets
-            - name: P6 RPi RX 
-              entity: sensor.switch_port_6_rx_bad_packets
-            - name: P7 NAS TX 
-              entity: sensor.switch_port_7_tx_bad_packets
-            - name: P7 NAS RX 
-              entity: sensor.switch_port_7_rx_bad_packets
-            - name: P8 Router TX 
-              entity: sensor.switch_port_8_tx_bad_packets
-            - name: P8 Router RX 
-              entity: sensor.switch_port_8_rx_bad_packets
-          stat_types:
-            - change
-        - type: statistics-graph
-          title: Power usage
-          chart_type: line
-          period: 5minute
-          entities:
-            - name: Large office
-              entity: sensor.large_office_power
-            - name: Switch01
-              entity: sensor.switch01_power
-            - name: Switch02
-              entity: sensor.switch02_power
-            - name: Bedroom Jens
-              entity: sensor.light_jens_power
-            - name: Bedroom Tygo
-              entity: sensor.bedroom_tygo_power
-            - name: Wasdroger
-              entity: sensor.wasdroger_electric_consumption_w
-            - name: Tuindeur
-              entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
-            - name: Schuur opladers
-              entity: sensor.schuur_opladers_electric_consumption_w
-          stat_types:
-            - mean
-          days_to_show: 1
-          unit: W
-        - type: statistics-graph
-          title: Heating
-          chart_type: line
-          period: 5minute
-          entities:
-            - name: Supply temperature
-              entity: sensor.heating_supply_temperature
-            - name: Power %
-              entity: sensor.power
-          stat_types:
-            - mean
-          days_to_show: 1
-          unit: °C
-        - type: history-graph
-          title: Raspberry Pi temperature
-          hours_to_show: 48
-          entities:
-            - sensor.raspberry_pi_cpu_temperature
-        - type: history-graph
-          title: UPS load
-          hours_to_show: 48
-          entities:
-            - sensor.ups_load
+      - type: statistics-graph
+        title: Switch good packets
+        period: 5minute
+        days_to_show: 2
+        entities:
+          - name: P1 Doorbell TX
+            entity: sensor.switch_port_1_tx_good_packets
+          - name: P1 Doorbell RX
+            entity: sensor.switch_port_1_rx_good_packets
+          - name: P2 TX
+            entity: sensor.switch_port_2_tx_good_packets
+          - name: P2 RX
+            entity: sensor.switch_port_2_rx_good_packets
+          - name: P3 TX
+            entity: sensor.switch_port_3_tx_good_packets
+          - name: P3 RX
+            entity: sensor.switch_port_3_rx_good_packets
+          - name: P4 TX
+            entity: sensor.switch_port_4_tx_good_packets
+          - name: P4 RX
+            entity: sensor.switch_port_4_rx_good_packets
+          - name: P5 EoP TX
+            entity: sensor.switch_port_5_tx_good_packets
+          - name: P5 EoP RX
+            entity: sensor.switch_port_5_rx_good_packets
+          - name: P6 RPi TX
+            entity: sensor.switch_port_6_tx_good_packets
+          - name: P6 RPi RX
+            entity: sensor.switch_port_6_rx_good_packets
+          - name: P7 NAS TX
+            entity: sensor.switch_port_7_tx_good_packets
+          - name: P7 NAS RX
+            entity: sensor.switch_port_7_rx_good_packets
+          - name: P8 Router TX
+            entity: sensor.switch_port_8_tx_good_packets
+          - name: P8 Router RX
+            entity: sensor.switch_port_8_rx_good_packets
+        stat_types:
+          - change
+      - type: statistics-graph
+        title: Switch bad packets
+        period: 5minute
+        days_to_show: 2
+        entities:
+          - name: P1 Doorbell TX
+            entity: sensor.switch_port_1_tx_bad_packets
+          - name: P1 Doorbell RX
+            entity: sensor.switch_port_1_rx_bad_packets
+          - name: P2 TX
+            entity: sensor.switch_port_2_tx_bad_packets
+          - name: P2 RX
+            entity: sensor.switch_port_2_rx_bad_packets
+          - name: P3 TX
+            entity: sensor.switch_port_3_tx_bad_packets
+          - name: P3 RX
+            entity: sensor.switch_port_3_rx_bad_packets
+          - name: P4 TX
+            entity: sensor.switch_port_4_tx_bad_packets
+          - name: P4 RX
+            entity: sensor.switch_port_4_rx_bad_packets
+          - name: P5 EoP TX
+            entity: sensor.switch_port_5_tx_bad_packets
+          - name: P5 EoP RX
+            entity: sensor.switch_port_5_rx_bad_packets
+          - name: P6 RPi TX
+            entity: sensor.switch_port_6_tx_bad_packets
+          - name: P6 RPi RX
+            entity: sensor.switch_port_6_rx_bad_packets
+          - name: P7 NAS TX
+            entity: sensor.switch_port_7_tx_bad_packets
+          - name: P7 NAS RX
+            entity: sensor.switch_port_7_rx_bad_packets
+          - name: P8 Router TX
+            entity: sensor.switch_port_8_tx_bad_packets
+          - name: P8 Router RX
+            entity: sensor.switch_port_8_rx_bad_packets
+        stat_types:
+          - change
+      - type: statistics-graph
+        title: Power usage
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Large office
+            entity: sensor.large_office_power
+          - name: Switch01
+            entity: sensor.switch01_power
+          - name: Switch02
+            entity: sensor.switch02_power
+          - name: Bedroom Jens
+            entity: sensor.light_jens_power
+          - name: Bedroom Tygo
+            entity: sensor.bedroom_tygo_power
+          - name: Wasdroger
+            entity: sensor.wasdroger_electric_consumption_w
+          - name: Tuindeur
+            entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
+          - name: Schuur opladers
+            entity: sensor.schuur_opladers_electric_consumption_w
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: W
+      - type: statistics-graph
+        title: Heating
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Supply temperature
+            entity: sensor.heating_supply_temperature
+          - name: Power %
+            entity: sensor.power
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: °C
+      - type: history-graph
+        title: Raspberry Pi temperature
+        hours_to_show: 48
+        entities:
+          - sensor.raspberry_pi_cpu_temperature
+      - type: history-graph
+        title: UPS load
+        hours_to_show: 48
+        entities:
+          - sensor.ups_load
 
   - path: pertype
     title: Per type
