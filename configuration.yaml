@@ -159,11 +159,11 @@ notify:
   - name: app_tim
     platform: group
     services:
-      - service: mobile_app_timmobile
+      - service: mobile_app_tim
   - name: apps
     platform: group
     services:
-      - service: mobile_app_timmobile
+      - service: mobile_app_tim
       - service: mobile_app_in2013
   - name: all
     platform: group
