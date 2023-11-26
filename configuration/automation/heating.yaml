@@ -7,7 +7,7 @@
     - service: climate.set_temperature
       data:
         entity_id: climate.heating
-        temperature: 16.5
+        temperature: 16
 
 - alias: 'Turn heating down when leaving'
   trigger:
