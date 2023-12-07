@@ -54,6 +54,8 @@ views:
           - light.living_spots
           - light.kitchen
           - light.partylight
+          - light.kerstboom
+          - light.christmas_star
           - type: divider
           - binary_sensor.living_motion_detection
           - binary_sensor.sliding_backdoor_is_open
@@ -77,6 +79,7 @@ views:
           - light.backyard
           - light.gardendoor
           - light.buitenlicht_voorkant
+          - light.christmas_frontyard
           - type: divider
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
