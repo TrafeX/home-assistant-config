@@ -167,9 +167,11 @@ views:
         state_color: true
         entities:
           - light.led_strip_small_office
+          - light.office_led_strip_backside
           - sensor.netatmo_bedroom_temperature
           - sensor.netatmo_bedroom_humidity
           - sensor.netatmo_bedroom_co2
+        show_header_toggle: false
       - type: entities
         title: Werkkamer groot
         state_color: true
