@@ -634,9 +634,9 @@ views:
             entity: sensor.switch_port_3_tx_good_packets
           - name: P3 RX
             entity: sensor.switch_port_3_rx_good_packets
-          - name: P4 TX
+          - name: P4 WiFi TX
             entity: sensor.switch_port_4_tx_good_packets
-          - name: P4 RX
+          - name: P4 WiFi RX
             entity: sensor.switch_port_4_rx_good_packets
           - name: P5 EoP TX
             entity: sensor.switch_port_5_tx_good_packets
@@ -673,9 +673,9 @@ views:
             entity: sensor.switch_port_3_tx_bad_packets
           - name: P3 RX
             entity: sensor.switch_port_3_rx_bad_packets
-          - name: P4 TX
+          - name: P4 WiFi TX
             entity: sensor.switch_port_4_tx_bad_packets
-          - name: P4 RX
+          - name: P4 WiFi RX
             entity: sensor.switch_port_4_rx_bad_packets
           - name: P5 EoP TX
             entity: sensor.switch_port_5_tx_bad_packets
