@@ -617,7 +617,7 @@ views:
       - type: statistics-graph
         title: Switch good packets
         period: 5minute
-        days_to_show: 2
+        days_to_show: 1
         entities:
           - name: P1 Doorbell TX
             entity: sensor.switch_port_1_tx_good_packets
@@ -656,7 +656,7 @@ views:
       - type: statistics-graph
         title: Switch bad packets
         period: 5minute
-        days_to_show: 2
+        days_to_show: 1
         entities:
           - name: P1 Doorbell TX
             entity: sensor.switch_port_1_tx_bad_packets
