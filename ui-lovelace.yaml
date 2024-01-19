@@ -699,10 +699,6 @@ views:
         entities:
           - name: Large office
             entity: sensor.large_office_power
-          - name: Switch01
-            entity: sensor.switch01_power
-          - name: Switch02
-            entity: sensor.switch02_power
           - name: Bedroom Jens
             entity: sensor.light_jens_power
           - name: Bedroom Tygo
@@ -713,6 +709,12 @@ views:
             entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
           - name: Schuur opladers
             entity: sensor.schuur_opladers_electric_consumption_w
+          - name: Vaatwasser
+            entity: sensor.vaatwasser_power
+          - name: Small Office
+            entity: sensor.small_office_switch_0_power
+          - name: Switch01
+            entity: sensor.switch01_power
         stat_types:
           - mean
         days_to_show: 1
