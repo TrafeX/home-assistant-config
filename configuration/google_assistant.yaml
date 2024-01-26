@@ -56,7 +56,11 @@ entity_config:
     room: Werkkamer groot
     expose: true
   light.led_strip_small_office:
-    name: Werkkamer klein LED strip
+    name: Werkkamer klein plafond LED strip
+    room: Werkkamer klein
+    expose: true
+  light.office_led_strip_backside:
+    name: Werkkamer klein achterkant LED strip
     room: Werkkamer klein
     expose: true
   vacuum.xiaomi_vacuum_cleaner:

@@ -472,6 +472,9 @@ views:
                 entity: light.led_strip_small_office
               - type: button
                 icon_height: 30px
+                entity: light.office_led_strip_backside
+              - type: button
+                icon_height: 30px
                 entity: switch.mechanical_ventilation
               - type: button
                 icon_height: 30px
