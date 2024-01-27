@@ -217,6 +217,8 @@ views:
             entity: media_player.home_hub
           - type: media-control
             entity: media_player.werkkamer
+          - type: media-control
+            entity: media_player.werkkamer_groot
   - path: cameras
     title: Cameras
     icon: mdi:cctv
