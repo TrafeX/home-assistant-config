@@ -28,9 +28,6 @@ lovelace:
 # Enable system health on info page
 system_health:
 
-# Show the map
-map:
-
 # Enable using media sources
 media_source:
 
