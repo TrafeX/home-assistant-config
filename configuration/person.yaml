@@ -2,11 +2,9 @@
   id: oocezesoQu5Eigha8ja1
   user_id: !secret user_id_tim
   device_trackers:
-    - device_tracker.tim
     - device_tracker.timmobile
 - name: Chantal
   id: peebeezaiWohthahk0de
   user_id: !secret user_id_chantal
   device_trackers:
-    - device_tracker.oneplus_8
-    - device_tracker.in2013
+    - device_tracker.chantalmobile
