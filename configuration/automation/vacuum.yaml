@@ -19,23 +19,11 @@
           Tijd: {{ (int(states('sensor.xiaomi_vacuum_cleaner_last_clean_duration'))/60)|round }}mins.
           Oppervlakte: {{ states('sensor.xiaomi_vacuum_cleaner_last_clean_area') }}m2.
 
-- alias: 'Notify the vacuum cleaner will run this night'
+- alias: 'Enable automatic vacuum cleaner on sleep mode'
   trigger:
-    - platform: time
-      at: '22:00:00'
-  condition:
-    - condition: state
-      entity_id: input_boolean.automatic_vacuum_cleaner
-      state: 'on'
-  action:
-    - service: notify.all
-      data:
-        message: "Vannacht gaat de robotstofzuiger aan de gang"
-
-- alias: 'Set the vacuum cleaner to run upcoming night'
-  trigger:
-    - platform: time
-      at: '05:00:00'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -44,19 +32,31 @@
     - service: input_boolean.turn_on
       entity_id: input_boolean.automatic_vacuum_cleaner
 
-- alias: 'Run the vacuum cleaner at night'
+- alias: 'Run the vacuum cleaner when automatic vacuum cleaner is enabled'
   trigger:
-    - platform: time
-      at: '01:30:00'
+    - platform: state
+      entity_id: input_boolean.automatic_vacuum_cleaner
+      to: 'on'
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      to: 'docked'
   condition:
     - condition: state
       entity_id: input_boolean.automatic_vacuum_cleaner
       state: 'on'
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'on'
   action:
     - service: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
+
+- alias: 'Disable automatic vacuum cleaner when started cleaning'
+  trigger:
+    - platform: state
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      to: 'cleaning'
+  condition:
+    - condition: state
+      entity_id: input_boolean.automatic_vacuum_cleaner
+      state: 'on'
+  action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.automatic_vacuum_cleaner

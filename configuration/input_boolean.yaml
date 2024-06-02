@@ -8,7 +8,7 @@ notify_backyard_motion:
   name: Notify on backyard motion
   icon: mdi:access-point
 automatic_vacuum_cleaner:
-  name: Run the vacuum cleaner this night
+  name: Run the vacuum cleaner
   icon: mdi:robot
 cast_dashboard:
   name: Cast dashboard to Home Hub
@@ -16,3 +16,4 @@ cast_dashboard:
 run_windmill:
   name: Molen
   icon: mdi:rotate-right
+

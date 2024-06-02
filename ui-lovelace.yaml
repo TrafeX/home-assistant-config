@@ -17,7 +17,6 @@ views:
           - input_boolean.night_mode
           - input_boolean.ghost_mode
           - input_boolean.notify_backyard_motion
-          - input_boolean.automatic_vacuum_cleaner
           - script.cast_dashboard_office
           - script.cast_dashboard_living
           - input_select.guest_presence
@@ -67,6 +66,7 @@ views:
           - sensor.living_illuminance
           - type: divider
           - vacuum.xiaomi_vacuum_cleaner
+          - input_boolean.automatic_vacuum_cleaner
           - script.empty_vacuum_cleaner
         show_header_toggle: false
       - type: entities
