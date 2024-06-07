@@ -47,6 +47,7 @@ The following hardware is integrated in this system.
 | Quantity | Type          | Brand                                 | Protocol |
 | -------- | ------------- | ------------------------------------- | -------- |
 | 1        | Controller    | Aeon Labs z-stick gen5+               | zwave    |
+| 1        | Controller    | Sonoff Zigbee USB Dongle Plus         | zigbee   |
 | 5        | Dimmer        | Fibaro dimmer 500w (FGD-211)          | zwave    |
 | 3        | Dimmer        | Fibaro dimmer 2 250watt (FGD-212)     | zwave    |
 | 1        | Wallplug      | Aeon Labs Inline Smart Energy         | zwave    |
@@ -69,3 +70,4 @@ The following hardware is integrated in this system.
 | 3        | Assistant     | Google Nest Hub                       | wifi     |
 | 1        | Led strip     | Homeylux led strip RGBWW 5 meter      | wifi     |
 | 4        | Multisensor   | Tuya temperature & humidity sensors   | wifi     |
+| 3        | Light         | Philips Hue Lily garden spots         | zigbee   |
