@@ -1,4 +1,4 @@
-- alias: 'Turn on backyard light'
+- alias: 'Turn on garden spot lights'
   trigger:
     - platform: state
       entity_id: group.all_persons
@@ -17,7 +17,7 @@
       entity_id: input_boolean.night_mode
       state: 'off'
     - condition: state
-      entity_id: light.backyard
+      entity_id: light.tuin_spots
       state: 'off'
     - condition: or
       conditions:
@@ -30,10 +30,9 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.backyard
-        brightness: 25
+        entity_id: light.tuin_spots
 
-- alias: 'Turn off backyard light'
+- alias: 'Turn off garden spot lights'
   trigger:
     - platform: sun
       event: 'sunrise'
@@ -41,37 +40,40 @@
     - platform: state
       entity_id: group.all_persons
       to: 'not_home'
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
   action:
     - service: light.turn_off
       data:
-        entity_id: light.backyard
+        entity_id: light.tuin_spots
 
-- alias: 'Raise brightness of backyard light when motion'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.backyard_motion_detection
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: light.backyard
-      state: 'on'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.backyard
-        brightness: 100
+# - alias: 'Raise brightness of backyard light when motion'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.backyard_motion_detection
+#       to: 'on'
+#   condition:
+#     - condition: state
+#       entity_id: light.backyard
+#       state: 'on'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.backyard
+#         brightness: 100
 
-- alias: 'Dim brightness of backyard light'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.backyard_motion_detection
-      to: 'off'
-  condition:
-    - condition: state
-      entity_id: light.backyard
-      state: 'on'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.backyard
-        brightness: 25
+# - alias: 'Dim brightness of backyard light'
+#   trigger:
+#     - platform: state
+#       entity_id: binary_sensor.backyard_motion_detection
+#       to: 'off'
+#   condition:
+#     - condition: state
+#       entity_id: light.backyard
+#       state: 'on'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.backyard
+#         brightness: 25

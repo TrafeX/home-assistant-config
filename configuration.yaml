@@ -196,6 +196,14 @@ command_line:
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(2) }}'
 
+light:
+  - platform: group
+    name: Tuin spots
+    entities:
+      - light.tuin_links_achterin_light
+      - light.tuin_links_voorin_light
+      - light.tuin_rechts_light
+
 # Configure persons
 person: !include configuration/person.yaml
 
