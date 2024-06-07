@@ -70,4 +70,6 @@ The following hardware is integrated in this system.
 | 3        | Assistant     | Google Nest Hub                       | wifi     |
 | 1        | Led strip     | Homeylux led strip RGBWW 5 meter      | wifi     |
 | 4        | Multisensor   | Tuya temperature & humidity sensors   | wifi     |
+| 2        | Wallplug      | Shelly Plug S                         | wifi     |
+| 1        | Wallplug      | Shelly Plus Plug                      | wifi     |
 | 3        | Light         | Philips Hue Lily garden spots         | zigbee   |
