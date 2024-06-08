@@ -8,6 +8,7 @@
       to: 'on'
     - platform: sun
       event: 'sunset'
+      offset: '+00:30:00'
   condition:
     - condition: state
       entity_id: group.all_persons
@@ -22,8 +23,10 @@
       conditions:
       - condition: sun
         after: 'sunset'
+        after_offset: '+00:30:00'
       - condition: sun
         before: 'sunrise'
+        before_offset: '-00:30:00'
   action:
     - service: light.turn_on
       data:
