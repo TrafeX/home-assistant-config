@@ -50,3 +50,10 @@
       color_mode: color_temp
       color_temp: 500
       brightness: 160
+- name: Garden spots normal
+  entities:
+    light.tuin_spots:
+      state: on
+      brightness: 97
+      color_mode: color_temp
+      color_temp: 358
