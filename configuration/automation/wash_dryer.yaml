@@ -15,7 +15,9 @@
   action:
     - service: notify.app_tim
       data:
-        message: 'De wasdroger is klaar'
+        message: '👕 De wasdroger is klaar'
+        data:
+          notification_icon: mdi:washing-machine
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini
