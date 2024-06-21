@@ -1,0 +1,21 @@
+- alias: 'Notify it is time to water the garden'
+  trigger:
+    - platform: time
+      at: '20:00:00'
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.rain_last_24h
+      below: 10
+    - condition: numeric_state
+      entity_id: sensor.rain_1d
+      below: 10
+    - condition: numeric_state
+      entity_id: sensor.rainchance_1d
+      below: 50
+  action:
+    - service: notify.app_tim
+      data:
+        title: "🌱 Tuin sproeien"
+        message: "{{ states('sensor.rain_last_24h') }}mm regen in de afgelopen 24 uur, {{ states('sensor.rain_1d') }}mm regen ({{ states('sensor.rainchance_1d') }}% kans) voorspelt voor de komende dag."
+        data:
+            notification_icon: mdi:sprout
