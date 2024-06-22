@@ -17,7 +17,7 @@
       data:
         message: '👕 De wasdroger is klaar'
         data:
-          notification_icon: mdi:washing-machine
+          notification_icon: mdi:tumble-dryer
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini

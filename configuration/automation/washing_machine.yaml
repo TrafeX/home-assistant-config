@@ -9,7 +9,9 @@
   action:
     - service: notify.app_tim
       data:
-        message: 'De wasmachine is klaar'
+        message: '🧺 De wasmachine is klaar'
+        data:
+          notification_icon: mdi:washing-machine
     - service: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini
