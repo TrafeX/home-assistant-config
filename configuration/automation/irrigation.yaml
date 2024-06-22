@@ -5,13 +5,20 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.rain_last_24h
-      below: 10
-    - condition: numeric_state
-      entity_id: sensor.rain_1d
-      below: 10
-    - condition: numeric_state
-      entity_id: sensor.rainchance_1d
-      below: 50
+      below: 5
+    - condition: or
+      conditions:
+        - condition: and
+          conditions:
+            - condition: numeric_state
+              entity_id: sensor.rain_1d
+              below: 5
+            - condition: numeric_state
+              entity_id: sensor.rainchance_1d
+              above: 50
+        - condition: numeric_state
+          entity_id: sensor.rainchance_1d
+          below: 50
   action:
     - service: notify.app_tim
       data:
