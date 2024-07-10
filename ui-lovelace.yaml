@@ -501,13 +501,13 @@ views:
           - type: horizontal-stack
             cards:
               - type: picture-glance
-                title: Frontyard
+                title: Doorbell
                 entities:
                   - binary_sensor.doorbell_visitor
                   - binary_sensor.doorbell_motion
                   - binary_sensor.doorbell_person
                   - binary_sensor.frontdoor_is_open
-                camera_image: camera.txnas_frontyard_cam
+                camera_image: camera.doorbell_sub
               - type: picture-glance
                 title: Backyard
                 entities:
