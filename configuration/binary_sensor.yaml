@@ -14,3 +14,12 @@
       entity_id: sensor.voltage_sags_phase_l1
     voltage_swells:
       entity_id: sensor.voltage_swells_phase_l1
+- platform: group
+  name: "Backyard motion sensors"
+  device_class: motion
+  entities:
+    - binary_sensor.backyard_animal
+    - binary_sensor.backyard_person
+    - binary_sensor.backyard_vehicle
+    - binary_sensor.backyard_motion
+    - binary_sensor.backyard_motion_detection

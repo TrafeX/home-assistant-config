@@ -73,11 +73,12 @@ views:
         title: Buiten
         state_color: true
         entities:
-          - binary_sensor.backyard_motion_detection
+          - binary_sensor.backyard_motion_sensors
           - light.backyard
           - light.gardendoor
           - light.buitenlicht_voorkant
           - light.tuin_spots
+          - light.backyard_floodlight
           - type: divider
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity
