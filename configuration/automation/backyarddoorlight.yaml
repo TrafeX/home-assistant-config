@@ -3,6 +3,9 @@
     - platform: state
       entity_id: binary_sensor.backyard_motion_detection
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.backyard_person
+      to: 'on'
   condition:
     - condition: state
       entity_id: sun.sun
