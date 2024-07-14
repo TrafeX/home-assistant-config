@@ -5,16 +5,14 @@
       to: 'playing'
     - platform: state
       entity_id: media_player.sony_bravia_tv
-      to: 'playing'
+      to: 'on'
     - platform: state
       entity_id: light.living_spots
       to: 'on'
   condition:
     - condition: state
       entity_id: media_player.sony_bravia_tv
-      state:
-        - 'playing'
-        - 'paused'
+      state: 'on'
     - condition: numeric_state
       entity_id: light.living_spots
       attribute: brightness
@@ -34,10 +32,7 @@
   condition:
     - condition: state
       entity_id: media_player.sony_bravia_tv
-      state:
-        - 'playing'
-        - 'paused'
-        - 'on'
+      state: 'on'
   action:
     - service: media_player.turn_off
       entity_id: media_player.sony_bravia_tv

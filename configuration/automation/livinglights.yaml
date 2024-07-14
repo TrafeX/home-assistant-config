@@ -22,9 +22,26 @@
     - condition: numeric_state
       entity_id: sensor.living_illuminance
       below: 6
+    - condition: state
+      entity: light.partylight
+      state: 'off'
   action:
-    - service: scene.turn_on
-      entity_id: scene.living_normal
+    - if:
+      - alias: TV is on
+        condition: state
+        entity_id: media_player.sony_bravia_tv
+        state: 'on'
+      - alias: It's evening
+        condition: time
+        after: '19:00:00'
+      then:
+      - alias: Turn on movie scene
+        service: scene.turn_on
+        entity_id: scene.living_movie
+      else:
+      - alias: Turn on living normal scene
+        service: scene.turn_on
+        entity_id: scene.living_normal
 
 - alias: 'Turn living lights off when enough daylight or leaving'
   trigger:
