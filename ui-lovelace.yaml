@@ -503,6 +503,7 @@ views:
             cards:
               - type: picture-glance
                 title: Doorbell
+                aspect_ratio: "16:9"
                 entities:
                   - binary_sensor.doorbell_visitor
                   - binary_sensor.doorbell_motion
@@ -513,6 +514,8 @@ views:
                 title: Backyard
                 entities:
                   - binary_sensor.backyard_motion_detection
+                  - binary_sensor.backyard_motion
+                  - binary_sensor.backyard_person
                   - entity: sensor.netatmo_outdoor_temperature
                     show_state: true
                 camera_image: camera.txnas_backyard
