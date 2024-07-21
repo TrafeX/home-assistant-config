@@ -23,7 +23,7 @@
       entity_id: sensor.living_illuminance
       below: 6
     - condition: state
-      entity: light.partylight
+      entity_id: light.partylight
       state: 'off'
   action:
     - if:
