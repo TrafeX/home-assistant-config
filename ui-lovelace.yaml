@@ -79,6 +79,7 @@ views:
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
+          - switch.buitenkraan_switch
           - type: divider
           - sensor.netatmo_outdoor_temperature
           - sensor.netatmo_outdoor_humidity

@@ -26,3 +26,31 @@
         message: "{{ states('sensor.rain_last_24h') }}mm regen in de afgelopen 24 uur, {{ states('sensor.rain_1d') }}mm regen ({{ states('sensor.rainchance_1d') }}% kans) voorspelt voor de komende dag."
         data:
             notification_icon: mdi:sprout
+            actions:
+              - action: "start_irrigation"
+                title: "Start sproeien"
+
+- alias: 'Start irrigation'
+  trigger:
+    - platform: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: start_irrigation
+  action:
+    - service: switch.turn_on
+      entity_id: switch.buitenkraan_switch
+    - service: notify.app_tim
+      data:
+        title: "🌱 Tuin sproeien"
+        message: "Sproeien gestart."
+        data:
+            notification_icon: mdi:sprout
+    - delay: '00:30:00'
+    - service: switch.turn_off
+      entity_id: switch.buitenkraan_switch
+    - service: notify.app_tim
+      data:
+        title: "🌱 Tuin sproeien"
+        message: "Sproeien gestopt."
+        data:
+            notification_icon: mdi:sprout

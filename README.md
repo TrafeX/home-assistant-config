@@ -36,7 +36,7 @@ Some of the things I've implemented:
 * Shutdown NAS when the UPS is running on battery for too long
 * Notify when one the battery powered sensors is running low on battery
 * Turn on chargers in the shed every month during winter to prevent the batteries from dying
-* Notify when it's time to water the plants
+* Notify when it's time to water the plants and turn on the irrigation system
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
@@ -74,3 +74,4 @@ The following hardware is integrated in this system.
 | 2        | Wallplug      | Shelly Plug S                         | wifi     |
 | 1        | Wallplug      | Shelly Plus Plug                      | wifi     |
 | 3        | Light         | Philips Hue Lily garden spots         | zigbee   |
+| 1        | Irrigation    | Woox R7060 Irrigation Control         | zigbee   |
