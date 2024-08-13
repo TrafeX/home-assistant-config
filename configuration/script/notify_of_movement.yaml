@@ -12,6 +12,7 @@ sequence:
             'binary_sensor.tygo_motion_detection',
             'binary_sensor.frontdoor_is_open',
             'binary_sensor.sliding_backdoor_is_open',
+            'binary_sensor.backyard_person',
             ] | select('is_state', 'on') | map('state_attr', 'friendly_name') | list }}
       data:
         inline_keyboard:
@@ -23,8 +24,6 @@ sequence:
         photo:
           - url: "http://127.0.0.1:8123{{ states.camera.backyard.attributes.entity_picture }}"
             caption: Backyard
-          - url: "http://127.0.0.1:8123{{ states.camera.frontyard.attributes.entity_picture }}"
-            caption: Frontyard
           - url: "http://127.0.0.1:8123{{ states.camera.doorbell_sub.attributes.entity_picture }}"
             caption: Doorbell
           - url: "http://127.0.0.1:8123{{ states.camera.hallway.attributes.entity_picture }}"

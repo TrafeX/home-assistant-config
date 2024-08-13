@@ -9,6 +9,7 @@
         - binary_sensor.tygo_motion_detection
         - binary_sensor.frontdoor_is_open
         - binary_sensor.sliding_backdoor_is_open
+        - binary_sensor.backyard_person
       to: 'on'
   condition:
     - condition: or
@@ -53,6 +54,7 @@
         - binary_sensor.frontdoor_is_open
         - binary_sensor.sliding_backdoor_is_open
         - binary_sensor.backyard_motion_detection
+        - binary_sensor.backyard_person
       to: 'on'
   condition:
     - condition: or
