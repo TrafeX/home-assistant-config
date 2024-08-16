@@ -87,7 +87,6 @@ views:
           - sensor.backyard_temperature
           - sensor.backyard_illuminance
           - type: divider
-          - switch.schuur_opladers
           - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature
@@ -167,6 +166,7 @@ views:
         entities:
           - light.led_strip_small_office
           - light.office_led_strip_backside
+          - switch.small_office
           - sensor.netatmo_bedroom_temperature
           - sensor.netatmo_bedroom_humidity
           - sensor.netatmo_bedroom_co2
@@ -730,12 +730,12 @@ views:
             entity: sensor.washdryer_electric_consumption_w
           - name: Tuindeur
             entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
-          - name: Schuur opladers
-            entity: sensor.schuur_opladers_electric_consumption_w
+          - name: Airco 2de verdieping
+            entity: sensor.airco_2nd_floor_electric_consumption_w
           - name: Vaatwasser
             entity: sensor.vaatwasser_power
           - name: Small Office
-            entity: sensor.small_office_electric_w
+            entity: sensor.small_office_electric_consumption_w
           - name: TV cabinet
             entity: sensor.tv_cabinet_switch_0_power
         stat_types:
