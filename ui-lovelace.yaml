@@ -79,6 +79,7 @@ views:
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
+          - type: divider
           - switch.buitenkraan_switch
           - type: divider
           - sensor.netatmo_outdoor_temperature
@@ -128,12 +129,10 @@ views:
         state_color: true
         entities:
           - binary_sensor.hallway_2nd_motion_detection
-          - binary_sensor.carbon_monoxide_detected
           - light.hallway_2nd
           - sensor.hallway_2nd_temperature
           - sensor.hallway_2nd_humidity
           - sensor.hallway_2nd_illuminance
-          - sensor.co_temperature
         show_header_toggle: false
       - type: entities
         title: Slaapkamer
@@ -186,6 +185,15 @@ views:
         entities:
           - sensor.bathroom_2nd_temperature
           - sensor.bathroom_2nd_humidity
+        show_header_toggle: false
+      - type: entities
+        title: CV kast
+        state_color: true
+        entities:
+          - binary_sensor.carbon_monoxide_detected
+          - sensor.co_temperature
+          - binary_sensor.wash_dryer_state
+          - sensor.wasmachine_operation_state
         show_header_toggle: false
     icon: "mdi:home-outline"
   - path: mediaplayers
@@ -716,8 +724,10 @@ views:
             entity: sensor.light_jens_power
           - name: Bedroom Tygo
             entity: sensor.bedroom_tygo_power
+          - name: Wasmachine
+            entity: sensor.washing_machine_electric_consumption_w
           - name: Wasdroger
-            entity: sensor.wasdroger_electric_consumption_w
+            entity: sensor.washdryer_electric_consumption_w
           - name: Tuindeur
             entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
           - name: Schuur opladers
@@ -725,9 +735,9 @@ views:
           - name: Vaatwasser
             entity: sensor.vaatwasser_power
           - name: Small Office
-            entity: sensor.small_office_switch_0_power
-          - name: Switch01
-            entity: sensor.switch01_power
+            entity: sensor.small_office_electric_w
+          - name: TV cabinet
+            entity: sensor.tv_cabinet_switch_0_power
         stat_types:
           - mean
         days_to_show: 1

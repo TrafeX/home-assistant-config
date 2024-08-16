@@ -61,6 +61,7 @@ The following hardware is integrated in this system.
 | 5        | Multisensor   | Aeon Labs Multisensor 6               | zwave    |
 | 2        | Door sensor   | Sensative Strips Guard                | zwave    |
 | 1        | Motion sensor | Neo Coolcam motion sensor             | zwave    |
+| 2        | Wallplug      | Qubino Smart Plug 16A                 | zwave    |
 | 1        | Weather       | Netatmo Weatherstation                | wifi     |
 | 2        | Weather       | Netatmo extension module              | wifi     |
 | 1        | Thermostat    | Nefit Easy                            | wifi     |
