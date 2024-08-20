@@ -22,13 +22,13 @@ sequence:
       message: "Beweging gedetecteerd"
       data:
         photo:
-          - url: "http://127.0.0.1:8123{{ states.camera.backyard.attributes.entity_picture }}"
+          - url: "http://127.0.0.1:8123{{ states.camera.txnas_backyard.attributes.entity_picture }}"
             caption: Backyard
           - url: "http://127.0.0.1:8123{{ states.camera.doorbell_sub.attributes.entity_picture }}"
             caption: Doorbell
           - url: "http://127.0.0.1:8123{{ states.camera.hallway.attributes.entity_picture }}"
             caption: Hallway
-          - url: "http://127.0.0.1:8123{{ states.camera.tygo_mainstream.attributes.entity_picture }}"
+          - url: "http://127.0.0.1:8123{{ states.camera.tygo.attributes.entity_picture }}"
             caption: Tygo
           - url: "http://127.0.0.1:8123{{ states.camera.txnas_babycam.attributes.entity_picture }}"
             caption: Jens

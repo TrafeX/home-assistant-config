@@ -239,17 +239,15 @@ views:
       - type: picture-entity
         entity: camera.doorbell_sub
       - type: picture-entity
-        entity: camera.txnas_frontyard_cam
-      - type: picture-entity
         entity: camera.txnas_backyard
       - type: picture-entity
         entity: camera.txnas_babycam
       - type: picture-entity
-        entity: camera.tygo_mainstream
-      - type: picture-entity
-        entity: camera.shed
+        entity: camera.tygo
       - type: picture-entity
         entity: camera.txnas_hallway
+      - type: picture-entity
+        entity: camera.shed
       - type: picture-entity
         entity: camera.doorbell
   - path: security
