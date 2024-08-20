@@ -181,6 +181,7 @@ telegram_bot:
 alarm_control_panel:
   - platform: manual
     name: Home Alarm
+    code_arm_required: false
     arming_time: 30
     trigger_time: 60
     delay_time: 60
