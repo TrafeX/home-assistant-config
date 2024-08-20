@@ -149,6 +149,7 @@ views:
           - sensor.bedroom_jens_temperature
           - sensor.bedroom_jens_humidity
           - sensor.bedroom_jens_illuminance
+          - binary_sensor.airco_1st_floor_state
         show_header_toggle: false
       - type: entities
         title: Slaapkamer Tygo
@@ -730,8 +731,8 @@ views:
             entity: sensor.washdryer_electric_consumption_w
           - name: Tuindeur
             entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
-          - name: Airco 2de verdieping
-            entity: sensor.airco_2nd_floor_electric_consumption_w
+          - name: Airco 1ste verdieping
+            entity: sensor.airco_1st_floor_electric_consumption_w
           - name: Vaatwasser
             entity: sensor.vaatwasser_power
           - name: Small Office
