@@ -8,3 +8,4 @@ announcement_speakers:
   entities:
     - media_player.woonkamer_mini
     - media_player.first_floor
+    - media_player.werkkamer
