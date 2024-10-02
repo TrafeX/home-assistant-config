@@ -3,30 +3,38 @@
     - platform: state
       entity_id: binary_sensor.hallway_1st_smoke_alarm
       to: 'on'
+      for: 
+        seconds: 5
     - platform: state
       entity_id: binary_sensor.rookmelder_2de_280
       to: 'on'
+      for: 
+        seconds: 5
     - platform: state
       entity_id: binary_sensor.hallway_gf_smoke_alarm
       to: 'on'
+      for: 
+        seconds: 5
     - platform: state
       entity_id: binary_sensor.carbon_monoxide_detected
       to: 'on'
+      for: 
+        seconds: 5
   action:
-    - service: notify.all
+    - action: notify.all
       data_template:
         title: "*BRAND alarm!*"
         message: >
           Brandmelding of koolmonoxide melding op: {{ trigger.to_state.name }}
           Andere active sensors:
           {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' and state.name != 'Ping to Vera' %}
+            {% if state.state == 'on' %}
               {{ state.name }}
             {%- endif -%}
           {% endfor %}
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: all
-    - service: tts.google_say
+    - action: tts.google_say
       data:
         entity_id: group.announcement_speakers
         message: 'Er is brand of koolmonoxide gedetecteerd! Verlaat de woning!'
