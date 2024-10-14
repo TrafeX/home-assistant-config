@@ -48,32 +48,21 @@
       data:
         entity_id: light.tuin_spots
 
-# - alias: 'Raise brightness of backyard light when motion'
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.backyard_motion_detection
-#       to: 'on'
-#   condition:
-#     - condition: state
-#       entity_id: light.backyard
-#       state: 'on'
-#   action:
-#     - service: light.turn_on
-#       data:
-#         entity_id: light.backyard
-#         brightness: 100
-
-# - alias: 'Dim brightness of backyard light'
-#   trigger:
-#     - platform: state
-#       entity_id: binary_sensor.backyard_motion_detection
-#       to: 'off'
-#   condition:
-#     - condition: state
-#       entity_id: light.backyard
-#       state: 'on'
-#   action:
-#     - service: light.turn_on
-#       data:
-#         entity_id: light.backyard
-#         brightness: 25
+- alias: 'Turn on backyard spot when person detected'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.backyard_person
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: sun.sun
+      state: 'below_horizon'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.backyard
+        brightness: 25
+    - delay: '00:03:00'
+    - service: light.turn_off
+      data:
+        entity_id: light.backyard
