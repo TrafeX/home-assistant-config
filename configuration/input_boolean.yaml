@@ -16,4 +16,7 @@ cast_dashboard:
 run_windmill:
   name: Molen
   icon: mdi:rotate-right
+notify_irrigation_needed:
+  name: Notify when irrigation is needed
+  icon: mdi:sprout
 

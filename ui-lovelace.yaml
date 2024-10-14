@@ -16,6 +16,7 @@ views:
           - switch.mechanical_ventilation
           - input_boolean.night_mode
           - input_boolean.ghost_mode
+          - input_boolean.notify_irrigation_needed
           - input_boolean.notify_backyard_motion
           - script.cast_dashboard_office
           - script.cast_dashboard_living
