@@ -54,15 +54,15 @@
       entity_id: binary_sensor.backyard_person
       to: 'on'
   condition:
-    - condition: state
-      entity_id: sun.sun
-      state: 'below_horizon'
+    - condition: sun
+      after: sunset
+      after_offset: "+00:20:00"
   action:
     - service: light.turn_on
       data:
         entity_id: light.backyard
         brightness: 25
-    - delay: '00:03:00'
+    - delay: '00:02:00'
     - service: light.turn_off
       data:
         entity_id: light.backyard
