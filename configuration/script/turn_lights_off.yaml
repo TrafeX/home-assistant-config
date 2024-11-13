@@ -7,4 +7,4 @@ sequence:
   - service: light.turn_off
     entity_id: light.backyard
   - service: light.turn_off
-    entity_id: light.gardendoor
+    entity_id: light.backyarddoor_light

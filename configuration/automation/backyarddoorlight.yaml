@@ -13,7 +13,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.gardendoor
+        entity_id: light.backyarddoor_light
 
 - alias: 'Turn off backyard door light'
   trigger:
@@ -22,8 +22,8 @@
       to: 'off'
   condition:
     - condition: state
-      entity_id: light.gardendoor
+      entity_id: light.backyarddoor_light
       state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.gardendoor
+      entity_id: light.backyarddoor_light

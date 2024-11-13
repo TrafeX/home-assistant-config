@@ -35,7 +35,7 @@ entity_config:
     name: Gang licht
     room: Gang
     expose: true
-  light.gardendoor:
+  light.backyarddoor_light:
     name: Tuindeur licht
     room: Achtertuin
     expose: true

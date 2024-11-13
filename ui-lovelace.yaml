@@ -76,7 +76,7 @@ views:
         entities:
           - binary_sensor.backyard_motion_sensors
           - light.backyard
-          - light.gardendoor
+          - light.backyarddoor_light
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
@@ -324,7 +324,7 @@ views:
           - type: state-icon
             tap_action:
               action: toggle
-            entity: light.gardendoor
+            entity: light.backyarddoor_light
             style:
               top: 3%
               left: 30%
@@ -481,7 +481,7 @@ views:
                 entity: light.buitenlicht_voorkant
               - type: button
                 icon_height: 30px
-                entity: light.gardendoor
+                entity: light.backyarddoor_light
               - type: button
                 icon_height: 30px
                 entity: light.led_strip_small_office
@@ -792,7 +792,7 @@ views:
                 features:
                   - type: light-brightness
               - type: tile
-                entity: light.gardendoor
+                entity: light.backyarddoor_light
               - type: tile
                 entity: light.buitenlicht_voorkant
               - type: tile
