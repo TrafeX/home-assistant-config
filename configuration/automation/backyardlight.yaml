@@ -1,12 +1,12 @@
 - alias: 'Turn on garden spot lights'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.all_persons
       to: 'home'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.living_motion_detection
       to: 'on'
-    - platform: sun
+    - trigger: sun
       event: 'sunset'
       offset: '+00:20:00'
   condition:
@@ -28,29 +28,29 @@
         before: 'sunrise'
         before_offset: '-00:15:00'
   action:
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.tuin_spots
 
 - alias: 'Turn off garden spot lights'
   trigger:
-    - platform: sun
+    - trigger: sun
       event: 'sunrise'
       offset: '-00:15:00'
-    - platform: state
+    - trigger: state
       entity_id: group.all_persons
       to: 'not_home'
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.night_mode
       to: 'on'
   action:
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.tuin_spots
 
 - alias: 'Turn on backyard spot when person detected'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.backyard_person
       to: 'on'
   condition:
@@ -58,11 +58,11 @@
       after: sunset
       after_offset: "+00:20:00"
   action:
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.backyard
         brightness: 25
     - delay: '00:02:00'
-    - service: light.turn_off
+    - action: light.turn_off
       data:
         entity_id: light.backyard
