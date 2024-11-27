@@ -196,6 +196,7 @@ command_line:
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
     value_template: '{{ value | multiply(0.001) | round(2) }}'
+    state_class: measurement
 
 light:
   - platform: group

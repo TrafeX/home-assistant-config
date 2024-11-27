@@ -80,6 +80,7 @@ views:
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
+          - light.backyard_christmas
           - type: divider
           - switch.buitenkraan_switch
           - type: divider
@@ -195,7 +196,6 @@ views:
           - binary_sensor.carbon_monoxide_detected
           - sensor.co_temperature
           - binary_sensor.wash_dryer_state
-          - sensor.wasmachine_operation_state
         show_header_toggle: false
     icon: "mdi:home-outline"
   - path: mediaplayers
@@ -294,158 +294,219 @@ views:
               - armed_away
               - armed_night
               - disarmed
-  - path: floorplan
-    title: Floorplan
-    icon: mdi:floor-plan
+  - path: graphs
+    title: Graphs
+    icon: mdi:chart-bar
+    # panel: true
+    # type: custom:grid-layout
+    # layout:
+    #   grid-template-columns: 1fr 1fr
+    #   mediaquery:
+    #     "(max-width: 1024px)":
+    #       grid-template-columns: 100%
     cards:
-      - type: picture-elements
-        image: /local/floorplan.png
-        elements:
-          - type: state-icon
-            entity: light.living_spots
-            style:
-              top: 29%
-              left: 68%
-          - type: state-icon
-            entity: light.living_spots
-            style:
-              top: 42%
-              left: 36%
-          - type: state-icon
-            entity: light.kitchen
-            style:
-              top: 71%
-              left: 69%
-          - type: state-icon
-            entity: light.backyard
-            style:
-              top: 10%
-              left: 37%
-          - type: state-icon
-            tap_action:
-              action: toggle
-            entity: light.backyarddoor_light
-            style:
-              top: 3%
-              left: 30%
-          - type: state-icon
-            entity: binary_sensor.backyard_motion_detection
-            style:
-              top: 3%
-              left: 21%
-          - type: state-icon
-            tap_action:
-              action: toggle
-            entity: light.buitenlicht_voorkant
-            style:
-              top: 85%
-              left: 52%
-          - type: state-icon
-            tap_action:
-              action: toggle
-            entity: light.gang_bg
-            style:
-              top: 84%
-              left: 39%
-          - type: state-icon
-            entity: binary_sensor.hallway_gf_smoke_alarm
-            style:
-              top: 80%
-              left: 39%
-          - type: state-label
-            entity: sensor.netatmo_indoor_temperature
-            style:
-              top: 20%
-              left: 29%
-          - type: state-icon
-            entity: binary_sensor.living_motion_detection
-            style:
-              top: 52%
-              left: 82%
-          - type: state-icon
-            entity: binary_sensor.frontdoor_is_open
-            style:
-              top: 88.6%
-              left: 48%
-          - type: state-icon
-            entity: vacuum.xiaomi_vacuum_cleaner
-            style:
-              top: 24%
-              left: 19%
-          - type: state-label
-            entity: sensor.living_temperature
-            style:
-              top: 52%
-              left: 71%
-          - type: state-label
-            entity: sensor.netatmo_outdoor_temperature
-            style:
-              top: 5%
-              left: 60%
-          - type: state-icon
-            entity: media_player.sony_bravia_tv
-            style:
-              top: 29%
-              left: 82%
-          - type: state-icon
-            entity: media_player.chromekamer
-            style:
-              top: 24%
-              left: 82%
-          - type: state-icon
-            entity: media_player.woonkamer
-            style:
-              top: 34%
-              left: 82%
-          - type: state-icon
-            entity: media_player.woonkamer_mini
-            style:
-              top: 20%
-              left: 19%
-          - type: state-icon
-            entity: media_player.keuken
-            style:
-              top: 78%
-              left: 82%
-          - type: icon
-            entity: camera.hallway
-            icon: mdi:cctv
-            style:
-              top: 56%
-              left: 21%
-              transform: "scaleX(-1)"
-          - type: icon
-            entity: camera.frontyard
-            icon: mdi:cctv
-            style:
-              top: 85%
-              left: 65%
-          - type: icon
-            entity: camera.backyard
-            icon: mdi:cctv
-            style:
-              top: 3%
-              left: 50%
-          - type: state-icon
-            entity: binary_sensor.doorbell_motion
-            style:
-              top: 85%
-              left: 58%
-          - type: state-icon
-            entity: climate.heating
-            style:
-              top: 61%
-              left: 23%
-          - type: state-label
-            entity: sensor.nefit_temperature
-            style:
-              top: 52%
-              left: 29%
-      - type: map
+      - type: statistics-graph
+        title: Temperature
+        chart_type: line
+        period: 5minute
         entities:
-          - device_tracker.timmobile
-          - device_tracker.chantalmobile
-        hours_to_show: 24
+          - name: Living
+            entity: sensor.living_temperature
+          - name: Gang BG
+            entity: sensor.hallway_gf_temperature
+          - name: Achtertuin
+            entity: sensor.backyard_temperature
+          - name: 1ste verdieping gang
+            entity: sensor.hallway_1st_temperature
+          - name: Jens slaapkamer
+            entity: sensor.bedroom_jens_temperature
+          - name: Master slaapkamer
+            entity: sensor.masterbedroom_temperature
+          - name: Gang 2de verdieping
+            entity: sensor.hallway_2nd_temperature
+          - name: Tygo slaapkamer
+            entity: sensor.tygo_temperature
+          - name: Small office
+            entity: sensor.netatmo_bedroom_temperature
+          - name: Large office
+            entity: sensor.office_large_temperature
+          - name: Meterkast
+            entity: sensor.fusebox_temperature
+          - name: Trapkast
+            entity: sensor.storage_temperature
+        stat_types:
+          - mean
+        days_to_show: 1
+      - type: statistics-graph
+        title: Humidity
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Living
+            entity: sensor.living_humidity
+          - name: Achtertuin
+            entity: sensor.backyard_humidity
+          - name: 1ste verdieping gang
+            entity: sensor.hallway_1st_humidity
+          - name: Jens slaapkamer
+            entity: sensor.bedroom_jens_humidity
+          - name: Master slaapkamer
+            entity: sensor.masterbedroom_humidity
+          - name: Gang 2de verdieping
+            entity: sensor.hallway_2nd_humidity
+          - name: Tygo slaapkamer
+            entity: sensor.tygo_humidity
+          - name: Small office
+            entity: sensor.netatmo_bedroom_humidity
+          - name: Large office
+            entity: sensor.office_large_humidity
+          - name: Meterkast
+            entity: sensor.fusebox_humidity
+          - name: Trapkast
+            entity: sensor.storage_humidity
+        stat_types:
+          - mean
+        days_to_show: 1
+      - type: statistics-graph
+        title: Power usage
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Large office
+            entity: sensor.large_office_power
+          - name: Bedroom Jens
+            entity: sensor.light_jens_power
+          - name: Bedroom Tygo
+            entity: sensor.bedroom_tygo_power
+          - name: Wasmachine
+            entity: sensor.washing_machine_electric_consumption_w
+          - name: Wasdroger
+            entity: sensor.washdryer_electric_consumption_w
+          - name: Airco 1ste verdieping
+            entity: sensor.airco_1st_floor_electric_consumption_w
+          - name: Vaatwasser
+            entity: sensor.vaatwasser_power
+          - name: Small Office
+            entity: sensor.small_office_electric_consumption_w
+          - name: TV cabinet
+            entity: sensor.tv_cabinet_switch_0_power
+          - name: Garden powersocket
+            entity: sensor.backyard_powersocket_electric_consumption_w
+          - name: Tuindeur licht
+            entity: sensor.backyarddoor_light_electric_consumption_w
+          - name: Koffiezetapparaat
+            entity: sensor.koffiezetapparaat_power
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: W
+      - type: statistics-graph
+        title: Heating
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Supply temperature
+            entity: sensor.heating_supply_temperature
+          - name: Power %
+            entity: sensor.power
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: °C
+      - type: statistics-graph
+        title: Switch good packets
+        period: 5minute
+        days_to_show: 1
+        entities:
+          - name: P1 TX
+            entity: sensor.switch_port_1_tx_good_packets
+          - name: P1 RX
+            entity: sensor.switch_port_1_rx_good_packets
+          - name: P2 TX
+            entity: sensor.switch_port_2_tx_good_packets
+          - name: P2 RX
+            entity: sensor.switch_port_2_rx_good_packets
+          - name: P3 TX
+            entity: sensor.switch_port_3_tx_good_packets
+          - name: P3 RX
+            entity: sensor.switch_port_3_rx_good_packets
+          - name: P4 TX
+            entity: sensor.switch_port_4_tx_good_packets
+          - name: P4 RX
+            entity: sensor.switch_port_4_rx_good_packets
+          - name: P5 EoP TX
+            entity: sensor.switch_port_5_tx_good_packets
+          - name: P5 EoP RX
+            entity: sensor.switch_port_5_rx_good_packets
+          - name: P6 TV TX
+            entity: sensor.switch_port_6_tx_good_packets
+          - name: P6 TV RX
+            entity: sensor.switch_port_6_rx_good_packets
+          - name: P7 Playstation TX
+            entity: sensor.switch_port_7_tx_good_packets
+          - name: P7 Playstation RX
+            entity: sensor.switch_port_7_rx_good_packets
+          - name: P8 TX
+            entity: sensor.switch_port_8_tx_good_packets
+          - name: P8 RX
+            entity: sensor.switch_port_8_rx_good_packets
+        stat_types:
+          - change
+      - type: statistics-graph
+        title: Switch bad packets
+        period: 5minute
+        days_to_show: 1
+        entities:
+          - name: P1 Doorbell TX
+            entity: sensor.switch_port_1_tx_bad_packets
+          - name: P1 Doorbell RX
+            entity: sensor.switch_port_1_rx_bad_packets
+          - name: P2 TX
+            entity: sensor.switch_port_2_tx_bad_packets
+          - name: P2 RX
+            entity: sensor.switch_port_2_rx_bad_packets
+          - name: P3 TX
+            entity: sensor.switch_port_3_tx_bad_packets
+          - name: P3 RX
+            entity: sensor.switch_port_3_rx_bad_packets
+          - name: P4 WiFi TX
+            entity: sensor.switch_port_4_tx_bad_packets
+          - name: P4 WiFi RX
+            entity: sensor.switch_port_4_rx_bad_packets
+          - name: P5 EoP TX
+            entity: sensor.switch_port_5_tx_bad_packets
+          - name: P5 EoP RX
+            entity: sensor.switch_port_5_rx_bad_packets
+          - name: P6 RPi TX
+            entity: sensor.switch_port_6_tx_bad_packets
+          - name: P6 RPi RX
+            entity: sensor.switch_port_6_rx_bad_packets
+          - name: P7 NAS TX
+            entity: sensor.switch_port_7_tx_bad_packets
+          - name: P7 NAS RX
+            entity: sensor.switch_port_7_rx_bad_packets
+          - name: P8 Router TX
+            entity: sensor.switch_port_8_tx_bad_packets
+          - name: P8 Router RX
+            entity: sensor.switch_port_8_rx_bad_packets
+        stat_types:
+          - change
+      - type: statistics-graph
+        title: Raspberry Pi temperature
+        days_to_show: 2
+        entities:
+          - sensor.raspberry_pi_cpu_temperature
+          - sensor.fusebox_temperature
+        stat_types:
+          - state
+      - type: statistics-graph
+        title: UPS load
+        period: 5minute
+        days_to_show: 2
+        entities:
+          - sensor.ups_load
+        stat_types:
+          - mean
   - path: dashboard
     title: Dashboard
     icon: mdi:monitor-dashboard
@@ -624,148 +685,6 @@ views:
                   green: 0
                   yellow: 1500
                   red: 3000
-  - path: graphs
-    title: Graphs
-    icon: mdi:chart-bar
-    # panel: true
-    type: custom:grid-layout
-    layout:
-      grid-template-columns: 1fr 1fr
-      mediaquery:
-        "(max-width: 1024px)":
-          grid-template-columns: 100%
-    cards:
-      - type: statistics-graph
-        title: Switch good packets
-        period: 5minute
-        days_to_show: 1
-        entities:
-          - name: P1 Doorbell TX
-            entity: sensor.switch_port_1_tx_good_packets
-          - name: P1 Doorbell RX
-            entity: sensor.switch_port_1_rx_good_packets
-          - name: P2 TX
-            entity: sensor.switch_port_2_tx_good_packets
-          - name: P2 RX
-            entity: sensor.switch_port_2_rx_good_packets
-          - name: P3 TX
-            entity: sensor.switch_port_3_tx_good_packets
-          - name: P3 RX
-            entity: sensor.switch_port_3_rx_good_packets
-          - name: P4 WiFi TX
-            entity: sensor.switch_port_4_tx_good_packets
-          - name: P4 WiFi RX
-            entity: sensor.switch_port_4_rx_good_packets
-          - name: P5 EoP TX
-            entity: sensor.switch_port_5_tx_good_packets
-          - name: P5 EoP RX
-            entity: sensor.switch_port_5_rx_good_packets
-          - name: P6 RPi TX
-            entity: sensor.switch_port_6_tx_good_packets
-          - name: P6 RPi RX
-            entity: sensor.switch_port_6_rx_good_packets
-          - name: P7 NAS TX
-            entity: sensor.switch_port_7_tx_good_packets
-          - name: P7 NAS RX
-            entity: sensor.switch_port_7_rx_good_packets
-          - name: P8 Router TX
-            entity: sensor.switch_port_8_tx_good_packets
-          - name: P8 Router RX
-            entity: sensor.switch_port_8_rx_good_packets
-        stat_types:
-          - change
-      - type: statistics-graph
-        title: Switch bad packets
-        period: 5minute
-        days_to_show: 1
-        entities:
-          - name: P1 Doorbell TX
-            entity: sensor.switch_port_1_tx_bad_packets
-          - name: P1 Doorbell RX
-            entity: sensor.switch_port_1_rx_bad_packets
-          - name: P2 TX
-            entity: sensor.switch_port_2_tx_bad_packets
-          - name: P2 RX
-            entity: sensor.switch_port_2_rx_bad_packets
-          - name: P3 TX
-            entity: sensor.switch_port_3_tx_bad_packets
-          - name: P3 RX
-            entity: sensor.switch_port_3_rx_bad_packets
-          - name: P4 WiFi TX
-            entity: sensor.switch_port_4_tx_bad_packets
-          - name: P4 WiFi RX
-            entity: sensor.switch_port_4_rx_bad_packets
-          - name: P5 EoP TX
-            entity: sensor.switch_port_5_tx_bad_packets
-          - name: P5 EoP RX
-            entity: sensor.switch_port_5_rx_bad_packets
-          - name: P6 RPi TX
-            entity: sensor.switch_port_6_tx_bad_packets
-          - name: P6 RPi RX
-            entity: sensor.switch_port_6_rx_bad_packets
-          - name: P7 NAS TX
-            entity: sensor.switch_port_7_tx_bad_packets
-          - name: P7 NAS RX
-            entity: sensor.switch_port_7_rx_bad_packets
-          - name: P8 Router TX
-            entity: sensor.switch_port_8_tx_bad_packets
-          - name: P8 Router RX
-            entity: sensor.switch_port_8_rx_bad_packets
-        stat_types:
-          - change
-      - type: statistics-graph
-        title: Power usage
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Large office
-            entity: sensor.large_office_power
-          - name: Bedroom Jens
-            entity: sensor.light_jens_power
-          - name: Bedroom Tygo
-            entity: sensor.bedroom_tygo_power
-          - name: Wasmachine
-            entity: sensor.washing_machine_electric_consumption_w
-          - name: Wasdroger
-            entity: sensor.washdryer_electric_consumption_w
-          - name: Tuindeur
-            entity: sensor.in_wall_dual_relay_switch_module_2x1_5kw_with_power_meter_electric_consumption_w
-          - name: Airco 1ste verdieping
-            entity: sensor.airco_1st_floor_electric_consumption_w
-          - name: Vaatwasser
-            entity: sensor.vaatwasser_power
-          - name: Small Office
-            entity: sensor.small_office_electric_consumption_w
-          - name: TV cabinet
-            entity: sensor.tv_cabinet_switch_0_power
-        stat_types:
-          - mean
-        days_to_show: 1
-        unit: W
-      - type: statistics-graph
-        title: Heating
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Supply temperature
-            entity: sensor.heating_supply_temperature
-          - name: Power %
-            entity: sensor.power
-        stat_types:
-          - mean
-        days_to_show: 1
-        unit: °C
-      - type: history-graph
-        title: Raspberry Pi temperature
-        hours_to_show: 48
-        entities:
-          - sensor.raspberry_pi_cpu_temperature
-      - type: history-graph
-        title: UPS load
-        hours_to_show: 48
-        entities:
-          - sensor.ups_load
-
   - path: pertype
     title: Per type
     panel: true
