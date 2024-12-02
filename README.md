@@ -76,4 +76,5 @@ The following hardware is integrated in this system.
 | 1        | Wallplug      | Shelly Plus Plug                      | wifi     |
 | 3        | Light         | Philips Hue Lily garden spots         | zigbee   |
 | 1        | Irrigation    | Woox R7060 Irrigation Control         | zigbee   |
+| 2        | Wallplug      | Third Reality Smart Plug              | zigbee   |
 | 1        | Insertmodule  | Shelly 2PM                            | zwave    |
