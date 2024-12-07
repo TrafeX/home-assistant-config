@@ -1,0 +1,16 @@
+- alias: 'Turn off small office heating end of the day'
+  trigger:
+    - trigger: time
+      at: '17:00:00'
+  condition:
+    - condition: state
+      entity_id: climate.office_heater
+      state: 'heat'
+  action:
+    - action: climate.turn_off
+      data:
+        entity_id: climate.office_heater
+    - action: notify.app_tim
+      data:
+        title: "Small office"
+        message: "De verwarning op de werkkamer is automatisch uitgezet."
