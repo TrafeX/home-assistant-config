@@ -80,6 +80,9 @@ views:
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
+          - type: divider
+          - light.christmas_tree_switch
+          - light.christmas_star
           - light.backyard_christmas
           - light.christmas_balcony_switch
           - type: divider
