@@ -500,12 +500,13 @@ views:
           - change
       - type: statistics-graph
         title: Raspberry Pi temperature
+        period: 5minute
         days_to_show: 2
         entities:
           - sensor.raspberry_pi_cpu_temperature
           - sensor.fusebox_temperature
         stat_types:
-          - state
+          - mean
       - type: statistics-graph
         title: UPS load
         period: 5minute
