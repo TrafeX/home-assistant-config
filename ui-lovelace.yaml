@@ -55,6 +55,10 @@ views:
           - light.kitchen
           - light.partylight
           - type: divider
+          - light.christmas_tree_switch
+          - light.christmas_star
+          - light.tv_christmas
+          - type: divider
           - binary_sensor.living_motion_detection
           - binary_sensor.sliding_backdoor_is_open
           - type: divider
@@ -81,8 +85,6 @@ views:
           - light.tuin_spots
           - light.backyard_floodlight
           - type: divider
-          - light.christmas_tree_switch
-          - light.christmas_star
           - light.backyard_christmas
           - light.christmas_balcony_switch
           - type: divider
@@ -155,7 +157,6 @@ views:
           - sensor.bedroom_jens_temperature
           - sensor.bedroom_jens_humidity
           - sensor.bedroom_jens_illuminance
-          - binary_sensor.airco_1st_floor_state
         show_header_toggle: false
       - type: entities
         title: Slaapkamer Tygo
@@ -386,8 +387,6 @@ views:
             entity: sensor.washing_machine_electric_consumption_w
           - name: Wasdroger
             entity: sensor.washdryer_electric_consumption_w
-          - name: Airco 1ste verdieping
-            entity: sensor.airco_1st_floor_electric_consumption_w
           - name: Vaatwasser
             entity: sensor.vaatwasser_power
           - name: Small Office
@@ -398,8 +397,12 @@ views:
             entity: sensor.backyard_powersocket_electric_consumption_w
           - name: Tuindeur licht
             entity: sensor.backyarddoor_light_electric_consumption_w
-          - name: Koffiezetapparaat
-            entity: sensor.koffiezetapparaat_power
+          - name: TV Christmas
+            entity: sensor.tv_christmas_electric_consumption_w
+          - name: Christmas tree
+            entity: sensor.christmas_tree_power
+          - name: Christmas star
+            entity: sensor.christmas_star_power
         stat_types:
           - mean
         days_to_show: 1

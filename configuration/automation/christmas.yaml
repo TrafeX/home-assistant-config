@@ -15,6 +15,7 @@
       entity_id:
         - light.christmas_tree_switch
         - light.christmas_star
+        - light.tv_christmas
 
 - alias: "Turn off Christmas lights"
   trigger:
@@ -29,3 +30,4 @@
       entity_id:
         - light.christmas_tree_switch
         - light.christmas_star
+        - light.tv_christmas
