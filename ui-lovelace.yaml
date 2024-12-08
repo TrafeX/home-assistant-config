@@ -464,9 +464,9 @@ views:
         period: 5minute
         days_to_show: 1
         entities:
-          - name: P1 Doorbell TX
+          - name: P1 TX
             entity: sensor.switch_port_1_tx_bad_packets
-          - name: P1 Doorbell RX
+          - name: P1 RX
             entity: sensor.switch_port_1_rx_bad_packets
           - name: P2 TX
             entity: sensor.switch_port_2_tx_bad_packets
@@ -476,25 +476,25 @@ views:
             entity: sensor.switch_port_3_tx_bad_packets
           - name: P3 RX
             entity: sensor.switch_port_3_rx_bad_packets
-          - name: P4 WiFi TX
+          - name: P4 TX
             entity: sensor.switch_port_4_tx_bad_packets
-          - name: P4 WiFi RX
+          - name: P4 RX
             entity: sensor.switch_port_4_rx_bad_packets
           - name: P5 EoP TX
             entity: sensor.switch_port_5_tx_bad_packets
           - name: P5 EoP RX
             entity: sensor.switch_port_5_rx_bad_packets
-          - name: P6 RPi TX
+          - name: P6 TV TX
             entity: sensor.switch_port_6_tx_bad_packets
-          - name: P6 RPi RX
+          - name: P6 TV RX
             entity: sensor.switch_port_6_rx_bad_packets
-          - name: P7 NAS TX
+          - name: P7 Playstation TX
             entity: sensor.switch_port_7_tx_bad_packets
-          - name: P7 NAS RX
+          - name: P7 Playstation RX
             entity: sensor.switch_port_7_rx_bad_packets
-          - name: P8 Router TX
+          - name: P8 TX
             entity: sensor.switch_port_8_tx_bad_packets
-          - name: P8 Router RX
+          - name: P8 RX
             entity: sensor.switch_port_8_rx_bad_packets
         stat_types:
           - change
