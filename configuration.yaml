@@ -62,6 +62,8 @@ recorder:
   db_url: !secret db_url
   commit_interval: 10
   exclude:
+    entity_globs:
+    - sensor.*_last_seen
     entities:
       - sensor.power_consumption
       - sensor.power_consumption_phase_l1
@@ -185,8 +187,14 @@ alarm_control_panel:
     arming_time: 30
     trigger_time: 60
     delay_time: 60
+    arming_states:
+      - armed_home
+      - armed_away
+      - armed_night
     armed_home:
-      arming_time: 5
+      arming_time: 0
+    armed_night:
+      arming_time: 0
 
 stream:
 
