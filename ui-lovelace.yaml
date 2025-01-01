@@ -55,10 +55,6 @@ views:
           - light.kitchen
           - light.partylight
           - type: divider
-          - light.christmas_tree_switch
-          - light.christmas_star
-          - light.tv_christmas
-          - type: divider
           - binary_sensor.living_motion_detection
           - binary_sensor.sliding_backdoor_is_open
           - type: divider
@@ -397,12 +393,8 @@ views:
             entity: sensor.backyard_powersocket_electric_consumption_w
           - name: Tuindeur licht
             entity: sensor.backyarddoor_light_electric_consumption_w
-          - name: TV Christmas
-            entity: sensor.tv_christmas_electric_consumption_w
-          - name: Christmas tree
-            entity: sensor.christmas_tree_power
-          - name: Christmas star
-            entity: sensor.christmas_star_power
+          - name: Koffieapparaat
+            entity: sensor.koffieapparaat_power
         stat_types:
           - mean
         days_to_show: 1
