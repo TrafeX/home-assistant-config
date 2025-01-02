@@ -4,7 +4,3 @@ sequence:
     entity_id: light.living_spots
   - service: light.turn_off
     entity_id: light.kitchen
-  - service: light.turn_off
-    entity_id: light.backyard
-  - service: light.turn_off
-    entity_id: light.backyarddoor_light

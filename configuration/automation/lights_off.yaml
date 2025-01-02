@@ -1,0 +1,8 @@
+- alias: 'Turn lights off when leaving'
+  trigger:
+    - platform: state
+      entity_id: input_select.home_mode
+      to: 'away'
+  action:
+    - service: script.turn_on
+      entity_id: script.turn_all_lights_off

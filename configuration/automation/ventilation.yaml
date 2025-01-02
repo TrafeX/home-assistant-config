@@ -8,8 +8,10 @@
       entity_id: switch.mechanical_ventilation
       state: 'off'
     - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
   action:
     - service: switch.turn_on
       entity_id: switch.mechanical_ventilation
@@ -26,8 +28,10 @@
       entity_id: switch.mechanical_ventilation
       state: 'off'
     - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
   action:
     - service: switch.turn_on
       entity_id: switch.mechanical_ventilation
@@ -45,8 +49,8 @@
 - alias: 'Turn off ventilation when activating night mode'
   trigger:
     - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
+      entity_id: input_select.home_mode
+      to: night
   condition:
     - condition: state
       entity_id: switch.mechanical_ventilation

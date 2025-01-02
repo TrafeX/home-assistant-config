@@ -1,8 +1,8 @@
 - alias: 'Turn heating down when night mode activates'
   trigger:
     - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
+      entity_id: input_select.home_mode
+      to: night
   action:
     - service: climate.set_temperature
       data:
@@ -12,8 +12,8 @@
 - alias: 'Turn heating down when leaving'
   trigger:
     - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
+      entity_id: input_select.home_mode
+      to: away
       for:
         hours: 1
   action:
@@ -25,12 +25,10 @@
 - alias: 'Turn heating up when coming home'
   trigger:
     - platform: state
-      entity_id: group.all_persons
-      to: 'home'
+      entity_id: input_select.home_mode
+      from: away
+      to: home
   condition:
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'off'
     - condition: time
       after: "07:00:00"
       before: "22:00:00"

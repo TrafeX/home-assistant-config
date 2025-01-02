@@ -5,8 +5,10 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
     - condition: or
       conditions:
         - condition: state
@@ -20,7 +22,7 @@
       data_template:
         entity_id: light.hallway_1st
         brightness: >
-          {% if is_state('input_boolean.night_mode', 'on') %}
+          {% if is_state('input_select.home_mode', 'night') %}
             30
           {% else %}
             80
@@ -33,8 +35,10 @@
       to: 'on'
   condition:
     - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
     - condition: or
       conditions:
         - condition: state
@@ -48,7 +52,7 @@
       data_template:
         entity_id: light.hallway_2nd
         brightness: >
-          {% if is_state('input_boolean.night_mode', 'on') %}
+          {% if is_state('input_select.home_mode', 'night') %}
             30
           {% else %}
             80
@@ -60,8 +64,8 @@
       entity_id: binary_sensor.hallway_1st_motion_detection
       to: 'off'
     - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
+      entity_id: input_select.home_mode
+      to: away
   condition:
     - condition: state
       entity_id: light.hallway_1st
@@ -76,8 +80,8 @@
       entity_id: binary_sensor.hallway_2nd_motion_detection
       to: 'off'
     - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
+      entity_id: input_select.home_mode
+      to: away
   condition:
     - condition: state
       entity_id: light.hallway_2nd

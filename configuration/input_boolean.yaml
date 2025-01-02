@@ -4,9 +4,6 @@ night_mode:
 ghost_mode:
   name: Ghostmode
   icon: mdi:ghost
-notify_backyard_motion:
-  name: Notify on backyard motion
-  icon: mdi:access-point
 automatic_vacuum_cleaner:
   name: Run the vacuum cleaner
   icon: mdi:robot
@@ -19,4 +16,6 @@ run_windmill:
 notify_irrigation_needed:
   name: Notify when irrigation is needed
   icon: mdi:sprout
-
+guest_presence:
+  name: Gasten in huis
+  icon: mdi:home-account

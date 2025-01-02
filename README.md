@@ -6,6 +6,7 @@ Features
 Some of the things I've implemented:
 
 * Alarm system which sends snapshots of the camera's when motion is detected
+* Have home modes to control lighting and heating based on the alarm state
 * Ability to disarm the alarm via Telegram actions
 * Fully automated living lights
 * Automated hallway lights which dim at night
@@ -35,7 +36,6 @@ Some of the things I've implemented:
 * Notify when the external IP changes
 * Shutdown NAS when the UPS is running on battery for too long
 * Notify when one the battery powered sensors is running low on battery
-* Turn on chargers in the shed every month during winter to prevent the batteries from dying
 * Notify when it's time to water the plants and turn on the irrigation system
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")

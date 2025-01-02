@@ -27,11 +27,8 @@
               - condition: and
                 conditions: 
                   - condition: state
-                    entity_id: group.all_persons
+                    entity_id: input_select.home_mode
                     state: 'home'
-                  - condition: state
-                    entity_id: input_boolean.night_mode
-                    state: 'off'
             sequence:
               - service: tts.google_say
                 data:

@@ -1,0 +1,50 @@
+- alias: 'Activate alarm when away'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'not_home'
+  condition:
+    - condition: state
+      entity_id: input_boolean.guest_presence
+      state: 'off'
+  action:
+    - service: alarm_control_panel.alarm_arm_away
+      entity_id: alarm_control_panel.home_alarm
+
+- alias: 'Activate alarm when asleep'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.night_mode
+      to: 'on'
+  action:
+    - service: alarm_control_panel.alarm_arm_night
+      entity_id: alarm_control_panel.home_alarm
+
+- alias: 'Deactivate away and night alarm when home'
+  trigger:
+    - platform: state
+      entity_id: group.all_persons
+      to: 'home'
+  condition:
+    - condition: not
+      conditions:
+      - condition: state
+        entity_id: alarm_control_panel.home_alarm
+        state: disarmed
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.home_alarm
+
+- alias: 'Deactivate alarm when waking up'
+  trigger:
+    - platform: time
+      at: '6:30:00'
+  condition:
+    - condition: time
+      after: '6:30:00'
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: armed_night
+  action:
+    - service: alarm_control_panel.alarm_disarm
+      entity_id: alarm_control_panel.home_alarm

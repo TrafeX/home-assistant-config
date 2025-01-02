@@ -22,12 +22,8 @@
 - alias: 'Enable automatic vacuum cleaner on sleep mode'
   trigger:
     - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: group.all_persons
-      state: 'home'
+      entity_id: input_select.home_mode
+      to: night
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.automatic_vacuum_cleaner

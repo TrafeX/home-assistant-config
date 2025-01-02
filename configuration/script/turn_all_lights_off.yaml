@@ -1,0 +1,20 @@
+alias: 'Turn downstairs lights off'
+sequence:
+  - service: light.turn_off
+    entity_id: light.living_spots
+  - service: light.turn_off
+    entity_id: light.kitchen
+  - service: light.turn_off
+    entity_id: light.backyard
+  - service: light.turn_off
+    entity_id: light.backyarddoor_light
+  - service: light.turn_off
+    entity_id: light.bedroom_jens
+  - service: light.turn_off
+    entity_id: light.bedroom_tygo
+  - service: light.turn_off
+    entity_id: light.large_office
+  - service: light.turn_off
+    entity_id: light.led_strip_small_office
+  - service: light.turn_off
+    entity_id: light.office_led_strip_backside

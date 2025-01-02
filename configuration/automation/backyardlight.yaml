@@ -1,8 +1,9 @@
 - alias: 'Turn on garden spot lights'
   trigger:
     - trigger: state
-      entity_id: group.all_persons
-      to: 'home'
+      entity_id: input_select.home_mode
+      from: away
+      to: home
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
       to: 'on'
@@ -11,11 +12,8 @@
       offset: '+00:20:00'
   condition:
     - condition: state
-      entity_id: group.all_persons
-      state: 'home'
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'off'
+      entity_id: input_select.home_mode
+      state: home
     - condition: state
       entity_id: light.tuin_spots
       state: 'off'
@@ -38,11 +36,10 @@
       event: 'sunrise'
       offset: '-00:15:00'
     - trigger: state
-      entity_id: group.all_persons
-      to: 'not_home'
-    - trigger: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
+      entity_id: input_select.home_mode
+      to:
+        - away
+        - night
   action:
     - action: light.turn_off
       data:

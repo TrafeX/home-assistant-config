@@ -1,7 +1,7 @@
 - alias: 'Turn on backyard Chistmas lights'
   trigger:
     - trigger: state
-      entity_id: group.all_persons
+      entity_id: input_select.home_mode
       to: 'home'
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
@@ -10,11 +10,8 @@
       event: 'sunset'
   condition:
     - condition: state
-      entity_id: group.all_persons
+      entity_id: input_select.home_mode
       state: 'home'
-    - condition: state
-      entity_id: input_boolean.night_mode
-      state: 'off'
     - condition: state
       entity_id: light.backyard_christmas
       state: 'off'
@@ -34,11 +31,10 @@
     - trigger: sun
       event: 'sunrise'
     - trigger: state
-      entity_id: group.all_persons
-      to: 'not_home'
-    - trigger: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
+      entity_id: input_select.home_mode
+      to:
+        - away
+        - night
   action:
     - action: light.turn_off
       data:

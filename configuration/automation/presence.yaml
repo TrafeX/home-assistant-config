@@ -8,10 +8,6 @@
       data_template:
         title: "Welkom thuis!"
         message: "Aanwezig: {{ states.person | selectattr('state','eq','home') | map(attribute='attributes.friendly_name') | list | join(', ') }}"
-    - service: tts.google_say
-      data:
-        entity_id: media_player.woonkamer_mini
-        message: 'Welkom thuis!'
 
 - alias: 'Leaving'
   trigger:

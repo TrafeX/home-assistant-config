@@ -2,8 +2,6 @@ all_persons:
   entities:
     - person.tim
     - person.chantal
-    # Not working anymore, needs a different solution by using a device_tracker
-    # - input_select.guest_presence
 announcement_speakers:
   entities:
     - media_player.woonkamer_mini

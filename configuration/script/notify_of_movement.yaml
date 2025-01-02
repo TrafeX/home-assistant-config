@@ -13,6 +13,7 @@ sequence:
             'binary_sensor.frontdoor_is_open',
             'binary_sensor.sliding_backdoor_is_open',
             'binary_sensor.backyard_person',
+            'binary_sensor.backyard_motion_detection',
             ] | select('is_state', 'on') | map('state_attr', 'friendly_name') | list }}
       data:
         inline_keyboard:

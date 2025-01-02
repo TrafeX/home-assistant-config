@@ -55,6 +55,7 @@
         - binary_sensor.sliding_backdoor_is_open
         - binary_sensor.backyard_motion_detection
         - binary_sensor.backyard_person
+        - binary_sensor.shed_motion
       to: 'on'
   condition:
     - condition: or
@@ -69,42 +70,6 @@
     - service: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
     - service: script.notify_of_movement
-
-- alias: 'Activate alarm when away'
-  trigger:
-    - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
-  action:
-    - service: alarm_control_panel.alarm_arm_away
-      entity_id: alarm_control_panel.home_alarm
-
-- alias: 'Activate alarm when asleep'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
-  action:
-    - service: alarm_control_panel.alarm_arm_night
-      entity_id: alarm_control_panel.home_alarm
-
-- alias: 'Deactivate away and night alarm when home or awake '
-  trigger:
-    - platform: state
-      entity_id: group.all_persons
-      to: 'home'
-    - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'off'
-  condition:
-    - condition: not
-      conditions:
-      - condition: state
-        entity_id: alarm_control_panel.home_alarm
-        state: disarmed
-  action:
-    - service: alarm_control_panel.alarm_disarm
-      entity_id: alarm_control_panel.home_alarm
 
 - alias: 'Notify of alarm'
   trigger:

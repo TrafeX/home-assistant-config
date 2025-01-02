@@ -1,7 +1,6 @@
-guest_presence:
-  name: Guest presence
+home_mode:
+  name: Home mode
   options:
     - home
-    - not_home
-  initial: not_home
-  icon: mdi:home-account
+    - away
+    - night

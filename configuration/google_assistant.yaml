@@ -40,8 +40,12 @@ entity_config:
     room: Achtertuin
     expose: true
   light.bedroom_jens:
-    name: Babykamer licht
-    room: Babykamer
+    name: Slaapkamer Jens licht
+    room: Slaapkamer Jens
+    expose: true
+  light.bedroom_tygo:
+    name: Slaapkamer Tygo licht
+    room: Slaapkamer Tygo
     expose: true
   light.hallway_1st:
     name: Overloop eerste licht

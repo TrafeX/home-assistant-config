@@ -1,0 +1,32 @@
+- alias: 'Set home mode to away when alarm is armed away'
+  trigger:
+    - trigger: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_away'
+  action:
+    - action: input_select.select_option
+      data:
+        entity_id: input_select.home_mode
+        option: 'away'
+
+- alias: 'Set home mode to home when alarm is disarmed'
+  trigger:
+    - trigger: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'disarmed'
+  action:
+    - action: input_select.select_option
+      data:
+        entity_id: input_select.home_mode
+        option: 'home'
+
+- alias: 'Set home mode to night when alarm is armed night'
+  trigger:
+    - trigger: state
+      entity_id: alarm_control_panel.home_alarm
+      to: 'armed_night'
+  action:
+    - action: input_select.select_option
+      data:
+        entity_id: input_select.home_mode
+        option: 'night'

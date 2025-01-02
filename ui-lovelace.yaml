@@ -14,13 +14,11 @@ views:
         state_color: true
         entities:
           - switch.mechanical_ventilation
-          - input_boolean.night_mode
           - input_boolean.ghost_mode
+          - input_boolean.guest_presence
           - input_boolean.notify_irrigation_needed
-          - input_boolean.notify_backyard_motion
           - script.cast_dashboard_office
           - script.cast_dashboard_living
-          - input_select.guest_presence
         show_header_toggle: false
       - type: thermostat
         name: Verwarming

@@ -1,13 +1,10 @@
 - alias: 'Dim lights when TV is on'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: media_player.chromekamer
       to: 'playing'
-    - platform: state
+    - trigger: state
       entity_id: media_player.sony_bravia_tv
-      to: 'on'
-    - platform: state
-      entity_id: light.living_spots
       to: 'on'
   condition:
     - condition: state
@@ -18,21 +15,30 @@
       attribute: brightness
       above: 50
   action:
-    - service: scene.turn_on
-      entity_id: scene.living_tv
+    - if:
+      - alias: It's evening
+        condition: time
+        after: '20:00:00'
+      then:
+      - alias: Turn on movie scene
+        action: scene.turn_on
+        entity_id: scene.living_movie
+      else:
+      - alias: Turn on TV scene
+        action: scene.turn_on
+        entity_id: scene.living_tv
 
 - alias: 'Turn off TV when leaving or sleeping'
   trigger:
-    - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
-    - platform: state
-      entity_id: input_boolean.night_mode
-      to: 'on'
+    - trigger: state
+      entity_id: input_select.home_mode
+      to:
+        - away
+        - night 
   condition:
     - condition: state
       entity_id: media_player.sony_bravia_tv
       state: 'on'
   action:
-    - service: media_player.turn_off
+    - action: media_player.turn_off
       entity_id: media_player.sony_bravia_tv
