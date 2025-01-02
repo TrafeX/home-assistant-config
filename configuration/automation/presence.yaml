@@ -8,13 +8,3 @@
       data_template:
         title: "Welkom thuis!"
         message: "Aanwezig: {{ states.person | selectattr('state','eq','home') | map(attribute='attributes.friendly_name') | list | join(', ') }}"
-
-- alias: 'Leaving'
-  trigger:
-    - platform: state
-      entity_id: group.all_persons
-      to: 'not_home'
-  action:
-    - service: notify.telegram_notify
-      data:
-        message: Afwezigheid gedetecteerd

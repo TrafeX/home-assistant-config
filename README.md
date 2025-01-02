@@ -37,6 +37,8 @@ Some of the things I've implemented:
 * Shutdown NAS when the UPS is running on battery for too long
 * Notify when one the battery powered sensors is running low on battery
 * Notify when it's time to water the plants and turn on the irrigation system
+* A dashboard with graphs of all temperature, humidity and energy usage sensors
+* Turn off the heating in the office when the workday is over 
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
