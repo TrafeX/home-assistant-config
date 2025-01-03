@@ -42,6 +42,8 @@
   action:
     - action: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
+    - action: input_boolean.turn_off
+      entity_id: input_boolean.night_mode
 
 - alias: 'Deactivate away alarm when home'
   trigger:

@@ -551,7 +551,7 @@ views:
                 entity: switch.mechanical_ventilation
               - type: button
                 icon_height: 30px
-                entity: input_boolean.night_mode
+                entity: alarm_control_panel.home_alarm
               - type: button
                 icon_height: 30px
                 entity: scene.living_normal

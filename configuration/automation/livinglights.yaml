@@ -1,13 +1,16 @@
 - alias: 'Turn living lights on'
   trigger:
-    - platform: state
+    - trigger: state
+      id: coming_home
       entity_id: input_select.home_mode
       from: away
       to: home
-    - platform: state
+    - trigger: state
+      id: motion
       entity_id: binary_sensor.living_motion_detection
       to: 'on'
-    - platform: numeric_state
+    - trigger: numeric_state
+      id: darkness
       entity_id: sensor.living_illuminance
       below: 6
   condition:
@@ -37,19 +40,19 @@
         after: '20:00:00'
       then:
       - alias: Turn on movie scene
-        service: scene.turn_on
+        action: scene.turn_on
         entity_id: scene.living_movie
       else:
       - alias: Turn on living normal scene
-        service: scene.turn_on
+        action: scene.turn_on
         entity_id: scene.living_normal
 
 - alias: 'Turn living lights off when enough daylight or leaving or sleeping'
   trigger:
-    - platform: numeric_state
+    - trigger: numeric_state
       entity_id: sensor.living_illuminance
       above: 6
-    - platform: state
+    - trigger: state
       entity_id: input_select.home_mode
       to:
         - away
@@ -59,11 +62,11 @@
       entity_id: light.living_spots
       state: 'on'
   action:
-    - service: script.turn_living_lights_off
+    - action: script.turn_living_lights_off
 
 - alias: 'Turn living lights off when no activity'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.living_motion_detection
       to: 'off'
       for:
@@ -84,11 +87,11 @@
         - media_player.chromekamer
       state: 'off'
   action:
-    - service: script.turn_living_lights_off
+    - action: script.turn_living_lights_off
 
 - alias: 'Living lights on during sleepmode'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.living_motion_detection
       to: 'on'
   condition:
@@ -99,12 +102,12 @@
       entity_id: sensor.living_illuminance
       below: 6
   action:
-    - service: scene.turn_on
+    - action: scene.turn_on
       entity_id: scene.living_night
 
 - alias: 'Living lights off during sleepmode'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.living_motion_detection
       to: 'off'
       for:
@@ -114,4 +117,4 @@
       entity_id: input_select.home_mode
       state: night
   action:
-    - service: script.turn_living_lights_off
+    - action: script.turn_living_lights_off
