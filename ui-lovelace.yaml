@@ -78,9 +78,6 @@ views:
           - light.tuin_spots
           - light.backyard_floodlight
           - type: divider
-          - light.backyard_christmas
-          - light.christmas_balcony_switch
-          - type: divider
           - switch.buitenkraan_switch
           - type: divider
           - sensor.netatmo_outdoor_temperature
