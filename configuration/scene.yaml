@@ -2,41 +2,33 @@
   icon: mdi:movie-open
   entities:
     light.living_spots:
-      state: on
+      state: 'on'
       brightness: 25
     light.kitchen:
-      state: on
+      state: 'on'
       brightness: 25
-- name: Living TV
-  entities:
-    light.living_spots:
-      state: on
-      brightness: 75
-    light.kitchen:
-      state: on
-      brightness: 125
 - name: Living Normal
   icon: mdi:brightness-5
   entities:
     light.living_spots:
-      state: on
+      state: 'on'
       brightness: 125
     light.kitchen:
-      state: on
+      state: 'on'
       brightness: 125
 - name: Living Night
   entities:
     light.living_spots:
-      state: on
+      state: 'on'
       brightness: 50
     light.kitchen:
-      state: on
+      state: 'on'
       brightness: 75
 - name: Small office warm
   icon: mdi:white-balance-sunny
   entities:
     light.led_strip_small_office:
-      state: on
+      state: 'on'
       color_mode: hs
       hs_color:
         - 30
@@ -46,14 +38,14 @@
   icon: mdi:brightness-6
   entities:
     light.led_strip_small_office:
-      state: on
+      state: 'on'
       color_mode: color_temp
       color_temp: 500
       brightness: 160
 - name: Garden spots normal
   entities:
     light.tuin_spots:
-      state: on
+      state: 'on'
       brightness: 97
       color_mode: color_temp
       color_temp: 358

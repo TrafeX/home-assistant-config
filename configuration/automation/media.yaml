@@ -14,19 +14,11 @@
       entity_id: light.living_spots
       attribute: brightness
       above: 50
+    - condition: time
+      after: '20:00:00'
   action:
-    - if:
-      - alias: It's evening
-        condition: time
-        after: '20:00:00'
-      then:
-      - alias: Turn on movie scene
-        action: scene.turn_on
-        entity_id: scene.living_movie
-      else:
-      - alias: Turn on TV scene
-        action: scene.turn_on
-        entity_id: scene.living_tv
+    action: scene.turn_on
+    entity_id: scene.living_movie
 
 - alias: 'Turn off TV when leaving or sleeping'
   trigger:
