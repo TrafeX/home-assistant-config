@@ -2,10 +2,10 @@
   trigger:
     - platform: state
       entity_id: sensor.wasmachine_operation_state
-      to: 'Ready'
+      to: 'ready'
     - platform: state
       entity_id: sensor.wasmachine_operation_state
-      to: 'Finished'
+      to: 'finished'
   action:
     - service: notify.app_tim
       data:

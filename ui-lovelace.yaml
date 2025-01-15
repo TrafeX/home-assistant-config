@@ -193,6 +193,7 @@ views:
           - binary_sensor.carbon_monoxide_detected
           - sensor.co_temperature
           - binary_sensor.wash_dryer_state
+          - sensor.wasmachine_operation_state
         show_header_toggle: false
     icon: "mdi:home-outline"
   - path: mediaplayers
