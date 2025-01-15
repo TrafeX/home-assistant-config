@@ -1,18 +1,35 @@
-- alias: 'Turn on GangBG light when coming home'
+- alias: 'Turn on Hallway GF light when motion'
   trigger:
-    - platform: state
-      entity_id: input_select.home_mode
-      from: away
-      to: home
+    - trigger: state
+      entity_id: binary_sensor.hallway_gf_motion
+      to: 'on'
   condition:
     - condition: state
       entity_id: input_select.home_mode
-      state: home
-    - condition: sun
-      after: 'sunset'
+      state:
+        - home
+        - away
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: numeric_state
+          entity_id: sensor.hallway_gf_illuminance
+          below: 10
   action:
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.gang_bg
-    - delay: 0:10
-    - service: light.turn_off
+
+- alias: 'Turn off Hallway GF light when no motion'
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.hallway_gf_motion
+      to: 'off'
+  condition:
+    - condition: state
+      entity_id: light.gang_bg
+      state: 'on'
+  action:
+    - action: light.turn_off
       entity_id: light.gang_bg

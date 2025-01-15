@@ -80,3 +80,4 @@ The following hardware is integrated in this system.
 | 1        | Irrigation    | Woox R7060 Irrigation Control         | zigbee   |
 | 2        | Wallplug      | Third Reality Smart Plug              | zigbee   |
 | 1        | Insertmodule  | Shelly 2PM                            | zwave    |
+| 1        | Motion sensor | Aqara Motion Sensor P1                | zigbee   |

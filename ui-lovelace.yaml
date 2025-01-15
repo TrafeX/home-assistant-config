@@ -93,10 +93,12 @@ views:
         title: Gang BG
         state_color: true
         entities:
+          - binary_sensor.hallway_gf_motion
           - binary_sensor.frontdoor_is_open
           - binary_sensor.hallway_gf_smoke_alarm
           - light.gang_bg
           - sensor.hallway_gf_smoke_temperature
+          - sensor.hallway_gf_illuminance
           - binary_sensor.doorbell_visitor
           - binary_sensor.doorbell_motion
           - binary_sensor.hallway_motion_sensor
@@ -254,6 +256,8 @@ views:
         state_color: true
         entities:
           - entity: binary_sensor.living_motion_detection
+            secondary_info: last-changed
+          - entity: binary_sensor.hallway_gf_motion
             secondary_info: last-changed
           - entity: binary_sensor.hallway_1st_motion_detection
             secondary_info: last-changed
@@ -602,6 +606,9 @@ views:
               - type: button
                 icon_height: 30px
                 entity: binary_sensor.living_motion_detection
+              - type: button
+                icon_height: 30px
+                entity: binary_sensor.hallway_gf_motion
               - type: button
                 icon_height: 30px
                 entity: binary_sensor.hallway_1st_motion_detection
