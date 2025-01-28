@@ -6,6 +6,7 @@ sequence:
       message: >
         Activiteit op: {{ [
             'binary_sensor.living_motion_detection',
+            'binary_sensor.hallway_gf_motion',
             'binary_sensor.hallway_1st_motion_detection',
             'binary_sensor.hallway_2nd_motion_detection',
             'binary_sensor.bedroom_jens_motion_detection',
