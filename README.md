@@ -61,7 +61,6 @@ The following hardware is integrated in this system.
 | 1        | Insertmodule  | Philiotech 2x1,5kw (PAN04)            | zwave    |
 | 1        | Insertmodule  | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave    |
 | 5        | Multisensor   | Aeon Labs Multisensor 6               | zwave    |
-| 2        | Door sensor   | Sensative Strips Guard                | zwave    |
 | 1        | Motion sensor | Neo Coolcam motion sensor             | zwave    |
 | 2        | Wallplug      | Qubino Smart Plug 16A                 | zwave    |
 | 1        | Weather       | Netatmo Weatherstation                | wifi     |
@@ -81,3 +80,4 @@ The following hardware is integrated in this system.
 | 2        | Wallplug      | Third Reality Smart Plug              | zigbee   |
 | 1        | Insertmodule  | Shelly 2PM                            | zwave    |
 | 1        | Motion sensor | Aqara Motion Sensor P1                | zigbee   |
+| 2        | Door sensor   | Aqara Door and Window sensor          | zigbee   |

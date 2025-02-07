@@ -53,7 +53,7 @@ views:
           - light.partylight
           - type: divider
           - binary_sensor.living_motion_detection
-          - binary_sensor.sliding_backdoor_is_open
+          - binary_sensor.schuifpui_opening
           - type: divider
           - sensor.netatmo_indoor_temperature
           - sensor.netatmo_indoor_humidity
@@ -94,7 +94,7 @@ views:
         state_color: true
         entities:
           - binary_sensor.hallway_gf_motion
-          - binary_sensor.frontdoor_is_open
+          - binary_sensor.voordeur_opening
           - binary_sensor.hallway_gf_smoke_alarm
           - light.gang_bg
           - sensor.hallway_gf_smoke_temperature
@@ -280,9 +280,9 @@ views:
             secondary_info: last-changed
           - entity: binary_sensor.doorbell_motion
             secondary_info: last-changed
-          - entity: binary_sensor.frontdoor_is_open
+          - entity: binary_sensor.voordeur_opening
             secondary_info: last-changed
-          - entity: binary_sensor.sliding_backdoor_is_open
+          - entity: binary_sensor.schuifpui_opening
             secondary_info: last-changed
         show_header_toggle: false
       - type: tile
@@ -579,7 +579,7 @@ views:
                   - binary_sensor.doorbell_visitor
                   - binary_sensor.doorbell_motion
                   - binary_sensor.doorbell_person
-                  - binary_sensor.frontdoor_is_open
+                  - binary_sensor.voordeur_opening
                 camera_image: camera.doorbell_sub
               - type: picture-glance
                 title: Backyard
@@ -633,10 +633,10 @@ views:
                 entity: binary_sensor.doorbell_motion
               - type: button
                 icon_height: 30px
-                entity: binary_sensor.frontdoor_is_open
+                entity: binary_sensor.voordeur_opening
               - type: button
                 icon_height: 30px
-                entity: binary_sensor.sliding_backdoor_is_open
+                entity: binary_sensor.schuifpui_opening
           - type: horizontal-stack
             cards:
               - type: sensor

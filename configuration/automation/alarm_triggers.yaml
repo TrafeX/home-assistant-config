@@ -8,8 +8,8 @@
         - binary_sensor.hallway_2nd_motion_detection
         - binary_sensor.bedroom_jens_motion_detection
         - binary_sensor.tygo_motion_detection
-        - binary_sensor.frontdoor_is_open
-        - binary_sensor.sliding_backdoor_is_open
+        - binary_sensor.voordeur_opening
+        - binary_sensor.schuifpui_opening
         - binary_sensor.backyard_person
       to: 'on'
   condition:
@@ -29,10 +29,10 @@
 - alias: 'Trigger alarm while armed night'
   trigger:
     - platform: state
-      entity_id: binary_sensor.frontdoor_is_open
+      entity_id: binary_sensor.voordeur_opening
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.sliding_backdoor_is_open
+      entity_id: binary_sensor.schuifpui_opening
       to: 'on'
   condition:
     - condition: or
@@ -52,8 +52,8 @@
   trigger:
     - platform: state
       entity_id:
-        - binary_sensor.frontdoor_is_open
-        - binary_sensor.sliding_backdoor_is_open
+        - binary_sensor.voordeur_opening
+        - binary_sensor.schuifpui_opening
         - binary_sensor.backyard_motion_detection
         - binary_sensor.backyard_person
         - binary_sensor.shed_motion

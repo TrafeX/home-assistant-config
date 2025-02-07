@@ -11,8 +11,8 @@ sequence:
             'binary_sensor.hallway_2nd_motion_detection',
             'binary_sensor.bedroom_jens_motion_detection',
             'binary_sensor.tygo_motion_detection',
-            'binary_sensor.frontdoor_is_open',
-            'binary_sensor.sliding_backdoor_is_open',
+            'binary_sensor.voordeur_opening',
+            'binary_sensor.schuifpui_opening',
             'binary_sensor.backyard_person',
             'binary_sensor.backyard_motion_detection',
             ] | select('is_state', 'on') | map('state_attr', 'friendly_name') | list }}
