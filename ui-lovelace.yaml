@@ -101,7 +101,6 @@ views:
           - sensor.hallway_gf_illuminance
           - binary_sensor.doorbell_visitor
           - binary_sensor.doorbell_motion
-          - binary_sensor.hallway_motion_sensor
           - sensor.storage_temperature
           - sensor.storage_humidity
         show_header_toggle: false
@@ -267,8 +266,6 @@ views:
           - entity: binary_sensor.bedroom_jens_motion_detection
             secondary_info: last-changed
           - entity: binary_sensor.tygo_motion_detection
-            secondary_info: last-changed
-          - entity: binary_sensor.hallway_motion_sensor
             secondary_info: last-changed
           - entity: binary_sensor.backyard_motion_detection
             secondary_info: last-changed
