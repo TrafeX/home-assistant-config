@@ -10,7 +10,7 @@
       unit_of_measurement: lights
 - platform: rest
   scan_interval: 00:05:00
-  resource: http://ip.jsontest.com
+  resource: https://api.ipify.org?format=json
   name: External IP
   value_template: "{{ value_json.ip }}"
 - platform: derivative
