@@ -1,18 +1,44 @@
+- alias: 'Store washing machine start time and energy'
+  trigger:
+    - trigger: state
+      entity_id: sensor.wasmachine_operation_state
+      to: run
+  action:
+    - action: input_datetime.set_datetime
+      entity_id: input_datetime.washing_machine_start
+      data:
+        datetime: "{{ now().isoformat() }}"
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.washing_machine_start_energy
+      data:
+        value: "{{ states('sensor.washing_machine_electric_consumption_kwh') | float }}"
+
 - alias: 'Notify when the washing machine is finished'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.wasmachine_operation_state
-      to: 'ready'
-    - platform: state
+      to: ready
+    - trigger: state
       entity_id: sensor.wasmachine_operation_state
-      to: 'finished'
+      to: finished
   action:
-    - service: notify.app_tim
+    - variables:
+        start_time: "{{ states('input_datetime.washing_machine_start') }}"
+        duration: >
+          {% set start = as_datetime(start_time) %}
+          {% set end = now() %}
+          {{ time_since(start, 2) }}
+        start_energy: "{{ states('input_number.washing_machine_start_energy') | float }}"
+        end_energy: "{{ states('sensor.washing_machine_electric_consumption_kwh') | float }}"
+        energy_used: "{{ (end_energy - start_energy) | round(2) }}"
+    - action: notify.app_tim
       data:
-        message: '🧺 De wasmachine is klaar'
+        title: '🧺 De wasmachine is klaar'
+        message: Het heeft {{ duration }} geduurd en {{ energy_used }} kWh verbruikt.
         data:
           notification_icon: mdi:washing-machine
-    - service: tts.google_say
+    - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini
         message: 'De wasmachine is klaar'

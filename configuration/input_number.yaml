@@ -1,0 +1,8 @@
+wash_dryer_start_energy:
+  name: Wash Dryer Start Energy
+  min: 0
+  max: 100000
+washing_machine_start_energy:
+  name: Washing Machine Start Energy
+  min: 0
+  max: 100000

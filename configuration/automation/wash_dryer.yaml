@@ -1,6 +1,22 @@
+- alias: 'Store wash dryer start time and energy'
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.wash_dryer_state
+      to: "on"
+  action:
+    - action: input_datetime.set_datetime
+      entity_id: input_datetime.wash_dryer_start
+      data:
+        datetime: "{{ now().isoformat() }}"
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.wash_dryer_start_energy
+      data:
+        value: "{{ states('sensor.washdryer_electric_consumption_kwh') | float }}"
+
 - alias: 'Notify when the wash dryer is finished'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.wash_dryer_state
       to: 'off'
       for:
@@ -13,12 +29,22 @@
           entity_id: binary_sensor.wash_dryer_state
           state: "unavailable"
   action:
-    - service: notify.app_tim
+    - variables:
+        start_time: "{{ states('input_datetime.wash_dryer_start') }}"
+        duration: >
+          {% set start = as_datetime(start_time) %}
+          {% set end = now() %}
+          {{ time_since(start, 2) }}
+        start_energy: "{{ states('input_number.wash_dryer_start_energy') | float }}"
+        end_energy: "{{ states('sensor.washdryer_electric_consumption_kwh') | float }}"
+        energy_used: "{{ (end_energy - start_energy) | round(2) }}"
+    - action: notify.app_tim
       data:
-        message: '👕 De wasdroger is klaar'
+        title: 👕 De wasdroger is klaar.
+        message: Het heeft {{ duration }} geduurd en {{ energy_used }} kWh verbruikt.
         data:
           notification_icon: mdi:tumble-dryer
-    - service: tts.google_say
+    - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_mini
         message: 'De wasdroger is klaar'

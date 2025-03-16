@@ -10,7 +10,7 @@ Some of the things I've implemented:
 * Ability to disarm the alarm via Telegram actions
 * Fully automated living lights
 * Automated hallway lights which dim at night
-* Notify when washing machine or wash dryer is finished
+* Notify when washing machine or wash dryer is finished, including the duration and energy usage
 * Play speech messages via the Google Mini's
 * Presence detection with home coming and leaving automation
 * Night mode; turn the ground floor lights off and dim the hallway lights

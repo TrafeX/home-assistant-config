@@ -1,0 +1,8 @@
+wash_dryer_start:
+  name: Wash Dryer Start Time
+  has_date: true
+  has_time: true
+washing_machine_start:
+  name: Washing Machine Start Time
+  has_date: true
+  has_time: true

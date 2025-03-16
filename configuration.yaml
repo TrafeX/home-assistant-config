@@ -138,6 +138,12 @@ input_boolean: !include configuration/input_boolean.yaml
 # Configure input select boxes
 input_select: !include configuration/input_select.yaml
 
+# Configure datetime values
+input_datetime: !include configuration/input_datetime.yaml
+
+# Configure number values
+input_number: !include configuration/input_number.yaml
+
 # Configure Sonos integration
 sonos:
   media_player:
