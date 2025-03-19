@@ -3,6 +3,10 @@
     - trigger: state
       entity_id: sensor.wasmachine_operation_state
       to: run
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
   action:
     - action: input_datetime.set_datetime
       entity_id: input_datetime.washing_machine_start
@@ -22,6 +26,10 @@
     - trigger: state
       entity_id: sensor.wasmachine_operation_state
       to: finished
+  condition:
+    - condition: template
+      value_template: >
+        {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
   action:
     - variables:
         start_time: "{{ states('input_datetime.washing_machine_start') }}"
