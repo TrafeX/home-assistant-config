@@ -13,6 +13,9 @@
       id: darkness
       entity_id: sensor.living_illuminance
       below: 6
+    - trigger: sun
+      id: sunset
+      event: sunset
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -23,9 +26,13 @@
         - light.kitchen
       state: 'off'
       match: any
-    - condition: numeric_state
-      entity_id: sensor.living_illuminance
-      below: 6
+    - condition: or
+      conditions:
+        - condition: numeric_state
+          entity_id: sensor.living_illuminance
+          below: 6
+        - condition: sun
+          after: sunset
     - condition: state
       entity_id: light.partylight
       state: 'off'
