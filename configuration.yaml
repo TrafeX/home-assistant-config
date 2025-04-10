@@ -64,17 +64,6 @@ recorder:
   exclude:
     entity_globs:
     - sensor.*_last_seen
-    entities:
-      - sensor.power_consumption
-      - sensor.power_consumption_phase_l1
-      - sensor.power_consumption_phase_l2
-      - sensor.power_consumption_phase_l3
-      - sensor.power_production
-      - sensor.energy_production_tarif_1
-      - sensor.energy_production_tarif_2
-      - sensor.voltage_phase_l1
-      - sensor.voltage_phase_l2
-      - sensor.voltage_phase_l3
 
 # Track the sun
 sun:
