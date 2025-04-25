@@ -6,7 +6,8 @@ views:
       - person.tim
       - person.chantal
       - sensor.lights_on
-      - sensor.power_consumption
+      - sensor.house_energy_consumption
+      - sensor.solaredge_i1_ac_power
       - sun.sun
     cards:
       - type: entities
@@ -229,25 +230,6 @@ views:
             entity: media_player.werkkamer
           - type: media-control
             entity: media_player.werkkamer_groot
-  - path: cameras
-    title: Cameras
-    icon: mdi:cctv
-    badges: []
-    cards:
-      - type: picture-entity
-        entity: camera.doorbell_sub
-      - type: picture-entity
-        entity: camera.txnas_backyard
-      - type: picture-entity
-        entity: camera.txnas_babycam
-      - type: picture-entity
-        entity: camera.tygo
-      - type: picture-entity
-        entity: camera.txnas_hallway
-      - type: picture-entity
-        entity: camera.shed
-      - type: picture-entity
-        entity: camera.doorbell
   - path: security
     title: Security
     icon: mdi:security
@@ -291,6 +273,89 @@ views:
               - armed_away
               - armed_night
               - disarmed
+  - path: solar-energy
+    title: Solar Energy
+    icon: mdi:solar-power
+    cards:
+      - type: grid
+        columns: 2
+        cards:
+          - type: sensor
+            entity: sensor.solaredge_i1_ac_power
+            name: Solar Power
+            graph: line
+            detail: 2 
+          - type: sensor
+            entity: sensor.power_consumption
+            name: Grid Consumption
+            graph: line
+            detail: 2 
+          - type: sensor
+            entity: sensor.power_production
+            name: Grid Production
+            graph: line
+            detail: 2 
+          - type: sensor
+            entity: sensor.house_energy_consumption
+            name: House Consumption
+            graph: line
+            detail: 2 
+          - type: statistic
+            entity: sensor.solaredge_i1_ac_power
+            name: Peak solar power 24h
+            stat_type: max
+            period: 24h
+          - type: statistic
+            entity: sensor.solaredge_i1_ac_power
+            name: Peak solar power 30d
+            stat_type: max
+            period: 30d
+      - type: statistics-graph
+        title: Solar power
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: House consumption
+            entity: sensor.house_energy_consumption
+          - name: Production
+            entity: sensor.solaredge_i1_ac_power
+          - name: From grid
+            entity: sensor.power_consumption
+          - name: To grid
+            entity: sensor.power_production
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: W
+      - type: statistics-graph
+        title: Power usage
+        chart_type: line
+        period: 5minute
+        entities:
+          - name: Large office
+            entity: sensor.large_office_power
+          - name: Bedroom Jens
+            entity: sensor.light_jens_power
+          - name: Bedroom Tygo
+            entity: sensor.bedroom_tygo_power
+          - name: Wasmachine
+            entity: sensor.washing_machine_electric_consumption_w
+          - name: Wasdroger
+            entity: sensor.washdryer_electric_consumption_w
+          - name: Vaatwasser
+            entity: sensor.vaatwasser_power
+          - name: TV cabinet
+            entity: sensor.tv_cabinet_switch_0_power
+          - name: Garden powersocket
+            entity: sensor.backyard_powersocket_electric_consumption_w
+          - name: Tuindeur licht
+            entity: sensor.backyarddoor_light_electric_consumption_w
+          - name: Koffieapparaat
+            entity: sensor.koffieapparaat_power
+        stat_types:
+          - mean
+        days_to_show: 1
+        unit: W
   - path: graphs
     title: Graphs
     icon: mdi:chart-bar
@@ -364,37 +429,6 @@ views:
         stat_types:
           - mean
         days_to_show: 1
-      - type: statistics-graph
-        title: Power usage
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Large office
-            entity: sensor.large_office_power
-          - name: Bedroom Jens
-            entity: sensor.light_jens_power
-          - name: Bedroom Tygo
-            entity: sensor.bedroom_tygo_power
-          - name: Wasmachine
-            entity: sensor.washing_machine_electric_consumption_w
-          - name: Wasdroger
-            entity: sensor.washdryer_electric_consumption_w
-          - name: Vaatwasser
-            entity: sensor.vaatwasser_power
-          - name: Small Office
-            entity: sensor.small_office_electric_consumption_w
-          - name: TV cabinet
-            entity: sensor.tv_cabinet_switch_0_power
-          - name: Garden powersocket
-            entity: sensor.backyard_powersocket_electric_consumption_w
-          - name: Tuindeur licht
-            entity: sensor.backyarddoor_light_electric_consumption_w
-          - name: Koffieapparaat
-            entity: sensor.koffieapparaat_power
-        stat_types:
-          - mean
-        days_to_show: 1
-        unit: W
       - type: statistics-graph
         title: Heating
         chart_type: line
@@ -503,6 +537,25 @@ views:
           - sensor.ups_load
         stat_types:
           - mean
+  - path: cameras
+    title: Cameras
+    icon: mdi:cctv
+    badges: []
+    cards:
+      - type: picture-entity
+        entity: camera.doorbell_sub
+      - type: picture-entity
+        entity: camera.txnas_backyard
+      - type: picture-entity
+        entity: camera.txnas_babycam
+      - type: picture-entity
+        entity: camera.tygo
+      - type: picture-entity
+        entity: camera.txnas_hallway
+      - type: picture-entity
+        entity: camera.shed
+      - type: picture-entity
+        entity: camera.doorbell
   - path: dashboard
     title: Dashboard
     icon: mdi:monitor-dashboard

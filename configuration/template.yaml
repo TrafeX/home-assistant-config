@@ -134,3 +134,10 @@
       state: "{{ state_attr('binary_sensor.tp_link_switch_port_8_state', 'rx_bad_packets') }}"
       unit_of_measurement: 'packets'
       state_class: total_increasing
+
+    - name: 'House Energy Consumption'
+      state: "{{ (states('sensor.power_consumption') | float + states('sensor.solaredge_i1_ac_power') | float - states('sensor.power_production') | float) | int }}"
+      unit_of_measurement: W
+      icon: mdi:home-lightning-bolt
+      state_class: measurement
+      device_class: power
