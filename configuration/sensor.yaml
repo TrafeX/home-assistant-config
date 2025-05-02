@@ -18,3 +18,8 @@
   source: sensor.gas_consumption
   unit_time: h
   time_window: "00:01:00"
+- platform: derivative
+  name: Solar Production Power
+  source: sensor.solaredge_i1_ac_energy
+  unit_time: h
+  time_window: "00:01:00"

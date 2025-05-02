@@ -278,6 +278,7 @@ views:
     icon: mdi:solar-power
     cards:
       - type: grid
+        square: false
         columns: 2
         cards:
           - type: sensor
@@ -302,14 +303,20 @@ views:
             detail: 2 
           - type: statistic
             entity: sensor.solaredge_i1_ac_power
-            name: Peak solar power 24h
+            name: 24h peak solar power
             stat_type: max
-            period: 24h
+            period: 
+              rolling_window:
+                duration:
+                  hours: 24
           - type: statistic
             entity: sensor.solaredge_i1_ac_power
-            name: Peak solar power 30d
+            name: Month peak solar power
             stat_type: max
-            period: 30d
+            period:
+              calendar:
+                period: month
+                offset: 0
       - type: statistics-graph
         title: Solar power
         chart_type: line
@@ -730,7 +737,7 @@ views:
                 detail: 2
                 entity: sensor.netatmo_outdoor_humidity
               - type: gauge
-                entity: sensor.power_consumption
+                entity: sensor.house_energy_consumption
                 name: Power
                 max: 4000
                 severity:
