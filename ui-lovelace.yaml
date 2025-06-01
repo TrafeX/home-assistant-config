@@ -73,6 +73,7 @@ views:
         state_color: true
         entities:
           - binary_sensor.backyard_motion_sensors
+          - sensor.rain_last_24h
           - light.backyard
           - light.backyarddoor_light
           - light.buitenlicht_voorkant
