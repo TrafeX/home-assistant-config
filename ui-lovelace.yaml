@@ -157,6 +157,7 @@ views:
         entities:
           - binary_sensor.tygo_motion_detection
           - light.bedroom_tygo
+          - script.blink_tygo_light
           - sensor.tygo_temperature
           - sensor.tygo_humidity
           - sensor.tygo_illuminance

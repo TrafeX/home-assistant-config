@@ -40,6 +40,7 @@ Some of the things I've implemented:
 * A dashboard with graphs of all temperature, humidity and energy usage sensors
 * An energy dashboard with the solar production, grid usage and house consumption
 * Turn off the heating in the office when the workday is over 
+* Blink the kids bedroom light when it's time to get up or go to sleep 
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 

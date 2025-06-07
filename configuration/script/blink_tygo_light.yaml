@@ -1,0 +1,21 @@
+alias: 'Blink Tygo light'
+sequence:
+  - service: zwave_js.invoke_cc_api
+    data:
+      command_class: "113"
+      method_name: sendReport
+      parameters:
+        - alarmType: 0
+          alarmLevel: 255
+    target:
+      entity_id: light.bedroom_tygo
+  - delay: '00:00:15'
+  - service: zwave_js.invoke_cc_api
+    data:
+      command_class: "113"
+      method_name: sendReport
+      parameters:
+        - alarmType: 0
+          alarmLevel: 0
+    target:
+      entity_id: light.bedroom_tygo

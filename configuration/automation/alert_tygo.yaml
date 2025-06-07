@@ -1,0 +1,10 @@
+- alias: 'Alert Tygo to go to sleep or come downstairs'
+  trigger:
+    - platform: time
+      at: '7:30:00'
+    - platform: time
+      at: '20:30:00'
+  action:
+    - action: script.turn_on
+      target:
+        entity_id: script.blink_tygo_light
