@@ -147,6 +147,7 @@ views:
         entities:
           - binary_sensor.bedroom_jens_motion_detection
           - light.bedroom_jens
+          - climate.airco_jens
           - sensor.bedroom_jens_temperature
           - sensor.bedroom_jens_humidity
           - sensor.bedroom_jens_illuminance
@@ -157,6 +158,7 @@ views:
         entities:
           - binary_sensor.tygo_motion_detection
           - light.bedroom_tygo
+          - climate.airco_tygo
           - script.blink_tygo_light
           - sensor.tygo_temperature
           - sensor.tygo_humidity
