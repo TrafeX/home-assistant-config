@@ -167,13 +167,6 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
-# Configure Telegram integration
-telegram_bot:
-  platform: polling
-  api_key: !secret telegram_api_key
-  allowed_chat_ids:
-    - !secret telegram_chat_id
-
 # Configure alarm panel
 alarm_control_panel:
   - platform: manual
