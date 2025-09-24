@@ -20,6 +20,7 @@ views:
           - input_boolean.notify_irrigation_needed
           - script.cast_dashboard_office
           - script.cast_dashboard_living
+          - script.cast_kids_dashboard
         show_header_toggle: false
       - type: thermostat
         name: Verwarming
@@ -748,3 +749,12 @@ views:
                   green: 0
                   yellow: 1500
                   red: 3000
+  - path: kids-dashboard
+    title: Kids dashboard
+    icon: mdi:baby
+    panel: true
+    badges: []
+    cards:
+      - type: iframe
+        url: https://kids-dashboard-two.vercel.app/
+        aspect_ratio: 100%

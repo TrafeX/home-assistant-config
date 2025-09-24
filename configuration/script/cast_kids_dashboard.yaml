@@ -1,0 +1,7 @@
+alias: Show Kids Dashboard
+sequence:
+  - data:
+      entity_id: media_player.home_hub
+      dashboard_path: lovelace
+      view_path: kids-dashboard
+    service: cast.show_lovelace_view
