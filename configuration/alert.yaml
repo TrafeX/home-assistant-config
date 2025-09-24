@@ -8,4 +8,16 @@ frontdoor_open:
   can_acknowledge: true
   skip_first: true
   notifiers:
-    - telegram_notify
+    - app_tim
+
+airco_tygo_on:
+  name: The airco is on for more than 30 minutes
+  message: De airco van Tygo staat al {{ relative_time(states.binary_sensor.voordeur_opening.last_changed) }} aan
+  done_message: De airco is uitgeschakeld
+  entity_id: climate.airco_tygo
+  state: 'cool'
+  repeat: 30
+  can_acknowledge: true
+  skip_first: true
+  notifiers:
+    - app_tim
