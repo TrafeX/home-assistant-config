@@ -22,15 +22,19 @@
         data:
           entity_id: camera.doorbell_sub
           filename: !secret frontyard_snapshot_folder
-      - choose:
-          - conditions:
-              - condition: and
-                conditions: 
-                  - condition: state
-                    entity_id: input_select.home_mode
-                    state: 'home'
-            sequence:
-              - service: tts.google_say
-                data:
-                  entity_id: group.announcement_speakers
-                  message: 'Er staat iemand voor de voordeur'
+      - service: media_player.play_media
+        data:
+          media_content_id: "media-source://camera/camera.doorbell_sub"
+          media_content_type: application/vnd.apple.mpegurl
+          metadata:
+            title: Deurbel
+            thumbnail: /api/camera_proxy/camera.doorbell_sub
+            media_class: video
+            children_media_class: null
+            navigateIds:
+              - {}
+              - media_content_type: app
+                media_content_id: media-source://camera
+            browse_entity_id: media_player.woonkamer_hub
+        target:
+          entity_id: media_player.woonkamer_hub

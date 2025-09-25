@@ -48,5 +48,5 @@
           notification_icon: mdi:washing-machine
     - action: tts.google_say
       data:
-        entity_id: media_player.woonkamer_mini
+        entity_id: media_player.woonkamer_hub
         message: 'De wasmachine is klaar'

@@ -4,6 +4,6 @@ all_persons:
     - person.chantal
 announcement_speakers:
   entities:
-    - media_player.woonkamer_mini
+    - media_player.woonkamer_hub
     - media_player.first_floor
     - media_player.werkkamer
