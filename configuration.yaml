@@ -158,7 +158,7 @@ notify:
     platform: group
     services:
       - service: mobile_app_tim
-      - service: mobile_app_in2013
+      - service: mobile_app_chantal
   - name: all
     platform: group
     services:
