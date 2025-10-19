@@ -5,7 +5,7 @@
       delay_on:
         seconds: 60
       delay_off:
-        seconds: 60
+        seconds: 180
       value_template: "{{ states('sensor.washdryer_electric_consumption_w')|int(0) > 4 }}"
     hotwater_active:
       friendly_name: 'Hot Water'
