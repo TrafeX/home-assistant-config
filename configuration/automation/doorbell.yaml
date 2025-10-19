@@ -39,3 +39,8 @@
               browse_entity_id: media_player.woonkamer_hub
         target:
           entity_id: media_player.woonkamer_hub
+    - delay:
+        minutes: 2
+    - action: media_player.media_stop
+      target:
+        entity_id: media_player.woonkamer_hub
