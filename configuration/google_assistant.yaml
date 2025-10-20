@@ -79,10 +79,6 @@ entity_config:
     name: Woonkamer normaal scene
     room: Woonkamer
     expose: true
-  camera.frontyard:
-    name: Voortuin camera
-    room: Voortuin
-    expose: true
   camera.backyard:
     name: Achtertuin camera
     room: Achtertuin
