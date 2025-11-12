@@ -7,9 +7,13 @@
       entity_id: binary_sensor.backyard_person
       to: 'on'
   condition:
-    - condition: sun
-      after: sunset
-      after_offset: "+00:20:00"
+    - condition: or
+      conditions:
+        - condition: sun
+          after: sunset
+          after_offset: "+00:20:00"
+        - condition: sun
+          before: sunrise
   action:
     - action: light.turn_on
       data:
