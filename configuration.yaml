@@ -85,22 +85,11 @@ influxdb:
   precision: ms
   exclude:
     entities:
-      - binary_sensor.updater
-      - binary_sensor.in2013_is_charging
-      - binary_sensor.tim_mobile_is_aan_het_opladen
-      - binary_sensor.wasmachine_door
       - binary_sensor.wasmachine_remote_start
       - binary_sensor.wasmachine_remote_control
       - sensor.voordeur_battery
       - sensor.netatmo_bedroom_battery_percent
       - sensor.netatmo_outdoor_battery_percent
-      - sensor.in2013_battery_level
-      - sensor.in2013_storage_sensor
-      - sensor.in2013_battery_temperature
-      - sensor.in2013_light_sensor
-      - sensor.timmobile_battery_level
-      - sensor.timmobile_storage_sensor
-      - sensor.timmobile_battery_temperature
       - sensor.txnas_cpu_utilization_total
       - sensor.txnas_cpu_utilization_user
       - sensor.txnas_memory_usage_real
@@ -159,13 +148,6 @@ notify:
     services:
       - service: mobile_app_tim
       - service: mobile_app_chantal
-  - name: all
-    platform: group
-    services:
-      - service: telegram_notify
-  - name: telegram_notify
-    platform: telegram
-    chat_id: !secret telegram_chat_id
 
 # Configure alarm panel
 alarm_control_panel:

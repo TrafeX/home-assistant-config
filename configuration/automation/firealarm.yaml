@@ -1,27 +1,29 @@
 - alias: 'Trigger fire alarm when smoke detected'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.hallway_1st_smoke_alarm
       to: 'on'
       for: 
         seconds: 5
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.rookmelder_2de_280
       to: 'on'
       for: 
         seconds: 5
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.hallway_gf_smoke_alarm
       to: 'on'
       for: 
         seconds: 5
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.carbon_monoxide_detected
       to: 'on'
       for: 
         seconds: 5
   action:
-    - action: notify.all
+    - action: notify.send_message
+      target:
+        entity_id: !secret telegram_notify_bot
       data_template:
         title: "*BRAND alarm!*"
         message: >

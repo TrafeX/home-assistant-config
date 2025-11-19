@@ -1,6 +1,8 @@
 alias: 'Notify of movement'
 sequence:
-  - service: notify.telegram_notify
+  - action: notify.send_message
+    target:
+      entity_id: !secret telegram_notify_bot
     data_template:
       title: "⚠ *Beweging gedetecteerd!*"
       message: >
@@ -19,7 +21,9 @@ sequence:
       data:
         inline_keyboard:
           - 'Disarm alarm:/disarm_alarm'
-  - service: notify.telegram_notify
+  - action: notify.send_message
+    target:
+      entity_id: !secret telegram_notify_bot
     data_template:
       message: "Beweging gedetecteerd"
       data:

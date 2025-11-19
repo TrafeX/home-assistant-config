@@ -1,6 +1,6 @@
 - alias: 'Notify when the vacuum robot is done'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
       from: 'cleaning'
   condition:
@@ -11,7 +11,9 @@
           entity_id: vacuum.xiaomi_vacuum_cleaner
           state: "unavailable"
   action:
-    - service: notify.all
+    - action: notify.send_message
+      target:
+        entity_id: !secret telegram_notify_bot
       data_template:
         title: "*De robotstofzuiger is klaar!*"
         message: >
@@ -21,19 +23,19 @@
 
 - alias: 'Enable automatic vacuum cleaner on sleep mode'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_select.home_mode
       to: night
   action:
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.automatic_vacuum_cleaner
 
 - alias: 'Run the vacuum cleaner when automatic vacuum cleaner is enabled'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.automatic_vacuum_cleaner
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
       to: 'docked'
   condition:
@@ -41,12 +43,12 @@
       entity_id: input_boolean.automatic_vacuum_cleaner
       state: 'on'
   action:
-    - service: vacuum.start
+    - action: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
 
 - alias: 'Disable automatic vacuum cleaner when started cleaning'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
       to: 'cleaning'
   condition:
@@ -54,5 +56,5 @@
       entity_id: input_boolean.automatic_vacuum_cleaner
       state: 'on'
   action:
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.automatic_vacuum_cleaner

@@ -1,6 +1,6 @@
 - alias: 'Trigger alarm while armed away'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id:
         - binary_sensor.living_motion_detection
         - binary_sensor.hallway_gf_motion
@@ -22,16 +22,16 @@
           entity_id: alarm_control_panel.home_alarm
           state: triggered
   action:
-    - service: alarm_control_panel.alarm_trigger
+    - action: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
-    - service: script.notify_of_movement
+    - action: script.notify_of_movement
 
 - alias: 'Trigger alarm while armed night'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.voordeur_opening
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.schuifpui_opening
       to: 'on'
   condition:
@@ -44,13 +44,13 @@
           entity_id: alarm_control_panel.home_alarm
           state: triggered
   action:
-    - service: alarm_control_panel.alarm_trigger
+    - action: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
-    - service: script.notify_of_movement
+    - action: script.notify_of_movement
 
 - alias: 'Trigger alarm while armed home'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id:
         - binary_sensor.voordeur_opening
         - binary_sensor.schuifpui_opening
@@ -68,17 +68,19 @@
           entity_id: alarm_control_panel.home_alarm
           state: triggered
   action:
-    - service: alarm_control_panel.alarm_trigger
+    - action: alarm_control_panel.alarm_trigger
       entity_id: alarm_control_panel.home_alarm
-    - service: script.notify_of_movement
+    - action: script.notify_of_movement
 
 - alias: 'Notify of alarm'
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: alarm_control_panel.home_alarm
       to: triggered
   action:
-    - service: notify.all
+    - action: notify.send_message
+      target:
+        entity_id: !secret telegram_notify_bot
       data_template:
         title: '🚨 *Inbraak alarm!*'
         message: 'Het inbraakalarm is geactiveerd!'
