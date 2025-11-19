@@ -1,0 +1,11 @@
+- alias: 'Turn off fireplace when leaving or sleeping'
+  trigger:
+    - trigger: state
+      entity_id: input_select.home_mode
+      to:
+        - away
+        - night
+  action:
+    - action: light.turn_off
+      data:
+        entity_id: light.fireplace
