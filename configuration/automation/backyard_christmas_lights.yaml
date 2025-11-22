@@ -39,3 +39,7 @@
     - action: light.turn_off
       data:
         entity_id: light.backyard_christmas
+    - action: select.select_option
+      data:
+        entity_id: input_select.backyard_christmas_mode
+        option: 'color'

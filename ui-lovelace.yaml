@@ -82,6 +82,7 @@ views:
           - light.buitenlicht_voorkant
           - light.tuin_spots
           - light.backyard_floodlight
+          - light.backyard_christmas
           - type: divider
           - switch.buitenkraan_switch
           - type: divider
