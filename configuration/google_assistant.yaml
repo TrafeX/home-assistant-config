@@ -87,3 +87,7 @@ entity_config:
     name: Gang camera
     room: Gang
     expose: true
+  light.fireplace:
+    name: Open haard
+    room: Woonkamer
+    expose: true
