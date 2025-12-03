@@ -54,6 +54,9 @@ views:
           - light.kitchen
           - light.partylight
           - light.fireplace
+          - type: divider
+          - light.christmas_tree  
+          - light.light_string_tv
           - light.light_string_kitchen
           - type: divider
           - binary_sensor.living_motion_detection
@@ -364,8 +367,8 @@ views:
             entity: sensor.backyard_powersocket_electric_consumption_w
           - name: Tuindeur licht
             entity: sensor.backyarddoor_light_electric_consumption_w
-          - name: Koffieapparaat
-            entity: sensor.koffieapparaat_power
+          - name: Openhaard
+            entity: sensor.fireplace_power
         stat_types:
           - mean
         days_to_show: 1
