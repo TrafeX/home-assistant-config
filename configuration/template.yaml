@@ -5,3 +5,20 @@
       icon: mdi:home-lightning-bolt
       state_class: measurement
       device_class: power
+    - name: Nefit Temperature
+      unit_of_measurement: °C
+      default_entity_id: sensor.nefit_temperature
+      state: '{{ state_attr(''climate.heating'', ''current_temperature'') }}'
+    - name: Lights that are on
+      unit_of_measurement: lights
+      default_entity_id: sensor.lights_on
+      state: '{{ states.light|selectattr(''state'', ''equalto'', ''on'')|list|length }}'
+- binary_sensor:
+  - name: Wash dryer
+    delay_on: 0:01:00
+    delay_off: 0:03:00
+    default_entity_id: binary_sensor.wash_dryer_state
+    state: '{{ states(''sensor.washdryer_electric_consumption_w'')|int(0) > 4 }}'
+  - name: Hot Water
+    default_entity_id: binary_sensor.hotwater_active
+    state: '{{ state_attr(''climate.heating'', ''boiler_indicator'') == ''HW'' }}'

@@ -52,4 +52,4 @@
         entity_id:
           - light.light_string_kitchen
           - light.christmas_tree
-          - light_string_tv
+          - light.light_string_tv

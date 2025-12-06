@@ -1,13 +1,3 @@
-- platform: template
-  sensors:
-    nefit_temperature:
-      friendly_name: 'Nefit Temperature'
-      value_template: "{{ state_attr('climate.heating', 'current_temperature') }}"
-      unit_of_measurement: '°C'
-    lights_on:
-      friendly_name: 'Lights that are on'
-      value_template: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
-      unit_of_measurement: lights
 - platform: rest
   scan_interval: 00:05:00
   resource: https://api.ipify.org?format=json

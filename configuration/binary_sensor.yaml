@@ -1,15 +1,3 @@
-- platform: template
-  sensors:
-    wash_dryer_state:
-      friendly_name: 'Wash dryer'
-      delay_on:
-        seconds: 60
-      delay_off:
-        seconds: 180
-      value_template: "{{ states('sensor.washdryer_electric_consumption_w')|int(0) > 4 }}"
-    hotwater_active:
-      friendly_name: 'Hot Water'
-      value_template: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
 - platform: trend
   sensors:
     voltage_sags:
