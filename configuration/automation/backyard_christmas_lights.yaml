@@ -8,6 +8,7 @@
       to: 'on'
     - trigger: sun
       event: 'sunset'
+      offset: '-00:30:00'
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -19,6 +20,7 @@
       conditions:
       - condition: sun
         after: 'sunset'
+        after_offset: '-00:30:00'
       - condition: sun
         before: 'sunrise'
   action:

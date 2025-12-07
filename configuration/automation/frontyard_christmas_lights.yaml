@@ -1,9 +1,10 @@
 - alias: 'Turn on frontyard Chistmas lights'
   trigger:
     - trigger: time
-      at: '6:00:00'
+      at: '06:00:00'
     - trigger: sun
       event: 'sunset'
+      offset: '-00:30:00'
   condition:
     - condition: state
       entity_id: light.frontyard_christmas_strings
@@ -19,6 +20,7 @@
       at: '23:30:00'
     - trigger: sun
       event: 'sunrise'
+      offset: '00:30:00'
   action:
     - action: light.turn_off
       data:
