@@ -13,6 +13,16 @@
       unit_of_measurement: lights
       default_entity_id: sensor.lights_on
       state: '{{ states.light|selectattr(''state'', ''equalto'', ''on'')|list|length }}'
+    - name: "UPS Power Usage"
+      unique_id: ups_power_usage
+      state_class: measurement
+      device_class: power
+      unit_of_measurement: "W"
+      state: >
+        {% set load_percent = states('sensor.ups_load') | float(0) %}
+        {% set nominal_power = states('sensor.ups_nominal_output_power') | float(0) %}
+        {{ (load_percent / 100 * nominal_power) | round(1) }}
+      availability: "{{ has_value('sensor.ups_load') }}"
 - binary_sensor:
   - name: Wash dryer
     delay_on: 0:01:00

@@ -13,3 +13,10 @@
   source: sensor.solaredge_i1_ac_energy
   unit_time: h
   time_window: "00:01:00"
+- platform: integration
+  source: sensor.ups_power_usage
+  name: "UPS Energy Usage"
+  unique_id: ups_energy_usage
+  unit_prefix: k
+  round: 2
+  method: left
