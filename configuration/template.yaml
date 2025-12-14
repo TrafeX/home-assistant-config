@@ -21,7 +21,7 @@
       state: >
         {% set load_percent = states('sensor.ups_load') | float(0) %}
         {% set nominal_power = states('sensor.ups_nominal_output_power') | float(0) %}
-        {{ (load_percent / 100 * nominal_power) | round(1) }}
+        {{ (load_percent / 100 * nominal_power * 1.15) | round(1) }}
       availability: "{{ has_value('sensor.ups_load') }}"
 - binary_sensor:
   - name: Wash dryer
