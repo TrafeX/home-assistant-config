@@ -5,7 +5,7 @@
       above: 1200
   condition:
     - condition: state
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
       state: 'off'
     - condition: state
       entity_id: input_select.home_mode
@@ -14,7 +14,7 @@
         - night
   action:
     - service: switch.turn_on
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
 
 - alias: 'Turn on ventilation when using hot water for more than 3 minutes'
   trigger:
@@ -25,7 +25,7 @@
         minutes: 3
   condition:
     - condition: state
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
       state: 'off'
     - condition: state
       entity_id: input_select.home_mode
@@ -34,17 +34,17 @@
         - night
   action:
     - service: switch.turn_on
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
 
 - alias: 'Turn off ventilation after 2 hours'
   trigger:
     - platform: state
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
       to: 'on'
   action:
     - delay: 2:00:00
     - service: switch.turn_off
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
 
 - alias: 'Turn off ventilation when activating night mode'
   trigger:
@@ -53,8 +53,8 @@
       to: night
   condition:
     - condition: state
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation
       state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.mechanical_ventilation
+      entity_id: switch.ventilation

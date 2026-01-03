@@ -14,7 +14,7 @@ views:
         title: Huis
         state_color: true
         entities:
-          - switch.mechanical_ventilation
+          - switch.ventilation
           - input_boolean.ghost_mode
           - input_boolean.guest_presence
           - input_boolean.notify_irrigation_needed
@@ -371,6 +371,12 @@ views:
             entity: sensor.fireplace_power
           - name: UPS
             entity: sensor.ups_power_usage
+          - name: Small office
+            entity: sensor.small_office_electric_consumption_w
+          - name: Ventilation
+            entity: sensor.ventilation_electric_consumption_w
+          - name: Airco 2nd floor
+            entity: sensor.airco_2nd_floor_electric_consumption_w
         stat_types:
           - mean
         days_to_show: 1
@@ -541,7 +547,7 @@ views:
                 entity: light.office_led_strip_backside
               - type: button
                 icon_height: 30px
-                entity: switch.mechanical_ventilation
+                entity: switch.ventilation
               - type: button
                 icon_height: 30px
                 entity: alarm_control_panel.home_alarm

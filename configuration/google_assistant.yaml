@@ -11,7 +11,7 @@ entity_config:
     name: Slaapstand
     room: Huis
     expose: true
-  switch.mechanical_ventilation:
+  switch.ventilation:
     name: Ventilatie
     room: Huis
     expose: true

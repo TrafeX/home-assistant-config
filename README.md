@@ -80,7 +80,7 @@ The following hardware is integrated in this system.
 | 3        | Light          | Philips Hue Lily garden spots         | zigbee   |
 | 1        | Irrigation     | Woox R7060 Irrigation Control         | zigbee   |
 | 4        | Wallplug       | Third Reality Smart Plug              | zigbee   |
-| 1        | Insertmodule   | Shelly 2PM                            | zwave    |
+| 2        | Insertmodule   | Shelly 2PM                            | zwave    |
 | 1        | Motion sensor  | Aqara Motion Sensor P1                | zigbee   |
 | 2        | Door sensor    | Aqara Door and Window sensor          | zigbee   |
 | 1        | Solar Inverter | SolarEdge SE2200H                     | wifi     |
