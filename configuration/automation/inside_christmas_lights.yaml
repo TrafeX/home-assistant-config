@@ -20,25 +20,6 @@
       data:
         entity_id: light.light_string_kitchen
 
-- alias: 'Turn on Christmas tree'
-  trigger:
-    - trigger: state
-      entity_id: binary_sensor.living_motion_detection
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: input_select.home_mode
-      state: 'home'
-    - condition: state
-      entity_id: light.christmas_tree
-      state: 'off'
-  action:
-    - action: light.turn_on
-      data:
-        entity_id:
-          - light.christmas_tree
-          - light.light_string_tv
-
 - alias: 'Turn off inside Christmas lights'
   trigger:
     - trigger: state
