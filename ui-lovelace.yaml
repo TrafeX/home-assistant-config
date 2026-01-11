@@ -176,7 +176,7 @@ views:
         state_color: true
         entities:
           - light.office_led_strip_backside
-          - switch.small_office
+          - climate.office_heater
           - sensor.netatmo_bedroom_temperature
           - sensor.netatmo_bedroom_humidity
           - sensor.netatmo_bedroom_co2
@@ -371,8 +371,6 @@ views:
             entity: sensor.fireplace_power
           - name: UPS
             entity: sensor.ups_power_usage
-          - name: Small office
-            entity: sensor.small_office_electric_consumption_w
           - name: Ventilation
             entity: sensor.ventilation_electric_consumption_w
           - name: Airco 2nd floor
