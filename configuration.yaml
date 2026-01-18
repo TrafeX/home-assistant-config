@@ -14,6 +14,9 @@ homeassistant:
   auth_providers:
     - type: homeassistant
 
+# Needed for Samsung Smartthings
+cloud:
+
 # Enable the frontend
 frontend:
   extra_module_url:
@@ -63,7 +66,7 @@ recorder:
   commit_interval: 10
   exclude:
     entity_globs:
-    - sensor.*_last_seen
+      - sensor.*_last_seen
 
 # Track the sun
 sun:
@@ -173,7 +176,7 @@ command_line:
     name: Raspberry PI CPU Temperature
     command: "cat /sys/class/thermal/thermal_zone0/temp"
     unit_of_measurement: "°C"
-    value_template: '{{ value | multiply(0.001) | round(2) }}'
+    value_template: "{{ value | multiply(0.001) | round(2) }}"
     state_class: measurement
 
 light:
