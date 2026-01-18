@@ -12,10 +12,10 @@
   entities:
     light.living_spots:
       state: 'on'
-      brightness: 127
+      brightness: 153
     light.kitchen:
       state: 'on'
-      brightness: 127
+      brightness: 153
 - name: Living Night
   entities:
     light.living_spots:
