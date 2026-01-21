@@ -19,3 +19,6 @@ notify_irrigation_needed:
 guest_presence:
   name: Gasten in huis
   icon: mdi:home-account
+solar_wash_dryer_ready:
+  name: Wasdroger klaar voor zonne-start
+  icon: mdi:tumble-dryer-alert

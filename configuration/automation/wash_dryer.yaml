@@ -1,8 +1,79 @@
-- alias: 'Store wash dryer start time and energy'
+- alias: "Enable solar wash dryer when remote control enabled"
+  id: enable_solar_wash_dryer_remote_control
   trigger:
     - trigger: state
-      entity_id: binary_sensor.wash_dryer_state
+      entity_id: binary_sensor.wasdroger_remote_control
       to: "on"
+  condition:
+    - condition: state
+      entity_id: sensor.wasdroger_machine_state
+      state: "stop"
+  action:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.solar_wash_dryer_ready
+
+- alias: "Solar start wash dryer"
+  id: solar_start_wash_dryer
+  trigger:
+    - trigger: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 100
+      for:
+        minutes: 5
+    - trigger: state
+      entity_id: input_boolean.solar_wash_dryer_ready
+      to: "on"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 100
+    - condition: state
+      entity_id: input_boolean.solar_wash_dryer_ready
+      state: "on"
+    - condition: state
+      entity_id: sensor.wasdroger_machine_state
+      state: "stop"
+  action:
+    - action: select.select_option
+      target:
+        entity_id: select.wasdroger
+      data:
+        option: "run"
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.solar_wash_dryer_ready
+    - action: notify.app_tim
+      data:
+        title: ☀️ Wasdroger gestart op zonne-energie
+        message: De wasdroger is automatisch gestart met {{ states('sensor.solaredge_i1_ac_power') }} W zonne-energie.
+        data:
+          notification_icon: mdi:tumble-dryer
+
+- alias: "Alert if wash dryer not started by 15:00"
+  id: alert_wash_dryer_not_started_1500
+  trigger:
+    - trigger: time
+      at: "15:00:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.solar_wash_dryer_ready
+      state: "on"
+  action:
+    - action: notify.app_tim
+      data:
+        title: ⚠️ Wasdroger nog niet gestart
+        message: Het is 15:00 en er was nog niet genoeg zonne-energie. Start de wasdroger handmatig of wacht op meer zon.
+        data:
+          notification_icon: mdi:tumble-dryer-alert
+
+- alias: "Store wash dryer start time and energy"
+  id: store_wash_dryer_start_time_energy
+  trigger:
+    - trigger: state
+      entity_id: sensor.wasdroger_machine_state
+      to: "run"
+      from: "stop"
   action:
     - action: input_datetime.set_datetime
       entity_id: input_datetime.wash_dryer_start
@@ -13,21 +84,18 @@
         entity_id: input_number.wash_dryer_start_energy
       data:
         value: "{{ states('sensor.washdryer_electric_consumption_kwh') | float }}"
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.solar_wash_dryer_ready
 
-- alias: 'Notify when the wash dryer is finished'
+- alias: "Notify when the wash dryer is finished"
+  id: notify_wash_dryer_finished
   trigger:
     - trigger: state
-      entity_id: binary_sensor.wash_dryer_state
-      to: 'off'
+      entity_id: sensor.wasdroger_job_state
+      to: "finished"
       for:
         minutes: 3
-  condition:
-    - condition: not
-      conditions:
-        - alias: "Don't trigger when the wash dryer is unavailable"
-          condition: state
-          entity_id: binary_sensor.wash_dryer_state
-          state: "unavailable"
   action:
     - variables:
         start_time: "{{ states('input_datetime.wash_dryer_start') }}"
@@ -47,4 +115,4 @@
     - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_hub
-        message: 'De wasdroger is klaar'
+        message: "De wasdroger is klaar"

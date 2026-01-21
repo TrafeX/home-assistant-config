@@ -199,8 +199,9 @@ views:
         entities:
           - binary_sensor.carbon_monoxide_detected
           - sensor.co_temperature
-          - sensor.wasdroger_machine_state
+          - sensor.wasdroger_job_state
           - sensor.wasmachine_operation_state
+          - input_boolean.solar_wash_dryer_ready
         show_header_toggle: false
     icon: "mdi:home-outline"
   - path: mediaplayers
