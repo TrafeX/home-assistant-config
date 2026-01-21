@@ -1,60 +1,58 @@
-- alias: 'Start blink lights from Telegram'
+- alias: "Start blink lights from Telegram"
   trigger:
     trigger: event
     event_type: telegram_callback
     event_data:
-      data: '/blinklights'
+      data: "/blinklights"
   action:
     - action: telegram_bot.answer_callback_query
       data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: 'Blinking lights enabled'
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: "Blinking lights enabled"
     - action: notify.send_message
       target:
         entity_id: !secret telegram_notify_bot
       data:
-        message: 'Blinking lights enabled'
+        message: "Blinking lights enabled"
         data:
           inline_keyboard:
-            - 'Stop:/stop_blinklights'
+            - "Stop:/stop_blinklights"
     - action: script.start_blink_lights
 
-- alias: 'Stop blink lights from Telegram'
+- alias: "Stop blink lights from Telegram"
   trigger:
     trigger: event
     event_type: telegram_callback
     event_data:
-      data: '/stop_blinklights'
+      data: "/stop_blinklights"
   action:
     - action: telegram_bot.answer_callback_query
       data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: 'Blinking lights disabled'
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: "Blinking lights disabled"
     - action: notify.send_message
       target:
         entity_id: !secret telegram_notify_bot
       data:
-        message: 'Blinking lights disabled'
+        message: "Blinking lights disabled"
         data:
           inline_keyboard:
-            - 'Blink lights:/blinklights'
+            - "Blink lights:/blinklights"
     - action: script.stop_blink_lights
 
-- alias: 'Disarm alarm'
+- alias: "Disarm alarm"
   trigger:
     trigger: event
     event_type: telegram_callback
     event_data:
-      data: '/disarm_alarm'
+      data: "/disarm_alarm"
   action:
     - action: alarm_control_panel.alarm_disarm
       entity_id: alarm_control_panel.home_alarm
     - action: telegram_bot.answer_callback_query
       data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: 'Alarm disarmed'
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
+        callback_query_id: "{{ trigger.event.data.id }}"
+        message: "Alarm disarmed"
+    - action: telegram_bot.send_message
       data:
-        message: '✅ Alarm disarmed'
+        message: "✅ Alarm disarmed"

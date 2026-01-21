@@ -1,9 +1,7 @@
-alias: 'Notify of movement'
+alias: "Notify of movement"
 sequence:
-  - action: notify.send_message
-    target:
-      entity_id: !secret telegram_notify_bot
-    data_template:
+  - action: telegram_bot.send_message
+    data:
       title: "⚠ *Beweging gedetecteerd!*"
       message: >
         Activiteit op: {{ [
@@ -18,23 +16,26 @@ sequence:
             'binary_sensor.backyard_person',
             'binary_sensor.backyard_motion_detection',
             ] | select('is_state', 'on') | map('state_attr', 'friendly_name') | list }}
-      data:
-        inline_keyboard:
-          - 'Disarm alarm:/disarm_alarm'
-  - action: notify.send_message
-    target:
-      entity_id: !secret telegram_notify_bot
-    data_template:
-      message: "Beweging gedetecteerd"
-      data:
-        photo:
-          - url: "http://127.0.0.1:8123{{ states.camera.txnas_backyard.attributes.entity_picture }}"
-            caption: Backyard
-          - url: "http://127.0.0.1:8123{{ states.camera.doorbell_sub.attributes.entity_picture }}"
-            caption: Doorbell
-          - url: "http://127.0.0.1:8123{{ states.camera.hallway.attributes.entity_picture }}"
-            caption: Hallway
-          - url: "http://127.0.0.1:8123{{ states.camera.tygo.attributes.entity_picture }}"
-            caption: Tygo
-          - url: "http://127.0.0.1:8123{{ states.camera.txnas_babycam.attributes.entity_picture }}"
-            caption: Jens
+      inline_keyboard:
+        - "Disarm alarm:/disarm_alarm"
+  - action: telegram_bot.send_photo
+    data:
+      caption: "Backyard"
+      url: "http://127.0.0.1:8123{{ states.camera.txnas_backyard.attributes.entity_picture }}"
+  - action: telegram_bot.send_photo
+    data:
+      caption: "Doorbell"
+      url: "http://127.0.0.1:8123{{ states.camera.doorbell_sub.attributes.entity_picture }}"
+
+  - action: telegram_bot.send_photo
+    data:
+      caption: "Hallway"
+      url: "http://127.0.0.1:8123{{ states.camera.hallway.attributes.entity_picture }}"
+  - action: telegram_bot.send_photo
+    data:
+      caption: "Tygo"
+      url: "http://127.0.0.1:8123{{ states.camera.tygo.attributes.entity_picture }}"
+  - action: telegram_bot.send_photo
+    data:
+      caption: "Jens"
+      url: "http://127.0.0.1:8123{{ states.camera.txnas_babycam.attributes.entity_picture }}"

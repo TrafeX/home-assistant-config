@@ -1,4 +1,4 @@
-- alias: 'Trigger alarm while armed away'
+- alias: "Trigger alarm while armed away"
   trigger:
     - trigger: state
       entity_id:
@@ -11,7 +11,7 @@
         - binary_sensor.voordeur_opening
         - binary_sensor.schuifpui_opening
         - binary_sensor.backyard_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -26,14 +26,14 @@
       entity_id: alarm_control_panel.home_alarm
     - action: script.notify_of_movement
 
-- alias: 'Trigger alarm while armed night'
+- alias: "Trigger alarm while armed night"
   trigger:
     - trigger: state
       entity_id: binary_sensor.voordeur_opening
-      to: 'on'
+      to: "on"
     - trigger: state
       entity_id: binary_sensor.schuifpui_opening
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -48,7 +48,7 @@
       entity_id: alarm_control_panel.home_alarm
     - action: script.notify_of_movement
 
-- alias: 'Trigger alarm while armed home'
+- alias: "Trigger alarm while armed home"
   trigger:
     - trigger: state
       entity_id:
@@ -57,7 +57,7 @@
         - binary_sensor.backyard_motion_detection
         - binary_sensor.backyard_person
         - binary_sensor.shed_motion
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -72,19 +72,16 @@
       entity_id: alarm_control_panel.home_alarm
     - action: script.notify_of_movement
 
-- alias: 'Notify of alarm'
+- alias: "Notify of alarm"
   trigger:
     - trigger: state
       entity_id: alarm_control_panel.home_alarm
       to: triggered
   action:
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
-      data_template:
-        title: '🚨 *Inbraak alarm!*'
-        message: 'Het inbraakalarm is geactiveerd!'
-        data:
-          inline_keyboard:
-            - 'Blink lights:/blinklights'
-            - 'Disarm alarm:/disarm_alarm'
+    - action: telegram_bot.send_message
+      data:
+        title: "🚨 *Inbraak alarm!*"
+        message: "Het inbraakalarm is geactiveerd!"
+        inline_keyboard:
+          - "Blink lights:/blinklights"
+          - "Disarm alarm:/disarm_alarm"

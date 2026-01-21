@@ -7,8 +7,6 @@
       value_template: >
         {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
   action:
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
-      data_template:
-        message: 'The external IP changed: {{ states.sensor.external_ip.state }}'
+    - action: telegram_bot.send_message
+      data:
+        message: "The external IP changed: {{ states.sensor.external_ip.state }}"

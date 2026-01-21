@@ -11,10 +11,8 @@
           entity_id: vacuum.xiaomi_vacuum_cleaner
           state: "unavailable"
   action:
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
-      data_template:
+    - action: telegram_bot.send_message
+      data:
         title: "*De robotstofzuiger is klaar!*"
         message: >
           Status: {{ states('vacuum.xiaomi_vacuum_cleaner') }}

@@ -1,4 +1,4 @@
-- alias: 'Notify when the voltage is fluctuating'
+- alias: "Notify when the voltage is fluctuating"
   trigger:
     - trigger: state
       entity_id: binary_sensor.voltage_sags
@@ -9,8 +9,6 @@
       from: "off"
       to: "on"
   action:
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
-      data_template:
-        message: 'Het voltage is onstabiel: {{ states("sensor.voltage_phase_l1") }}V'
+    - action: telegram_bot.send_message
+      data:
+        message: "Het voltage is onstabiel: {{ states('sensor.voltage_phase_l1') }}V"

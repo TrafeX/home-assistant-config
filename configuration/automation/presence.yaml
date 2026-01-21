@@ -1,12 +1,10 @@
-- alias: 'Home coming'
+- alias: "Home coming"
   trigger:
     - trigger: state
       entity_id: group.all_persons
-      to: 'home'
+      to: "home"
   action:
-    - action: notify.send_message
-      target:
-        entity_id: !secret telegram_notify_bot
-      data_template:
+    - action: telegram_bot.send_message
+      data:
         title: "Welkom thuis!"
         message: "Aanwezig: {{ states.person | selectattr('state','eq','home') | map(attribute='attributes.friendly_name') | list | join(', ') }}"
