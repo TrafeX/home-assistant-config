@@ -1,4 +1,5 @@
-- alias: Notify when the external IP changes
+- id: notify_external_ip_change
+  alias: Notify when the external IP changes
   trigger:
     - trigger: state
       entity_id: sensor.external_ip

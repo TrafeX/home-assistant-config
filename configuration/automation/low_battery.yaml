@@ -1,10 +1,11 @@
-- alias: Low battery level detection & notification for all battery sensors
+- id: low_battery_detection_notification
+  alias: Low battery level detection & notification for all battery sensors
   use_blueprint:
     path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
     input:
-      day: '0'
-      threshold: '15'
-      time: '08:00:00'
+      day: "0"
+      threshold: "15"
+      time: "08:00:00"
       exclude:
         entity_id:
           - sensor.strips_mazw_battery_level
@@ -13,8 +14,6 @@
           - binary_sensor.strips_guard_700_low_battery_level
       actions:
         - service: notify.persistent_notification
-          data: 
+          data:
             title: Low battery'
             message: Battery of {{ sensors }} is low
-
-      

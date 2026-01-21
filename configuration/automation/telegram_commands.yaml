@@ -1,4 +1,5 @@
-- alias: "Start blink lights from Telegram"
+- id: start_blink_lights_telegram
+  alias: "Start blink lights from Telegram"
   trigger:
     trigger: event
     event_type: telegram_callback
@@ -19,7 +20,8 @@
             - "Stop:/stop_blinklights"
     - action: script.start_blink_lights
 
-- alias: "Stop blink lights from Telegram"
+- id: stop_blink_lights_telegram
+  alias: "Stop blink lights from Telegram"
   trigger:
     trigger: event
     event_type: telegram_callback
@@ -40,7 +42,8 @@
             - "Blink lights:/blinklights"
     - action: script.stop_blink_lights
 
-- alias: "Disarm alarm"
+- id: disarm_alarm_telegram
+  alias: "Disarm alarm"
   trigger:
     trigger: event
     event_type: telegram_callback

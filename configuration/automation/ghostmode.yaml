@@ -1,41 +1,44 @@
-- alias: 'Turn on ghost mode when away at night'
+- id: turn_on_ghost_mode_away_night
+  alias: "Turn on ghost mode when away at night"
   trigger:
     - platform: time
-      at: '22:00:00'
+      at: "22:00:00"
   condition:
     - condition: time
-      after: '22:00:00'
+      after: "22:00:00"
     - condition: state
       entity_id: input_select.home_mode
-      state: 'away'
+      state: "away"
   action:
     - service: input_boolean.turn_on
       entity_id: input_boolean.ghost_mode
 
-- alias: 'Turn off ghost mode when coming home or at 1:00'
+- id: turn_off_ghost_mode_home_or_time
+  alias: "Turn off ghost mode when coming home or at 1:00"
   trigger:
     - platform: time
-      at: '01:00:00'
+      at: "01:00:00"
     - platform: state
       entity_id: input_select.home_mode
-      to: 'home'
+      to: "home"
   condition:
     - condition: state
       entity_id: input_boolean.ghost_mode
-      state: 'on'
+      state: "on"
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.ghost_mode
 
-- alias: 'Turn on kitchen lights when ghost mode enabled'
+- id: turn_on_kitchen_lights_ghost_mode
+  alias: "Turn on kitchen lights when ghost mode enabled"
   trigger:
     - platform: time_pattern
-      minutes: '/30'
+      minutes: "/30"
       seconds: 0
   condition:
     - condition: state
       entity_id: input_boolean.ghost_mode
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_on
       data:
@@ -45,15 +48,16 @@
     - service: light.turn_off
       entity_id: light.kitchen
 
-- alias: 'Turn on Gang1ste when ghost mode enabled'
+- id: turn_on_gang1ste_ghost_mode
+  alias: "Turn on Gang1ste when ghost mode enabled"
   trigger:
     - platform: time_pattern
-      minutes: '/45'
+      minutes: "/45"
       seconds: 0
   condition:
     - condition: state
       entity_id: input_boolean.ghost_mode
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_on
       data:
@@ -63,15 +67,16 @@
     - service: light.turn_off
       entity_id: light.hallway_1st
 
-- alias: 'Turn on GangBG when ghost mode enabled'
+- id: turn_on_gangbg_ghost_mode
+  alias: "Turn on GangBG when ghost mode enabled"
   trigger:
     - platform: time_pattern
-      minutes: '/20'
+      minutes: "/20"
       seconds: 0
   condition:
     - condition: state
       entity_id: input_boolean.ghost_mode
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_on
       entity_id: light.gang_bg

@@ -1,4 +1,5 @@
-- alias: 'Turn on ventilation when CO2 level high'
+- id: turn_on_ventilation_co2_high
+  alias: "Turn on ventilation when CO2 level high"
   trigger:
     - platform: numeric_state
       entity_id: sensor.netatmo_indoor_co2
@@ -6,7 +7,7 @@
   condition:
     - condition: state
       entity_id: switch.ventilation
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_select.home_mode
       state:
@@ -16,17 +17,18 @@
     - service: switch.turn_on
       entity_id: switch.ventilation
 
-- alias: 'Turn on ventilation when using hot water for more than 3 minutes'
+- id: turn_on_ventilation_hot_water
+  alias: "Turn on ventilation when using hot water for more than 3 minutes"
   trigger:
     - platform: state
       entity_id: binary_sensor.hotwater_active
-      to: 'on'
+      to: "on"
       for:
         minutes: 3
   condition:
     - condition: state
       entity_id: switch.ventilation
-      state: 'off'
+      state: "off"
     - condition: state
       entity_id: input_select.home_mode
       state:
@@ -36,17 +38,19 @@
     - service: switch.turn_on
       entity_id: switch.ventilation
 
-- alias: 'Turn off ventilation after 2 hours'
+- id: turn_off_ventilation_after_2_hours
+  alias: "Turn off ventilation after 2 hours"
   trigger:
     - platform: state
       entity_id: switch.ventilation
-      to: 'on'
+      to: "on"
   action:
     - delay: 2:00:00
     - service: switch.turn_off
       entity_id: switch.ventilation
 
-- alias: 'Turn off ventilation when activating night mode'
+- id: turn_off_ventilation_night_mode
+  alias: "Turn off ventilation when activating night mode"
   trigger:
     - platform: state
       entity_id: input_select.home_mode
@@ -54,7 +58,7 @@
   condition:
     - condition: state
       entity_id: switch.ventilation
-      state: 'on'
+      state: "on"
   action:
     - service: switch.turn_off
       entity_id: switch.ventilation

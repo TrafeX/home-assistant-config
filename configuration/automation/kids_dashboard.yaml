@@ -1,12 +1,12 @@
-
-- alias: 'Cast Kids dashboard to Living Hub at mornings'
+- id: cast_kids_dashboard_living_mornings
+  alias: "Cast Kids dashboard to Living Hub at mornings"
   trigger:
     - trigger: time
-      at: '06:30:00'
+      at: "06:30:00"
   condition:
     - condition: state
       entity_id: media_player.woonkamer_hub
-      state: 'off'
+      state: "off"
     - condition: time
       weekday:
         - mon

@@ -1,8 +1,9 @@
-- alias: 'Cast dashboard to Home Hub'
+- id: cast_dashboard_to_home_hub
+  alias: "Cast dashboard to Home Hub"
   trigger:
     - entity_id: input_boolean.cast_dashboard
       platform: state
-      to: 'on'
+      to: "on"
   action:
     - data:
         entity_id: media_player.home_hub

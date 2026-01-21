@@ -1,8 +1,9 @@
-- alias: 'Turn on Hallway GF light when motion'
+- id: turn_on_hallway_gf_light_motion
+  alias: "Turn on Hallway GF light when motion"
   trigger:
     - trigger: state
       entity_id: binary_sensor.hallway_gf_motion
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -13,7 +14,7 @@
       conditions:
         - condition: state
           entity_id: sun.sun
-          state: 'below_horizon'
+          state: "below_horizon"
         - condition: numeric_state
           entity_id: sensor.hallway_gf_illuminance
           below: 10
@@ -21,15 +22,16 @@
     - action: light.turn_on
       entity_id: light.gang_bg
 
-- alias: 'Turn off Hallway GF light when no motion'
+- id: turn_off_hallway_gf_light_no_motion
+  alias: "Turn off Hallway GF light when no motion"
   trigger:
     - trigger: state
       entity_id: binary_sensor.hallway_gf_motion
-      to: 'off'
+      to: "off"
   condition:
     - condition: state
       entity_id: light.gang_bg
-      state: 'on'
+      state: "on"
   action:
     - action: light.turn_off
       entity_id: light.gang_bg

@@ -1,8 +1,9 @@
-- alias: 'Turn on Gang1ste light when motion'
+- id: turn_on_gang1ste_light_motion
+  alias: "Turn on Gang1ste light when motion"
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_1st_motion_detection
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -13,7 +14,7 @@
       conditions:
         - condition: state
           entity_id: sun.sun
-          state: 'below_horizon'
+          state: "below_horizon"
         - condition: numeric_state
           entity_id: sensor.hallway_1st_illuminance
           below: 4
@@ -28,11 +29,12 @@
             80
           {% endif %}
 
-- alias: 'Turn on Gang2de light when motion'
+- id: turn_on_gang2de_light_motion
+  alias: "Turn on Gang2de light when motion"
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_2nd_motion_detection
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -43,7 +45,7 @@
       conditions:
         - condition: state
           entity_id: sun.sun
-          state: 'below_horizon'
+          state: "below_horizon"
         - condition: numeric_state
           entity_id: sensor.hallway_2nd_illuminance
           below: 1
@@ -58,34 +60,36 @@
             80
           {% endif %}
 
-- alias: 'Turn off Gang1ste light'
+- id: turn_off_gang1ste_light
+  alias: "Turn off Gang1ste light"
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_1st_motion_detection
-      to: 'off'
+      to: "off"
     - platform: state
       entity_id: input_select.home_mode
       to: away
   condition:
     - condition: state
       entity_id: light.hallway_1st
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_off
       entity_id: light.hallway_1st
 
-- alias: 'Turn off Gang2de light'
+- id: turn_off_gang2de_light
+  alias: "Turn off Gang2de light"
   trigger:
     - platform: state
       entity_id: binary_sensor.hallway_2nd_motion_detection
-      to: 'off'
+      to: "off"
     - platform: state
       entity_id: input_select.home_mode
       to: away
   condition:
     - condition: state
       entity_id: light.hallway_2nd
-      state: 'on'
+      state: "on"
   action:
     - service: light.turn_off
       entity_id: light.hallway_2nd

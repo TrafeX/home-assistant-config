@@ -1,37 +1,39 @@
-- alias: 'Turn on backyard Chistmas lights'
+- id: turn_on_backyard_christmas_lights
+  alias: "Turn on backyard Chistmas lights"
   trigger:
     - trigger: state
       entity_id: input_select.home_mode
-      to: 'home'
+      to: "home"
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
-      to: 'on'
+      to: "on"
     - trigger: sun
-      event: 'sunset'
-      offset: '-00:30:00'
+      event: "sunset"
+      offset: "-00:30:00"
   condition:
     - condition: state
       entity_id: input_select.home_mode
-      state: 'home'
+      state: "home"
     - condition: state
       entity_id: light.backyard_christmas
-      state: 'off'
+      state: "off"
     - condition: or
       conditions:
-      - condition: sun
-        after: 'sunset'
-        after_offset: '-00:30:00'
-      - condition: sun
-        before: 'sunrise'
+        - condition: sun
+          after: "sunset"
+          after_offset: "-00:30:00"
+        - condition: sun
+          before: "sunrise"
   action:
     - action: light.turn_on
       data:
         entity_id: light.backyard_christmas
 
-- alias: 'Turn off backyard Christmas lights'
+- id: turn_off_backyard_christmas_lights
+  alias: "Turn off backyard Christmas lights"
   trigger:
     - trigger: sun
-      event: 'sunrise'
+      event: "sunrise"
     - trigger: state
       entity_id: input_select.home_mode
       to:

@@ -1,11 +1,12 @@
-- alias: 'Turn off small office heating end of the day'
+- id: turn_off_office_heating_end_of_day
+  alias: "Turn off small office heating end of the day"
   trigger:
     - trigger: time
-      at: '17:00:00'
+      at: "17:00:00"
   condition:
     - condition: state
       entity_id: climate.office_heater
-      state: 'heat'
+      state: "heat"
   action:
     - action: climate.turn_off
       data:

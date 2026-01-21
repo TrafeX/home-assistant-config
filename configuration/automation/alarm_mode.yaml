@@ -1,12 +1,13 @@
-- alias: 'Activate alarm when away'
+- id: activate_alarm_when_away
+  alias: "Activate alarm when away"
   trigger:
     - trigger: state
       entity_id: group.all_persons
-      to: 'not_home'
+      to: "not_home"
   condition:
     - condition: state
       entity_id: input_boolean.guest_presence
-      state: 'off'
+      state: "off"
   action:
     - action: notify.app_tim
       data:
@@ -20,22 +21,24 @@
     - action: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
 
-- alias: 'Activate alarm when asleep'
+- id: activate_alarm_when_asleep
+  alias: "Activate alarm when asleep"
   trigger:
     - trigger: state
       entity_id: input_boolean.night_mode
-      to: 'on'
+      to: "on"
   action:
     - action: alarm_control_panel.alarm_arm_night
       entity_id: alarm_control_panel.home_alarm
 
-- alias: 'Deactivate night alarm when waking up'
+- id: deactivate_night_alarm_waking_up
+  alias: "Deactivate night alarm when waking up"
   trigger:
     - trigger: time
-      at: '06:30:00'
+      at: "06:30:00"
   condition:
     - condition: time
-      after: '06:30:00'
+      after: "06:30:00"
     - condition: state
       entity_id: alarm_control_panel.home_alarm
       state: armed_night
@@ -45,11 +48,12 @@
     - action: input_boolean.turn_off
       entity_id: input_boolean.night_mode
 
-- alias: 'Deactivate away alarm when home'
+- id: deactivate_away_alarm_when_home
+  alias: "Deactivate away alarm when home"
   trigger:
     - trigger: state
       entity_id: group.all_persons
-      to: 'home'
+      to: "home"
   condition:
     - condition: state
       entity_id: alarm_control_panel.home_alarm
@@ -67,7 +71,8 @@
         data:
           notification_icon: mdi:shield-check
 
-- alias: 'Disarm alarm event'
+- id: disarm_alarm_event
+  alias: "Disarm alarm event"
   trigger:
     - trigger: event
       event_type: mobile_app_notification_action

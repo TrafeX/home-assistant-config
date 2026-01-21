@@ -1,4 +1,5 @@
-- alias: "Notify when UPS running on battery"
+- id: notify_ups_battery_status
+  alias: "Notify when UPS running on battery"
   trigger:
     - trigger: state
       entity_id: sensor.ups_status
@@ -8,7 +9,8 @@
         title: "⚠️ *UPS status*"
         message: "UPS changed status to {{ states('sensor.ups_status') }}"
 
-- alias: "Shutdown NAS when running on UPS battery"
+- id: shutdown_nas_ups_battery
+  alias: "Shutdown NAS when running on UPS battery"
   trigger:
     - trigger: numeric_state
       entity_id: sensor.ups_time_on_battery

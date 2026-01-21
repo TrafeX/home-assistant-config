@@ -1,4 +1,5 @@
-- alias: "Home coming"
+- id: notify_home_coming
+  alias: "Home coming"
   trigger:
     - trigger: state
       entity_id: group.all_persons

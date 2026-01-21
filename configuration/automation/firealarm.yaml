@@ -1,4 +1,5 @@
-- alias: "Trigger fire alarm when smoke detected"
+- id: trigger_fire_alarm_smoke_detected
+  alias: "Trigger fire alarm when smoke detected"
   trigger:
     - trigger: state
       entity_id: binary_sensor.hallway_1st_smoke_alarm

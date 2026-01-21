@@ -1,4 +1,5 @@
-- alias: 'Turn living lights on'
+- id: turn_living_lights_on
+  alias: "Turn living lights on"
   trigger:
     - trigger: state
       id: coming_home
@@ -8,7 +9,7 @@
     - trigger: state
       id: motion
       entity_id: binary_sensor.living_motion_detection
-      to: 'on'
+      to: "on"
     - trigger: numeric_state
       id: darkness
       entity_id: sensor.living_illuminance
@@ -24,7 +25,7 @@
       entity_id:
         - light.living_spots
         - light.kitchen
-      state: 'off'
+      state: "off"
       match: any
     - condition: or
       conditions:
@@ -35,26 +36,27 @@
           after: sunset
     - condition: state
       entity_id: light.partylight
-      state: 'off'
+      state: "off"
   action:
     - if:
-      - alias: TV is on
-        condition: state
-        entity_id: media_player.sony_bravia_tv
-        state: 'on'
-      - alias: It's evening
-        condition: time
-        after: '20:00:00'
+        - alias: TV is on
+          condition: state
+          entity_id: media_player.sony_bravia_tv
+          state: "on"
+        - alias: It's evening
+          condition: time
+          after: "20:00:00"
       then:
-      - alias: Turn on movie scene
-        action: scene.turn_on
-        entity_id: scene.living_movie
+        - alias: Turn on movie scene
+          action: scene.turn_on
+          entity_id: scene.living_movie
       else:
-      - alias: Turn on living normal scene
-        action: scene.turn_on
-        entity_id: scene.living_normal
+        - alias: Turn on living normal scene
+          action: scene.turn_on
+          entity_id: scene.living_normal
 
-- alias: 'Turn living lights off when enough daylight or leaving or sleeping'
+- id: turn_living_lights_off_daylight
+  alias: "Turn living lights off when enough daylight or leaving or sleeping"
   trigger:
     - trigger: numeric_state
       entity_id: sensor.living_illuminance
@@ -67,15 +69,16 @@
   condition:
     - condition: state
       entity_id: light.living_spots
-      state: 'on'
+      state: "on"
   action:
     - action: script.turn_living_lights_off
 
-- alias: 'Turn living lights off when no activity'
+- id: turn_living_lights_off_no_activity
+  alias: "Turn living lights off when no activity"
   trigger:
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
-      to: 'off'
+      to: "off"
       for:
         minutes: 45
   condition:
@@ -86,21 +89,22 @@
       entity_id:
         - light.living_spots
         - light.kitchen
-      state: 'on'
+      state: "on"
       match: any
     - condition: state
       entity_id:
         - media_player.sony_bravia_tv
         - media_player.chromekamer
-      state: 'off'
+      state: "off"
   action:
     - action: script.turn_living_lights_off
 
-- alias: 'Living lights on during sleepmode'
+- id: living_lights_on_sleepmode
+  alias: "Living lights on during sleepmode"
   trigger:
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
-      to: 'on'
+      to: "on"
   condition:
     - condition: state
       entity_id: input_select.home_mode
@@ -112,11 +116,12 @@
     - action: scene.turn_on
       entity_id: scene.living_night
 
-- alias: 'Living lights off during sleepmode'
+- id: living_lights_off_sleepmode
+  alias: "Living lights off during sleepmode"
   trigger:
     - trigger: state
       entity_id: binary_sensor.living_motion_detection
-      to: 'off'
+      to: "off"
       for:
         minutes: 15
   condition:

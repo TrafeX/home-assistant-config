@@ -1,46 +1,47 @@
-- alias: 'Notify when pressing the doorbell'
+- id: notify_doorbell_press
+  alias: "Notify when pressing the doorbell"
   trigger:
     - platform: state
       entity_id: binary_sensor.doorbell_visitor
-      to: 'on'
+      to: "on"
   action:
     - parallel:
-      - action: notify.apps
-        data:
-          title: "Deurbel"
-          message: "Er is aangebeld bij de voordeur om {{ now().strftime('%H:%M') }}."
+        - action: notify.apps
           data:
-            image: "/api/camera_proxy/camera.doorbell_sub"
-            clickAction: "entityId:camera.doorbell_sub"
-            ttl: 0
-            vibrationPattern: "50, 200, 50, 500, 50"
-            priority: high
-            importance: high
-            channel: Doorbell
-            notification_icon: mdi:doorbell
-      - action: camera.snapshot
-        data:
-          entity_id: camera.doorbell_sub
-          filename: !secret frontyard_snapshot_folder
-      - action: media_player.play_media
-        data:
-          media:
-            media_content_id: media-source://camera/camera.doorbell
-            media_content_type: image/jpeg
-            metadata:
-              title: Last doorbell press
-              thumbnail: /api/camera_proxy/camera.doorbell
-              media_class: video
-              children_media_class: null
-              navigateIds:
-                - {}
-                - media_content_type: app
-                  media_content_id: media-source://camera
-              browse_entity_id: media_player.woonkamer_hub
-        target:
-          entity_id:
-            - media_player.woonkamer_hub
-            - media_player.werkkamer
+            title: "Deurbel"
+            message: "Er is aangebeld bij de voordeur om {{ now().strftime('%H:%M') }}."
+            data:
+              image: "/api/camera_proxy/camera.doorbell_sub"
+              clickAction: "entityId:camera.doorbell_sub"
+              ttl: 0
+              vibrationPattern: "50, 200, 50, 500, 50"
+              priority: high
+              importance: high
+              channel: Doorbell
+              notification_icon: mdi:doorbell
+        - action: camera.snapshot
+          data:
+            entity_id: camera.doorbell_sub
+            filename: !secret frontyard_snapshot_folder
+        - action: media_player.play_media
+          data:
+            media:
+              media_content_id: media-source://camera/camera.doorbell
+              media_content_type: image/jpeg
+              metadata:
+                title: Last doorbell press
+                thumbnail: /api/camera_proxy/camera.doorbell
+                media_class: video
+                children_media_class: null
+                navigateIds:
+                  - {}
+                  - media_content_type: app
+                    media_content_id: media-source://camera
+                browse_entity_id: media_player.woonkamer_hub
+          target:
+            entity_id:
+              - media_player.woonkamer_hub
+              - media_player.werkkamer
     - delay:
         minutes: 2
     - action: media_player.media_stop

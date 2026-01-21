@@ -1,17 +1,19 @@
-- alias: 'Frontyard light on'
+- id: frontyard_light_on
+  alias: "Frontyard light on"
   trigger:
     - platform: sun
-      event: 'sunset'
+      event: "sunset"
   action:
     - service: light.turn_on
       data:
         entity_id: light.buitenlicht_voorkant
 
-- alias: 'Frontyard light off'
+- id: frontyard_light_off
+  alias: "Frontyard light off"
   trigger:
     - platform: sun
-      event: 'sunrise'
-      offset: '-00:20:00'
+      event: "sunrise"
+      offset: "-00:20:00"
   action:
     - service: light.turn_off
       data:

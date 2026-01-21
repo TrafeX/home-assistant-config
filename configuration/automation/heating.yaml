@@ -1,4 +1,5 @@
-- alias: 'Turn heating down when night mode activates'
+- id: turn_heating_down_night_mode
+  alias: "Turn heating down when night mode activates"
   trigger:
     - trigger: state
       entity_id: input_select.home_mode
@@ -9,7 +10,8 @@
         entity_id: climate.heating
         temperature: 16
 
-- alias: 'Turn heating down when leaving'
+- id: turn_heating_down_leaving
+  alias: "Turn heating down when leaving"
   trigger:
     - trigger: state
       entity_id: input_select.home_mode
@@ -22,7 +24,8 @@
         entity_id: climate.heating
         temperature: 17
 
-- alias: 'Turn heating up when coming home'
+- id: turn_heating_up_coming_home
+  alias: "Turn heating up when coming home"
   trigger:
     - trigger: state
       entity_id: input_select.home_mode

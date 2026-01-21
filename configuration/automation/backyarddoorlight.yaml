@@ -1,11 +1,12 @@
-- alias: 'Turn on backyard door light when motion'
+- id: turn_on_backyard_door_light_motion
+  alias: "Turn on backyard door light when motion"
   trigger:
     - trigger: state
       entity_id: binary_sensor.backyard_motion_detection
-      to: 'on'
+      to: "on"
     - trigger: state
       entity_id: binary_sensor.backyard_person
-      to: 'on'
+      to: "on"
   condition:
     - condition: or
       conditions:
@@ -18,20 +19,21 @@
     - action: light.turn_on
       data:
         entity_id: light.backyarddoor_light
-    - delay: '00:02:00'
+    - delay: "00:02:00"
     - action: light.turn_off
       data:
         entity_id: light.backyarddoor_light
 
-- alias: 'Turn off backyard door light'
+- id: turn_off_backyard_door_light
+  alias: "Turn off backyard door light"
   trigger:
     - trigger: state
       entity_id: binary_sensor.backyard_motion_detection
-      to: 'off'
+      to: "off"
   condition:
     - condition: state
       entity_id: light.backyarddoor_light
-      state: 'on'
+      state: "on"
   action:
     - action: light.turn_off
       entity_id: light.backyarddoor_light

@@ -1,8 +1,9 @@
-- alias: 'Notify when the vacuum robot is done'
+- id: notify_vacuum_cleaner_done
+  alias: "Notify when the vacuum robot is done"
   trigger:
     - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
-      from: 'cleaning'
+      from: "cleaning"
   condition:
     - condition: not
       conditions:
@@ -19,7 +20,8 @@
           Tijd: {{ (int(states('sensor.xiaomi_vacuum_cleaner_last_clean_duration'))/60)|round }}mins.
           Oppervlakte: {{ states('sensor.xiaomi_vacuum_cleaner_last_clean_area') }}m2.
 
-- alias: 'Enable automatic vacuum cleaner on sleep mode'
+- id: enable_automatic_vacuum_sleep_mode
+  alias: "Enable automatic vacuum cleaner on sleep mode"
   trigger:
     - trigger: state
       entity_id: input_select.home_mode
@@ -28,31 +30,33 @@
     - action: input_boolean.turn_on
       entity_id: input_boolean.automatic_vacuum_cleaner
 
-- alias: 'Run the vacuum cleaner when automatic vacuum cleaner is enabled'
+- id: run_vacuum_automatic_enabled
+  alias: "Run the vacuum cleaner when automatic vacuum cleaner is enabled"
   trigger:
     - trigger: state
       entity_id: input_boolean.automatic_vacuum_cleaner
-      to: 'on'
+      to: "on"
     - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'docked'
+      to: "docked"
   condition:
     - condition: state
       entity_id: input_boolean.automatic_vacuum_cleaner
-      state: 'on'
+      state: "on"
   action:
     - action: vacuum.start
       entity_id: vacuum.xiaomi_vacuum_cleaner
 
-- alias: 'Disable automatic vacuum cleaner when started cleaning'
+- id: disable_automatic_vacuum_started_cleaning
+  alias: "Disable automatic vacuum cleaner when started cleaning"
   trigger:
     - trigger: state
       entity_id: vacuum.xiaomi_vacuum_cleaner
-      to: 'cleaning'
+      to: "cleaning"
   condition:
     - condition: state
       entity_id: input_boolean.automatic_vacuum_cleaner
-      state: 'on'
+      state: "on"
   action:
     - action: input_boolean.turn_off
       entity_id: input_boolean.automatic_vacuum_cleaner
