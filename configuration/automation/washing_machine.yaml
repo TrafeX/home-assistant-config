@@ -1,4 +1,84 @@
-- alias: 'Store washing machine start time and energy'
+- id: enable_solar_washing_machine
+  alias: "Enable solar washing machine when remote control enabled"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.wasmachine_remote_start
+      to: "on"
+    - trigger: state
+      entity_id: button.wasmachine_resume_program
+  condition:
+    - condition: state
+      entity_id: binary_sensor.wasmachine_remote_start
+      state: "on"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: button.wasmachine_resume_program
+          state: "unavailable"
+  action:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.solar_washing_machine_ready
+
+- id: solar_start_washing_machine
+  alias: "Solar start washing machine"
+  trigger:
+    - trigger: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 100
+      for:
+        minutes: 3
+    - trigger: state
+      entity_id: input_boolean.solar_washing_machine_ready
+      to: "on"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 100
+    - condition: state
+      entity_id: input_boolean.solar_washing_machine_ready
+      state: "on"
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: sensor.wasmachine_operation_state
+          state: "ready"
+        - condition: state
+          entity_id: sensor.wasmachine_operation_state
+          state: "pause"
+  action:
+    - action: button.press
+      target:
+        entity_id: button.wasmachine_resume_program
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.solar_washing_machine_ready
+    - action: notify.app_tim
+      data:
+        title: ☀️ Wasmachine gestart op zonne-energie
+        message: De wasmachine is automatisch gestart met {{ states('sensor.solaredge_i1_ac_power') }} W zonne-energie.
+        data:
+          notification_icon: mdi:washing-machine
+
+- id: alert_washing_machine_not_started_1500
+  alias: "Alert if washing machine not started by 15:00"
+  trigger:
+    - trigger: time
+      at: "15:00:00"
+  condition:
+    - condition: state
+      entity_id: input_boolean.solar_washing_machine_ready
+      state: "on"
+  action:
+    - action: notify.app_tim
+      data:
+        title: ⚠️ Wasmachine nog niet gestart
+        message: Het is 15:00 en er was nog niet genoeg zonne-energie. Start de wasmachine handmatig of wacht op meer zon.
+        data:
+          notification_icon: mdi:washing-machine-alert
+
+- id: store_washing_machine_start_time_energy
+  alias: "Store washing machine start time and energy"
   trigger:
     - trigger: state
       entity_id: sensor.wasmachine_operation_state
@@ -17,8 +97,12 @@
         entity_id: input_number.washing_machine_start_energy
       data:
         value: "{{ states('sensor.washing_machine_electric_consumption_kwh') | float }}"
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.solar_washing_machine_ready
 
-- alias: 'Notify when the washing machine is finished'
+- id: notify_washing_machine_finished
+  alias: "Notify when the washing machine is finished"
   trigger:
     - trigger: state
       entity_id: sensor.wasmachine_operation_state
@@ -42,11 +126,11 @@
         energy_used: "{{ (end_energy - start_energy) | round(2) }}"
     - action: notify.app_tim
       data:
-        title: '🧺 De wasmachine is klaar'
+        title: "🧺 De wasmachine is klaar"
         message: Het heeft {{ duration }} geduurd en {{ energy_used }} kWh verbruikt.
         data:
           notification_icon: mdi:washing-machine
     - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_hub
-        message: 'De wasmachine is klaar'
+        message: "De wasmachine is klaar"

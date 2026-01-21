@@ -1,51 +1,50 @@
-Home Assistant configuration
-============================
+# Home Assistant configuration
 
-Features
---------
+## Features
+
 Some of the things I've implemented:
 
-* Alarm system which sends snapshots of the camera's when motion is detected
-* Have home modes to control lighting and heating based on the alarm state
-* Ability to disarm the alarm via Telegram actions
-* Fully automated living lights
-* Automated hallway lights which dim at night
-* Notify when washing machine or wash dryer is finished, including the duration and energy usage
-* Play speech messages via the Google Mini's
-* Presence detection with home coming and leaving automation
-* Night mode; turn the ground floor lights off and dim the hallway lights
-* Integration with ZwaveJS
-* Modules with ESPHome communicating via MQTT
-* Enable ventilation when CO2 level reaches a certain level
-* Enable ventilation when the shower is used
-* Automated Christmas lights (only during the holidays 😉)
-* Notify when one of the smoke sensors detects smoke
-* Ghost mode; turn on lights for a short period when away to pretend someone is home
-* Start the vacuum cleaner based on a schedule with the option to override per day
-* Notify when the vacuum cleaner is done
-* Dim the lights when the TV is turned on
-* Turn the heating down when night mode is activated or leaving home
-* Notify when you leave the frontdoor open
-* Make my vacuum cleaner come from under the couch to be able to empty it
-* Have a 'guest presence' option to override the presence detection
-* Send a snapshot of the person ringing the doorbell and announce it on the Google Mini's
-* DSMR integration, monitoring my energy and gas usage
-* Brighten the backyard lights when motion is detected
-* Notify when the powerline voltage fluctuates too much
-* Cast a dashboard view of Home Assistant to Google Nest Hub
-* Notify when the external IP changes
-* Shutdown NAS when the UPS is running on battery for too long
-* Notify when one the battery powered sensors is running low on battery
-* Notify when it's time to water the plants and turn on the irrigation system
-* A dashboard with graphs of all temperature, humidity and energy usage sensors
-* An energy dashboard with the solar production, grid usage and house consumption
-* Turn off the heating in the office when the workday is over 
-* Blink the kids bedroom light when it's time to get up or go to sleep 
+- Alarm system which sends snapshots of the camera's when motion is detected
+- Have home modes to control lighting and heating based on the alarm state
+- Ability to disarm the alarm via Telegram actions
+- Fully automated living lights
+- Automated hallway lights which dim at night
+- Notify when washing machine or wash dryer is finished, including the duration and energy usage
+- Play speech messages via the Google Mini's
+- Presence detection with home coming and leaving automation
+- Night mode; turn the ground floor lights off and dim the hallway lights
+- Integration with ZwaveJS
+- Modules with ESPHome communicating via MQTT
+- Enable ventilation when CO2 level reaches a certain level
+- Enable ventilation when the shower is used
+- Automated Christmas lights (only during the holidays 😉)
+- Notify when one of the smoke sensors detects smoke
+- Ghost mode; turn on lights for a short period when away to pretend someone is home
+- Start the vacuum cleaner based on a schedule with the option to override per day
+- Notify when the vacuum cleaner is done
+- Dim the lights when the TV is turned on
+- Turn the heating down when night mode is activated or leaving home
+- Notify when you leave the frontdoor open
+- Make my vacuum cleaner come from under the couch to be able to empty it
+- Have a 'guest presence' option to override the presence detection
+- Send a snapshot of the person ringing the doorbell and announce it on the Google Mini's
+- DSMR integration, monitoring my energy and gas usage
+- Brighten the backyard lights when motion is detected
+- Notify when the powerline voltage fluctuates too much
+- Cast a dashboard view of Home Assistant to Google Nest Hub
+- Notify when the external IP changes
+- Shutdown NAS when the UPS is running on battery for too long
+- Notify when one the battery powered sensors is running low on battery
+- Notify when it's time to water the plants and turn on the irrigation system
+- A dashboard with graphs of all temperature, humidity and energy usage sensors
+- An energy dashboard with the solar production, grid usage and house consumption
+- Turn off the heating in the office when the workday is over
+- Blink the kids bedroom light when it's time to get up or go to sleep
+- Start the washing machine or dryer automatically when there is enough solar power available
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
-Hardware
---------
+## Hardware
 
 The following hardware is integrated in this system.
 

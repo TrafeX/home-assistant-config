@@ -22,3 +22,6 @@ guest_presence:
 solar_wash_dryer_ready:
   name: Wasdroger klaar voor zonne-start
   icon: mdi:tumble-dryer-alert
+solar_washing_machine_ready:
+  name: Wasmachine klaar voor zonne-start
+  icon: mdi:washing-machine-alert
