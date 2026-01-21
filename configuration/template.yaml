@@ -1,6 +1,6 @@
 - sensor:
-    - name: 'House Energy Consumption'
-      state: "{{ [(states('sensor.power_consumption') | float + states('sensor.solaredge_i1_ac_power') | float(0.0) - states('sensor.power_production') | float) | int,0]|max }}"
+    - name: "House Energy Consumption"
+      state: "{{ [(states('sensor.power_consumption') | float(0.0) + states('sensor.solaredge_i1_ac_power') | float(0.0) - states('sensor.power_production') | float(0.0)) | int,0]|max }}"
       unit_of_measurement: W
       icon: mdi:home-lightning-bolt
       state_class: measurement
@@ -8,11 +8,11 @@
     - name: Nefit Temperature
       unit_of_measurement: °C
       default_entity_id: sensor.nefit_temperature
-      state: '{{ state_attr(''climate.heating'', ''current_temperature'') }}'
+      state: "{{ state_attr('climate.heating', 'current_temperature') }}"
     - name: Lights that are on
       unit_of_measurement: lights
       default_entity_id: sensor.lights_on
-      state: '{{ states.light|selectattr(''state'', ''equalto'', ''on'')|list|length }}'
+      state: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
     - name: "UPS Power Usage"
       unique_id: ups_power_usage
       state_class: measurement
@@ -24,11 +24,11 @@
         {{ (load_percent / 100 * nominal_power * 1.15) | round(1) }}
       availability: "{{ has_value('sensor.ups_load') }}"
 - binary_sensor:
-  - name: Wash dryer
-    delay_on: 0:01:00
-    delay_off: 0:03:00
-    default_entity_id: binary_sensor.wash_dryer_state
-    state: '{{ states(''sensor.washdryer_electric_consumption_w'')|int(0) > 4 }}'
-  - name: Hot Water
-    default_entity_id: binary_sensor.hotwater_active
-    state: '{{ state_attr(''climate.heating'', ''boiler_indicator'') == ''HW'' }}'
+    - name: Wash dryer
+      delay_on: 0:01:00
+      delay_off: 0:03:00
+      default_entity_id: binary_sensor.wash_dryer_state
+      state: "{{ states('sensor.washdryer_electric_consumption_w')|int(0) > 4 }}"
+    - name: Hot Water
+      default_entity_id: binary_sensor.hotwater_active
+      state: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
