@@ -25,7 +25,7 @@
   trigger:
     - trigger: numeric_state
       entity_id: sensor.solaredge_i1_ac_power
-      above: 100
+      above: 200
       for:
         minutes: 3
     - trigger: state
@@ -34,7 +34,7 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.solaredge_i1_ac_power
-      above: 100
+      above: 200
     - condition: state
       entity_id: input_boolean.solar_washing_machine_ready
       state: "on"
@@ -104,9 +104,6 @@
 - id: notify_washing_machine_finished
   alias: "Notify when the washing machine is finished"
   trigger:
-    - trigger: state
-      entity_id: sensor.wasmachine_operation_state
-      to: ready
     - trigger: state
       entity_id: sensor.wasmachine_operation_state
       to: finished

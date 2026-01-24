@@ -18,7 +18,7 @@
   trigger:
     - trigger: numeric_state
       entity_id: sensor.solaredge_i1_ac_power
-      above: 100
+      above: 200
       for:
         minutes: 5
     - trigger: state
@@ -27,7 +27,7 @@
   condition:
     - condition: numeric_state
       entity_id: sensor.solaredge_i1_ac_power
-      above: 100
+      above: 200
     - condition: state
       entity_id: input_boolean.solar_wash_dryer_ready
       state: "on"
