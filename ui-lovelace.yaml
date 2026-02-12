@@ -198,7 +198,7 @@ views:
           - binary_sensor.carbon_monoxide_detected
           - sensor.co_temperature
           - sensor.wasdroger_job_state
-          - sensor.wasmachine_operation_state
+          - sensor.wasmachine_job_state
           - input_boolean.solar_wash_dryer_ready
           - input_boolean.solar_washing_machine_ready
         show_header_toggle: false

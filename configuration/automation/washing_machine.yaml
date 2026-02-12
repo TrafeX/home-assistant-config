@@ -2,19 +2,12 @@
   alias: "Enable solar washing machine when remote control enabled"
   trigger:
     - trigger: state
-      entity_id: binary_sensor.wasmachine_remote_start
+      entity_id: binary_sensor.wasmachine_remote_control
       to: "on"
-    - trigger: state
-      entity_id: button.wasmachine_resume_program
   condition:
     - condition: state
-      entity_id: binary_sensor.wasmachine_remote_start
-      state: "on"
-    - condition: not
-      conditions:
-        - condition: state
-          entity_id: button.wasmachine_resume_program
-          state: "unavailable"
+      entity_id: sensor.wasmachine_machine_state
+      state: "stop"
   action:
     - action: input_boolean.turn_on
       target:
@@ -38,18 +31,15 @@
     - condition: state
       entity_id: input_boolean.solar_washing_machine_ready
       state: "on"
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: sensor.wasmachine_operation_state
-          state: "ready"
-        - condition: state
-          entity_id: sensor.wasmachine_operation_state
-          state: "pause"
+    - condition: state
+      entity_id: sensor.wasmachine_machine_state
+      state: "stop"
   action:
-    - action: button.press
+    - action: select.select_option
       target:
-        entity_id: button.wasmachine_resume_program
+        entity_id: select.wasmachine
+      data:
+        option: "run"
     - action: input_boolean.turn_off
       target:
         entity_id: input_boolean.solar_washing_machine_ready
@@ -81,12 +71,9 @@
   alias: "Store washing machine start time and energy"
   trigger:
     - trigger: state
-      entity_id: sensor.wasmachine_operation_state
-      to: run
-  condition:
-    - condition: template
-      value_template: >
-        {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
+      entity_id: sensor.wasmachine_machine_state
+      to: "run"
+      from: "stop"
   action:
     - action: input_datetime.set_datetime
       entity_id: input_datetime.washing_machine_start
@@ -105,12 +92,11 @@
   alias: "Notify when the washing machine is finished"
   trigger:
     - trigger: state
-      entity_id: sensor.wasmachine_operation_state
-      to: finished
-  condition:
-    - condition: template
-      value_template: >
-        {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
+      entity_id: sensor.wasmachine_machine_state
+      to: "stop"
+      from: "run"
+      for:
+        minutes: 3
   action:
     - variables:
         start_time: "{{ states('input_datetime.washing_machine_start') }}"
