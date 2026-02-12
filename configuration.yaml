@@ -26,7 +26,13 @@ mobile_app:
 
 # Enable lovelace with yaml configuration
 lovelace:
-  mode: yaml
+  dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Overview
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
 
 # Enable system health on info page
 system_health:
@@ -73,36 +79,6 @@ sun:
 
 # Enable config via the interface
 config:
-
-# Send statistics to InfluxDB
-influxdb:
-  api_version: 2
-  host: vps01.trafex.nl
-  port: 8086
-  database: homeassistant
-  default_measurement: state
-  organization: 61ca8c1950652acb
-  ssl: false
-  bucket: homeassistant/autogen
-  token: !secret influxdb_token
-  precision: ms
-  exclude:
-    entities:
-      - binary_sensor.wasmachine_remote_start
-      - binary_sensor.wasmachine_remote_control
-      - sensor.voordeur_battery
-      - sensor.netatmo_bedroom_battery_percent
-      - sensor.netatmo_outdoor_battery_percent
-      - sensor.txnas_cpu_utilization_total
-      - sensor.txnas_cpu_utilization_user
-      - sensor.txnas_memory_usage_real
-      - sensor.txnas_volume_used
-      - sensor.txnas_temperature
-      - sensor.txnas_temperature_2
-      - sensor.txnas_temperature_3
-      - sensor.txnas_average_disk_temp
-  tags:
-    source: hass
 
 # Configure custom sensors (legacy style)
 sensor: !include configuration/sensor.yaml
