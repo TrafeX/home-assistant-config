@@ -1,0 +1,22 @@
+- alias: "Update solar start threshold based on sun elevation"
+  id: update_solar_start_threshold
+  trigger:
+    - trigger: time
+      at: "00:00:00"
+  action:
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.solar_start_threshold
+      data:
+        value: >
+          {% set lat = state_attr('zone.home', 'latitude') | float(52.37) %}
+          {% set day = now().timetuple().tm_yday %}
+          {% set deg2rad = pi / 180 %}
+          {% set decl = 23.45 * sin((360.0 / 365.0 * (284 + day)) * deg2rad) %}
+          {% set solar_max_elevation = 90 - (lat - decl) | abs %}
+          {% set min_elev = 14.0 %}
+          {% set max_elev = 61.0 %}
+          {% set min_w = 150 %}
+          {% set max_w = 1000 %}
+          {% set ratio = [0, [1, ((solar_max_elevation - min_elev) / (max_elev - min_elev)) | float(0)] | min] | max %}
+          {{ (min_w + ratio * (max_w - min_w)) | round(0) | int }}

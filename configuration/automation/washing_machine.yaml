@@ -16,18 +16,16 @@
 - id: solar_start_washing_machine
   alias: "Solar start washing machine"
   trigger:
-    - trigger: numeric_state
-      entity_id: sensor.solaredge_i1_ac_power
-      above: 200
+    - trigger: template
+      value_template: "{{ states('sensor.solaredge_i1_ac_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
       for:
         minutes: 3
     - trigger: state
       entity_id: input_boolean.solar_washing_machine_ready
       to: "on"
   condition:
-    - condition: numeric_state
-      entity_id: sensor.solaredge_i1_ac_power
-      above: 200
+    - condition: template
+      value_template: "{{ states('sensor.solaredge_i1_ac_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
     - condition: state
       entity_id: input_boolean.solar_washing_machine_ready
       state: "on"
