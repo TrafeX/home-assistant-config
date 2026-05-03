@@ -25,3 +25,6 @@ solar_wash_dryer_ready:
 solar_washing_machine_ready:
   name: Wasmachine klaar voor zonne-start
   icon: mdi:washing-machine-alert
+cast_kids_dashboard:
+  name: Cast kids dashboard to Woonkamer Hub
+  icon: mdi:baby-face-outline

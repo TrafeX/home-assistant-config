@@ -18,4 +18,32 @@
       entity_id: input_select.home_mode
       state: home
   action:
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.cast_kids_dashboard
+
+- id: cast_kids_dashboard_on_toggle
+  alias: "Cast kids dashboard when toggle turns on"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.cast_kids_dashboard
+      to: "on"
+  action:
+    - action: script.cast_kids_dashboard
+
+- id: cast_kids_dashboard_watchdog
+  alias: "Kids dashboard watchdog — re-cast if not showing"
+  trigger:
+    - trigger: time_pattern
+      minutes: "/5"
+  condition:
+    - condition: state
+      entity_id: input_boolean.cast_kids_dashboard
+      state: "on"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: media_player.woonkamer_hub
+          state: playing
+  action:
     - action: script.cast_kids_dashboard
