@@ -17,6 +17,6 @@
           {% set min_elev = 14.0 %}
           {% set max_elev = 61.0 %}
           {% set min_w = 150 %}
-          {% set max_w = 1000 %}
+          {% set max_w = 900 %}
           {% set ratio = [0, [1, ((solar_max_elevation - min_elev) / (max_elev - min_elev)) | float(0)] | min] | max %}
           {{ (min_w + ratio * (max_w - min_w)) | round(0) | int }}
