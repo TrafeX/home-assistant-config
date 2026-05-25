@@ -41,6 +41,7 @@ Some of the things I've implemented:
 - Turn off the heating in the office when the workday is over
 - Blink the kids bedroom light when it's time to get up or go to sleep
 - Start the washing machine or dryer automatically when there is enough solar power available
+- Ask if the airconditioner should be turned on when the temperature is above a certain level
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 

@@ -1,0 +1,45 @@
+- id: notify_tygo_airco_suggestion
+  alias: "Notify to turn on Tygo airco"
+  trigger:
+    - trigger: time
+      at: "18:30:00"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.tygo_temperature
+      above: 30
+    - condition: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 400
+  action:
+    - action: notify.app_tim
+      data:
+        title: "🌡️ Tygo's kamer is warm"
+        message: >
+          Het is {{ states('sensor.tygo_temperature') }}°C in Tygo's kamer en
+          de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
+          Wil je de airco aanzetten?
+        data:
+          notification_icon: mdi:air-conditioner
+          actions:
+            - action: "turn_on_airco_tygo"
+              title: "Zet airco aan"
+
+- id: turn_on_airco_tygo_action
+  alias: "Turn on Tygo airco from notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: turn_on_airco_tygo
+  action:
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: climate.airco_tygo
+      data:
+        hvac_mode: cool
+    - action: notify.app_tim
+      data:
+        title: "✅ Airco Tygo aan"
+        message: "De airco in Tygo's kamer is aangezet."
+        data:
+          notification_icon: mdi:air-conditioner
