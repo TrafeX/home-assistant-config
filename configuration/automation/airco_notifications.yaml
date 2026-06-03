@@ -1,0 +1,95 @@
+- id: notify_tygo_airco_suggestion
+  alias: "Notify to turn on Tygo airco"
+  trigger:
+    - trigger: time
+      at: "18:30:00"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.tygo_temperature
+      above: 30
+    - condition: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 400
+  action:
+    - action: notify.app_tim
+      data:
+        title: "🌡️ Tygo's kamer is warm"
+        message: >
+          Het is {{ states('sensor.tygo_temperature') }}°C in Tygo's kamer en
+          de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
+          Wil je de airco aanzetten?
+        data:
+          notification_icon: mdi:air-conditioner
+          tag: airco_tygo
+          actions:
+            - action: "turn_on_airco_tygo"
+              title: "Zet airco aan"
+
+- id: turn_on_airco_tygo_action
+  alias: "Turn on Tygo airco from notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: turn_on_airco_tygo
+  action:
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: climate.airco_tygo
+      data:
+        hvac_mode: cool
+    - action: notify.app_tim
+      data:
+        title: "✅ Airco Tygo aan"
+        message: "De airco in Tygo's kamer is aangezet."
+        data:
+          notification_icon: mdi:air-conditioner
+          tag: airco_tygo
+
+- id: notify_jens_airco_suggestion
+  alias: "Notify to turn on Jens airco"
+  trigger:
+    - trigger: time
+      at: "18:30:00"
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.jens_temperature
+      above: 30
+    - condition: numeric_state
+      entity_id: sensor.solaredge_i1_ac_power
+      above: 400
+  action:
+    - action: notify.app_tim
+      data:
+        title: "🌡️ Jens' kamer is warm"
+        message: >
+          Het is {{ states('sensor.jens_temperature') }}°C in Jens' kamer en
+          de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
+          Wil je de airco aanzetten?
+        data:
+          notification_icon: mdi:air-conditioner
+          tag: airco_jens
+          actions:
+            - action: "turn_on_airco_jens"
+              title: "Zet airco aan"
+
+- id: turn_on_airco_jens_action
+  alias: "Turn on Jens airco from notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: turn_on_airco_jens
+  action:
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: climate.airco_jens
+      data:
+        hvac_mode: cool
+    - action: notify.app_tim
+      data:
+        title: "✅ Airco Jens aan"
+        message: "De airco in Jens' kamer is aangezet."
+        data:
+          notification_icon: mdi:air-conditioner
+          tag: airco_jens
