@@ -45,7 +45,9 @@
   action:
     - action: light.turn_off
       data:
-        entity_id: light.tuin_spots
+        entity_id:
+          - light.tuin_spots
+          - light.small_bulbs
 
 - id: turn_on_backyard_spot_person_detected
   alias: "Turn on backyard spot when person detected"
