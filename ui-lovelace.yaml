@@ -202,6 +202,46 @@ views:
           - sensor.wasmachine_job_state
           - input_boolean.solar_wash_dryer_ready
           - input_boolean.solar_washing_machine_ready
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: binary_sensor.wasdroger_remote_control
+                state: "on"
+              - condition: state
+                entity: binary_sensor.wash_dryer_running
+                state: "off"
+            row:
+              type: button
+              name: Start wasdroger
+              icon: mdi:tumble-dryer
+              entity: binary_sensor.wash_dryer_running
+              tap_action:
+                action: call-service
+                service: select.select_option
+                target:
+                  entity_id: select.wasdroger
+                service_data:
+                  option: run
+          - type: conditional
+            conditions:
+              - condition: state
+                entity: binary_sensor.wasmachine_remote_control
+                state: "on"
+              - condition: state
+                entity: binary_sensor.washing_machine_running
+                state: "off"
+            row:
+              type: button
+              name: Start wasmachine
+              icon: mdi:washing-machine
+              entity: binary_sensor.washing_machine_running
+              tap_action:
+                action: call-service
+                service: select.select_option
+                target:
+                  entity_id: select.wasmachine
+                service_data:
+                  option: run
         show_header_toggle: false
     icon: "mdi:home-outline"
   - path: mediaplayers

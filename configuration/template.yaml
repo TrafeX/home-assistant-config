@@ -24,6 +24,12 @@
         {{ (load_percent / 100 * nominal_power * 1.15) | round(1) }}
       availability: "{{ has_value('sensor.ups_load') }}"
 - binary_sensor:
+    - name: Wash dryer running
+      default_entity_id: binary_sensor.wash_dryer_running
+      state: "{{ states('select.wasdroger') == 'run' }}"
+    - name: Washing machine running
+      default_entity_id: binary_sensor.washing_machine_running
+      state: "{{ states('select.wasmachine') == 'run' }}"
     - name: Wash dryer
       delay_on: 0:01:00
       delay_off: 0:03:00
