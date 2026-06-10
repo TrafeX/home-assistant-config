@@ -1,4 +1,12 @@
-alias: 'Blink Tygo light'
+alias: 'Blink light'
+fields:
+  entity_id:
+    description: 'The light entity to blink'
+    example: 'light.bedroom_tygo'
+    required: true
+    selector:
+      entity:
+        domain: light
 sequence:
   - service: zwave_js.invoke_cc_api
     data:
@@ -8,7 +16,7 @@ sequence:
         - alarmType: 0
           alarmLevel: 255
     target:
-      entity_id: light.bedroom_tygo
+      entity_id: "{{ entity_id }}"
   - delay: '00:00:15'
   - service: zwave_js.invoke_cc_api
     data:
@@ -18,4 +26,4 @@ sequence:
         - alarmType: 0
           alarmLevel: 0
     target:
-      entity_id: light.bedroom_tygo
+      entity_id: "{{ entity_id }}"

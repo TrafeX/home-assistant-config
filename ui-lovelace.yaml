@@ -150,6 +150,14 @@ views:
         entities:
           - binary_sensor.bedroom_jens_motion_detection
           - light.bedroom_jens
+          - type: button
+            name: Knipper het licht
+            icon: mdi:lightbulb-alert
+            tap_action:
+              action: call-service
+              service: script.blink_tygo_light
+              service_data:
+                entity_id: light.bedroom_jens
           - climate.airco_jens
           - sensor.bedroom_jens_temperature
           - sensor.bedroom_jens_humidity
@@ -161,8 +169,15 @@ views:
         entities:
           - binary_sensor.tygo_motion_detection
           - light.bedroom_tygo
+          - type: button
+            name: Knipper het licht
+            icon: mdi:lightbulb-alert
+            tap_action:
+              action: call-service
+              service: script.blink_tygo_light
+              service_data:
+                entity_id: light.bedroom_tygo
           - climate.airco_tygo
-          - script.blink_tygo_light
           - sensor.tygo_temperature
           - sensor.tygo_humidity
           - sensor.tygo_illuminance
