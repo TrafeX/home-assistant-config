@@ -432,6 +432,8 @@ views:
             entity: sensor.airco_2nd_floor_electric_consumption_w
           - name: Werkkamer klein
             entity: sensor.small_office_power
+          - name: Airco Jens
+            entity: sensor.airco_jens_power
         stat_types:
           - mean
         days_to_show: 1
