@@ -279,6 +279,8 @@ views:
         title: Sonos
         cards:
           - type: media-control
+            entity: media_player.tv_speaker
+          - type: media-control
             entity: media_player.keuken
       - type: vertical-stack
         title: Assistants
