@@ -93,6 +93,7 @@ views:
           - binary_sensor.shed_motion
           - sensor.shed_humidity
           - sensor.shed_temperature
+          - switch.shed_charger_switch
         show_header_toggle: false
       - type: entities
         title: Gang BG
