@@ -2,12 +2,17 @@
   alias: Notify when the external IP changes
   trigger:
     - trigger: state
-      entity_id: sensor.external_ip
-  condition:
-    - condition: template
-      value_template: >
-        {{ trigger.from_state.state not in ['unavailable', 'unknown', 'none'] }}
+      entity_id: sensor.external_ip_address
+      not_from:
+        - unavailable
+        - unknown
+      not_to:
+        - unavailable
+        - unknown
   action:
     - action: telegram_bot.send_message
       data:
-        message: "The external IP changed: {{ states.sensor.external_ip.state }}"
+        title: "🌐 *External IP*"
+        message: >
+          The external IP changed from {{ trigger.from_state.state }}
+          to {{ trigger.to_state.state }}
