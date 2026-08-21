@@ -48,11 +48,6 @@ zone:
     radius: 50
     icon: mdi:home
 
-# Configure HTTP access
-http:
-  use_x_forwarded_for: true
-  trusted_proxies: 10.42.0.0/16
-
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
