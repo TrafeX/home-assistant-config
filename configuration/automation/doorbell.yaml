@@ -1,5 +1,6 @@
 - id: notify_doorbell_press
   alias: "Notify when pressing the doorbell"
+  mode: restart
   trigger:
     - platform: state
       entity_id: binary_sensor.doorbell_visitor
@@ -19,32 +20,31 @@
               importance: high
               channel: Doorbell
               notification_icon: mdi:doorbell
-        - action: camera.snapshot
-          data:
-            entity_id: camera.doorbell_sub
-            filename: !secret frontyard_snapshot_folder
+        # Live image: the Hub fetches it once the receiver is ready, so it is
+        # always current. Do not add a query string, that disables the URL
+        # signing of Home Assistant and the Hub gets a 401.
         - action: media_player.play_media
           data:
             media:
-              media_content_id: media-source://camera/camera.doorbell
+              media_content_id: /api/camera_proxy/camera.doorbell_sub
               media_content_type: image/jpeg
-              metadata:
-                title: Last doorbell press
-                thumbnail: /api/camera_proxy/camera.doorbell
-                media_class: video
-                children_media_class: null
-                navigateIds:
-                  - {}
-                  - media_content_type: app
-                    media_content_id: media-source://camera
-                browse_entity_id: media_player.woonkamer_hub
+            extra:
+              title: Deurbel
           target:
             entity_id:
               - media_player.woonkamer_hub
               - media_player.werkkamer
+        # Archive copy for camera.doorbell ("Last doorbell press"), off the
+        # critical path.
+        - action: camera.snapshot
+          continue_on_error: true
+          data:
+            entity_id: camera.doorbell_sub
+            filename: !secret frontyard_snapshot_folder
     - delay:
         minutes: 2
     - action: media_player.media_stop
+      continue_on_error: true
       target:
         entity_id:
           - media_player.woonkamer_hub
