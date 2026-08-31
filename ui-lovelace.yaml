@@ -481,6 +481,8 @@ views:
             entity: sensor.fusebox_temperature
           - name: Trapkast
             entity: sensor.storage_temperature
+          - name: Douche
+            entity: sensor.badkamer_2de_shower_sensor_temperature
         stat_types:
           - mean
         days_to_show: 1
@@ -511,6 +513,8 @@ views:
             entity: sensor.fusebox_humidity
           - name: Trapkast
             entity: sensor.storage_humidity
+          - name: Douche
+            entity: sensor.badkamer_2de_shower_sensor_humidity
         stat_types:
           - mean
         days_to_show: 1

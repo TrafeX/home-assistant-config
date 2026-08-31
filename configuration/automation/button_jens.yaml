@@ -1,0 +1,23 @@
+- id: toggle_bedroom_jens_light_with_button
+  alias: "Toggle Jens' bedroom light with the button"
+  # The SNZB-01P (Button Jens) has no event entity in ZHA, it only fires
+  # zha_event. A short press sends 'toggle' (double press 'on', long 'off').
+  trigger:
+    - trigger: event
+      event_type: zha_event
+      event_data:
+        device_ieee: "f0:44:d3:ff:fe:f9:62:2a"
+        command: toggle
+  action:
+    # Same night dimming as the hallway lights: dimmed in night mode, so
+    # Jens is not blinded when he switches the light on at night.
+    - action: light.toggle
+      target:
+        entity_id: light.bedroom_jens
+      data:
+        brightness: >
+          {% if is_state('input_select.home_mode', 'night') %}
+            30
+          {% else %}
+            100
+          {% endif %}

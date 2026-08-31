@@ -83,3 +83,5 @@ The following hardware is integrated in this system.
 | 1        | Motion sensor  | Aqara Motion Sensor P1                | zigbee   |
 | 2        | Door sensor    | Aqara Door and Window sensor          | zigbee   |
 | 1        | Solar Inverter | SolarEdge SE2200H                     | wifi     |
+| 2        | Button         | Sonoff SNZB-01P                       | zigbee   |
+| 1        | Sensor         | Sonoff SNZB-02P                       | zigbee   |
