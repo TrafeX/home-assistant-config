@@ -47,3 +47,14 @@
           state: playing
   action:
     - action: script.cast_kids_dashboard
+
+- id: cast_kids_dashboard_off_toggle
+  alias: "Stop casting kids dashboard when toggle turns off"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.cast_kids_dashboard
+      to: "off"
+  action:
+    - action: media_player.turn_off
+      target:
+        entity_id: media_player.woonkamer_hub

@@ -28,3 +28,9 @@ solar_washing_machine_ready:
 cast_kids_dashboard:
   name: Cast kids dashboard to Woonkamer Hub
   icon: mdi:baby-face-outline
+at_the_table:
+  name: Aan tafel
+  icon: mdi:silverware-fork-knife
+cast_office_dashboard:
+  name: Cast dashboard to Werkkamer Hub
+  icon: mdi:monitor-dashboard

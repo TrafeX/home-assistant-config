@@ -1,0 +1,36 @@
+- id: cast_office_dashboard_on_toggle
+  alias: "Cast office dashboard when toggle turns on"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.cast_office_dashboard
+      to: "on"
+  action:
+    - action: script.cast_dashboard_office
+
+- id: cast_office_dashboard_watchdog
+  alias: "Office dashboard watchdog — re-cast if not showing"
+  trigger:
+    - trigger: time_pattern
+      minutes: "/5"
+  condition:
+    - condition: state
+      entity_id: input_boolean.cast_office_dashboard
+      state: "on"
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: media_player.werkkamer
+          state: playing
+  action:
+    - action: script.cast_dashboard_office
+
+- id: cast_office_dashboard_off_toggle
+  alias: "Stop casting office dashboard when toggle turns off"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.cast_office_dashboard
+      to: "off"
+  action:
+    - action: media_player.turn_off
+      target:
+        entity_id: media_player.werkkamer
