@@ -34,3 +34,33 @@
     - action: media_player.turn_off
       target:
         entity_id: media_player.werkkamer
+
+- id: cast_office_dashboard_when_small_office_on
+  alias: "Cast office dashboard when the small office switch turns on"
+  # The Nest Hub is powered by switch.small_office, so it only accepts a cast
+  # once it has booted and its media player stops being unavailable.
+  trigger:
+    - trigger: state
+      entity_id: switch.small_office
+      to: "on"
+  action:
+    - wait_template: "{{ not is_state('media_player.werkkamer', 'unavailable') }}"
+      timeout: "00:03:00"
+      continue_on_timeout: true
+    - delay: 00:00:05
+    - action: input_boolean.turn_on
+      target:
+        entity_id: input_boolean.cast_office_dashboard
+
+- id: stop_casting_office_dashboard_when_small_office_off
+  alias: "Stop casting office dashboard when the small office switch turns off"
+  # Keeps the toggle in sync when the switch is turned off outside the button,
+  # otherwise the watchdog keeps casting to a hub that has no power.
+  trigger:
+    - trigger: state
+      entity_id: switch.small_office
+      to: "off"
+  action:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.cast_office_dashboard

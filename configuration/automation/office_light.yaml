@@ -1,0 +1,37 @@
+- id: turn_on_office_led_strip_when_dark
+  alias: "Turn on the office LED strip when the office is on and it is dark"
+  trigger:
+    - trigger: state
+      entity_id: switch.small_office
+      to: "on"
+    - trigger: numeric_state
+      entity_id: sun.sun
+      attribute: elevation
+      below: 3
+  condition:
+    - condition: state
+      entity_id: switch.small_office
+      state: "on"
+    - condition: numeric_state
+      entity_id: sun.sun
+      attribute: elevation
+      below: 3
+  action:
+    - action: light.turn_on
+      target:
+        entity_id: light.office_led_strip_backside
+
+- id: turn_off_office_led_strip
+  alias: "Turn off the office LED strip when the office goes off or it gets light"
+  trigger:
+    - trigger: state
+      entity_id: switch.small_office
+      to: "off"
+    - trigger: numeric_state
+      entity_id: sun.sun
+      attribute: elevation
+      above: 3
+  action:
+    - action: light.turn_off
+      target:
+        entity_id: light.office_led_strip_backside
