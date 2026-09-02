@@ -21,6 +21,39 @@
     action: scene.turn_on
     entity_id: scene.living_movie
 
+- id: restore_lights_media_paused
+  alias: "Restore lights when media is paused or off"
+  # Counterpart of dim_lights_tv_on: once the Chromecast has been paused or
+  # off for a while nobody is watching any more, so undo the movie scene.
+  # The 10 minutes keep a toilet break or an ad break from lifting the lights.
+  trigger:
+    - trigger: state
+      entity_id: media_player.chromekamer
+      to:
+        - paused
+        - idle
+        - "off"
+      for:
+        minutes: 10
+  condition:
+    - condition: state
+      entity_id: input_select.home_mode
+      state: home
+    - alias: Living lights are on
+      condition: state
+      entity_id: light.living_spots
+      state: "on"
+    - alias: Living lights are still dimmed for the movie scene
+      condition: numeric_state
+      entity_id: light.living_spots
+      attribute: brightness
+      below: 50
+  action:
+    - alias: Turn on living normal scene
+      action: scene.turn_on
+      target:
+        entity_id: scene.living_normal
+
 - id: turn_off_tv_leaving_sleeping
   alias: "Turn off TV when leaving or sleeping"
   trigger:
