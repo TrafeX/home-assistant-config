@@ -53,7 +53,7 @@
       at: "18:30:00"
   condition:
     - condition: numeric_state
-      entity_id: sensor.jens_temperature
+      entity_id: sensor.bedroom_jens_temperature
       above: 30
     - condition: numeric_state
       entity_id: sensor.solaredge_i1_ac_power
@@ -63,7 +63,7 @@
       data:
         title: "🌡️ Jens' kamer is warm"
         message: >
-          Het is {{ states('sensor.jens_temperature') }}°C in Jens' kamer en
+          Het is {{ states('sensor.bedroom_jens_temperature') }}°C in Jens' kamer en
           de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
           Wil je de airco aanzetten?
         data:
