@@ -36,3 +36,18 @@
   action:
     - action: media_player.turn_off
       entity_id: media_player.sony_bravia_tv
+
+- id: set_tv_speaker_volume_playstation
+  alias: "Set TV speaker volume when switching to the PlayStation (HDMI 2)"
+  trigger:
+    - trigger: state
+      entity_id: media_player.sony_bravia_tv
+      attribute: source
+      to: "HDMI 2/MHL"
+  action:
+    - alias: Set the TV speaker to 14%
+      action: media_player.volume_set
+      target:
+        entity_id: media_player.tv_speaker
+      data:
+        volume_level: 0.14
