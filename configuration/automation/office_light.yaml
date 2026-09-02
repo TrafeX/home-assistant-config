@@ -1,9 +1,9 @@
-- id: turn_on_office_led_strip_when_dark
-  alias: "Turn on the office LED strip when the small office is active and it is dark"
+- id: turn_on_office_lights_when_dark
+  alias: "Turn on the office lights when the small office is active and it is dark"
   # There is no illuminance sensor in the small office, so the sun stands in
   # for it. Elevation is used instead of below_horizon because the room is
   # already dark a while before the sun actually sets; lower the threshold if
-  # the strip comes on too early.
+  # the lights come on too early.
   trigger:
     - trigger: state
       entity_id: input_boolean.small_office_active
@@ -23,10 +23,12 @@
   action:
     - action: light.turn_on
       target:
-        entity_id: light.office_led_strip_backside
+        entity_id:
+          - light.office_led_strip_backside
+          - light.small_office_light
 
-- id: turn_off_office_led_strip
-  alias: "Turn off the office LED strip when the small office becomes inactive or it gets light"
+- id: turn_off_office_lights
+  alias: "Turn off the office lights when the small office becomes inactive or it gets light"
   trigger:
     - trigger: state
       entity_id: input_boolean.small_office_active
@@ -38,4 +40,6 @@
   action:
     - action: light.turn_off
       target:
-        entity_id: light.office_led_strip_backside
+        entity_id:
+          - light.office_led_strip_backside
+          - light.small_office_light

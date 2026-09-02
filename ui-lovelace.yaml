@@ -189,6 +189,7 @@ views:
         state_color: true
         entities:
           - input_boolean.small_office_active
+          - light.small_office_light
           - light.office_led_strip_backside
           - climate.office_heater
           - sensor.netatmo_bedroom_temperature
@@ -607,7 +608,7 @@ views:
                 entity: light.backyarddoor_light
               - type: button
                 icon_height: 30px
-                entity: light.led_strip_small_office
+                entity: light.small_office_light
               - type: button
                 icon_height: 30px
                 entity: light.office_led_strip_backside

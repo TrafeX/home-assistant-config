@@ -27,7 +27,7 @@ Some of the things I've implemented:
 - Notify when you leave the frontdoor open
 - Make my vacuum cleaner come from under the couch to be able to empty it
 - Have a 'guest presence' option to override the presence detection
-- Send a snapshot of the person ringing the doorbell and announce it on the Google Mini's
+- Send a snapshot of the person ringing the doorbell and announce it on the Google Nest Hubs
 - DSMR integration, monitoring my energy and gas usage
 - Brighten the backyard lights when motion is detected
 - Notify when the powerline voltage fluctuates too much
@@ -39,9 +39,11 @@ Some of the things I've implemented:
 - A dashboard with graphs of all temperature, humidity and energy usage sensors
 - An energy dashboard with the solar production, grid usage and house consumption
 - Turn off the heating in the office when the workday is over
-- Blink the kids bedroom light when it's time to get up or go to sleep
+- Blink the kids bedroom lights when it's time to get up or go to sleep
 - Start the washing machine or dryer automatically when there is enough solar power available
 - Ask if the airconditioner should be turned on when the temperature is above a certain level
+- Warn when the temperature or humidity in any room goes beyond a certain threshold
+- Warn when one of the devices reports an error or malfunction
 
 ![Home Assistant dashboard](https://timdepater.com/projects/home-assistant-1.png "Home Assistant dashboard")
 
@@ -85,3 +87,4 @@ The following hardware is integrated in this system.
 | 1        | Solar Inverter | SolarEdge SE2200H                     | wifi     |
 | 2        | Button         | Sonoff SNZB-01P                       | zigbee   |
 | 1        | Sensor         | Sonoff SNZB-02P                       | zigbee   |
+| 1        | Light          | AwoX Bulb 12253                       | zigbee   |
