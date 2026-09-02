@@ -38,6 +38,26 @@
     - service: switch.turn_on
       entity_id: switch.ventilation
 
+- id: turn_on_ventilation_bathroom_humidity_rising
+  alias: "Turn on ventilation when bathroom humidity rises quickly"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.bathroom_2nd_shower_humidity_rising
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: switch.ventilation
+      state: "off"
+    - condition: state
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
+  action:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.ventilation
+
 - id: turn_off_ventilation_after_2_hours
   alias: "Turn off ventilation after 2 hours"
   trigger:

@@ -4,6 +4,16 @@
       entity_id: sensor.voltage_sags_phase_l1
     voltage_swells:
       entity_id: sensor.voltage_swells_phase_l1
+    # Showering shows up as a steep rise long before the absolute humidity
+    # crosses any fixed threshold, so watch the gradient instead. Roughly
+    # 1.2 %/minute over a 10 minute window: fast enough for a shower, slow
+    # enough to ignore drying laundry or the weather.
+    bathroom_2nd_shower_humidity_rising:
+      friendly_name: "Bathroom 2nd shower humidity rising"
+      entity_id: sensor.badkamer_2de_shower_sensor_humidity
+      sample_duration: 600
+      max_samples: 20
+      min_gradient: 0.02
 - platform: group
   name: "Backyard motion sensors"
   device_class: motion
