@@ -1,6 +1,5 @@
 /*
 !/configuration
-!/custom_components
 !configuration.yaml
 !lovelace-screen.yaml
 !*.sh
