@@ -50,3 +50,124 @@
     - name: Hot Water
       default_entity_id: binary_sensor.hotwater_active
       state: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
+# Generic threshold watchdog. Every rule below is matched against all entities
+# of the right device_class, so adding a new alert is one entry in the rules
+# list - the notifying automation (automation/sensor_alerts.yaml) is
+# rule-agnostic and needs no change.
+#
+# Trigger-based on purpose: a stateless template that iterates over
+# states.sensor re-renders on every state change of every sensor. Once a
+# minute is predictable and fast enough for this.
+- trigger:
+    - trigger: time_pattern
+      minutes: "/1"
+    - trigger: homeassistant
+      event: start
+    # So a "Template entities" reload gives an answer straight away.
+    - trigger: event
+      event_type: event_template_reloaded
+  action:
+    # Computed once here so both the state and the attribute can reuse it,
+    # which avoids a self-reference through `this`.
+    - variables:
+        numeric_rules:
+          - id: temp_high
+            device_class: temperature
+            above: 50
+            unit: "°C"
+            label: is te heet
+            emoji: "🔥"
+            icon: mdi:thermometer-alert
+            severity: critical
+            # Sun-exposed sensors easily read above 50 without anything being
+            # wrong. Meterkast, schuur and trapkast stay monitored on purpose:
+            # that is exactly where overheating matters.
+            exclude_areas: [achtertuin, voortuin, backyard, frontyard]
+            exclude:
+              # Central heating supply water is 60-70 by design.
+              - sensor.heating_supply_temperature
+              - sensor.raspberry_pi_cpu_temperature
+              # Physically outside, but may be filed under an indoor area.
+              - sensor.netatmo_outdoor_temperature
+          - id: humidity_high
+            device_class: humidity
+            above: 80
+            unit: "%"
+            label: is te vochtig
+            emoji: "💧"
+            icon: mdi:water-alert
+            severity: warning
+            exclude_areas: [achtertuin, voortuin, schuur, backyard, frontyard, shed]
+            exclude:
+              - sensor.netatmo_outdoor_humidity
+        protection_words:
+          - overheat
+          - over_heat
+          - overload
+          - over_load
+          - overcurrent
+          - over_current
+          - overvoltage
+          - over_voltage
+        # Add entities here if device_class problem turns out to be noisy.
+        protection_exclude: []
+        offenders: >
+          {% set ns = namespace(found=[]) %}
+          {% for rule in numeric_rules %}
+            {% for s in states.sensor
+                 | selectattr('attributes.device_class', 'defined')
+                 | selectattr('attributes.device_class', 'eq', rule.device_class)
+                 | rejectattr('entity_id', 'in', rule.exclude) %}
+              {% set aid = (area_id(s.entity_id) or '') | lower %}
+              {% set aname = (area_name(s.entity_id) or '') | lower %}
+              {% if has_value(s.entity_id)
+                    and aid not in rule.exclude_areas
+                    and aname not in rule.exclude_areas
+                    and s.state | float(rule.above) > rule.above %}
+                {% set ns.found = ns.found + [{
+                     'key': rule.id ~ '_' ~ s.object_id,
+                     'rule': rule.id,
+                     'entity_id': s.entity_id,
+                     'name': s.name,
+                     'area': area_name(s.entity_id) or 'onbekend',
+                     'unit': rule.unit,
+                     'label': rule.label,
+                     'emoji': rule.emoji,
+                     'icon': rule.icon,
+                     'severity': rule.severity,
+                     'threshold': rule.above ~ ' ' ~ rule.unit,
+                   }] %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+          {% for s in states.binary_sensor
+               | selectattr('state', 'eq', 'on')
+               | rejectattr('entity_id', 'in', protection_exclude) %}
+            {% if protection_words | select('in', s.entity_id) | list | count > 0
+                  or s.attributes.get('device_class') == 'problem' %}
+              {% set ns.found = ns.found + [{
+                   'key': 'device_protection_' ~ s.object_id,
+                   'rule': 'device_protection',
+                   'entity_id': s.entity_id,
+                   'name': s.name,
+                   'area': area_name(s.entity_id) or 'onbekend',
+                   'unit': '',
+                   'label': 'meldt een storing',
+                   'emoji': "⚠️",
+                   'icon': 'mdi:alert-octagon',
+                   'severity': 'critical',
+                   'threshold': '',
+                 }] %}
+            {% endif %}
+          {% endfor %}
+          {{ ns.found }}
+  sensor:
+    - name: "Sensor alerts"
+      unique_id: sensor_alerts
+      icon: mdi:alert-decagram
+      state: "{{ offenders | count }}"
+      attributes:
+        # Deliberately no measured value in here: it would change every minute
+        # and churn the recorder while an alert is active. The automation reads
+        # the live value with states() when it notifies.
+        offenders: "{{ offenders }}"

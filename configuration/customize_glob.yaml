@@ -1,5 +1,5 @@
 "sensor.*_lux*":
   device_class: light
 "sensor.*_humidity*":
-  device_class: moisture
+  device_class: humidity
   icon: mdi:water-percent

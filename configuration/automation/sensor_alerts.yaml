@@ -1,0 +1,87 @@
+- id: sensor_alerts_notify
+  alias: "Notify on sensor threshold alerts"
+  description: >
+    Rule-agnostic notifier for sensor.sensor_alerts. It diffs the offenders
+    list, so every sensor gets exactly one alert and one recovery message.
+    The rules themselves live in configuration/template.yaml; adding a new
+    kind of alert needs no change here.
+  mode: queued
+  max: 10
+  trigger:
+    # No to:/from:/not_to: on purpose - only without those does a state trigger
+    # also fire on attribute-only changes. That is needed because when one
+    # sensor recovers and another trips within the same minute, the state
+    # (the number of alerts) stays the same while the offenders list changes.
+    - trigger: state
+      entity_id: sensor.sensor_alerts
+  condition:
+    - condition: template
+      value_template: "{{ trigger.to_state.state not in ['unknown', 'unavailable'] }}"
+  variables:
+    # from_state is none on the very first run after a restart.
+    before: >
+      {{ (trigger.from_state.attributes.offenders
+          if trigger.from_state is not none else []) | default([], true) }}
+    after: "{{ trigger.to_state.attributes.offenders | default([], true) }}"
+    before_keys: "{{ before | map(attribute='key') | list }}"
+    after_keys: "{{ after | map(attribute='key') | list }}"
+    new_items: "{{ after | rejectattr('key', 'in', before_keys) | list }}"
+    gone_items: "{{ before | rejectattr('key', 'in', after_keys) | list }}"
+  action:
+    # An empty list is a no-op, so neither block needs a guard.
+    - repeat:
+        for_each: "{{ new_items }}"
+        sequence:
+          - action: notify.app_tim
+            data:
+              title: "{{ repeat.item.emoji }} {{ repeat.item.name }} {{ repeat.item.label }}"
+              message: >-
+                {% if repeat.item.unit %}
+                  {{ repeat.item.area }} - {{ states(repeat.item.entity_id) }} {{ repeat.item.unit }}
+                  (drempel {{ repeat.item.threshold }})
+                {% else %}
+                  {{ repeat.item.area }} - controleer het apparaat.
+                {% endif %}
+              data:
+                tag: "{{ repeat.item.key }}"
+                notification_icon: "{{ repeat.item.icon }}"
+                channel: "{{ 'Kritieke alerts' if repeat.item.severity == 'critical' else 'Alerts' }}"
+                importance: "{{ 'high' if repeat.item.severity == 'critical' else 'default' }}"
+                priority: "{{ 'high' if repeat.item.severity == 'critical' else 'normal' }}"
+                sticky: "{{ repeat.item.severity == 'critical' }}"
+                vibrationPattern: "{{ '100, 200, 100, 200' if repeat.item.severity == 'critical' else '100' }}"
+                clickAction: "entityId:{{ repeat.item.entity_id }}"
+                ttl: 0
+          - action: persistent_notification.create
+            data:
+              notification_id: "{{ repeat.item.key }}"
+              title: "{{ repeat.item.emoji }} {{ repeat.item.name }} {{ repeat.item.label }}"
+              message: >-
+                {% if repeat.item.unit %}
+                  {{ repeat.item.area }} - {{ states(repeat.item.entity_id) }} {{ repeat.item.unit }}
+                  (drempel {{ repeat.item.threshold }})
+                {% else %}
+                  {{ repeat.item.area }} - controleer het apparaat.
+                {% endif %}
+    - repeat:
+        for_each: "{{ gone_items }}"
+        sequence:
+          # Same tag, so the open notification is replaced by the recovery
+          # message instead of a second one piling up next to it.
+          - action: notify.app_tim
+            data:
+              title: "✅ {{ repeat.item.name }} weer normaal"
+              message: >-
+                {% if repeat.item.unit %}
+                  {{ repeat.item.area }} - nu {{ states(repeat.item.entity_id) }} {{ repeat.item.unit }}
+                {% else %}
+                  {{ repeat.item.area }} - de storingsmelding is weg.
+                {% endif %}
+              data:
+                tag: "{{ repeat.item.key }}"
+                notification_icon: mdi:check-circle
+                channel: Alerts
+                ttl: 0
+          - action: persistent_notification.dismiss
+            data:
+              notification_id: "{{ repeat.item.key }}"
