@@ -34,3 +34,6 @@ at_the_table:
 cast_office_dashboard:
   name: Cast dashboard to Werkkamer Hub
   icon: mdi:monitor-dashboard
+small_office_active:
+  name: Werkkamer in gebruik
+  icon: mdi:desk

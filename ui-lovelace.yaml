@@ -188,6 +188,7 @@ views:
         title: Werkkamer klein
         state_color: true
         entities:
+          - input_boolean.small_office_active
           - light.office_led_strip_backside
           - climate.office_heater
           - sensor.netatmo_bedroom_temperature
