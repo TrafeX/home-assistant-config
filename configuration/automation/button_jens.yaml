@@ -19,5 +19,5 @@
           {% if is_state('input_select.home_mode', 'night') %}
             30
           {% else %}
-            100
+            150
           {% endif %}
