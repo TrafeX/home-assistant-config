@@ -1,8 +1,27 @@
 alias: 'Empty the vacuum cleaner'
+mode: single
 sequence:
-  - service: xiaomi_miio.vacuum_remote_control_move_step
-    data:
-      entity_id: vacuum.xiaomi_vacuum_cleaner
-      velocity: 0.29
-      rotation: 20
-      duration: 4000
+  # The vacuum refuses a manual move while it is still in the charging state on
+  # the dock: the first remote control session only gets it out of charging, the
+  # second one actually drives. HA logs no error for the ignored move, so repeat
+  # the whole session twice instead of waiting longer.
+  - repeat:
+      count: 2
+      sequence:
+        - action: xiaomi_miio.vacuum_remote_control_start
+          data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+        - delay:
+            seconds: 2
+        - action: xiaomi_miio.vacuum_remote_control_move
+          data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
+            velocity: 0.29
+            rotation: 20
+            duration: 4000
+        # The duration above plus some margin, so the stop doesn't cut the move short.
+        - delay:
+            seconds: 6
+        - action: xiaomi_miio.vacuum_remote_control_stop
+          data:
+            entity_id: vacuum.xiaomi_vacuum_cleaner
