@@ -34,7 +34,7 @@
         - idle
         - "off"
       for:
-        minutes: 10
+        minutes: 5
   condition:
     - condition: state
       entity_id: input_select.home_mode
