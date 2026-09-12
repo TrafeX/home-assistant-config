@@ -11,7 +11,7 @@
     - trigger: numeric_state
       entity_id: sun.sun
       attribute: elevation
-      below: 2
+      below: 4
   condition:
     - condition: state
       entity_id: input_boolean.small_office_active
@@ -19,7 +19,7 @@
     - condition: numeric_state
       entity_id: sun.sun
       attribute: elevation
-      below: 2
+      below: 4
   action:
     - action: light.turn_on
       target:
@@ -36,7 +36,7 @@
     - trigger: numeric_state
       entity_id: sun.sun
       attribute: elevation
-      above: 3
+      above: 4
   action:
     - action: light.turn_off
       target:
