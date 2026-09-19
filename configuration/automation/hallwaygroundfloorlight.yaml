@@ -17,7 +17,7 @@
           state: "below_horizon"
         - condition: numeric_state
           entity_id: sensor.hallway_gf_illuminance
-          below: 10
+          below: 12
   action:
     - action: light.turn_on
       entity_id: light.gang_bg
