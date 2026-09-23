@@ -17,7 +17,6 @@ views:
           - switch.ventilation
           - input_boolean.ghost_mode
           - input_boolean.guest_presence
-          - input_boolean.at_the_table
           - input_boolean.notify_irrigation_needed
           - input_boolean.cast_office_dashboard
           - script.cast_dashboard_living
