@@ -87,6 +87,7 @@
               - sensor.heating_supply_temperature
               - sensor.raspberry_pi_cpu_temperature
               - sensor.vaatwasser_device_temperature
+              - sensor.solaredge_i1_temp_sink
           - id: humidity_high
             device_class: humidity
             above: 85
