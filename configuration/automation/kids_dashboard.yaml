@@ -22,6 +22,24 @@
       target:
         entity_id: input_boolean.cast_kids_dashboard
 
+- id: stop_cast_kids_dashboard_living_mornings
+  alias: "Stop casting Kids dashboard to Living Hub"
+  trigger:
+    - trigger: time
+      at: "09:00:00"
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+  action:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.cast_kids_dashboard
+
 - id: cast_kids_dashboard_on_toggle
   alias: "Cast kids dashboard when toggle turns on"
   trigger:
