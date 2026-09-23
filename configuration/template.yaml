@@ -73,7 +73,7 @@
         numeric_rules:
           - id: temp_high
             device_class: temperature
-            above: 50
+            above: 40
             unit: "°C"
             label: is te heet
             emoji: "🔥"
@@ -89,7 +89,7 @@
               - sensor.vaatwasser_device_temperature
           - id: humidity_high
             device_class: humidity
-            above: 80
+            above: 85
             unit: "%"
             label: is te vochtig
             emoji: "💧"
