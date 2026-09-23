@@ -83,4 +83,4 @@
       target:
         entity_id: media_player.tv_speaker
       data:
-        volume_level: 0.14
+        volume_level: 0.12
