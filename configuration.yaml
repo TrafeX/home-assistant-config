@@ -11,6 +11,11 @@ homeassistant:
   customize_glob: !include configuration/customize_glob.yaml
   customize: !include configuration/customize.yaml
 
+  # camera.snapshot may only write to allowed folders. www/ is allowed by
+  # default, the alarm snapshots under media/ are not.
+  allowlist_external_dirs:
+    - /config/media
+
   auth_providers:
     - type: homeassistant
 

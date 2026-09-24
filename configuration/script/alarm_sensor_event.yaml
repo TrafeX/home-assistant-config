@@ -67,7 +67,6 @@ variables:
     actions:
       - action: disarm_alarm
         title: "Uitschakelen"
-        authenticationRequired: true
       - action: alarm_blink_lights
         title: "Lampen knipperen"
       - action: URI
