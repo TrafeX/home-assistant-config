@@ -17,11 +17,11 @@
         - binary_sensor.backyard_person
         - binary_sensor.backyard_motion_detection
         - binary_sensor.shed_motion
-        - camera.hallway
+        - camera.txnas_hallway
         - camera.doorbell_sub
         - camera.txnas_backyard
         - camera.tygo
-        - camera.txnas_babycam
+        - camera.txnas_jens
       to: unavailable
       for:
         minutes: 2

@@ -26,8 +26,8 @@ alarm_sensors:
 # Cameras archived on every alarm event.
 alarm_cameras:
   entities:
-    - camera.hallway
+    - camera.txnas_hallway
     - camera.doorbell_sub
     - camera.txnas_backyard
     - camera.tygo
-    - camera.txnas_babycam
+    - camera.txnas_jens

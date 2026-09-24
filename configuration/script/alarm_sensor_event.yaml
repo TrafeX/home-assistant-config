@@ -25,10 +25,10 @@ variables:
   # group, since an Android notification holds only one image.
   cameras:
     living_motion_detection: [camera.txnas_backyard]
-    hallway_gf_motion: [camera.hallway]
-    voordeur_opening: [camera.hallway, camera.doorbell_sub]
+    hallway_gf_motion: [camera.txnas_hallway]
+    voordeur_opening: [camera.txnas_hallway, camera.doorbell_sub]
     tygo_motion_detection: [camera.tygo]
-    bedroom_jens_motion_detection: [camera.txnas_babycam]
+    bedroom_jens_motion_detection: [camera.txnas_jens]
     schuifpui_opening: [camera.txnas_backyard]
     backyard_person: [camera.txnas_backyard]
     backyard_motion_detection: [camera.txnas_backyard]

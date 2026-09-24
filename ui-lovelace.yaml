@@ -361,13 +361,13 @@ views:
         entities:
           - entity: alarm_control_panel.home_alarm
       - type: picture-entity
-        entity: camera.hallway
+        entity: camera.txnas_hallway
       - type: picture-entity
         entity: camera.tygo
       - type: picture-entity
-        entity: camera.txnas_babycam
+        entity: camera.txnas_jens
       - type: picture-entity
-        entity: camera.doorbell_sub
+        entity: camera.txnas_doorbell
       - type: picture-entity
         entity: camera.txnas_backyard
   - path: solar-energy
@@ -589,7 +589,7 @@ views:
       - type: picture-entity
         entity: camera.txnas_backyard
       - type: picture-entity
-        entity: camera.txnas_babycam
+        entity: camera.txnas_jens
       - type: picture-entity
         entity: camera.tygo
       - type: picture-entity
