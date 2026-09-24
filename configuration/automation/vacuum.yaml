@@ -2,23 +2,54 @@
   alias: "Notify when the vacuum robot is done"
   trigger:
     - trigger: state
+      id: done
       entity_id: vacuum.xiaomi_vacuum_cleaner
       from: "cleaning"
+      not_to:
+        - "error"
+        - "unavailable"
+    # Separate trigger so an error on the way back to the dock (or while
+    # paused) is reported too, not only one straight out of cleaning.
+    - trigger: state
+      id: error
+      entity_id: vacuum.xiaomi_vacuum_cleaner
+      to: "error"
   condition:
-    - condition: not
+    # The nightly run finishes when everyone is in bed: only an error is
+    # worth a notification then.
+    - condition: or
       conditions:
-        - alias: "Don't trigger when the vacuum is unavailable"
-          condition: state
-          entity_id: vacuum.xiaomi_vacuum_cleaner
-          state: "unavailable"
+        - condition: trigger
+          id: error
+        - alias: "Home is not in night mode"
+          condition: not
+          conditions:
+            - condition: state
+              entity_id: input_select.home_mode
+              state: night
   action:
-    - action: telegram_bot.send_message
-      data:
-        title: "*De robotstofzuiger is klaar!*"
-        message: >
-          Status: {{ states('vacuum.xiaomi_vacuum_cleaner') }}
-          Tijd: {{ (int(states('sensor.xiaomi_vacuum_cleaner_last_clean_duration'))/60)|round }}mins.
-          Oppervlakte: {{ states('sensor.xiaomi_vacuum_cleaner_last_clean_area') }}m2.
+    - if:
+        - condition: trigger
+          id: error
+      then:
+        - action: notify.app_tim
+          data:
+            title: "⚠️ De robotstofzuiger heeft een fout"
+            message: >
+              De robotstofzuiger is gestopt met een fout en heeft hulp nodig.
+            data:
+              tag: vacuum_cleaner
+              notification_icon: mdi:robot-vacuum-alert
+      else:
+        - action: notify.app_tim
+          data:
+            title: "🧹 De robotstofzuiger is klaar"
+            message: >
+              Tijd: {{ (states('sensor.xiaomi_vacuum_cleaner_last_clean_duration') | int(0) / 60) | round }} min.
+              Oppervlakte: {{ states('sensor.xiaomi_vacuum_cleaner_last_clean_area') }} m².
+            data:
+              tag: vacuum_cleaner
+              notification_icon: mdi:robot-vacuum
 
 - id: enable_automatic_vacuum_sleep_mode
   alias: "Enable automatic vacuum cleaner on sleep mode"
