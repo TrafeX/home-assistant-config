@@ -1,0 +1,74 @@
+# The entity lists must stay in sync with group.alarm_sensors and
+# group.alarm_cameras (state triggers cannot expand a group).
+- id: alarm_entity_offline
+  alias: "Notify when an alarm sensor or camera goes offline while armed"
+  mode: queued
+  trigger:
+    - trigger: state
+      entity_id: &alarm_entities
+        - binary_sensor.living_motion_detection
+        - binary_sensor.hallway_gf_motion
+        - binary_sensor.hallway_1st_motion_detection
+        - binary_sensor.hallway_2nd_motion_detection
+        - binary_sensor.bedroom_jens_motion_detection
+        - binary_sensor.tygo_motion_detection
+        - binary_sensor.voordeur_opening
+        - binary_sensor.schuifpui_opening
+        - binary_sensor.backyard_person
+        - binary_sensor.backyard_motion_detection
+        - binary_sensor.shed_motion
+        - camera.hallway
+        - camera.doorbell_sub
+        - camera.txnas_backyard
+        - camera.tygo
+        - camera.txnas_babycam
+      to: unavailable
+      for:
+        minutes: 2
+      id: offline
+    - trigger: state
+      entity_id: *alarm_entities
+      from: unavailable
+      id: online
+  condition:
+    - condition: not
+      conditions:
+        - condition: state
+          entity_id: alarm_control_panel.home_alarm
+          state: disarmed
+    - alias: Only report recovery of an entity we reported as offline
+      condition: template
+      value_template: >
+        {{ trigger.id == 'offline' or
+           (trigger.to_state.last_changed - trigger.from_state.last_changed)
+           .total_seconds() >= 120 }}
+  action:
+    - action: logbook.log
+      data:
+        name: Alarm
+        entity_id: alarm_control_panel.home_alarm
+        message: >
+          {{ trigger.to_state.name }}
+          {{ 'offline' if trigger.id == 'offline' else 'weer online' }}
+    - action: notify.app_tim
+      data:
+        title: >
+          {{ '📡 Offline' if trigger.id == 'offline' else '✅ Weer online' }}:
+          {{ trigger.to_state.name }}
+        message: >
+          {{ trigger.to_state.name }} is
+          {{ 'offline terwijl het alarm aan staat.' if trigger.id == 'offline'
+             else 'weer bereikbaar.' }}
+        data:
+          tag: "alarm_offline_{{ trigger.entity_id | replace('.', '_') }}"
+          notification_icon: >
+            {{ 'mdi:lan-disconnect' if trigger.id == 'offline'
+               else 'mdi:lan-connect' }}
+
+- id: alarm_snapshot_cleanup
+  alias: "Clean up old alarm snapshots"
+  trigger:
+    - trigger: time
+      at: "03:15:00"
+  action:
+    - action: shell_command.alarm_snapshot_cleanup

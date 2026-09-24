@@ -1,5 +1,14 @@
+# Whether a sensor actually triggers the panel is decided by
+# script.alarm_sensor_event (a door or window at once, motion only when
+# confirmed by a second sensor). Once triggered the panel is 'pending'
+# (delay_time) and then 'triggered'. Sensors in those states still count, as
+# long as the panel came from the mode of the automation (the manual panel
+# keeps it in the 'previous_state' attribute).
+#
+# The sensor lists must stay in sync with group.alarm_sensors.
 - id: trigger_alarm_armed_away
   alias: "Trigger alarm while armed away"
+  mode: queued
   trigger:
     - trigger: state
       entity_id:
@@ -12,46 +21,45 @@
         - binary_sensor.voordeur_opening
         - binary_sensor.schuifpui_opening
         - binary_sensor.backyard_person
+        - binary_sensor.shed_motion
       to: "on"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: armed_away
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: triggered
-  action:
-    - action: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.home_alarm
-    - action: script.notify_of_movement
+    - alias: Armed away, or already going off from armed away
+      condition: template
+      value_template: >
+        {{ is_state('alarm_control_panel.home_alarm', 'armed_away')
+           or (states('alarm_control_panel.home_alarm') in ['pending', 'triggered']
+               and is_state_attr('alarm_control_panel.home_alarm',
+                                 'previous_state', 'armed_away')) }}
+  action: &alarm_trigger_action
+    - action: script.alarm_sensor_event
+      data:
+        sensor: "{{ trigger.entity_id }}"
 
 - id: trigger_alarm_armed_night
   alias: "Trigger alarm while armed night"
+  mode: queued
   trigger:
     - trigger: state
-      entity_id: binary_sensor.voordeur_opening
-      to: "on"
-    - trigger: state
-      entity_id: binary_sensor.schuifpui_opening
+      entity_id:
+        - binary_sensor.voordeur_opening
+        - binary_sensor.schuifpui_opening
+        - binary_sensor.backyard_person
+        - binary_sensor.shed_motion
       to: "on"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: armed_night
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: triggered
-  action:
-    - action: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.home_alarm
-    - action: script.notify_of_movement
+    - alias: Armed night, or already going off from armed night
+      condition: template
+      value_template: >
+        {{ is_state('alarm_control_panel.home_alarm', 'armed_night')
+           or (states('alarm_control_panel.home_alarm') in ['pending', 'triggered']
+               and is_state_attr('alarm_control_panel.home_alarm',
+                                 'previous_state', 'armed_night')) }}
+  action: *alarm_trigger_action
 
 - id: trigger_alarm_armed_home
   alias: "Trigger alarm while armed home"
+  mode: queued
   trigger:
     - trigger: state
       entity_id:
@@ -62,19 +70,17 @@
         - binary_sensor.shed_motion
       to: "on"
   condition:
-    - condition: or
-      conditions:
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: armed_home
-        - condition: state
-          entity_id: alarm_control_panel.home_alarm
-          state: triggered
-  action:
-    - action: alarm_control_panel.alarm_trigger
-      entity_id: alarm_control_panel.home_alarm
-    - action: script.notify_of_movement
+    - alias: Armed home, or already going off from armed home
+      condition: template
+      value_template: >
+        {{ is_state('alarm_control_panel.home_alarm', 'armed_home')
+           or (states('alarm_control_panel.home_alarm') in ['pending', 'triggered']
+               and is_state_attr('alarm_control_panel.home_alarm',
+                                 'previous_state', 'armed_home')) }}
+  action: *alarm_trigger_action
 
+# Deliberately notify only: no siren or lights yet, a motion sensor still
+# fires falsely now and then.
 - id: notify_of_alarm
   alias: "Notify of alarm"
   trigger:
@@ -82,10 +88,53 @@
       entity_id: alarm_control_panel.home_alarm
       to: triggered
   action:
-    - action: telegram_bot.send_message
+    - action: logbook.log
       data:
-        title: "🚨 *Inbraak alarm!*"
-        message: "Het inbraakalarm is geactiveerd!"
-        inline_keyboard:
-          - "Blink lights:/blinklights"
-          - "Disarm alarm:/disarm_alarm"
+        name: Alarm
+        entity_id: alarm_control_panel.home_alarm
+        message: "Alarm afgegaan: niet binnen de vertraging uitgeschakeld"
+    - action: notify.app_tim
+      data:
+        title: "🚨 Inbraakalarm afgegaan!"
+        message: >
+          Het alarm is niet uitgeschakeld. Sensoren: {{
+            states('input_text.alarm_event_sensors').split(',')
+            | reject('eq', '') | map('regex_replace', '^', 'binary_sensor.')
+            | map('state_attr', 'friendly_name') | join(', ') }}
+        data:
+          tag: alarm_triggered
+          ttl: 0
+          priority: high
+          importance: high
+          channel: Alarm bevestigd
+          notification_icon: mdi:shield-alert
+          clickAction: /lovelace/security
+          actions:
+            - action: disarm_alarm
+              title: "Uitschakelen"
+              authenticationRequired: true
+            - action: alarm_blink_lights
+              title: "Lampen knipperen"
+            - action: URI
+              title: "Camera's"
+              uri: /lovelace/security
+
+- id: reset_alarm_verification_window
+  alias: "Reset alarm verification window"
+  trigger:
+    - trigger: state
+      entity_id: alarm_control_panel.home_alarm
+      to: disarmed
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.alarm_verification
+  action:
+    - action: timer.cancel
+      target:
+        entity_id: timer.alarm_verification
+    - action: input_text.set_value
+      target:
+        entity_id: input_text.alarm_event_sensors
+      data:
+        value: ""

@@ -341,6 +341,35 @@ views:
               - armed_away
               - armed_night
               - disarmed
+      - type: entities
+        title: Huidig event
+        state_color: true
+        entities:
+          - timer.alarm_verification
+          - input_text.alarm_event_sensors
+        show_header_toggle: false
+      # Shows the panel state changes plus every logbook.log line of the
+      # alarm automations, which all log against the panel.
+      - type: logbook
+        title: Alarm historie
+        hours_to_show: 168
+        entities:
+          - alarm_control_panel.home_alarm
+      - type: history-graph
+        title: Alarmstatus
+        hours_to_show: 168
+        entities:
+          - entity: alarm_control_panel.home_alarm
+      - type: picture-entity
+        entity: camera.hallway
+      - type: picture-entity
+        entity: camera.tygo
+      - type: picture-entity
+        entity: camera.txnas_babycam
+      - type: picture-entity
+        entity: camera.doorbell_sub
+      - type: picture-entity
+        entity: camera.txnas_backyard
   - path: solar-energy
     title: Solar Energy
     icon: mdi:solar-power

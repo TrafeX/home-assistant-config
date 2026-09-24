@@ -96,6 +96,16 @@ input_datetime: !include configuration/input_datetime.yaml
 # Configure number values
 input_number: !include configuration/input_number.yaml
 
+# Configure text values
+input_text: !include configuration/input_text.yaml
+
+# Window in which a second alarm sensor confirms the first one
+timer:
+  alarm_verification:
+    name: Alarm verificatie
+    duration: "00:05:00"
+    icon: mdi:shield-search
+
 # Configure Sonos integration
 sonos:
   media_player:
@@ -141,6 +151,11 @@ alarm_control_panel:
       arming_time: 0
 
 stream:
+
+shell_command:
+  # Alarm snapshots live under the media folder, not www/, so they are not
+  # served without authentication. Keep them as long as the recorder history.
+  alarm_snapshot_cleanup: !secret alarm_snapshot_cleanup_command
 
 command_line:
   sensor:

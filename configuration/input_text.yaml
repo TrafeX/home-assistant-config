@@ -1,0 +1,6 @@
+# Object ids of the sensors seen in the current verification window, comma
+# separated. Filled by script.alarm_sensor_event.
+alarm_event_sensors:
+  name: Alarm sensoren (huidig event)
+  icon: mdi:shield-alert-outline
+  max: 255

@@ -7,3 +7,27 @@ announcement_speakers:
     - media_player.woonkamer_hub
     - media_player.first_floor
     - media_player.werkkamer
+# Every sensor that can trigger the alarm in any mode. The state triggers in
+# automation/alarm_triggers.yaml and alarm_supervision.yaml cannot expand a
+# group, so keep their lists in sync with this one.
+alarm_sensors:
+  entities:
+    - binary_sensor.living_motion_detection
+    - binary_sensor.hallway_gf_motion
+    - binary_sensor.hallway_1st_motion_detection
+    - binary_sensor.hallway_2nd_motion_detection
+    - binary_sensor.bedroom_jens_motion_detection
+    - binary_sensor.tygo_motion_detection
+    - binary_sensor.voordeur_opening
+    - binary_sensor.schuifpui_opening
+    - binary_sensor.backyard_person
+    - binary_sensor.backyard_motion_detection
+    - binary_sensor.shed_motion
+# Cameras archived on every alarm event.
+alarm_cameras:
+  entities:
+    - camera.hallway
+    - camera.doorbell_sub
+    - camera.txnas_backyard
+    - camera.tygo
+    - camera.txnas_babycam

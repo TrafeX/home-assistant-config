@@ -8,16 +8,8 @@
     - condition: state
       entity_id: input_boolean.guest_presence
       state: "off"
+  # The arming notification comes from alarm_arming_check.
   action:
-    - action: notify.app_tim
-      data:
-        title: "🛡️ Alarm activatie"
-        message: "Alarm wordt geactiveerd omdat iedereen weg is."
-        data:
-          notification_icon: mdi:shield-alert
-          actions:
-            - action: "disarm_alarm"
-              title: "Alarm uitschakelen"
     - action: alarm_control_panel.alarm_arm_away
       entity_id: alarm_control_panel.home_alarm
 
@@ -87,3 +79,100 @@
         message: "Alarm gedeactiveerd."
         data:
           notification_icon: mdi:shield-check
+
+# Always report arming away; home and night only when something needs
+# attention. An open door never goes to 'on' again, so it is blind until
+# closed.
+- id: alarm_arming_check
+  alias: "Report alarm arming and open or offline sensors"
+  trigger:
+    - trigger: state
+      entity_id: alarm_control_panel.home_alarm
+      to:
+        - arming
+        - armed_home
+        - armed_night
+      not_from:
+        - pending
+        - triggered
+  variables:
+    armed_mode: >
+      {{ state_attr('alarm_control_panel.home_alarm', 'next_state')
+         if trigger.to_state.state == 'arming' else trigger.to_state.state }}
+    mode_name: >
+      {{ {'armed_away': 'Afwezig', 'armed_home': 'Thuis',
+          'armed_night': 'Nacht'}.get(armed_mode, armed_mode) }}
+    open_doors: >
+      {{ expand('binary_sensor.voordeur_opening', 'binary_sensor.schuifpui_opening')
+         | selectattr('state', 'eq', 'on') | map(attribute='name') | list }}
+    offline: >
+      {{ expand('group.alarm_sensors', 'group.alarm_cameras')
+         | selectattr('state', 'in', ['unavailable', 'unknown'])
+         | map(attribute='name') | list }}
+  condition:
+    - condition: template
+      value_template: >
+        {{ armed_mode == 'armed_away' or open_doors or offline }}
+  action:
+    - action: logbook.log
+      data:
+        name: Alarm
+        entity_id: alarm_control_panel.home_alarm
+        message: >
+          Ingeschakeld: {{ mode_name }}
+          {%- if open_doors %}, open: {{ open_doors | join(', ') }}{% endif %}
+          {%- if offline %}, offline: {{ offline | join(', ') }}{% endif %}
+    - action: notify.app_tim
+      data:
+        title: >
+          {{ '⚠️' if open_doors or offline else '🛡️' }} Alarm ingeschakeld:
+          {{ mode_name }}
+        message: >
+          {%- if open_doors %}Staat open: {{ open_doors | join(', ') }}.
+          {% endif %}
+          {%- if offline %}Offline: {{ offline | join(', ') }}.
+          {% endif %}
+          {%- if not open_doors and not offline %}Alle sensoren in orde.{% endif %}
+        data:
+          tag: alarm_arming
+          notification_icon: mdi:shield-lock
+          actions:
+            - action: disarm_alarm
+              title: "Uitschakelen"
+
+- id: alarm_blink_lights_event
+  alias: "Blink lights from alarm notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: alarm_blink_lights
+      id: start
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: alarm_stop_blink_lights
+      id: stop
+  action:
+    - if:
+        - condition: trigger
+          id: start
+      then:
+        - action: script.start_blink_lights
+        - action: notify.app_tim
+          data:
+            title: "💡 Lampen knipperen"
+            message: "Alle lampen knipperen."
+            data:
+              tag: alarm_blink_lights
+              notification_icon: mdi:lightbulb-alert
+              actions:
+                - action: alarm_stop_blink_lights
+                  title: "Stoppen"
+      else:
+        - action: script.stop_blink_lights
+        - action: notify.app_tim
+          data:
+            message: clear_notification
+            data:
+              tag: alarm_blink_lights

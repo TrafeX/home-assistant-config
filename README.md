@@ -4,9 +4,11 @@
 
 Some of the things I've implemented:
 
-- Alarm system which sends snapshots of the camera's when motion is detected
+- Alarm system with push notifications (camera image, disarm and blink lights actions) via the companion app
+- Alarm verification: a door or window triggers the alarm at once, a motion sensor only when a second sensor fires within 5 minutes
+- Alarm history: logbook, state history and archived camera snapshots of every alarm event
+- Warn about open doors and offline sensors or cameras when arming, and when they go offline while armed
 - Have home modes to control lighting and heating based on the alarm state
-- Ability to disarm the alarm via Telegram actions
 - Fully automated living lights
 - Automated hallway lights which dim at night
 - Notify when washing machine or wash dryer is finished, including the duration and energy usage

@@ -1,0 +1,159 @@
+alias: "Handle alarm sensor event"
+description: >
+  Called by the alarm trigger automations for every sensor that fires while
+  the alarm is armed. A door or window triggers the alarm at once. A motion
+  sensor on its own is only reported as unconfirmed, because they fire
+  falsely now and then; a second, different sensor within the verification
+  window confirms it and triggers the alarm.
+mode: queued
+max: 20
+fields:
+  sensor:
+    description: Entity id of the sensor that fired
+    example: binary_sensor.voordeur_opening
+variables:
+  panel: alarm_control_panel.home_alarm
+  # Doors and windows: a single one is enough to trigger the alarm.
+  entry_sensors:
+    - voordeur_opening
+    - schuifpui_opening
+  # Only sensors that a camera actually sees. Sensors without an entry are
+  # reported without an image; all cameras are still archived below. The
+  # living room, the sliding door and the shed have no camera of their own,
+  # the backyard camera covers them. The first camera goes into the alert
+  # itself, every further camera into its own notification in the same
+  # group, since an Android notification holds only one image.
+  cameras:
+    living_motion_detection: [camera.txnas_backyard]
+    hallway_gf_motion: [camera.hallway]
+    voordeur_opening: [camera.hallway, camera.doorbell_sub]
+    tygo_motion_detection: [camera.tygo]
+    bedroom_jens_motion_detection: [camera.txnas_babycam]
+    schuifpui_opening: [camera.txnas_backyard]
+    backyard_person: [camera.txnas_backyard]
+    backyard_motion_detection: [camera.txnas_backyard]
+    shed_motion: [camera.txnas_backyard]
+  folder: !secret alarm_snapshot_folder
+  stamp: "{{ now().strftime('%Y%m%d_%H%M%S') }}"
+  object_id: "{{ sensor.split('.')[1] }}"
+  armed_mode: >
+    {{ state_attr(panel, 'previous_state')
+       if states(panel) in ['pending', 'triggered'] else states(panel) }}
+  mode_name: >
+    {{ {'armed_away': 'Afwezig', 'armed_home': 'Thuis',
+        'armed_night': 'Nacht'}.get(armed_mode, armed_mode) }}
+  window_open: "{{ is_state('timer.alarm_verification', 'active') }}"
+  known: >
+    {{ states('input_text.alarm_event_sensors').split(',') | reject('eq', '')
+       | list if window_open else [] }}
+  repeated: "{{ object_id in known }}"
+  seen: "{{ known if repeated else known + [object_id] }}"
+  confirmed: "{{ seen | length > 1 }}"
+  triggers_alarm: "{{ confirmed or object_id in entry_sensors }}"
+  names: >
+    {{ seen | map('regex_replace', '^', 'binary_sensor.')
+       | map('state_attr', 'friendly_name') | list }}
+  sensor_cameras: "{{ cameras.get(object_id, []) }}"
+  push_data:
+    tag: alarm
+    group: alarm
+    ttl: 0
+    priority: high
+    importance: high
+    channel: "{{ 'Alarm bevestigd' if triggers_alarm else 'Alarm' }}"
+    notification_icon: >
+      {{ 'mdi:shield-alert' if triggers_alarm else 'mdi:motion-sensor' }}
+    clickAction: /lovelace/security
+    actions:
+      - action: disarm_alarm
+        title: "Uitschakelen"
+        authenticationRequired: true
+      - action: alarm_blink_lights
+        title: "Lampen knipperen"
+      - action: URI
+        title: "Camera's"
+        uri: /lovelace/security
+sequence:
+  - alias: Open the verification window on the first sensor
+    if:
+      - condition: template
+        value_template: "{{ not window_open }}"
+    then:
+      - action: timer.start
+        target:
+          entity_id: timer.alarm_verification
+  - action: input_text.set_value
+    target:
+      entity_id: input_text.alarm_event_sensors
+    data:
+      value: "{{ seen | join(',') }}"
+  - action: logbook.log
+    data:
+      name: Alarm
+      entity_id: "{{ panel }}"
+      message: >
+        {{ state_attr(sensor, 'friendly_name') }} tijdens {{ mode_name }}
+        {%- if repeated %} (herhaald){% elif confirmed %} (bevestigd)
+        {%- elif not triggers_alarm %} (onbevestigd){% endif %}
+  - alias: Trigger the panel for a door or window, or a confirmed event
+    if:
+      - condition: template
+        value_template: >
+          {{ triggers_alarm and states(panel) not in ['pending', 'triggered'] }}
+    then:
+      - action: alarm_control_panel.alarm_trigger
+        target:
+          entity_id: "{{ panel }}"
+  - alias: A sensor that already fired in this window is only logged
+    condition: template
+    value_template: "{{ not repeated }}"
+  - parallel:
+      # The companion app fetches the proxy image when the push arrives, so
+      # it is as current as it gets. No query string: that breaks the URL
+      # signing (see doorbell.yaml).
+      - sequence:
+          - action: notify.app_tim
+            data:
+              title: >
+                {% if confirmed %}🚨 Alarm bevestigd
+                {%- elif triggers_alarm %}🚨 Alarm: {{ state_attr(sensor, 'friendly_name') }}
+                {%- else %}⚠️ Onbevestigd: {{ state_attr(sensor, 'friendly_name') }}
+                {%- endif %}
+              message: >
+                {{ mode_name }} · {{ now().strftime('%H:%M:%S') }}
+                {%- if confirmed %} · {{ seen | length }} sensoren{% endif %}.
+                Sensoren: {{ names | join(', ') }}
+              data: >
+                {{ dict(push_data, image='/api/camera_proxy/'
+                        ~ sensor_cameras[0])
+                   if sensor_cameras else push_data }}
+          - alias: One extra notification per further camera
+            repeat:
+              for_each: "{{ sensor_cameras[1:] }}"
+              sequence:
+                - action: notify.app_tim
+                  data:
+                    title: "📷 {{ state_attr(repeat.item, 'friendly_name') }}"
+                    message: "{{ state_attr(sensor, 'friendly_name') }}"
+                    data:
+                      tag: "alarm_{{ repeat.item | replace('.', '_') }}"
+                      group: alarm
+                      ttl: 0
+                      priority: high
+                      channel: Alarm camera
+                      notification_icon: mdi:cctv
+                      image: "/api/camera_proxy/{{ repeat.item }}"
+                      clickAction: /lovelace/security
+      - alias: Archive a snapshot of every alarm camera
+        repeat:
+          for_each: >
+            {{ expand('group.alarm_cameras') | map(attribute='entity_id')
+               | list }}
+          sequence:
+            - action: camera.snapshot
+              continue_on_error: true
+              target:
+                entity_id: "{{ repeat.item }}"
+              data:
+                filename: >-
+                  {{ folder }}/{{ stamp }}_{{ repeat.item.split('.')[1] }}.jpg
