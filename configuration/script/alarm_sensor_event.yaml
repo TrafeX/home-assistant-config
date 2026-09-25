@@ -114,10 +114,9 @@ sequence:
           - action: notify.app_tim
             data:
               title: >
-                {% if confirmed %}🚨 Alarm bevestigd
-                {%- elif triggers_alarm %}🚨 Alarm: {{ state_attr(sensor, 'friendly_name') }}
-                {%- else %}⚠️ Onbevestigd: {{ state_attr(sensor, 'friendly_name') }}
-                {%- endif %}
+                {{ '🚨' if triggers_alarm else '⚠️' }}
+                {{ state_attr(sensor, 'friendly_name') }}
+                ({{ 'bevestigd' if triggers_alarm else 'onbevestigd' }})
               message: >
                 {{ mode_name }} · {{ now().strftime('%H:%M:%S') }}
                 {%- if confirmed %} · {{ seen | length }} sensoren{% endif %}.
