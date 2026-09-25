@@ -346,7 +346,6 @@ views:
         state_color: true
         entities:
           - timer.alarm_verification
-          - input_text.alarm_event_sensors
         show_header_toggle: false
       # Shows the panel state changes plus every logbook.log line of the
       # alarm automations, which all log against the panel.
@@ -585,7 +584,7 @@ views:
     badges: []
     cards:
       - type: picture-entity
-        entity: camera.doorbell_sub
+        entity: camera.txnas_doorbell
       - type: picture-entity
         entity: camera.txnas_backyard
       - type: picture-entity
@@ -672,7 +671,7 @@ views:
                   - binary_sensor.doorbell_motion
                   - binary_sensor.doorbell_person
                   - binary_sensor.voordeur_opening
-                camera_image: camera.doorbell_sub
+                camera_image: camera.txnas_doorbell
               - type: picture-glance
                 title: Backyard
                 entities:
