@@ -76,9 +76,11 @@
     - trigger: state
       entity_id: media_player.sony_bravia_tv
       attribute: source
-      to: "HDMI 2/MHL"
+      to:
+        - "HDMI 2/MHL"
+        - "HDMI 4/MHL"
   action:
-    - alias: Set the TV speaker to 14%
+    - alias: Set the TV speaker to 12%
       action: media_player.volume_set
       target:
         entity_id: media_player.tv_speaker
