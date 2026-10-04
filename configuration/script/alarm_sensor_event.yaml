@@ -32,7 +32,7 @@ variables:
     schuifpui_opening: [camera.txnas_backyard]
     backyard_person: [camera.txnas_backyard]
     backyard_motion_detection: [camera.txnas_backyard]
-    shed_motion: [camera.txnas_backyard]
+    shed_motion: [camera.schuur_shed]
   folder: !secret alarm_snapshot_folder
   stamp: "{{ now().strftime('%Y%m%d_%H%M%S') }}"
   object_id: "{{ sensor.split('.')[1] }}"
