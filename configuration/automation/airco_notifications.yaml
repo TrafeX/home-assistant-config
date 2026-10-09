@@ -8,7 +8,7 @@
       entity_id: sensor.tygo_temperature
       above: 30
     - condition: numeric_state
-      entity_id: sensor.solaredge_i1_ac_power
+      entity_id: sensor.solaredge_se2200h_power
       above: 400
   action:
     - action: notify.app_tim
@@ -16,7 +16,7 @@
         title: "🌡️ Tygo's kamer is warm"
         message: >
           Het is {{ states('sensor.tygo_temperature') }}°C in Tygo's kamer en
-          de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
+          de zonnepanelen leveren {{ states('sensor.solaredge_se2200h_power') | int }}W.
           Wil je de airco aanzetten?
         data:
           notification_icon: mdi:air-conditioner
@@ -56,7 +56,7 @@
       entity_id: sensor.bedroom_jens_temperature
       above: 30
     - condition: numeric_state
-      entity_id: sensor.solaredge_i1_ac_power
+      entity_id: sensor.solaredge_se2200h_power
       above: 400
   action:
     - action: notify.app_tim
@@ -64,7 +64,7 @@
         title: "🌡️ Jens' kamer is warm"
         message: >
           Het is {{ states('sensor.bedroom_jens_temperature') }}°C in Jens' kamer en
-          de zonnepanelen leveren {{ states('sensor.solaredge_i1_ac_power') | int }}W.
+          de zonnepanelen leveren {{ states('sensor.solaredge_se2200h_power') | int }}W.
           Wil je de airco aanzetten?
         data:
           notification_icon: mdi:air-conditioner

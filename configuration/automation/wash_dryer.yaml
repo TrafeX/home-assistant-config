@@ -17,7 +17,7 @@
   id: solar_start_wash_dryer
   trigger:
     - trigger: template
-      value_template: "{{ states('sensor.solaredge_i1_ac_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
+      value_template: "{{ states('sensor.solaredge_se2200h_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
       for:
         minutes: 5
     - trigger: state
@@ -25,7 +25,7 @@
       to: "on"
   condition:
     - condition: template
-      value_template: "{{ states('sensor.solaredge_i1_ac_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
+      value_template: "{{ states('sensor.solaredge_se2200h_power') | float(0) > states('input_number.solar_start_threshold') | float(200) }}"
     - condition: state
       entity_id: input_boolean.solar_wash_dryer_ready
       state: "on"
@@ -44,7 +44,7 @@
     - action: notify.app_tim
       data:
         title: ☀️ Wasdroger gestart op zonne-energie
-        message: De wasdroger is automatisch gestart met {{ states('sensor.solaredge_i1_ac_power') }} W zonne-energie.
+        message: De wasdroger is automatisch gestart met {{ states('sensor.solaredge_se2200h_power') }} W zonne-energie.
         data:
           notification_icon: mdi:tumble-dryer
 

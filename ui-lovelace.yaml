@@ -7,7 +7,7 @@ views:
       - person.chantal
       - sensor.lights_on
       - sensor.house_energy_consumption
-      - sensor.solaredge_i1_ac_power
+      - sensor.solaredge_se2200h_power
       - sun.sun
     cards:
       - type: entities
@@ -380,7 +380,7 @@ views:
         columns: 2
         cards:
           - type: sensor
-            entity: sensor.solaredge_i1_ac_power
+            entity: sensor.solaredge_se2200h_power
             name: Solar Power
             graph: line
             detail: 2
@@ -400,7 +400,7 @@ views:
             graph: line
             detail: 2
           - type: statistic
-            entity: sensor.solaredge_i1_ac_power
+            entity: sensor.solaredge_se2200h_power
             name: 24h peak solar power
             stat_type: max
             period:
@@ -408,7 +408,7 @@ views:
                 duration:
                   hours: 24
           - type: statistic
-            entity: sensor.solaredge_i1_ac_power
+            entity: sensor.solaredge_se2200h_power
             name: Month peak solar power
             stat_type: max
             period:
@@ -425,7 +425,7 @@ views:
           - name: House consumption
             entity: sensor.house_energy_consumption
           - name: Production
-            entity: sensor.solaredge_i1_ac_power
+            entity: sensor.solaredge_se2200h_power
           - name: From grid
             entity: sensor.power_consumption
           - name: To grid
