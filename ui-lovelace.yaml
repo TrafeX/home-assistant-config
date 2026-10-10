@@ -22,7 +22,7 @@ views:
           - script.cast_dashboard_living
           - input_boolean.cast_kids_dashboard
         show_header_toggle: false
-      - type: thermostat
+      - type: tile
         name: Verwarming
         entity: climate.heating
       - type: tile
