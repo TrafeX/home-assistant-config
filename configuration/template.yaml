@@ -100,6 +100,7 @@
               [achtertuin, voortuin, schuur, backyard, frontyard, shed]
             exclude:
               - sensor.netatmo_outdoor_humidity
+              - sensor.storage_humidity
         protection_words:
           - overheat
           - over_heat
