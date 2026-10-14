@@ -47,6 +47,7 @@
         message: De wasmachine is automatisch gestart met {{ states('sensor.solaredge_se2200h_power') }} W zonne-energie.
         data:
           notification_icon: mdi:washing-machine
+          tag: washing_machine
 
 - id: alert_washing_machine_not_started_1500
   alias: "Alert if washing machine not started by 15:00"
@@ -64,6 +65,7 @@
         message: Het is 15:00 en er was nog niet genoeg zonne-energie. Start de wasmachine handmatig of wacht op meer zon.
         data:
           notification_icon: mdi:washing-machine-alert
+          tag: washing_machine
 
 - id: store_washing_machine_start_time_energy
   alias: "Store washing machine start time and energy"
@@ -111,6 +113,7 @@
         message: Het heeft {{ duration }} geduurd en {{ energy_used }} kWh verbruikt.
         data:
           notification_icon: mdi:washing-machine
+          tag: washing_machine
     - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_hub

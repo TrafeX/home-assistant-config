@@ -47,6 +47,7 @@
         message: De wasdroger is automatisch gestart met {{ states('sensor.solaredge_se2200h_power') }} W zonne-energie.
         data:
           notification_icon: mdi:tumble-dryer
+          tag: wash_dryer
 
 - alias: "Alert if wash dryer not started by 15:00"
   id: alert_wash_dryer_not_started_1500
@@ -64,6 +65,7 @@
         message: Het is 15:00 en er was nog niet genoeg zonne-energie. Start de wasdroger handmatig of wacht op meer zon.
         data:
           notification_icon: mdi:tumble-dryer-alert
+          tag: wash_dryer
 
 - alias: "Store wash dryer start time and energy"
   id: store_wash_dryer_start_time_energy
@@ -110,6 +112,7 @@
         message: Het heeft {{ duration }} geduurd en {{ energy_used }} kWh verbruikt.
         data:
           notification_icon: mdi:tumble-dryer
+          tag: wash_dryer
     - action: tts.google_say
       data:
         entity_id: media_player.woonkamer_hub
