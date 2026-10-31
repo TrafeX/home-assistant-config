@@ -207,8 +207,8 @@ views:
         title: Badkamer 2de
         state_color: true
         entities:
-          - sensor.bathroom_2nd_temperature
-          - sensor.bathroom_2nd_humidity
+          - sensor.badkamer_2de_shower_sensor_temperature
+          - sensor.badkamer_2de_shower_sensor_humidity
         show_header_toggle: false
       - type: entities
         title: CV kast
