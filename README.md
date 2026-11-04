@@ -44,6 +44,7 @@ Some of the things I've implemented:
 - Blink the kids bedroom lights when it's time to get up or go to sleep
 - Start the washing machine or dryer automatically when there is enough solar power available
 - Ask if the airconditioner should be turned on when the temperature is above a certain level
+- Heat Tygo's bedroom with the airconditioner on surplus solar power
 - Warn when the temperature or humidity in any room goes beyond a certain threshold
 - Warn when one of the devices reports an error or malfunction
 

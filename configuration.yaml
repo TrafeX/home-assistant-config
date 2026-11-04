@@ -101,6 +101,9 @@ input_datetime: !include configuration/input_datetime.yaml
 # Configure number values
 input_number: !include configuration/input_number.yaml
 
+# Configure counters
+counter: !include configuration/counter.yaml
+
 # Configure text values
 input_text: !include configuration/input_text.yaml
 

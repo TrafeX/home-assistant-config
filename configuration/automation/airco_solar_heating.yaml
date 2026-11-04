@@ -1,0 +1,79 @@
+# Heat Tygo's bedroom with the airco on surplus solar power instead of
+# exporting it. The airco starts automatically at most 3 times a day (see
+# counter.yaml) to spare the compressor.
+
+- id: solar_heating_airco_tygo
+  alias: "Heat Tygo's bedroom on solar surplus"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.solar_surplus
+      to: "on"
+    - trigger: numeric_state
+      entity_id: sensor.tygo_temperature
+      below: 20
+  condition:
+    - condition: state
+      entity_id: binary_sensor.solar_surplus
+      state: "on"
+    - condition: numeric_state
+      entity_id: sensor.tygo_temperature
+      below: 20
+    - condition: state
+      entity_id: climate.airco_tygo
+      state: "off"
+    - alias: Less than 3 automatic starts today
+      condition: numeric_state
+      entity_id: counter.solar_heating_airco_tygo
+      below: 3
+  action:
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.airco_tygo
+      data:
+        hvac_mode: heat
+        temperature: 20
+    - action: counter.increment
+      target:
+        entity_id: counter.solar_heating_airco_tygo
+    - action: notify.app_tim
+      data:
+        title: "☀️ Airco Tygo verwarmt op zonne-energie"
+        message: >
+          Het is {{ states('sensor.tygo_temperature') }}°C in Tygo's kamer en
+          er wordt {{ states('sensor.power_production') | int(0) }}W teruggeleverd.
+          De airco verwarmt naar 20°C
+          (start {{ states('counter.solar_heating_airco_tygo') }} van 3 vandaag).
+        data:
+          notification_icon: mdi:air-conditioner
+          tag: airco_tygo
+
+# 10 minutes of grid import rides out a passing cloud without buying much
+# power, and avoids short compressor cycles. Only turned off when in heat
+# mode, so cooling or a manual off is never touched.
+- id: solar_heating_airco_tygo_off
+  alias: "Turn off Tygo airco heating when the solar surplus is gone"
+  trigger:
+    - trigger: numeric_state
+      entity_id: sensor.power_consumption
+      above: 0
+      for: "00:10:00"
+  condition:
+    - condition: state
+      entity_id: climate.airco_tygo
+      state: heat
+  action:
+    - action: climate.set_hvac_mode
+      target:
+        entity_id: climate.airco_tygo
+      data:
+        hvac_mode: "off"
+
+- id: reset_solar_heating_airco_counter
+  alias: "Reset daily solar airco heating counter"
+  trigger:
+    - trigger: time
+      at: "00:00:00"
+  action:
+    - action: counter.reset
+      target:
+        entity_id: counter.solar_heating_airco_tygo

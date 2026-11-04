@@ -50,6 +50,12 @@
     - name: Hot Water
       default_entity_id: binary_sensor.hotwater_active
       state: "{{ state_attr('climate.heating', 'boiler_indicator') == 'HW' }}"
+    # Export to the grid has stayed above 500 W for 10 minutes, so a sunny gap
+    # between clouds does not start Tygo's airco (airco_solar_heating).
+    - name: Solar surplus
+      delay_on: 0:10:00
+      default_entity_id: binary_sensor.solar_surplus
+      state: "{{ states('sensor.power_production') | float(0) > 500 }}"
 # Generic threshold watchdog. Every rule below is matched against all entities
 # of the right device_class, so adding a new alert is one entry in the rules
 # list - the notifying automation (automation/sensor_alerts.yaml) is

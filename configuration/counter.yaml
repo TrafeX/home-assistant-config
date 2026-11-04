@@ -1,0 +1,8 @@
+# Automatic starts of Tygo's airco on solar surplus today; capped at 3 per
+# day to spare the compressor. Reset at midnight by
+# reset_solar_heating_airco_counter.
+solar_heating_airco_tygo:
+  name: Zonne-verwarming airco Tygo starts vandaag
+  initial: 0
+  restore: true
+  icon: mdi:counter
