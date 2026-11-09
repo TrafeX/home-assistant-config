@@ -4,6 +4,9 @@
     - trigger: state
       entity_id: group.all_persons
       to: "not_home"
+      # Debounce brief GPS jumps outside the home zone while someone is home.
+      for:
+        minutes: 5
   condition:
     - condition: state
       entity_id: input_boolean.guest_presence
