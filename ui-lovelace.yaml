@@ -2,10 +2,6 @@ title: Home
 views:
   - path: default_view
     title: default_view
-    badges:
-      - sensor.house_energy_consumption
-      - sensor.solaredge_se2200h_power
-      - sun.sun
     cards:
       # Same summary cards as the built-in Home dashboard.
       - type: grid
