@@ -3,13 +3,33 @@ views:
   - path: default_view
     title: default_view
     badges:
-      - person.tim
-      - person.chantal
-      - sensor.lights_on
       - sensor.house_energy_consumption
       - sensor.solaredge_se2200h_power
       - sun.sun
     cards:
+      # Same summary cards as the built-in Home dashboard.
+      - type: grid
+        square: false
+        columns: 2
+        cards:
+          - type: home-summary
+            summary: persons
+          - type: home-summary
+            summary: light
+            tap_action:
+              action: navigate
+              navigation_path: /light?historyBack=1
+          - type: tile
+            entity: weather.buienradar
+            name: Weer
+            state_content:
+              - temperature
+              - state
+          - type: home-summary
+            summary: energy
+            tap_action:
+              action: navigate
+              navigation_path: /energy?historyBack=1
       - type: entities
         title: Huis
         state_color: true

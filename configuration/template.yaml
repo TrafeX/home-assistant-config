@@ -9,10 +9,6 @@
       unit_of_measurement: °C
       default_entity_id: sensor.nefit_temperature
       state: "{{ state_attr('climate.heating', 'current_temperature') }}"
-    - name: Lights that are on
-      unit_of_measurement: lights
-      default_entity_id: sensor.lights_on
-      state: "{{ states.light|selectattr('state', 'equalto', 'on')|list|length }}"
     - name: "UPS Power Usage"
       unique_id: ups_power_usage
       state_class: measurement
