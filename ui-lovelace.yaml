@@ -10,6 +10,9 @@ views:
         cards:
           - type: home-summary
             summary: persons
+            tap_action:
+              action: navigate
+              navigation_path: /map
           - type: home-summary
             summary: light
             tap_action:
