@@ -114,7 +114,3 @@
         data:
           notification_icon: mdi:washing-machine
           tag: washing_machine
-    - action: tts.google_say
-      data:
-        entity_id: media_player.woonkamer_hub
-        message: "De wasmachine is klaar"

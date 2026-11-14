@@ -113,7 +113,3 @@
         data:
           notification_icon: mdi:tumble-dryer
           tag: wash_dryer
-    - action: tts.google_say
-      data:
-        entity_id: media_player.woonkamer_hub
-        message: "De wasdroger is klaar"
