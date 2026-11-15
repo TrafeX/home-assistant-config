@@ -11,12 +11,17 @@
       entity_id: input_select.home_mode
       state: home
     - condition: state
-      entity_id: switch.woonkamer_christmas_tv
+      entity_id:
+        - light.woonkamer_christmas_tv
+        - light.achtertuin_vlinder
       state: "off"
+      match: any
   action:
-    - action: switch.turn_on
+    - action: light.turn_on
       target:
-        entity_id: switch.woonkamer_christmas_tv
+        entity_id:
+          - light.woonkamer_christmas_tv
+          - light.achtertuin_vlinder
 
 - id: turn_christmas_lights_off_no_activity
   alias: "Turn christmas lights off when no activity in the living room"
@@ -28,8 +33,11 @@
         minutes: 45
   condition:
     - condition: state
-      entity_id: switch.woonkamer_christmas_tv
+      entity_id:
+        - light.woonkamer_christmas_tv
+        - light.achtertuin_vlinder
       state: "on"
+      match: any
     # Same idea as the living lights: sitting still in front of the TV or a
     # cast is not "nobody there". Checked as "not playing" rather than
     # "off", because the Chromecast is regularly unavailable and would
@@ -50,9 +58,11 @@
             - paused
             - buffering
   action:
-    - action: switch.turn_off
+    - action: light.turn_off
       target:
-        entity_id: switch.woonkamer_christmas_tv
+        entity_id:
+          - light.woonkamer_christmas_tv
+          - light.achtertuin_vlinder
 
 - id: turn_christmas_lights_off_leaving_sleeping
   alias: "Turn christmas lights off when leaving or sleeping"
@@ -63,6 +73,8 @@
         - away
         - night
   action:
-    - action: switch.turn_off
+    - action: light.turn_off
       target:
-        entity_id: switch.woonkamer_christmas_tv
+        entity_id:
+          - light.woonkamer_christmas_tv
+          - light.achtertuin_vlinder

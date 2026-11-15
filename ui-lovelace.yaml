@@ -101,6 +101,7 @@ views:
           - light.tuin_spots
           - light.backyard_floodlight
           - light.small_bulbs
+          - light.achtertuin_vlinder
           - type: divider
           - switch.buitenkraan_switch
           - type: divider
