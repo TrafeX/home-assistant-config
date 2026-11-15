@@ -1,0 +1,68 @@
+- id: turn_christmas_lights_on_motion
+  alias: "Turn christmas lights on when there is motion in the living room"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.living_motion_detection
+      to: "on"
+  condition:
+    # Motion while sleeping (a night-time walk to the kitchen) or from the
+    # vacuum while away should not light up the tree.
+    - condition: state
+      entity_id: input_select.home_mode
+      state: home
+    - condition: state
+      entity_id: switch.woonkamer_christmas_tv
+      state: "off"
+  action:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.woonkamer_christmas_tv
+
+- id: turn_christmas_lights_off_no_activity
+  alias: "Turn christmas lights off when no activity in the living room"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.living_motion_detection
+      to: "off"
+      for:
+        minutes: 45
+  condition:
+    - condition: state
+      entity_id: switch.woonkamer_christmas_tv
+      state: "on"
+    # Same idea as the living lights: sitting still in front of the TV or a
+    # cast is not "nobody there". Checked as "not playing" rather than
+    # "off", because the Chromecast is regularly unavailable and would
+    # otherwise keep the lights on all night.
+    - alias: TV is not on
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: media_player.sony_bravia_tv
+          state: "on"
+    - alias: Nothing is casting
+      condition: not
+      conditions:
+        - condition: state
+          entity_id: media_player.chromekamer
+          state:
+            - playing
+            - paused
+            - buffering
+  action:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.woonkamer_christmas_tv
+
+- id: turn_christmas_lights_off_leaving_sleeping
+  alias: "Turn christmas lights off when leaving or sleeping"
+  trigger:
+    - trigger: state
+      entity_id: input_select.home_mode
+      to:
+        - away
+        - night
+  action:
+    - action: switch.turn_off
+      target:
+        entity_id: switch.woonkamer_christmas_tv
