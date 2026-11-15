@@ -4,4 +4,5 @@
 !lovelace-screen.yaml
 !*.sh
 !README.md
+!AGENTS.md
 !.gitignore
