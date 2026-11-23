@@ -10,18 +10,47 @@
     - condition: state
       entity_id: input_select.home_mode
       state: home
-    - condition: state
-      entity_id:
-        - light.woonkamer_christmas_tv
-        - light.achtertuin_vlinder
-      state: "off"
-      match: any
   action:
     - action: light.turn_on
       target:
-        entity_id:
-          - light.woonkamer_christmas_tv
-          - light.achtertuin_vlinder
+        entity_id: light.woonkamer_christmas_tv
+    # The garden light is pointless in daylight; it follows outside_dark.
+    - if:
+        - condition: state
+          entity_id: binary_sensor.outside_dark
+          state: "on"
+      then:
+        - action: light.turn_on
+          target:
+            entity_id: light.achtertuin_vlinder
+
+- id: turn_christmas_garden_light_on_when_dark
+  alias: "Turn the christmas garden light on when it gets dark outside"
+  # Only while the indoor christmas light is on, i.e. someone was recently
+  # active in the living room.
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.outside_dark
+      to: "on"
+  condition:
+    - condition: state
+      entity_id: light.woonkamer_christmas_tv
+      state: "on"
+  action:
+    - action: light.turn_on
+      target:
+        entity_id: light.achtertuin_vlinder
+
+- id: turn_christmas_garden_light_off_when_light
+  alias: "Turn the christmas garden light off when it gets light outside"
+  trigger:
+    - trigger: state
+      entity_id: binary_sensor.outside_dark
+      to: "off"
+  action:
+    - action: light.turn_off
+      target:
+        entity_id: light.achtertuin_vlinder
 
 - id: turn_christmas_lights_off_no_activity
   alias: "Turn christmas lights off when no activity in the living room"

@@ -52,6 +52,27 @@
       delay_on: 0:10:00
       default_entity_id: binary_sensor.solar_surplus
       state: "{{ states('sensor.power_production') | float(0) > 500 }}"
+    # Dark enough outside for the garden lights: twilight, or a grey overcast
+    # day. Stopgap until sensor.backyard_illuminance has enough history to
+    # pick a lux threshold: it only reported on a 100 lux change until
+    # 2026-11-18, so it sat on one value for weeks.
+    # Grey weather only brings the lights on earlier in the evening and keeps
+    # them on longer in the morning, not all day: below 8 degrees means
+    # roughly before 09:20 and after 15:30 in mid November.
+    # Met.no updates hourly; the delays stop a passing shower from toggling.
+    - name: Outside dark
+      unique_id: outside_dark
+      default_entity_id: binary_sensor.outside_dark
+      icon: mdi:weather-night-partly-cloudy
+      delay_on: 0:05:00
+      delay_off: 0:15:00
+      state: >
+        {% set elevation = state_attr('sun.sun', 'elevation') | float(90) %}
+        {% set clouds = state_attr('weather.home', 'cloud_coverage') | float(0) %}
+        {% set grey = clouds >= 85 or states('weather.home') in
+             ['fog', 'rainy', 'pouring', 'snowy', 'snowy-rainy',
+              'lightning-rainy', 'hail'] %}
+        {{ elevation < 3 or (elevation < 8 and grey) }}
 # Generic threshold watchdog. Every rule below is matched against all entities
 # of the right device_class, so adding a new alert is one entry in the rules
 # list - the notifying automation (automation/sensor_alerts.yaml) is
