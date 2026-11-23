@@ -58,6 +58,61 @@
       target:
         entity_id: switch.ventilation
 
+# Laundry dries in the 2nd floor hallway and Tygo's windows fog up. Venting
+# only helps when the outdoor air holds less water than the indoor air, so
+# compare absolute humidity (g/m3), not relative humidity: cold outdoor air
+# at 90% is still much drier than indoor air at 65%. The time pattern
+# re-checks after the 2 hour auto-off, so a humid floor keeps cycling.
+- id: turn_on_ventilation_2nd_floor_humidity_high
+  alias: "Turn on ventilation when the 2nd floor is humid"
+  trigger:
+    - trigger: numeric_state
+      entity_id:
+        - sensor.tygo_humidity
+        - sensor.hallway_2nd_humidity
+      above: 70
+      for:
+        minutes: 10
+    - trigger: time_pattern
+      minutes: "/30"
+  variables:
+    tygo_rh: "{{ states('sensor.tygo_humidity') | float(0) }}"
+    hallway_rh: "{{ states('sensor.hallway_2nd_humidity') | float(0) }}"
+    # Absolute humidity in g/m3 from temperature (°C) and relative humidity
+    indoor_ah: >
+      {% set ns = namespace(ah=0) %}
+      {% for t, rh in [
+           (states('sensor.tygo_temperature'), states('sensor.tygo_humidity')),
+           (states('sensor.hallway_2nd_temperature'), states('sensor.hallway_2nd_humidity'))] %}
+        {% set t = t | float(20) %}
+        {% set ah = 6.112 * e ** (17.67 * t / (t + 243.5)) * (rh | float(0)) * 2.1674 / (273.15 + t) %}
+        {% set ns.ah = [ns.ah, ah] | max %}
+      {% endfor %}
+      {{ ns.ah | round(1) }}
+    outdoor_ah: >
+      {% set t = states('sensor.netatmo_outdoor_temperature') | float(20) %}
+      {% set rh = states('sensor.netatmo_outdoor_humidity') | float(100) %}
+      {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+  condition:
+    - condition: state
+      entity_id: switch.ventilation
+      state: "off"
+    - condition: state
+      entity_id: input_select.home_mode
+      state:
+        - home
+        - night
+    - alias: 2nd floor is humid
+      condition: template
+      value_template: "{{ [tygo_rh, hallway_rh] | max > 70 }}"
+    - alias: Outdoor air is drier than indoor air
+      condition: template
+      value_template: "{{ outdoor_ah < indoor_ah - 1 }}"
+  action:
+    - action: switch.turn_on
+      target:
+        entity_id: switch.ventilation
+
 - id: turn_off_ventilation_after_2_hours
   alias: "Turn off ventilation after 2 hours"
   trigger:
@@ -79,6 +134,14 @@
     - condition: state
       entity_id: switch.ventilation
       state: "on"
+    # Sleeping adds moisture, so keep venting while the 2nd floor is humid;
+    # the 2 hour auto-off still ends it.
+    - alias: 2nd floor is not humid
+      condition: template
+      value_template: >
+        {{ [states('sensor.tygo_humidity') | float(0),
+            states('sensor.hallway_2nd_humidity') | float(0)] | max <= 65 }}
   action:
-    - service: switch.turn_off
-      entity_id: switch.ventilation
+    - action: switch.turn_off
+      target:
+        entity_id: switch.ventilation
