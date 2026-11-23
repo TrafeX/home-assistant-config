@@ -34,3 +34,6 @@ cast_office_dashboard:
 small_office_active:
   name: Werkkamer in gebruik
   icon: mdi:desk
+solar_heating_airco_tygo_active:
+  name: Airco Tygo verwarmt op zonne-energie
+  icon: mdi:solar-power
