@@ -7,6 +7,7 @@ Some of the things I've implemented:
 - Alarm system with push notifications (camera image, disarm and blink lights actions) via the companion app
 - Alarm verification: a door or window triggers the alarm at once, a motion sensor only when a second sensor fires within 5 minutes
 - Alarm history: logbook, state history and archived camera snapshots of every alarm event
+- Sound the camera and smoke detector sirens from the security dashboard while armed, behind a confirmation
 - Warn about open doors and offline sensors or cameras when arming, and when they go offline while armed
 - Have home modes to control lighting and heating based on the alarm state
 - Fully automated living lights

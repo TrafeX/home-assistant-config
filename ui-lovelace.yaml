@@ -363,6 +363,90 @@ views:
               - armed_away
               - armed_night
               - disarmed
+      # Sirens only while the alarm is armed or going off. Each one goes on
+      # behind a confirmation dialog; turning them all off needs none.
+      # Buttons rather than toggles: the Reolink sirens are stateless (always
+      # 'unknown'), so a toggle could never turn them off again.
+      - type: conditional
+        conditions:
+          - condition: state
+            entity: alarm_control_panel.home_alarm
+            state_not: disarmed
+        card:
+          type: entities
+          title: Sirenes
+          show_header_toggle: false
+          entities:
+            - type: button
+              name: Voordeur
+              icon: mdi:doorbell-video
+              action_name: Aan
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_on
+                target:
+                  entity_id: siren.doorbell_siren
+                confirmation:
+                  text: "Sirene voordeur inschakelen?"
+            - type: button
+              name: Achtertuin
+              icon: mdi:cctv
+              action_name: Aan
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_on
+                target:
+                  entity_id: siren.backyard_siren
+                confirmation:
+                  text: "Sirene achtertuin inschakelen?"
+            - type: button
+              name: Rookmelder BG
+              icon: mdi:smoke-detector
+              action_name: Aan
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_on
+                target:
+                  entity_id: siren.rookmelder_bg_siren
+                confirmation:
+                  text: "Sirene rookmelder BG inschakelen?"
+            - type: button
+              name: Rookmelder 1ste
+              icon: mdi:smoke-detector
+              action_name: Aan
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_on
+                target:
+                  entity_id: siren.rookmelder_1ste_siren
+                confirmation:
+                  text: "Sirene rookmelder 1ste inschakelen?"
+            - type: button
+              name: Rookmelder 2de
+              icon: mdi:smoke-detector
+              action_name: Aan
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_on
+                target:
+                  entity_id: siren.gang_2de_rookmelder_gang_2de_siren
+                confirmation:
+                  text: "Sirene rookmelder 2de inschakelen?"
+            - type: divider
+            - type: button
+              name: Alle sirenes uit
+              icon: mdi:alarm-light-off
+              action_name: Uit
+              tap_action:
+                action: perform-action
+                perform_action: siren.turn_off
+                target:
+                  entity_id:
+                    - siren.doorbell_siren
+                    - siren.backyard_siren
+                    - siren.rookmelder_bg_siren
+                    - siren.rookmelder_1ste_siren
+                    - siren.gang_2de_rookmelder_gang_2de_siren
       - type: entities
         title: Huidig event
         state_color: true
