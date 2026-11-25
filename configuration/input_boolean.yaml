@@ -37,3 +37,6 @@ small_office_active:
 solar_heating_airco_tygo_active:
   name: Airco Tygo verwarmt op zonne-energie
   icon: mdi:solar-power
+windows_open:
+  name: Ramen open
+  icon: mdi:window-open-variant

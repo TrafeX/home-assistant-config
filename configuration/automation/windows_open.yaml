@@ -1,0 +1,103 @@
+# input_boolean.windows_open is a manual "I opened the windows" switch for the
+# whole house; there are no window contacts. Airing is quick when it is cold
+# outside, so the reminder comes sooner the colder it is, and repeats every
+# 10 minutes until the windows are marked closed.
+- id: windows_open_start_reminder
+  alias: "Start the close-windows reminder when windows are opened"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.windows_open
+      to: "on"
+  action:
+    - action: timer.start
+      target:
+        entity_id: timer.windows_open
+      data:
+        duration: >
+          {% set t = states('sensor.netatmo_outdoor_temperature') | float(10) %}
+          {% set minutes = 10 if t < 5 else 20 if t < 15 else 30 %}
+          {{ '00:%02d:00' % minutes }}
+
+- id: windows_open_remind_to_close
+  alias: "Remind to close the windows"
+  trigger:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.windows_open
+  condition:
+    - condition: state
+      entity_id: input_boolean.windows_open
+      state: "on"
+  action:
+    - action: notify.app_tim
+      data:
+        title: "🪟 Ramen sluiten"
+        message: >
+          De ramen staan sinds {{
+          as_timestamp(states.input_boolean.windows_open.last_changed)
+          | timestamp_custom('%H:%M') }} open. Het is buiten {{
+          states('sensor.netatmo_outdoor_temperature') }}°C, tijd om ze weer
+          te sluiten.
+        data:
+          notification_icon: mdi:window-open-variant
+          tag: windows_open
+          actions:
+            - action: windows_closed
+              title: "Ramen zijn dicht"
+    - alias: Remind again in 10 minutes
+      action: timer.start
+      target:
+        entity_id: timer.windows_open
+      data:
+        duration: "00:10:00"
+
+- id: windows_open_closed_from_notification
+  alias: "Mark windows closed from notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: windows_closed
+  action:
+    - action: input_boolean.turn_off
+      target:
+        entity_id: input_boolean.windows_open
+
+- id: windows_open_stop_reminder
+  alias: "Stop the close-windows reminder when windows are closed"
+  trigger:
+    - trigger: state
+      entity_id: input_boolean.windows_open
+      to: "off"
+  action:
+    - action: timer.cancel
+      target:
+        entity_id: timer.windows_open
+    - action: notify.app_tim
+      data:
+        message: clear_notification
+        data:
+          tag: windows_open
+
+- id: windows_open_leaving_home
+  alias: "Warn when leaving home with the windows open"
+  trigger:
+    - trigger: state
+      entity_id: input_select.home_mode
+      to: away
+  condition:
+    - condition: state
+      entity_id: input_boolean.windows_open
+      state: "on"
+  action:
+    - action: notify.app_tim
+      data:
+        title: "🪟 Ramen staan nog open"
+        message: "Je bent van huis weggegaan terwijl de ramen nog open staan."
+        data:
+          notification_icon: mdi:window-open-variant
+          tag: windows_open
+          actions:
+            - action: windows_closed
+              title: "Ramen zijn dicht"

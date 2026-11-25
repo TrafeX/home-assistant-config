@@ -113,6 +113,12 @@ timer:
     name: Alarm verificatie
     duration: "00:05:00"
     icon: mdi:shield-search
+  # Counts down to the reminder to close the windows again. Restored, so a
+  # restart while airing does not lose the reminder.
+  windows_open:
+    name: Ramen open
+    icon: mdi:window-open-variant
+    restore: true
 
 # Configure Sonos integration
 sonos:
