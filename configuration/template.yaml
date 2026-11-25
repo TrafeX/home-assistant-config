@@ -195,3 +195,164 @@
         # and churn the recorder while an alert is active. The automation reads
         # the live value with states() when it notifies.
         offenders: "{{ offenders }}"
+# Absolute humidity (g/m3) from temperature and relative humidity, so rooms
+# and outdoor air can be compared directly: cold outdoor air at 90% holds far
+# less water than indoor air at 60%. Used by the ventilation automations and
+# the ventilation advice on the graphs dashboard.
+- sensor:
+    - name: "Living Absolute Humidity"
+      unique_id: living_absolute_humidity
+      default_entity_id: sensor.living_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.living_temperature') | float(0) %}
+        {% set rh = states('sensor.living_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.living_temperature')
+           and has_value('sensor.living_humidity') }}
+    - name: "Hallway 1st Absolute Humidity"
+      unique_id: hallway_1st_absolute_humidity
+      default_entity_id: sensor.hallway_1st_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.hallway_1st_temperature') | float(0) %}
+        {% set rh = states('sensor.hallway_1st_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.hallway_1st_temperature')
+           and has_value('sensor.hallway_1st_humidity') }}
+    - name: "Bedroom Jens Absolute Humidity"
+      unique_id: bedroom_jens_absolute_humidity
+      default_entity_id: sensor.bedroom_jens_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.bedroom_jens_temperature') | float(0) %}
+        {% set rh = states('sensor.bedroom_jens_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.bedroom_jens_temperature')
+           and has_value('sensor.bedroom_jens_humidity') }}
+    - name: "Masterbedroom Absolute Humidity"
+      unique_id: masterbedroom_absolute_humidity
+      default_entity_id: sensor.masterbedroom_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.masterbedroom_temperature') | float(0) %}
+        {% set rh = states('sensor.masterbedroom_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.masterbedroom_temperature')
+           and has_value('sensor.masterbedroom_humidity') }}
+    - name: "Hallway 2nd Absolute Humidity"
+      unique_id: hallway_2nd_absolute_humidity
+      default_entity_id: sensor.hallway_2nd_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.hallway_2nd_temperature') | float(0) %}
+        {% set rh = states('sensor.hallway_2nd_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.hallway_2nd_temperature')
+           and has_value('sensor.hallway_2nd_humidity') }}
+    - name: "Tygo Absolute Humidity"
+      unique_id: tygo_absolute_humidity
+      default_entity_id: sensor.tygo_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.tygo_temperature') | float(0) %}
+        {% set rh = states('sensor.tygo_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.tygo_temperature')
+           and has_value('sensor.tygo_humidity') }}
+    - name: "Office small Absolute Humidity"
+      unique_id: office_small_absolute_humidity
+      default_entity_id: sensor.office_small_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.netatmo_bedroom_temperature') | float(0) %}
+        {% set rh = states('sensor.netatmo_bedroom_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.netatmo_bedroom_temperature')
+           and has_value('sensor.netatmo_bedroom_humidity') }}
+    - name: "Office large Absolute Humidity"
+      unique_id: office_large_absolute_humidity
+      default_entity_id: sensor.office_large_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.office_large_temperature') | float(0) %}
+        {% set rh = states('sensor.office_large_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.office_large_temperature')
+           and has_value('sensor.office_large_humidity') }}
+    - name: "Bathroom 2nd Absolute Humidity"
+      unique_id: bathroom_2nd_absolute_humidity
+      default_entity_id: sensor.bathroom_2nd_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.badkamer_2de_shower_sensor_temperature') | float(0) %}
+        {% set rh = states('sensor.badkamer_2de_shower_sensor_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.badkamer_2de_shower_sensor_temperature')
+           and has_value('sensor.badkamer_2de_shower_sensor_humidity') }}
+    - name: "Fusebox Absolute Humidity"
+      unique_id: fusebox_absolute_humidity
+      default_entity_id: sensor.fusebox_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.fusebox_temperature') | float(0) %}
+        {% set rh = states('sensor.fusebox_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.fusebox_temperature')
+           and has_value('sensor.fusebox_humidity') }}
+    - name: "Storage Absolute Humidity"
+      unique_id: storage_absolute_humidity
+      default_entity_id: sensor.storage_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.storage_temperature') | float(0) %}
+        {% set rh = states('sensor.storage_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.storage_temperature')
+           and has_value('sensor.storage_humidity') }}
+    - name: "Outdoor Absolute Humidity"
+      unique_id: outdoor_absolute_humidity
+      default_entity_id: sensor.outdoor_absolute_humidity
+      icon: mdi:water
+      unit_of_measurement: "g/m³"
+      state_class: measurement
+      state: >
+        {% set t = states('sensor.netatmo_outdoor_temperature') | float(0) %}
+        {% set rh = states('sensor.netatmo_outdoor_humidity') | float(0) %}
+        {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      availability: >
+        {{ has_value('sensor.netatmo_outdoor_temperature')
+           and has_value('sensor.netatmo_outdoor_humidity') }}

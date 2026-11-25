@@ -78,21 +78,12 @@
   variables:
     tygo_rh: "{{ states('sensor.tygo_humidity') | float(0) }}"
     hallway_rh: "{{ states('sensor.hallway_2nd_humidity') | float(0) }}"
-    # Absolute humidity in g/m3 from temperature (°C) and relative humidity
+    # Absolute humidity sensors live in template.yaml. An unavailable outdoor
+    # sensor defaults high, so it never starts the ventilation on its own.
     indoor_ah: >
-      {% set ns = namespace(ah=0) %}
-      {% for t, rh in [
-           (states('sensor.tygo_temperature'), states('sensor.tygo_humidity')),
-           (states('sensor.hallway_2nd_temperature'), states('sensor.hallway_2nd_humidity'))] %}
-        {% set t = t | float(20) %}
-        {% set ah = 6.112 * e ** (17.67 * t / (t + 243.5)) * (rh | float(0)) * 2.1674 / (273.15 + t) %}
-        {% set ns.ah = [ns.ah, ah] | max %}
-      {% endfor %}
-      {{ ns.ah | round(1) }}
-    outdoor_ah: >
-      {% set t = states('sensor.netatmo_outdoor_temperature') | float(20) %}
-      {% set rh = states('sensor.netatmo_outdoor_humidity') | float(100) %}
-      {{ (6.112 * e ** (17.67 * t / (t + 243.5)) * rh * 2.1674 / (273.15 + t)) | round(1) }}
+      {{ [states('sensor.tygo_absolute_humidity') | float(0),
+          states('sensor.hallway_2nd_absolute_humidity') | float(0)] | max }}
+    outdoor_ah: "{{ states('sensor.outdoor_absolute_humidity') | float(99) }}"
   condition:
     - condition: state
       entity_id: switch.ventilation
