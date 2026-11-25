@@ -40,6 +40,7 @@ Some of the things I've implemented:
 - Notify when one the battery powered sensors is running low on battery
 - Notify when it's time to water the plants and turn on the irrigation system
 - A dashboard with graphs of all temperature, humidity and energy usage sensors
+- Ventilation advice per room, based on absolute humidity compared to the outdoor air
 - Remind to close the windows again after airing, sooner when it is colder outside
 - An energy dashboard with the solar production, grid usage and house consumption
 - Turn off the heating in the office when the workday is over

@@ -579,113 +579,215 @@ views:
           - mean
         days_to_show: 1
         unit: W
+  # Climate in the house. Every graph lists the rooms in the same order, so
+  # a room gets the same colour in each graph; rooms that only appear in one
+  # graph (Gang BG, Buiten) go last to keep that order intact.
   - path: graphs
-    title: Graphs
-    icon: mdi:chart-bar
-    # panel: true
-    # type: custom:grid-layout
-    # layout:
-    #   grid-template-columns: 1fr 1fr
-    #   mediaquery:
-    #     "(max-width: 1024px)":
-    #       grid-template-columns: 100%
-    cards:
-      - type: statistics-graph
-        title: Temperature
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Living
-            entity: sensor.living_temperature
-          - name: Gang BG
-            entity: sensor.hallway_gf_temperature
-          - name: Achtertuin
-            entity: sensor.backyard_temperature
-          - name: 1ste verdieping gang
-            entity: sensor.hallway_1st_temperature
-          - name: Jens slaapkamer
-            entity: sensor.bedroom_jens_temperature
-          - name: Master slaapkamer
-            entity: sensor.masterbedroom_temperature
-          - name: Gang 2de verdieping
-            entity: sensor.hallway_2nd_temperature
-          - name: Tygo slaapkamer
-            entity: sensor.tygo_temperature
-          - name: Small office
-            entity: sensor.netatmo_bedroom_temperature
-          - name: Large office
-            entity: sensor.office_large_temperature
-          - name: Meterkast
-            entity: sensor.fusebox_temperature
-          - name: Trapkast
-            entity: sensor.storage_temperature
-          - name: Douche
-            entity: sensor.badkamer_2de_shower_sensor_temperature
-        stat_types:
-          - mean
-        days_to_show: 1
-      - type: statistics-graph
-        title: Humidity
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Living
-            entity: sensor.living_humidity
-          - name: Achtertuin
-            entity: sensor.backyard_humidity
-          - name: 1ste verdieping gang
-            entity: sensor.hallway_1st_humidity
-          - name: Jens slaapkamer
-            entity: sensor.bedroom_jens_humidity
-          - name: Master slaapkamer
-            entity: sensor.masterbedroom_humidity
-          - name: Gang 2de verdieping
-            entity: sensor.hallway_2nd_humidity
-          - name: Tygo slaapkamer
-            entity: sensor.tygo_humidity
-          - name: Small office
-            entity: sensor.netatmo_bedroom_humidity
-          - name: Large office
-            entity: sensor.office_large_humidity
-          - name: Meterkast
-            entity: sensor.fusebox_humidity
-          - name: Trapkast
-            entity: sensor.storage_humidity
-          - name: Douche
-            entity: sensor.badkamer_2de_shower_sensor_humidity
-        stat_types:
-          - mean
-        days_to_show: 1
-      - type: statistics-graph
-        title: Heating
-        chart_type: line
-        period: 5minute
-        entities:
-          - name: Supply temperature
-            entity: sensor.heating_supply_temperature
-          - name: Power %
-            entity: sensor.power
-        stat_types:
-          - mean
-        days_to_show: 1
-        unit: °C
-      - type: statistics-graph
-        title: Raspberry Pi temperature
-        period: 5minute
-        days_to_show: 2
-        entities:
-          - sensor.raspberry_pi_cpu_temperature
-          - sensor.fusebox_temperature
-        stat_types:
-          - mean
-      - type: statistics-graph
-        title: UPS load
-        period: 5minute
-        days_to_show: 2
-        entities:
-          - sensor.ups_load
-        stat_types:
-          - mean
+    title: Klimaat
+    icon: mdi:home-thermometer
+    type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading: Ventilatie
+            icon: mdi:fan
+          - type: tile
+            entity: switch.ventilation
+            name: Ventilatie
+            icon: mdi:fan
+            grid_options:
+              columns: full
+            features_position: inline
+            features:
+              - type: toggle
+          - type: tile
+            entity: input_boolean.windows_open
+            name: Ramen open
+            icon_tap_action:
+              action: toggle
+            tap_action:
+              action: toggle
+          - type: tile
+            entity: timer.windows_open
+            name: Herinnering over
+          # Same rule as the "2nd floor is humid" ventilation automation, with a
+          # lower humidity threshold: venting only helps when the outdoor air
+          # holds at least 1 g/m3 less water than the room.
+          - type: markdown
+            content: |
+              {%- set out = states('sensor.outdoor_absolute_humidity') | float(none) %}
+              {%- set rooms = [
+                ('Woonkamer', 'living', 'living'),
+                ('Gang 1ste', 'hallway_1st', 'hallway_1st'),
+                ('Slaapkamer Jens', 'bedroom_jens', 'bedroom_jens'),
+                ('Slaapkamer', 'masterbedroom', 'masterbedroom'),
+                ('Gang 2de', 'hallway_2nd', 'hallway_2nd'),
+                ('Slaapkamer Tygo', 'tygo', 'tygo'),
+                ('Werkkamer klein', 'office_small', 'netatmo_bedroom'),
+                ('Werkkamer groot', 'office_large', 'office_large'),
+                ('Badkamer 2de', 'bathroom_2nd', 'badkamer_2de_shower_sensor'),
+                ('Meterkast', 'fusebox', 'fusebox'),
+                ('Trapkast', 'storage', 'storage')] %}
+              {%- set ns = namespace(rows=[], vent=[]) %}
+              {%- for name, ah_id, rh_id in rooms %}
+                {%- set ah = states('sensor.' ~ ah_id ~ '_absolute_humidity') | float(none) %}
+                {%- set rh = states('sensor.' ~ rh_id ~ '_humidity') | float(none) %}
+                {%- if ah is none or rh is none %}
+                  {%- set ns.rows = ns.rows + ['| ' ~ name ~ ' | – | – | niet beschikbaar |'] %}
+                {%- else %}
+                  {%- if rh >= 60 and out is not none and out < ah - 1 %}
+                    {%- set advice = '🪟 ventileren' %}
+                    {%- set ns.vent = ns.vent + [name] %}
+                  {%- elif rh >= 60 %}
+                    {%- set advice = '💧 buiten niet droger' %}
+                  {%- else %}
+                    {%- set advice = '✅' %}
+                  {%- endif %}
+                  {%- set ns.rows = ns.rows + ['| ' ~ name ~ ' | ' ~ rh | round(0) | int ~ '% | ' ~ ah ~ ' g/m³ | ' ~ advice ~ ' |'] %}
+                {%- endif %}
+              {%- endfor %}
+              {%- if out is none %}Buitenluchtvochtigheid onbekend, geen advies mogelijk.
+              {%- elif ns.vent %}**Ventileren aanbevolen:** {{ ns.vent | join(', ') }}
+              {%- else %}Nergens nodig om te ventileren.{% endif %}
+
+              Buiten: **{{ out if out is not none else '–' }} g/m³**
+
+              | Ruimte | RV | AV | Advies |
+              |:--|--:|--:|:--|
+              {{ ns.rows | join('\n') }}
+      - type: grid
+        cards:
+          - type: heading
+            heading: Temperatuur
+            icon: mdi:thermometer
+          - type: statistics-graph
+            title: Binnen
+            chart_type: line
+            period: 5minute
+            days_to_show: 1
+            stat_types:
+              - mean
+            entities:
+              - name: Woonkamer
+                entity: sensor.living_temperature
+              - name: Gang 1ste
+                entity: sensor.hallway_1st_temperature
+              - name: Slaapkamer Jens
+                entity: sensor.bedroom_jens_temperature
+              - name: Slaapkamer
+                entity: sensor.masterbedroom_temperature
+              - name: Gang 2de
+                entity: sensor.hallway_2nd_temperature
+              - name: Slaapkamer Tygo
+                entity: sensor.tygo_temperature
+              - name: Werkkamer klein
+                entity: sensor.netatmo_bedroom_temperature
+              - name: Werkkamer groot
+                entity: sensor.office_large_temperature
+              - name: Badkamer 2de
+                entity: sensor.badkamer_2de_shower_sensor_temperature
+              - name: Meterkast
+                entity: sensor.fusebox_temperature
+              - name: Trapkast
+                entity: sensor.storage_temperature
+              - name: Gang BG
+                entity: sensor.rookmelder_bg_temperature
+          - type: statistics-graph
+            title: Buiten
+            chart_type: line
+            period: 5minute
+            days_to_show: 1
+            stat_types:
+              - mean
+            entities:
+              - name: Achtertuin
+                entity: sensor.backyard_temperature
+              - name: Netatmo buiten
+                entity: sensor.netatmo_outdoor_temperature
+              - name: Schuur
+                entity: sensor.shed_temperature
+          - type: statistics-graph
+            title: Verwarming
+            chart_type: line
+            period: 5minute
+            days_to_show: 1
+            stat_types:
+              - mean
+            unit: °C
+            entities:
+              - name: Aanvoertemperatuur
+                entity: sensor.heating_supply_temperature
+              - name: Vermogen %
+                entity: sensor.power
+      - type: grid
+        cards:
+          - type: heading
+            heading: Luchtvochtigheid
+            icon: mdi:water-percent
+          - type: statistics-graph
+            title: Relatief
+            chart_type: line
+            period: 5minute
+            days_to_show: 1
+            stat_types:
+              - mean
+            entities:
+              - name: Woonkamer
+                entity: sensor.living_humidity
+              - name: Gang 1ste
+                entity: sensor.hallway_1st_humidity
+              - name: Slaapkamer Jens
+                entity: sensor.bedroom_jens_humidity
+              - name: Slaapkamer
+                entity: sensor.masterbedroom_humidity
+              - name: Gang 2de
+                entity: sensor.hallway_2nd_humidity
+              - name: Slaapkamer Tygo
+                entity: sensor.tygo_humidity
+              - name: Werkkamer klein
+                entity: sensor.netatmo_bedroom_humidity
+              - name: Werkkamer groot
+                entity: sensor.office_large_humidity
+              - name: Badkamer 2de
+                entity: sensor.badkamer_2de_shower_sensor_humidity
+              - name: Meterkast
+                entity: sensor.fusebox_humidity
+              - name: Trapkast
+                entity: sensor.storage_humidity
+          - type: statistics-graph
+            title: Absoluut
+            chart_type: line
+            period: 5minute
+            days_to_show: 1
+            stat_types:
+              - mean
+            entities:
+              - name: Woonkamer
+                entity: sensor.living_absolute_humidity
+              - name: Gang 1ste
+                entity: sensor.hallway_1st_absolute_humidity
+              - name: Slaapkamer Jens
+                entity: sensor.bedroom_jens_absolute_humidity
+              - name: Slaapkamer
+                entity: sensor.masterbedroom_absolute_humidity
+              - name: Gang 2de
+                entity: sensor.hallway_2nd_absolute_humidity
+              - name: Slaapkamer Tygo
+                entity: sensor.tygo_absolute_humidity
+              - name: Werkkamer klein
+                entity: sensor.office_small_absolute_humidity
+              - name: Werkkamer groot
+                entity: sensor.office_large_absolute_humidity
+              - name: Badkamer 2de
+                entity: sensor.bathroom_2nd_absolute_humidity
+              - name: Meterkast
+                entity: sensor.fusebox_absolute_humidity
+              - name: Trapkast
+                entity: sensor.storage_absolute_humidity
+              - name: Buiten
+                entity: sensor.outdoor_absolute_humidity
   - path: cameras
     title: Cameras
     icon: mdi:cctv
