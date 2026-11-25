@@ -121,9 +121,9 @@ views:
         entities:
           - binary_sensor.hallway_gf_motion
           - binary_sensor.voordeur_opening
-          - binary_sensor.hallway_gf_smoke_alarm
+          - binary_sensor.rookmelder_bg
           - light.gang_bg
-          - sensor.hallway_gf_smoke_temperature
+          - sensor.rookmelder_bg_temperature
           - sensor.hallway_gf_illuminance
           - binary_sensor.doorbell_visitor
           - binary_sensor.doorbell_motion
@@ -141,22 +141,24 @@ views:
         state_color: true
         entities:
           - binary_sensor.hallway_1st_motion_detection
-          - binary_sensor.hallway_1st_smoke_alarm
+          - binary_sensor.rookmelder_1ste
           - light.hallway_1st
           - sensor.hallway_1st_temperature
           - sensor.hallway_1st_humidity
           - sensor.hallway_1st_illuminance
-          - sensor.hallway_1st_smoke_temperature
+          - sensor.rookmelder_1ste_temperature
         show_header_toggle: false
       - type: entities
         title: Gang 2de
         state_color: true
         entities:
           - binary_sensor.hallway_2nd_motion_detection
+          - binary_sensor.gang_2de_rookmelder_gang_2de
           - light.hallway_2nd
           - sensor.hallway_2nd_temperature
           - sensor.hallway_2nd_humidity
           - sensor.hallway_2nd_illuminance
+          - sensor.gang_2de_rookmelder_gang_2de_temperature
         show_header_toggle: false
       - type: entities
         title: Slaapkamer
@@ -706,7 +708,7 @@ views:
               - type: picture-glance
                 title: Hallway
                 entities:
-                  - entity: sensor.hallway_gf_smoke_temperature
+                  - entity: sensor.rookmelder_bg_temperature
                     show_state: true
                 camera_image: camera.txnas_hallway
               - type: picture-glance

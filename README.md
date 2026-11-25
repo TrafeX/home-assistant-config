@@ -20,7 +20,7 @@ Some of the things I've implemented:
 - Enable ventilation when CO2 level reaches a certain level
 - Enable ventilation when the shower is used
 - Automated Christmas lights (only during the holidays 😉)
-- Notify when one of the smoke sensors detects smoke
+- Critical push notification when a smoke or CO sensor fires, with actions to turn on all lights and silence the smoke detector sirens
 - Ghost mode; turn on lights for a short period when away to pretend someone is home
 - Start the vacuum cleaner based on a schedule with the option to override per day
 - Notify when the vacuum cleaner is done
@@ -63,7 +63,6 @@ The following hardware is integrated in this system.
 | 1        | Wallplug       | Aeon Labs Inline Smart Energy         | zwave    |
 | 2        | Wallplug       | Greenwave Powernode-1                 | zwave    |
 | 1        | Wallplug       | TBK Home                              | zwave    |
-| 3        | Smoke sensor   | Fibaro Smoke sensor (FGSS001)         | zwave    |
 | 1        | CO sensor      | Fibaro CO sensor (FGCD001)            | zwave    |
 | 1        | Insertmodule   | Fibaro insertmodule 2x1,5kw (FGS-222) | zwave    |
 | 5        | Multisensor    | Aeon Labs Multisensor 6               | zwave    |
@@ -91,3 +90,4 @@ The following hardware is integrated in this system.
 | 2        | Button         | Sonoff SNZB-01P                       | zigbee   |
 | 1        | Sensor         | Sonoff SNZB-02P                       | zigbee   |
 | 1        | Light          | AwoX Bulb 12253                       | zigbee   |
+| 3        | Smoke Sensor   | Frient SMSZB-120                      | zigbee   |

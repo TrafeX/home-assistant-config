@@ -1,41 +1,71 @@
 - id: trigger_fire_alarm_smoke_detected
   alias: "Trigger fire alarm when smoke detected"
+  mode: single
   trigger:
     - trigger: state
-      entity_id: binary_sensor.hallway_1st_smoke_alarm
-      to: "on"
-      for:
-        seconds: 5
-    - trigger: state
-      entity_id: binary_sensor.rookmelder_2de_280
-      to: "on"
-      for:
-        seconds: 5
-    - trigger: state
-      entity_id: binary_sensor.hallway_gf_smoke_alarm
-      to: "on"
-      for:
-        seconds: 5
-    - trigger: state
-      entity_id: binary_sensor.carbon_monoxide_detected
+      entity_id:
+        - binary_sensor.rookmelder_bg
+        - binary_sensor.rookmelder_1ste
+        - binary_sensor.gang_2de_rookmelder_gang_2de
+        - binary_sensor.carbon_monoxide_detected
       to: "on"
       for:
         seconds: 5
   action:
-    - action: telegram_bot.send_message
+    # The alarm_stream channel plays through the alarm volume, so the
+    # notification is heard even when the phone is on silent or do not
+    # disturb. ttl 0 + priority high deliver it immediately.
+    - action: notify.apps
       data:
-        title: " 🚨 *BRAND alarm!*"
-        message: >
-          Brandmelding of koolmonoxide melding op: {{ trigger.to_state.name }}
-          Andere active sensors:
-          {% for state in states.binary_sensor -%}
-            {% if state.state == 'on' %}
-              {{ state.name }}
-            {%- endif -%}
-          {% endfor %}
+        title: "🚨 BRANDALARM!"
+        message: >-
+          Rook of koolmonoxide gedetecteerd: {{ trigger.to_state.name }}.
+          {%- set others = expand(
+                'binary_sensor.rookmelder_bg',
+                'binary_sensor.rookmelder_1ste',
+                'binary_sensor.gang_2de_rookmelder_gang_2de',
+                'binary_sensor.carbon_monoxide_detected')
+              | selectattr('state', 'eq', 'on')
+              | rejectattr('entity_id', 'eq', trigger.entity_id)
+              | map(attribute='name') | list %}
+          {%- if others %} Ook actief: {{ others | join(', ') }}.{% endif %}
+        data:
+          tag: fire_alarm
+          channel: alarm_stream
+          importance: high
+          priority: high
+          ttl: 0
+          sticky: true
+          notification_icon: mdi:fire-alert
+          actions:
+            - action: "fire_alarm_lights_on"
+              title: "Alle lichten aan"
+            - action: "fire_alarm_sirens_off"
+              title: "Sirenes uit"
+
+- id: fire_alarm_lights_on_action
+  alias: "Turn on all lights from fire alarm notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: fire_alarm_lights_on
+  action:
     - action: light.turn_on
-      entity_id: all
-    - action: tts.google_say
-      data:
-        entity_id: group.announcement_speakers
-        message: "Er is brand of koolmonoxide gedetecteerd! Verlaat de woning!"
+      target:
+        entity_id: all
+
+- id: fire_alarm_sirens_off_action
+  alias: "Turn off smoke detector sirens from fire alarm notification"
+  trigger:
+    - trigger: event
+      event_type: mobile_app_notification_action
+      event_data:
+        action: fire_alarm_sirens_off
+  action:
+    - action: siren.turn_off
+      target:
+        entity_id:
+          - siren.rookmelder_bg_siren
+          - siren.rookmelder_1ste_siren
+          - siren.gang_2de_rookmelder_gang_2de_siren
